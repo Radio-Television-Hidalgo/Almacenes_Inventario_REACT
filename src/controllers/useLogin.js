@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function useLogin(email, password, setLoginError) {
+  const navigate = useNavigate();
 
   return useCallback(async (e) => {
     e.preventDefault();
@@ -18,8 +20,7 @@ function useLogin(email, password, setLoginError) {
 
       if (data.success) {
         localStorage.setItem('token', data.token);
-        window.location.href = './views/home.jsx'; 
-        console.log(window.location.href)// Redirige al usuario a la página de inicio
+        navigate('/Home')
         console.log('Inicio de sesión exitoso');
       } else {
         setLoginError('Inicio de sesión fallido');
@@ -28,7 +29,7 @@ function useLogin(email, password, setLoginError) {
       console.log('Error al iniciar sesión: ', error);
       setLoginError('Error al conectar con el servidor');
     }
-  }, [email, password, setLoginError, history]); // Asegúrate de incluir history como dependencia
+  }, [email, password, setLoginError, navigate]); // Asegúrate de incluir history como dependencia
 }
 
 export default useLogin;
