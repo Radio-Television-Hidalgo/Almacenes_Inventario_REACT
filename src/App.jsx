@@ -1,17 +1,26 @@
-import Login  from '../src/useFetch.jsx'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Login from './views/login';
+import Home from './views/home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './Inicio.jsx'
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Routes>
-        <Route path="/" element={<Login />} />
-          <Route path="./Inicio.jsx" element={<Inicio />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/home">Home</Link></li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/home" component={Home} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
