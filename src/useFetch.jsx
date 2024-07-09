@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Declaración de función 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const navigate = useNavigate()
 
   // Previene el comportamiento del formulario por defecto y se llama a la función handleLogin.
   const handleLogin = async (e) => {
@@ -23,6 +25,7 @@ function Login() {
 
       if (data.success) {
         localStorage.setItem('token', data.token);
+        navigate('/inicio')
         // TODO: Redirigir
         console.log('Inicio de sesión exitoso');
       } else {
