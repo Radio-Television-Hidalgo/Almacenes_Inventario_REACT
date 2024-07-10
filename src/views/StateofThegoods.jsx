@@ -1,5 +1,6 @@
 import {Helmet} from "react-helmet";
 import { useState } from 'react';
+import '../styles/bills.css';
 
 function StateofThegoods() {
 

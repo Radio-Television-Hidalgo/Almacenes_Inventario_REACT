@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import '../styles/bills.css';
 function Bills() {
   
   return (
