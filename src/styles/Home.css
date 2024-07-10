@@ -1,0 +1,51 @@
+/* Estilo para el contenedor principal */
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgb(110, 24, 16);
+    height: calc(100vh - 80px); /* Ajustamos para dejar espacio para el navbar */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Estilo para el contenido dentro del contenedor */
+  .home-content {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el encabezado */
+  .home-content h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  /* Estilo para el párrafo */
+  .home-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: #555;
+  }
+  
+  /* Estilo para el botón */
+  .learn-more-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Cambio de color al pasar el mouse sobre el botón */
+  .learn-more-button:hover {
+    background-color: #0056b3;
+  }
+  
