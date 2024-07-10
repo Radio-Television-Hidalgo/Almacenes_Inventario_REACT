@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useLogin from '../controllers/useLogin.js';
+import '../styles/login.css'; // Asegúrate de que la ruta sea correcta
 import { useEffect } from 'react';
 
 function Login() {
@@ -14,8 +15,10 @@ function Login() {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleLogin}>
+        <h2>Iniciar Sesión</h2>
+        <p>bienvenido a sitema inventarios</p>
         <label htmlFor="correo">Usuario o email</label>
         <input
           type="email"
@@ -33,7 +36,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Iniciar sesión</button>
-        {loginError && <p>{loginError}</p>}
+        {loginError && <p className="login-error">{loginError}</p>}
       </form>
     </div>
   );
