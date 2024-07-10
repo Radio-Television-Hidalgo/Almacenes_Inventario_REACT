@@ -23,6 +23,7 @@ const User = () => {
   };
 
   return (
+    <div className='user-container'>
     <form onSubmit={handleSubmit} className="user-form">
       <div className="form-group">
         <label htmlFor="name">Nombre:</label>
@@ -59,6 +60,7 @@ const User = () => {
       </div>
       <button type="submit" className="submit-button">Enviar</button>
     </form>
+    </div>
   );
 };
 
