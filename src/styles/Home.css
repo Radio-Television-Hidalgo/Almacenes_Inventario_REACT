@@ -1,51 +1,69 @@
 /* Estilo para el contenedor principal */
-  .home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:rgb(110, 24, 16);
-    height: calc(100vh - 80px); /* Ajustamos para dejar espacio para el navbar */
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /* Estilo para el contenido dentro del contenedor */
-  .home-content {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilo para el encabezado */
-  .home-content h1 {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    color: #333;
-  }
-  
-  /* Estilo para el párrafo */
-  .home-content p {
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
-    color: #555;
-  }
-  
-  /* Estilo para el botón */
-  .learn-more-button {
-    padding: 0.75rem 1.5rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Cambio de color al pasar el mouse sobre el botón */
-  .learn-more-button:hover {
-    background-color: #0056b3;
-  }
-  
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alinea los elementos al centro verticalmente */
+  background: rgb(236, 199, 195);
+  height: calc(100vh - 80px); /* Ajustamos para dejar espacio para el navbar */
+  background-size: cover;
+  background-position: center;
+  text-align: center; /* Centra el texto horizontalmente */
+  padding: 5px; /* Espaciado interno */
+  flex-direction: column;
+}
+
+/* Estilo para el encabezado h3 */
+.home-container h3 {
+  font-size: 3rem; /* Tamaño de fuente para el h3 */
+  color: #333; /* Color de texto para el h3 */
+  margin: 20px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+}
+
+/* Estilo para las columnas */
+.home-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para las columnas */
+}
+
+/* Estilo para cada columna */
+.home-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las tarjetas dentro de una columna */
+}
+
+/* Estilo para las tarjetas (cards) */
+.home-card {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  max-width: 300px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
+}
+
+.home-content {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-content:hover {
+  transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
+}
+
+/* Estilo para el encabezado */
+.home-content h1 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+}

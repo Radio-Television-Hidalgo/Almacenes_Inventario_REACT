@@ -1,15 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importamos Link
 import '../styles/Home.css'; // Importamos el archivo CSS
 
 function Home() {
   return (
     <div>
-
       <div className="home-container">
-        <div className="home-content">
-          <h1>Bienvenido al Inicio</h1>
-          <p>Esta es la página de inicio de la aplicación.</p>
-          <button className="learn-more-button">Aprender más</button>
+        <h3>¿Qué deseas hacer hoy?</h3> {/* Movemos el h3 aquí */}
+        
+        <div className="home-columns">
+          <div className="home-column">
+            <Link to="/mi-resguardo" className="home-card">
+              <div className="home-content">
+                <h1>Mi resguardo</h1>
+              </div>
+            </Link>
+            <Link to="/solicitud" className="home-card">
+              <div className="home-content">
+                <h1>Solicitud</h1>
+              </div>
+            </Link>
+          </div>
+          
+          <div className="home-column">
+            <Link to="/resguardo" className="home-card">
+              <div className="home-content">
+                <h1>Resguardo</h1>
+              </div>
+            </Link>
+            <Link to="/almacen" className="home-card">
+              <div className="home-content">
+                <h1>Almacen</h1>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
