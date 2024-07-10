@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import useLogin from '../controllers/useLogin.js';
+import { useEffect } from 'react';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
   const handleLogin = useLogin(email, password, setLoginError);
 
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   return (
     <div>
       <form onSubmit={handleLogin}>
         <label htmlFor="correo">Usuario o email</label>
-        <input 
+        <input
           type="email"
           id="correo"
           placeholder="Ingrese su correo"
@@ -21,7 +25,7 @@ function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="contrasena">Contraseña</label>
-        <input 
+        <input
           type="password"
           id="contrasena"
           placeholder="Ingrese su contraseña"
