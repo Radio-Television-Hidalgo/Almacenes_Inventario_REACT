@@ -1,14 +1,7 @@
-import { useEffect, useState } from "react";
+import useFetchGoods from '../controllers/useFetchGoods'; // Asegúrate de ajustar la ruta de importación según sea necesario
 
 function Goods() {
-    const [datos, setDatos] = useState([]);
-
-    useEffect(() => {
-        fetch("/api/bienes/bienesadquiridos")
-        .then(response => response.json())
-        .then(data => setDatos(data))
-        .catch(error => console.error("Error al cargar los datos", error));
-    }, []);
+    const datos = useFetchGoods();
 
     return (
         <div>

@@ -13,6 +13,7 @@ function Bills() {
         type="text"
         placeholder="Buscar..."
       />
+      
             <table>
               <thead>
                 <tr>
