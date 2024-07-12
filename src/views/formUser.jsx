@@ -39,7 +39,6 @@ const CreateUserForm = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      alert("usuario creado exitosamente ")
       console.log('Usuario creado:', response.data);
     } catch (error) {
       console.error('Error al crear usuario:', error);
