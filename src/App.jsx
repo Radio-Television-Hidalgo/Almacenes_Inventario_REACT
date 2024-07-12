@@ -7,12 +7,13 @@ import Bills from './views/Bills';
 import StateofThegoods from './views/StateofThegoods';
 import Assignations from './views/Assignations';
 import Goods from './views/Goods';
+import SeeUser from './views/seeUsers';
 
 function App() {
   const location = useLocation(); // Obtiene la ubicación actual de la ruta
 
   // Definir las rutas donde se debe mostrar el Header
-  const showHeaderRoutes = ['/Home', '/User','/Bills','/StateofThegoods', '/Assignations', '/Goods'];
+  const showHeaderRoutes = ['/Home', '/User','/Bills','/StateofThegoods', '/Assignations', '/Goods', "/seeUsers"];
 
   // Verificar si la ruta actual está en showHeaderRoutes
   const showHeader = showHeaderRoutes.includes(location.pathname);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/StateofThegoods" element={<StateofThegoods/>}/>
           <Route path="/Assignations" element={<Assignations/>}/>
           <Route path="/Goods" element={<Goods/>}/>
+          <Route path='/SeeUser' element={<SeeUser/>}/>
     </Routes>
       </main>
     </div>
