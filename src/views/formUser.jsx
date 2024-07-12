@@ -1,156 +1,98 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../styles/user.css'; // Importamos el archivo CSS
 
 const CreateUserForm = () => {
-  // Estado inicial del formulario con todos los campos requeridos
   const [userData, setUserData] = useState({
     ascription: '',
     chargeId: '',
     name: '',
-    img: '',
+    img: null,
     email: '',
     password: '',
     identification: '',
     RFC: '',
     CURP: '',
     departmentId: '',
-    status: true // Usuario activo por defecto
+    status: true
   });
 
-  // Maneja los cambios en los campos del formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Actualiza el estado del campo correspondiente
     setUserData({ ...userData, [name]: value });
   };
 
-  // Maneja el envío del formulario
+  const handleFileChange = (e) => {
+    setUserData({ ...userData, img: e.target.files[0] });
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita el comportamiento por defecto del formulario
+    e.preventDefault();
+    const formData = new FormData();
+    for (const key in userData) {
+      formData.append(key, userData[key]);
+    }
+
     try {
-      // Realiza una solicitud POST al servidor para crear un nuevo usuario
-      const response = await axios.post('/api/usuario/crearUsuario', userData);
+      const response = await axios.post('/api/usuario/crearUsuario', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      alert("usuario creado exitosamente ")
       console.log('Usuario creado:', response.data);
     } catch (error) {
-      // Manejo de errores en la solicitud
       console.error('Error al crear usuario:', error);
-      if (error.response) {
-        // Si hay una respuesta del servidor con un error
-        console.error('Error response:', error.response.data);
-      } else if (error.request) {
-        // Si la solicitud fue realizada pero no se recibió respuesta
-        console.error('Error request:', error.request);
-      } else {
-        // Cualquier otro error
-        console.error('Error message:', error.message);
-      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Campo de texto para la adscripción */}
-      <input
-        type="text"
-        name="ascription"
-        placeholder="Ascription"
-        value={userData.ascription}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el ID del cargo */}
-      <input
-        type="text"
-        name="chargeId"
-        placeholder="Charge ID"
-        value={userData.chargeId}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el nombre */}
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={userData.name}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de archivo para la imagen */}
-      <input
-        type="file"
-        name="img"
-        placeholder="Image URL"
-        value={userData.img}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el email */}
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={userData.email}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de contraseña */}
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={userData.password}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para la identificación */}
-      <input
-        type="text"
-        name="identification"
-        placeholder="Identification"
-        value={userData.identification}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el RFC */}
-      <input
-        type="text"
-        name="RFC"
-        placeholder="RFC"
-        value={userData.RFC}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el CURP */}
-      <input
-        type="text"
-        name="CURP"
-        placeholder="CURP"
-        value={userData.CURP}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Campo de texto para el ID del departamento */}
-      <input
-        type="text"
-        name="departmentId"
-        placeholder="Department ID"
-        value={userData.departmentId}
-        onChange={handleInputChange}
-        required
-      />
-      {/* Checkbox para el estado del usuario */}
-      <label>
-        <input
-          type="checkbox"
-          name="status"
-          checked={userData.status}
-          onChange={() => setUserData({ ...userData, status: !userData.status })}
-        />
-        Activo
-      </label>
-      {/* Botón para enviar el formulario */}
-      <button type="submit">Crear Usuario</button>
+    <form onSubmit={handleSubmit} className="formContainer">
+      <div className="formField">
+        <label htmlFor="ascription">Ascription</label>
+        <input type="text" id="ascription" name="ascription" placeholder="Ascription" value={userData.ascription} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="chargeId">Charge ID</label>
+        <input type="text" id="chargeId" name="chargeId" placeholder="Charge ID" value={userData.chargeId} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" value={userData.name} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="img">Image</label>
+        <input type="file" id="img" name="img" className="fileInput" onChange={handleFileChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" value={userData.email} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" value={userData.password} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="identification">Identification</label>
+        <input type="text" id="identification" name="identification" placeholder="Identification" value={userData.identification} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="RFC">RFC</label>
+        <input type="text" id="RFC" name="RFC" placeholder="RFC" value={userData.RFC} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="CURP">CURP</label>
+        <input type="text" id="CURP" name="CURP" placeholder="CURP" value={userData.CURP} onChange={handleInputChange} required />
+      </div>
+      <div className="formField">
+        <label htmlFor="departmentId">Department ID</label>
+        <input type="text" id="departmentId" name="departmentId" placeholder="Department ID" value={userData.departmentId} onChange={handleInputChange} required />
+      </div>
+      <div className="checkboxContainer">
+        <input type="checkbox" id="status" name="status" checked={userData.status} onChange={() => setUserData({ ...userData, status: !userData.status })} />
+        <label htmlFor="status">Activo</label>
+      </div>
+      <button type="submit" className="submitButton">Crear Usuario</button>
     </form>
   );
 };
