@@ -14,7 +14,7 @@ function App() {
   const location = useLocation(); // Obtiene la ubicación actual de la ruta
 
   // Definir las rutas donde se debe mostrar el Header
-  const showHeaderRoutes = ['/Home', '/User','/Bills','/StateofThegoods', '/Assignations', '/Goods', "/SeeUser", '/Solicitude'];
+  const showHeaderRoutes = ['/Home', '/User','/Bills','/StateofThegoods', '/Assignations', '/Goods', '/SeeUser'];
 
   // Verificar si la ruta actual está en showHeaderRoutes
   const showHeader = showHeaderRoutes.includes(location.pathname);
@@ -31,7 +31,7 @@ function App() {
           <Route path="/StateofThegoods" element={<StateofThegoods/>}/>
           <Route path="/Assignations" element={<Assignations/>}/>
           <Route path="/Goods" element={<Goods/>}/>
-          <Route path='/SeeUser' element={<SeeUser/>}/>
+          <Route path="/SeeUser" element={<SeeUser/>}/>
           <Route path='/Solicitude' element = {<Solicitude/>}/>
     </Routes>
       </main>
