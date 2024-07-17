@@ -4,19 +4,19 @@ import '../styles/user.css'; // Importamos el archivo CSS
 
 const CreateUserForm = ({ userId }) => {
   const [userData, setUserData] = useState({
-    worker_number: '',
+    worker_nomber: '',
     ascription: '',
     type: '',
     name: '',
-    img: null,
+    img: null, // Inicializamos img como null
     email: '',
     password: '',
     identification: '',
     RFC: '',
     CURP: '',
     status: true,
-    area_budget: '',
-    superior_organ: '',
+    area_budget: 'RADIO Y TELEVISION',
+    superior_organ: 'ORGANISMOS DESCENTRALIZADO',
     department_id: '',
     charge_id: ''
   });
@@ -42,7 +42,10 @@ const CreateUserForm = ({ userId }) => {
   };
 
   const handleFileChange = (e) => {
-    setUserData({ ...userData, img: e.target.files[0] });
+    // Verificamos que se haya seleccionado un archivo
+    if (e.target.files.length > 0) {
+      setUserData({ ...userData, img: e.target.files[0] });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -50,6 +53,11 @@ const CreateUserForm = ({ userId }) => {
     const formData = new FormData();
     for (const key in userData) {
       formData.append(key, userData[key]);
+    }
+
+    // Mostrar los datos que se envían en la solicitud en la consola
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
     }
 
     try {
@@ -63,11 +71,12 @@ const CreateUserForm = ({ userId }) => {
       console.error('Error al crear usuario:', error);
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="formContainer">
       <div className="formField">
-        <label htmlFor="worker_number">Número de Trabajador</label>
-        <input type="text" id="worker_number" name="worker_number" placeholder="Número de Trabajador" value={userData.worker_number} onChange={handleInputChange} required />
+        <label htmlFor="worker_nomber">Número de Trabajador</label>
+        <input type="text" id="worker_nomber" name="worker_nomber" placeholder="Número de Trabajador" value={userData.worker_nomber} onChange={handleInputChange} required />
       </div>
       <div className="formField">
         <label htmlFor="ascription">Adscripción</label>
