@@ -67,7 +67,7 @@ function SeeUser() {
                             <td>{dato.departmentId}</td>
                             <td>{dato.status ? "Activo" : "Inactivo"}</td>
                             <td>
-                                <img src={`http://localhost:3000${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
+                                <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
                             <td><button>Editar</button></td>
                             <td><button>Eliminar</button></td>
