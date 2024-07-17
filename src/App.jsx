@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "./views/login";
 import Home from "./views/home";
+import InventoryControl from "./views/InventoryControl";
+import Policy from "./views/policy";
+import Invoice from "./views/invoice";
 import User from "./views/formUser";
 import Header from "./components/Header";
 import Bills from "./views/Bills";
@@ -20,9 +23,15 @@ const showHeaderRoutes = [
   "/assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
+  "/ControlInventario",
+  "/factura",
+  "/poliza",
 ];
 
 const routeTitles = {
+  "/poliza": "Póliza",
+  "/factura": "Factura",
+  "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
@@ -52,6 +61,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/inicio" element={<Home />} />
+          <Route path="/ControlInventario" element={<InventoryControl />} />
+          <Route path="/poliza" element={<Policy />} />
+          <Route path="/factura" element={<Invoice />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />

@@ -9,6 +9,16 @@ function Home() {
         <h3>¿Qué deseas hacer hoy?</h3> {/* Movemos el h3 aquí */}
         
         <div className="home-columns">
+
+        <div className="home-column">
+            <Link to="/ControlInventario" className="home-card">
+              <div className="home-content">
+                <h1>Control de inventario</h1>
+              </div>
+            </Link>
+
+          </div>
+
           <div className="home-column">
             <Link to="/mi-resguardo" className="home-card">
               <div className="home-content">
