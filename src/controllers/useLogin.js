@@ -20,7 +20,7 @@ function useLogin(email, password, setLoginError) {
 
       if (data.success) {
         localStorage.setItem('token', data.token);
-        navigate('/Home')
+        navigate('/inicio')
         console.log('Inicio de sesión exitoso');
       } else {
         setLoginError('Inicio de sesión fallido');
