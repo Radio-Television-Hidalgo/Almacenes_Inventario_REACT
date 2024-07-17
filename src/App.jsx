@@ -20,6 +20,7 @@ const showHeaderRoutes = [
   "/assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
+  "/articulos/insertarArticulo"
 ];
 
 const routeTitles = {

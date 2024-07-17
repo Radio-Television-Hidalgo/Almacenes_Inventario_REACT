@@ -1,69 +1,86 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import axios from "axios";
 import QRCode from "react-qr-code";
+import { useDropzone } from "react-dropzone";
 
 export default function CreateArticle() {
   const [formData, setFormData] = useState({
-    material: "",
-    possession_type: "",
+    name: "",
     inventory_number: "",
-    depreciation_code: "",
     brand: "",
-    document_date: "",
-    color: "",
-    amortized_subaccount: "",
     model: "",
     acquisition_date: "",
-    entry_type: "",
-    item_code: "",
-    series: "",
-    status: "",
-    item_condition: "",
+    number_series: "",
+    status: "en uso",
     description: "",
+    caracteristics: "",
     type: "Bien",
+    userful_live_id: "",
+    policy_id: "",
+    bill_id: "",
+    photos_entry: [],
   });
 
   const [qrValue, setQrValue] = useState("");
+
+  const onDrop = useCallback((acceptedFiles) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      photos_entry: [...prevState.photos_entry, ...acceptedFiles],
+    }));
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const articleWithQR = {
       ...formData,
       QR: `http://localhost:3000/articulos/${formData.inventory_number}`,
     };
 
-    axios
-      .post("/api/articulos/insertarArticulo", articleWithQR)
-      .then((response) => {
-        console.log("Artículo creado:", response.data);
-        setQrValue(articleWithQR.QR);
-      })
-      .catch((error) => {
-        console.error("Hubo un error al crear el artículo!", error);
-      });
+    const formDataObj = new FormData();
+    for (const key in articleWithQR) {
+      if (key === "photos_entry") {
+        articleWithQR.photos_entry.forEach((file) => {
+          formDataObj.append("photos_entry", file);
+        });
+      } else {
+        formDataObj.append(key, articleWithQR[key]);
+      }
+    }
+
+    try {
+      const response = await axios.post(
+        "/api/articulos/insertarArticulo",
+        formDataObj,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Artículo creado:", response.data);
+      setQrValue(articleWithQR.QR);
+    } catch (error) {
+      console.error("Hubo un error al crear el artículo!", error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="material"
-        value={formData.material}
+        name="name"
+        value={formData.name}
         onChange={handleChange}
-        placeholder="Material"
+        placeholder="Nombre"
         required
-      />
-      <input
-        type="text"
-        name="possession_type"
-        value={formData.possession_type}
-        onChange={handleChange}
-        placeholder="Tipo de Posesión"
       />
       <input
         type="text"
@@ -75,42 +92,11 @@ export default function CreateArticle() {
       />
       <input
         type="text"
-        name="depreciation_code"
-        value={formData.depreciation_code}
-        onChange={handleChange}
-        placeholder="Código de Depreciación"
-        required
-      />
-      <input
-        type="text"
         name="brand"
         value={formData.brand}
         onChange={handleChange}
         placeholder="Marca"
         required
-      />
-      <input
-        type="date"
-        name="document_date"
-        value={formData.document_date}
-        onChange={handleChange}
-        placeholder="Fecha del Documento"
-        required
-      />
-      <input
-        type="text"
-        name="color"
-        value={formData.color}
-        onChange={handleChange}
-        placeholder="Color"
-        required
-      />
-      <input
-        type="text"
-        name="amortized_subaccount"
-        value={formData.amortized_subaccount}
-        onChange={handleChange}
-        placeholder="Subcuenta Amortizada"
       />
       <input
         type="text"
@@ -129,41 +115,22 @@ export default function CreateArticle() {
       />
       <input
         type="text"
-        name="entry_type"
-        value={formData.entry_type}
+        name="number_series"
+        value={formData.number_series}
         onChange={handleChange}
-        placeholder="Tipo de Entrada"
+        placeholder="Número de Serie"
       />
-      <input
-        type="text"
-        name="item_code"
-        value={formData.item_code}
-        onChange={handleChange}
-        placeholder="Código del Artículo"
-        required
-      />
-      <input
-        type="text"
-        name="series"
-        value={formData.series}
-        onChange={handleChange}
-        placeholder="Serie"
-      />
-      <input
-        type="text"
+      <select
         name="status"
         value={formData.status}
         onChange={handleChange}
-        placeholder="Estado"
         required
-      />
-      <input
-        type="text"
-        name="item_condition"
-        value={formData.item_condition}
-        onChange={handleChange}
-        placeholder="Condición del Artículo"
-      />
+      >
+        <option value="reparacion">Reparación</option>
+        <option value="en uso">En uso</option>
+        <option value="baja">Baja</option>
+        <option value="descompuesto">Descompuesto</option>
+      </select>
       <textarea
         name="description"
         value={formData.description}
@@ -171,10 +138,65 @@ export default function CreateArticle() {
         placeholder="Descripción"
         required
       ></textarea>
-      <select name="type" value={formData.type} onChange={handleChange}>
+      <textarea
+        name="caracteristics"
+        value={formData.caracteristics}
+        onChange={handleChange}
+        placeholder="Características"
+        required
+      ></textarea>
+      <select
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+        required
+      >
         <option value="Insumos">Insumos</option>
         <option value="Bien">Bien</option>
       </select>
+      <input
+        type="number"
+        name="userful_live_id"
+        value={formData.userful_live_id}
+        onChange={handleChange}
+        placeholder="ID de Vida Útil"
+        required
+      />
+      <input
+        type="number"
+        name="policy_id"
+        value={formData.policy_id}
+        onChange={handleChange}
+        placeholder="ID de Póliza"
+        required
+      />
+      <input
+        type="number"
+        name="bill_id"
+        value={formData.bill_id}
+        onChange={handleChange}
+        placeholder="ID de Factura"
+        required
+      />
+      <div
+        {...getRootProps()}
+        style={{
+          border: "2px dashed #cccccc",
+          padding: "20px",
+          textAlign: "center",
+        }}
+      >
+        <input {...getInputProps()} />
+        <p>
+          Arrastra y suelta algunas fotos aquí, o haz clic para seleccionar
+          fotos
+        </p>
+      </div>
+      <ul>
+        {formData.photos_entry.map((file, index) => (
+          <li key={index}>{file.name}</li>
+        ))}
+      </ul>
       <button type="submit">Crear Artículo</button>
       {qrValue && (
         <div>

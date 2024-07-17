@@ -105,7 +105,7 @@ const Header = () => {
             <Link to="/asignaciones">Asignaciones</Link>
           </li>
           <li>
-            <Link to="/usuario/misBienes">Bienes</Link>
+            <Link to="/usuario/misBienes">Mis Bienes</Link>
           </li>
           <li>
             <Link to="/usuario/gestionUsuarios">Gestión de Usuarios</Link>
