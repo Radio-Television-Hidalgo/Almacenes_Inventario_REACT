@@ -18,8 +18,8 @@ const showHeaderRoutes = [
   "/facturas",
   "/stateOfThegoods",
   "/assignations",
-  "/bienes",
-  "/usuarios/gestionUsuarios",
+  "/usuario/misBienes",
+  "/usuario/gestionUsuarios",
 ];
 
 const routeTitles = {
@@ -29,8 +29,8 @@ const routeTitles = {
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
   "/assignations": "Asignaciones",
-  "/bienes": "Bienes",
-  "/usuarios/gestionUsuarios": "Gestión de Usuarios",
+  "/usuario/misBienes": "Bienes",
+  "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
 };
@@ -56,8 +56,8 @@ const App = () => {
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
           <Route path="/assignations" element={<Assignations />} />
-          <Route path="/bienes" element={<Goods />} />
-          <Route path="/usuarios/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/misBienes" element={<Goods />} />
+          <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}

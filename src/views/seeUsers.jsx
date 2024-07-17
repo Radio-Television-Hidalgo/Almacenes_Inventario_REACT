@@ -5,7 +5,7 @@ function SeeUser() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        fetch("/api/bienes/bienesDeUsuarios")
+        fetch("/api/usuario/usuariosGestion")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al cargar los datos: ' + response.status);

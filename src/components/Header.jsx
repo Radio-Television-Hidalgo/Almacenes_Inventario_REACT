@@ -73,10 +73,10 @@ const Header = () => {
             <Link to="/asignaciones">Asignaciones</Link>
           </li>
           <li>
-            <Link to="/bienes">Bienes</Link>
+            <Link to="/usuario/misBienes">Bienes</Link>
           </li>
           <li>
-            <Link to="/usuarios/gestionUsuarios">Gestión de Usuarios</Link>
+            <Link to="/usuario/gestionUsuarios">Gestión de Usuarios</Link>
           </li>
         </ul>
       </nav>

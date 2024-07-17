@@ -1,5 +1,11 @@
 /* Header.css */
 /* Estilo para el navbar */
+
+
+body{
+  margin: 0px;
+}
+
 .navbar {
   background-color: #691B31;
   color: white;
