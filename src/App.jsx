@@ -13,11 +13,13 @@ import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
+import MaterialRequest from "./views/materialRequest/materialRequest";
 
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
   "/inventario",
+  "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
@@ -32,6 +34,7 @@ const routeTitles = {
   "/inicio": "Inicio",
   "/inventario": "Control de Inventario",
   "/almacen": "Control de Almacen",
+  "/solicitudMaterial": "Solicitar Material",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
@@ -61,6 +64,7 @@ const App = () => {
           <Route path="/inicio" element={<Home />} />
           <Route path="/almacen" element={<WerehouseScreen />} />
           <Route path="/inventario" element={<InventoryScreen />} />
+          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />

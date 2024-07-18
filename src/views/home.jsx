@@ -22,7 +22,7 @@ function Home() {
             </Link>
           </div>
           <div className="home-column">
-            <Link to="/resguardo" className="home-card">
+            <Link to="/solicitudMaterial" className="home-card">
               <div className="home-content">
                 <h1>Solicitudes de Material</h1>
               </div>
