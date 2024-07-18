@@ -1,63 +1,10 @@
-
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/Header.css"; // Importa los estilos CSS
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Header.css'; // Importa los estilos CSS personalizados
 
 const Header = () => {
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
-  const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Función para hacer fetch a la API y obtener la información del usuario
-    const fetchUserInfo = async () => {
-      try {
-        const response = await fetch('/api/usuario/infoUsuario', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setUserInfo(data); // Almacena la información del usuario en el estado
-        } else {
-          console.error('Error al obtener la información del usuario');
-        }
-      } catch (error) {
-        console.error('Error al obtener la información del usuario', error);
-      }
-    };
-
-    fetchUserInfo(); // Llama a la función para obtener la información del usuario cuando el componente se monte
-  }, []); // El array vacío como segundo argumento asegura que esto se ejecute solo una vez al montar el componente
-
-  const handleLogout = async (event) => {
-    event.preventDefault(); // Previene el comportamiento predeterminado del enlace
-    setIsLoggingOut(true);
-    try {
-      const response = await fetch("/api/usuario/cerrarSesion", {
-        method: "GET",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.ok) {
-        navigate("/"); // Redirige al usuario a la página de inicio o login
-      } else {
-        console.error("Error al cerrar sesión");
-      }
-    } catch (error) {
-      console.error("Error al cerrar sesión", error);
-    } finally {
-      setIsLoggingOut(false);
-    }
-  };
-
   return (
     <div>
-
       <nav>
         <div className="header-top">
           <h1 className="invent">Bienvenido</h1>
@@ -83,17 +30,16 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
-            <Link to="/Home">Home</Link>
-            <Link to="/User">User</Link>
-            <Link to="/Bills">Facturas</Link>
-            <Link to="/StateofThegoods">Estado de los productos</Link>
-            <Link to="/Assignations">Asignaciones</Link>
-            <Link to="/Goods">Goods</Link>
-            <Link to="/SeeUser">Ver Usuarios</Link>
+            <Link to="/inicio">Home</Link>
+            <Link to="/usuario/nuevoUsuario">User</Link>
+            <Link to="/facturas">Facturas</Link>
+            <Link to="/stateOfThegoods">Estado de los productos</Link>
+            <Link to="/assignations">Asignaciones</Link>
+            <Link to="/usuario/misBienes">Bienes adquiridos</Link>
+            <Link to="/usuario/gestionUsuarios">Ver Usuarios</Link>
             <Link to="/">Salir</Link>
           </div>
         </div>
-
       </nav>
     </div>
   );
