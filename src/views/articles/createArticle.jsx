@@ -19,14 +19,22 @@ export default function CreateArticle() {
     policy_id: "",
     bill_id: "",
     photos_entry: [],
+    previewPhotos: [],
   });
 
   const [qrValue, setQrValue] = useState("");
 
   const onDrop = useCallback((acceptedFiles) => {
+    const newPreviewPhotos = acceptedFiles.map((file) =>
+      Object.assign(file, {
+        preview: URL.createObjectURL(file),
+      })
+    );
+
     setFormData((prevState) => ({
       ...prevState,
       photos_entry: [...prevState.photos_entry, ...acceptedFiles],
+      previewPhotos: [...prevState.previewPhotos, ...newPreviewPhotos],
     }));
   }, []);
 
@@ -35,6 +43,22 @@ export default function CreateArticle() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleRemoveFile = (index) => {
+    setFormData((prevState) => {
+      const newPhotosEntry = [...prevState.photos_entry];
+      const newPreviewPhotos = [...prevState.previewPhotos];
+
+      newPhotosEntry.splice(index, 1);
+      newPreviewPhotos.splice(index, 1);
+
+      return {
+        ...prevState,
+        photos_entry: newPhotosEntry,
+        previewPhotos: newPreviewPhotos,
+      };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -191,12 +215,30 @@ export default function CreateArticle() {
           Arrastra y suelta algunas fotos aquí, o haz clic para seleccionar
           fotos
         </p>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          {formData.previewPhotos.map((file, index) => (
+            <div key={index} style={{ position: "relative", margin: "10px" }}>
+              <img src={file.preview} alt="preview" width={100} />
+              <button
+                type="button"
+                onClick={() => handleRemoveFile(index)}
+                style={{
+                  position: "absolute",
+                  top: "5px",
+                  right: "5px",
+                  background: "red",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                }}
+              >
+                X
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-      <ul>
-        {formData.photos_entry.map((file, index) => (
-          <li key={index}>{file.name}</li>
-        ))}
-      </ul>
       <button type="submit">Crear Artículo</button>
       {qrValue && (
         <div>
