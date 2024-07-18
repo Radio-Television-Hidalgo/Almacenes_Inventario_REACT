@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function SeeUser() {
+    const [state, setState] = useState(false);
     const [datos, setDatos] = useState({ data: [] });
     const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchDatos = () => {
         fetch("/api/usuario/usuariosGestion")
             .then(response => {
                 if (!response.ok) {
@@ -19,7 +22,35 @@ function SeeUser() {
             .catch(error => {
                 console.error("Error al cargar los datos", error);
             });
+    };
+
+    useEffect(() => {
+        fetchDatos();
     }, []);
+
+    const handleStatus = async (event, id) => {
+        event.preventDefault(); // Previene el comportamiento predeterminado del enlace
+        setState(true);
+        try {
+            const response = await fetch(`/api/usuario/estadoUsuario/${id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            if (response.ok) {
+                // Volver a cargar los datos después de una eliminación exitosa
+                fetchDatos();
+                navigate("/usuario/gestionUsuarios");
+            } else {
+                console.error("Error al dar de baja al usuario");
+            }
+        } catch (error) {
+            console.error("Error al dar de baja al usuario", error);
+        } finally {
+            setState(false);
+        }
+    };
 
     if (!Array.isArray(datos.data)) {
         return <div>No se han encontrado datos de usuarios.</div>;
@@ -69,8 +100,11 @@ function SeeUser() {
                             <td>
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
-                            <td><button>Editar</button></td>
-                            <td><button>Eliminar</button></td>
+                            <td><Link to="/usuario/editarUsuario" ><button>Editar</button></Link></td>
+                            <td><button
+                                onClick={(event) => handleStatus(event, dato.id)}
+                                disabled={state}
+                            >Eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>

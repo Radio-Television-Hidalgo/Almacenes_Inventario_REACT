@@ -43,8 +43,7 @@ const Header = () => {
         }
       });
       if (response.ok) {
-        // Aquí puedes realizar cualquier otra acción necesaria después de cerrar sesión
-        navigate('/'); // Redirige al usuario a la página de inicio o login
+        navigate('/'); 
       } else {
         console.error('Error al cerrar sesión');
       }
