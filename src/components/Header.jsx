@@ -30,25 +30,25 @@ const Header = () => {
     };
 
     fetchUserInfo(); // Llama a la función para obtener la información del usuario cuando el componente se monte
-  }, []); // El array vacío como segundo argumento asegura que esto se ejecute solo una vez al montar el componente
+  }, []);
 
   const handleLogout = async (event) => {
     event.preventDefault(); // Previene el comportamiento predeterminado del enlace
     setIsLoggingOut(true);
     try {
-      const response = await fetch("/api/usuario/cerrarSesion", {
-        method: "GET",
+      const response = await fetch('/api/usuario/cerrarSesion', {
+        method: 'GET',
         headers: {
-          "Content-Type": "multipart/form-data",
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.ok) {
-        navigate("/"); // Redirige al usuario a la página de inicio o login
+        navigate('/'); 
       } else {
-        console.error("Error al cerrar sesión");
+        console.error('Error al cerrar sesión');
       }
     } catch (error) {
-      console.error("Error al cerrar sesión", error);
+      console.error('Error al cerrar sesión', error);
     } finally {
       setIsLoggingOut(false);
     }
@@ -56,12 +56,9 @@ const Header = () => {
 
   return (
     <div>
-      <header className="navbar">
-        <div className="logo-container">
-          <div className="logo">
-            <h1>Bienvenido</h1>
-            <p>Sistema de inventarios</p>
-          </div>
+      <nav>
+        <div className="header-top">
+          <h1 className="invent">Bienvenido</h1>
           <div className="user-info">
             {userInfo ? (
               <>
@@ -77,40 +74,31 @@ const Header = () => {
             )}
           </div>
         </div>
-      </header>
-      <nav className="nav-links">
-        <ul>
-          <li>
-            <button
-              onClick={handleLogout}
-              disabled={isLoggingOut}
-              className="logout-button"
-            >
-              {isLoggingOut ? "Saliendo..." : "Salir"}
-            </button>
-          </li>
-          <li>
-            <Link to="/inicio">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/usuario/nuevoUsuario">Nuevo Usuario</Link>
-          </li>
-          <li>
+        <div className="header-top">
+          <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
+        </div>
+        
+         
+        
+        <div className="header-bottom">
+          <input type="checkbox" id="sidebar-active" />
+          <label htmlFor="sidebar-active" className="open-sidebar-button">
+            <span>☰</span>
+          </label>
+          <label id="overlay" htmlFor="sidebar-active"></label>
+          <div className="links-container">
+            <Link to="/inicio">Home</Link>
+            <Link to="/usuario/nuevoUsuario">User</Link>
             <Link to="/facturas">Facturas</Link>
-          </li>
-          <li>
-            <Link to="/estadoProductos">Estado de los productos</Link>
-          </li>
-          <li>
-            <Link to="/asignaciones">Asignaciones</Link>
-          </li>
-          <li>
-            <Link to="/usuario/misBienes">Bienes</Link>
-          </li>
-          <li>
-            <Link to="/usuario/gestionUsuarios">Gestión de Usuarios</Link>
-          </li>
-        </ul>
+            <Link to="/stateOfThegoods">Estado de los productos</Link>
+            <Link to="/assignations">Asignaciones</Link>
+            <Link to="/usuario/misBienes">Bienes adquiridos</Link>
+            <Link to="/usuario/gestionUsuarios">Ver Usuarios</Link>
+            <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
+              {isLoggingOut ? 'Saliendo...' : 'Salir'}
+            </a>
+          </div>
+        </div>
       </nav>
     </div>
   );

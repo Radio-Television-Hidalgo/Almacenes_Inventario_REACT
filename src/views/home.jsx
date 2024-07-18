@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Importamos Link
-import '../styles/Home.css'; // Importamos el archivo CSS
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/Home.css";
 
 function Home() {
   return (
     <div>
       <div className="home-container">
-        <h3>¿Qué deseas hacer hoy?</h3> {/* Movemos el h3 aquí */}
-        
+        <h3>¿Qué deseas hacer hoy?</h3>
+        <h2>Selecciona una Opcion</h2>
         <div className="home-columns">
 
         <div className="home-column">
@@ -20,27 +20,31 @@ function Home() {
           </div>
 
           <div className="home-column">
-            <Link to="/mi-resguardo" className="home-card">
+            <Link to="/usuario/misBienes" className="home-card">
               <div className="home-content">
                 <h1>Mi resguardo</h1>
               </div>
             </Link>
-            <Link to="/solicitud" className="home-card">
+            <Link to="/usuario/gestionUsuarios" className="home-card">
               <div className="home-content">
-                <h1>Solicitud</h1>
+                <h1>Control de Usuarios</h1>
               </div>
             </Link>
           </div>
-          
           <div className="home-column">
             <Link to="/resguardo" className="home-card">
               <div className="home-content">
-                <h1>Resguardo</h1>
+                <h1>Solicitudes de Material</h1>
               </div>
             </Link>
             <Link to="/almacen" className="home-card">
               <div className="home-content">
                 <h1>Almacen</h1>
+              </div>
+            </Link>
+            <Link to="/inventario" className="home-card">
+              <div className="home-content">
+                <h1>Inventario</h1>
               </div>
             </Link>
           </div>

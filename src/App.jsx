@@ -14,15 +14,22 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
+import editUser from "./views/users/editUser";
+import WerehouseScreen from "./views/werehouse/werehouseScreen";
+import InventoryScreen from "./views/inventory/inventoryScreen";
 
 const showHeaderRoutes = [
   "/inicio",
+  "/almacen",
+  "/inventario",
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
   "/assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
+  "/articulos/insertarArticulo",
+  "/usuario/editarUsuario",
   "/ControlInventario",
   "/factura",
   "/poliza",
@@ -34,6 +41,8 @@ const routeTitles = {
   "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
+  "/inventario": "Control de Inventario",
+  "/almacen": "Control de Almacen",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
@@ -42,6 +51,7 @@ const routeTitles = {
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
+  "/usuario/editarUsuario": "Edicion de usuario"
 };
 
 const App = () => {
@@ -61,15 +71,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/inicio" element={<Home />} />
-          <Route path="/ControlInventario" element={<InventoryControl />} />
-          <Route path="/poliza" element={<Policy />} />
-          <Route path="/factura" element={<Invoice />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
           <Route path="/assignations" element={<Assignations />} />
           <Route path="/usuario/misBienes" element={<Goods />} />
           <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/editarUsuario" element={<editUser />}/>
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}
