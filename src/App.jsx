@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "./views/login";
 import Home from "./views/home";
+import InventoryControl from "./views/InventoryControl";
+import Policy from "./views/policy";
+import Invoice from "./views/invoice";
 import User from "./views/formUser";
 import Header from "./components/Header";
 import Bills from "./views/Bills";
@@ -11,6 +14,7 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
+import editUser from "./views/users/editUser";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
@@ -27,9 +31,16 @@ const showHeaderRoutes = [
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
+  "/usuario/editarUsuario",
+  "/ControlInventario",
+  "/factura",
+  "/poliza",
 ];
 
 const routeTitles = {
+  "/poliza": "Póliza",
+  "/factura": "Factura",
+  "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
   "/inventario": "Control de Inventario",
@@ -43,6 +54,7 @@ const routeTitles = {
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
+  "/usuario/editarUsuario": "Edicion de usuario"
 };
 
 const App = () => {
@@ -71,6 +83,7 @@ const App = () => {
           <Route path="/assignations" element={<Assignations />} />
           <Route path="/usuario/misBienes" element={<Goods />} />
           <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/editarUsuario" element={<editUser />}/>
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}
