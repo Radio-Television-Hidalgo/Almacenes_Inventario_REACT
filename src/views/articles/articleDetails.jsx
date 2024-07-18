@@ -3,18 +3,19 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import QRCode from "react-qr-code";
 
-const articleDetails = () => {
-  const { inventoryNumber } = useParams(); 
+const ArticleDetails = () => {
+  const { inventoryNumber } = useParams();
   const [article, setArticle] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get("/api"+`/articulos/${inventoryNumber}`)
+      .get(`/api/articulos/${inventoryNumber}`)
       .then((response) => {
         setArticle(response.data);
       })
       .catch((error) => {
+        console.error("Error fetching article:", error);
         setError(error.response ? error.response.data.message : error.message);
       });
   }, [inventoryNumber]);
@@ -27,17 +28,29 @@ const articleDetails = () => {
     return <div>Cargando...</div>;
   }
 
+  // Asegúrate de que las rutas sean correctas
+  const photoUrls = article.photos_entry
+    .split(",")
+    .map((photo) => "/api/"+`${photo.trim()}`)
   return (
     <div>
-      <h1>{article.material}</h1>
+      <h1>{article.name}</h1>
       <p>{article.description}</p>
-      {/* Renderiza más información del artículo según sea necesario */}
       <div>
-        <h3>Código QR:</h3>
-        <QRCode value={article.QR} />
+        {photoUrls.map((photo, index) => (
+          <img
+            key={index}
+            src={photo}
+            alt={`Photo ${index + 1}`}
+            onError={(e) => {
+              e.target.onerror = null;
+            }}
+          />
+        ))}
       </div>
+      <QRCode value={article.QR} />
     </div>
   );
 };
 
-export default articleDetails;
+export default ArticleDetails;

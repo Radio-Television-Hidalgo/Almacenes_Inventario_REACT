@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/user.css'; // Importamos el archivo CSS
 
-const CreateUserForm = () => {
+const CreateUserForm = ({ userId }) => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
+    worker_nomber: '',
     ascription: '',
-    chargeId: '',
+    type: '',
     name: '',
     img: null,
     email: '',
@@ -13,9 +15,27 @@ const CreateUserForm = () => {
     identification: '',
     RFC: '',
     CURP: '',
-    departmentId: '',
-    status: true
+    status: true,
+    area_budget: 'RADIO Y TELEVISION',
+    superior_organ: 'ORGANISMOS DESCENTRALIZADO',
+    department_id: '',
+    charge_id: ''
   });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`/api/usuario/${userId}`);
+        setUserData(response.data);
+      } catch (error) {
+        console.error('Error al obtener datos del usuario:', error);
+      }
+    };
+
+    if (userId) {
+      fetchUserData();
+    }
+  }, [userId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +43,9 @@ const CreateUserForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setUserData({ ...userData, img: e.target.files[0] });
+    if (e.target.files.length > 0) {
+      setUserData({ ...userData, img: e.target.files[0] });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -33,12 +55,17 @@ const CreateUserForm = () => {
       formData.append(key, userData[key]);
     }
 
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
     try {
       const response = await axios.post('/api/usuario/crearUsuario', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
+      navigate("/inicio");
       console.log('Usuario creado:', response.data);
     } catch (error) {
       console.error('Error al crear usuario:', error);
@@ -46,52 +73,60 @@ const CreateUserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="formContainer">
-      <div className="formField">
-        <label htmlFor="ascription">Ascription</label>
-        <input type="text" id="ascription" name="ascription" placeholder="Ascription" value={userData.ascription} onChange={handleInputChange} required />
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="worker_nomber">Número de Trabajador</label>
+        <input type="text" id="worker_nomber" name="worker_nomber" placeholder="Número de Trabajador" value={userData.worker_nomber} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="chargeId">Charge ID</label>
-        <input type="text" id="chargeId" name="chargeId" placeholder="Charge ID" value={userData.chargeId} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="ascription">Adscripción</label>
+        <input type="text" id="ascription" name="ascription" placeholder="Adscripción" value={userData.ascription} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name" value={userData.name} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="type">Tipo</label>
+        <input type="text" id="type" name="type" placeholder="Tipo" value={userData.type} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="img">Image</label>
-        <input type="file" id="img" name="img" className="fileInput" onChange={handleFileChange} required />
+      <div>
+        <label htmlFor="name">Nombre</label>
+        <input type="text" id="name" name="name" placeholder="Nombre" value={userData.name} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email" value={userData.email} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="img">Imagen</label>
+        <input type="file" id="img" name="img" onChange={handleFileChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" value={userData.password} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="Correo Electrónico" value={userData.email} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="identification">Identification</label>
-        <input type="text" id="identification" name="identification" placeholder="Identification" value={userData.identification} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="password">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña" value={userData.password} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
+      <div>
+        <label htmlFor="identification">Identificación</label>
+        <input type="text" id="identification" name="identification" placeholder="Identificación" value={userData.identification} onChange={handleInputChange} required />
+      </div>
+      <div>
         <label htmlFor="RFC">RFC</label>
         <input type="text" id="RFC" name="RFC" placeholder="RFC" value={userData.RFC} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
+      <div>
         <label htmlFor="CURP">CURP</label>
         <input type="text" id="CURP" name="CURP" placeholder="CURP" value={userData.CURP} onChange={handleInputChange} required />
       </div>
-      <div className="formField">
-        <label htmlFor="departmentId">Department ID</label>
-        <input type="text" id="departmentId" name="departmentId" placeholder="Department ID" value={userData.departmentId} onChange={handleInputChange} required />
+      <div>
+        <label htmlFor="department_id">ID del Departamento</label>
+        <input type="text" id="department_id" name="department_id" placeholder="ID del Departamento" value={userData.department_id} onChange={handleInputChange} required />
       </div>
-      <div className="checkboxContainer">
+      <div>
+        <label htmlFor="charge_id">ID del Cargo</label>
+        <input type="text" id="charge_id" name="charge_id" placeholder="ID del Cargo" value={userData.charge_id} onChange={handleInputChange} required />
+      </div>
+      <div>
         <input type="checkbox" id="status" name="status" checked={userData.status} onChange={() => setUserData({ ...userData, status: !userData.status })} />
         <label htmlFor="status">Activo</label>
       </div>
-      <button type="submit" className="submitButton">Crear Usuario</button>
+      <button type="submit">Guardar Usuario</button>
     </form>
   );
 };
