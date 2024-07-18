@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css"; // Importa los estilos CSS
@@ -56,61 +57,43 @@ const Header = () => {
 
   return (
     <div>
-      <header className="navbar">
-        <div className="logo-container">
-          <div className="logo">
-            <h1>Bienvenido</h1>
-            <p>Sistema de inventarios</p>
-          </div>
+
+      <nav>
+        <div className="header-top">
+          <h1 className="invent">Bienvenido</h1>
           <div className="user-info">
-            {userInfo ? (
-              <>
-                <img
-                  className="user-avatar"
-                  src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
-                  alt="User"
-                />
-                <p>{userInfo.name}</p> {/* Muestra el nombre del usuario */}
-              </>
-            ) : (
-              <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
-            )}
+            <img
+              className="user-avatar"
+              src="https://media.gettyimages.com/id/75600163/photo/the-36th-annual-naacp-image-awards-portraits.jpg?b=1&s=594x594&w=0&k=20&c=SbkJPZ3_UF9GVzr8bn2nZ0q0mbNtJNJxqYa7NygCFwQ="
+              alt="Avatar del usuario"
+            />
+            <p>Nombre de usuario</p>
           </div>
         </div>
-      </header>
-      <nav className="nav-links">
-        <ul>
-          <li>
-            <button
-              onClick={handleLogout}
-              disabled={isLoggingOut}
-              className="logout-button"
-            >
-              {isLoggingOut ? "Saliendo..." : "Salir"}
-            </button>
-          </li>
-          <li>
-            <Link to="/inicio">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/usuario/nuevoUsuario">Nuevo Usuario</Link>
-          </li>
-          <li>
-            <Link to="/facturas">Facturas</Link>
-          </li>
-          <li>
-            <Link to="/estadoProductos">Estado de los productos</Link>
-          </li>
-          <li>
-            <Link to="/asignaciones">Asignaciones</Link>
-          </li>
-          <li>
-            <Link to="/usuario/misBienes">Mis Bienes</Link>
-          </li>
-          <li>
-            <Link to="/usuario/gestionUsuarios">Gestión de Usuarios</Link>
-          </li>
-        </ul>
+        <div className="header-top">
+          <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
+        </div>
+        
+         
+        
+        <div className="header-bottom">
+          <input type="checkbox" id="sidebar-active" />
+          <label htmlFor="sidebar-active" className="open-sidebar-button">
+            <span>☰</span>
+          </label>
+          <label id="overlay" htmlFor="sidebar-active"></label>
+          <div className="links-container">
+            <Link to="/Home">Home</Link>
+            <Link to="/User">User</Link>
+            <Link to="/Bills">Facturas</Link>
+            <Link to="/StateofThegoods">Estado de los productos</Link>
+            <Link to="/Assignations">Asignaciones</Link>
+            <Link to="/Goods">Goods</Link>
+            <Link to="/SeeUser">Ver Usuarios</Link>
+            <Link to="/">Salir</Link>
+          </div>
+        </div>
+
       </nav>
     </div>
   );
