@@ -73,8 +73,6 @@ const Header = () => {
         return 'Polizas';
       case '/inventario':
         return 'Mi inventario';
-      default:
-        return ''; // No muestra título en otras páginas
       case '/ControlInventario':
         return' Centro de Control';
       case '/usuario/misBienes':
