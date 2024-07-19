@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../components/ContextUser";
 
 function SeeUser() {
     const [state, setState] = useState(false);
     const [datos, setDatos] = useState({ data: [] });
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
+    const { setUser } = useUser();
 
     const fetchDatos = () => {
         fetch("/api/usuario/usuariosGestion")
@@ -51,6 +53,11 @@ function SeeUser() {
             setState(false);
         }
     };
+
+    const handleEdit = async (dato) =>{
+        setUser(dato);
+        navigate("/usuario/editarUsuario")
+    }
 
     if (!Array.isArray(datos.data)) {
         return <div>No se han encontrado datos de usuarios.</div>;
@@ -100,7 +107,7 @@ function SeeUser() {
                             <td>
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
-                            <td><Link to="/usuario/editarUsuario" ><button>Editar</button></Link></td>
+                            <td><button onClick={() => handleEdit(dato)}>Editar</button></td>
                             <td><button
                                 onClick={(event) => handleStatus(event, dato.id)}
                                 disabled={state}

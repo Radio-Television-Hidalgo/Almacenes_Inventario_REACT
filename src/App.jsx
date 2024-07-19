@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { UserProvider } from "./components/ContextUser";
 import Login from "./views/login";
 import Home from "./views/home";
 import InventoryControl from "./views/InventoryControl";
@@ -14,7 +15,7 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
-import editUser from "./views/users/editUser";
+import EditUser from "./views/users/editUser"
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
@@ -71,6 +72,7 @@ const App = () => {
     <div>
       {showHeader && <Header />}
       <main>
+        <UserProvider>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/inicio" element={<Home />} />
@@ -83,7 +85,7 @@ const App = () => {
           <Route path="/assignations" element={<Assignations />} />
           <Route path="/usuario/misBienes" element={<Goods />} />
           <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
-          <Route path="/usuario/editarUsuario" element={<editUser />}/>
+          <Route path="/usuario/editarUsuario" element={<EditUser />}/>
           <Route path="/ControlInventario" element={<InventoryControl />} />
           <Route path="/factura" element={<Invoice />} />
           <Route path="/poliza" element={<Policy />} />
@@ -96,6 +98,7 @@ const App = () => {
             element={<CreateArticle />}
           />
         </Routes>
+        </UserProvider>
       </main>
     </div>
   );
