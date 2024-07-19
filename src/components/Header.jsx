@@ -98,10 +98,8 @@ const Header = () => {
             <div className="dropdown">
               <Link to="#" className="dropdown-toggle">Inventario</Link>
               <div className="dropdown-menu">
-                <Link to="/opcion1" className="dropdown-item">Alta de bienes</Link>
-                <Link to="/opcion2" className="dropdown-item">Polizas</Link>
-                <Link to="/opcion3" className="dropdown-item">Entregas</Link>
-                <Link to="/opcion3" className="dropdown-item">Bajas</Link>
+                <Link to="/poliza" className="dropdown-item">Polizas</Link>
+                <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
               </div>
             </div>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
