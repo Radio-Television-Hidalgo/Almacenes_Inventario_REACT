@@ -1,0 +1,91 @@
+/* Fondo con degradado */
+body {
+  background: linear-gradient(to bottom, #70dce0, #e6e0e0, #70dce0);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para el contenedor principal */
+.main-container {
+  background: transparent; /* Asegurarse de que el fondo sea transparente para ver el degradado */
+  padding: 20px;
+}
+
+/* Estilos para el formulario */
+.user-form {
+  background-color: rgba(255, 255, 255, 0.449); /* Fondo blanco con opacidad del 50% */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+  border: 1px solid rgba(221, 221, 221, 0.5); /* Borde con opacidad */
+}
+
+/* Grid para organizar el formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Estilos para los grupos de formularios */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Estilos para el botón de envío */
+.submit-button {
+  background-color: #e63946;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #d62828;
+}
+
+/* Estilos adicionales */
+.form-group input[type="file"] {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border-color: #e63946;
+  box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+  outline: none;
+}

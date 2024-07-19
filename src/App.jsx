@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "./views/login";
 import Home from "./views/home";
+import InventoryControl from "./views/InventoryControl";
+import Policy from "./views/policy";
+import Invoice from "./views/invoice";
 import User from "./views/formUser";
 import Header from "./components/Header";
 import Bills from "./views/Bills";
@@ -14,11 +17,13 @@ import CreateArticle from "./views/articles/createArticle";
 import editUser from "./views/users/editUser";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
+import MaterialRequest from "./views/materialRequest/materialRequest";
 
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
   "/inventario",
+  "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
@@ -26,14 +31,21 @@ const showHeaderRoutes = [
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
-  "/usuario/editarUsuario"
+  "/usuario/editarUsuario",
+  "/ControlInventario",
+  "/factura",
+  "/poliza",
 ];
 
 const routeTitles = {
+  "/poliza": "Póliza",
+  "/factura": "Factura",
+  "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
   "/inventario": "Control de Inventario",
   "/almacen": "Control de Almacen",
+  "/solicitudMaterial": "Solicitar Material",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
@@ -64,6 +76,7 @@ const App = () => {
           <Route path="/inicio" element={<Home />} />
           <Route path="/almacen" element={<WerehouseScreen />} />
           <Route path="/inventario" element={<InventoryScreen />} />
+          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
