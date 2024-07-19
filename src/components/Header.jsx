@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
@@ -95,8 +95,15 @@ const Header = () => {
             <Link to="/facturas">Facturas</Link>
             <Link to="/stateOfThegoods">Estado de los productos</Link>
             <Link to="/assignations">Asignaciones</Link>
-            <Link to="/usuario/misBienes">Bienes adquiridos</Link>
-            <Link to="/usuario/gestionUsuarios">Ver Usuarios</Link>
+            <div className="dropdown">
+              <Link to="#" className="dropdown-toggle">Inventario</Link>
+              <div className="dropdown-menu">
+                <Link to="/opcion1" className="dropdown-item">Alta de bienes</Link>
+                <Link to="/opcion2" className="dropdown-item">Polizas</Link>
+                <Link to="/opcion3" className="dropdown-item">Entregas</Link>
+                <Link to="/opcion3" className="dropdown-item">Bajas</Link>
+              </div>
+            </div>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>

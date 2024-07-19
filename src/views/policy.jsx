@@ -21,14 +21,18 @@ function Policy() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     try {
-      const response = await axios.post('http://localhost:5173/api/policies', formData);
-      console.log('Respuesta del servidor:', response.data);
-      // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      const response = await fetch("http://localhost:3000/facturas/policy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log("Success:", data);
     } catch (error) {
-      console.error('Error al enviar los datos:', error);
-      // Aquí puedes mostrar un mensaje de error al usuario
+      console.error("Error:", error);
     }
   };
 
