@@ -75,7 +75,17 @@ const Header = () => {
         return 'Mi inventario';
       default:
         return ''; // No muestra título en otras páginas
-    }
+      case '/ControlInventario':
+        return' Centro de Control';
+      case '/usuario/misBienes':
+        return ' Mis Bienes';
+      case '/solicitudMaterial':
+        return  'Subir material';  
+      case '/usuario/gestionUsuarios' :
+        return 'Usuarios';
+      case '/almacen':
+        return 'Almacen';
+      }
   };
 
   return (
