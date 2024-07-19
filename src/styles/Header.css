@@ -7,21 +7,23 @@
 }
 
 html {
-  font-size: 12pt;
+
   font-family:Arial;
 }
 
 .invent {
   color: white;
   text-align: center;
-  font-weight: bold;
-  font-family: Arial;
+  font-size: 35px;
+  font-family:monospace;
+}
+.header-paragraph{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .header-top1 {
   display: flex;
   justify-content: flex-end; /* Ajustado para alinear a la derecha */
   align-items: center;
-  padding: 4px;
   position: relative;
 }
 nav a:hover{
@@ -41,7 +43,7 @@ nav {
   flex-direction: row;
   justify-content: center; /* Ajustado para centrar correctamente */
   align-items: center;
-  padding: 4px;
+
   position: relative;
 }
 
@@ -58,8 +60,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  margin: 0 auto;
+  
+  
 }
 
 nav a {
@@ -185,5 +187,8 @@ nav a i {
 
   .close-sidebar-button {
     color: #F3DFA2;
+  }
+  p{
+    display: none;
   }
 }
