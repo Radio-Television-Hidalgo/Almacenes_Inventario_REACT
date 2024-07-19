@@ -7,6 +7,17 @@ function useLogin(email, password, setLoginError) {
   return useCallback(async (e) => {
     e.preventDefault();
 
+    // Validaciones de los campos
+    if (!email) {
+      setLoginError('El campo de correo electrónico es obligatorio');
+      return;
+    }
+
+    if (!password) {
+      setLoginError('El campo de contraseña es obligatorio');
+      return;
+    }
+
     try {
       const response = await fetch('/api/usuario/iniciarSesion', {
         method: 'POST',
@@ -20,7 +31,7 @@ function useLogin(email, password, setLoginError) {
 
       if (data.success) {
         localStorage.setItem('token', data.token);
-        navigate('/inicio')
+        navigate('/inicio');
         console.log('Inicio de sesión exitoso');
       } else {
         setLoginError('Inicio de sesión fallido');
@@ -29,7 +40,7 @@ function useLogin(email, password, setLoginError) {
       console.log('Error al iniciar sesión: ', error);
       setLoginError('Error al conectar con el servidor');
     }
-  }, [email, password, setLoginError, navigate]); // Asegúrate de incluir history como dependencia
+  }, [email, password, setLoginError, navigate]);
 }
 
 export default useLogin;
