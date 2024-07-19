@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InsumoTable from "./insumoTable";
 import BienTable from "./bienTable";
 
@@ -9,11 +9,31 @@ function MaterialRequest() {
     type: "Insumo",
     status: "En Espera",
     file: "",
-    approving_user_id: "", 
-    requesting_user_id: "", 
+    approving_user_id: "",
+    requesting_user_id: "",
     item_id: "",
     inventory_number_id: "",
   });
+
+  // Fetch data from the API when the component mounts
+  useEffect(() => {
+    const fetchWarehouseData = async () => {
+      try {
+        const response = await fetch("/api/articulos/warehouse/3"); // Ajusta la URL según tu API
+        const data = await response.json();
+        console.log(data)
+        setFormData({
+          ...formData,
+          approving_user_id: data.user_charge_id, // Ajusta según el nombre del campo en la respuesta
+          // Otros campos si es necesario
+        });
+      } catch (error) {
+        console.error("Error fetching warehouse data:", error);
+      }
+    };
+
+    fetchWarehouseData();
+  }, []); // El array vacío asegura que se ejecuta solo una vez cuando el componente se monta
 
   const handleChange = (e) => {
     const { name, value } = e.target;

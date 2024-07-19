@@ -28,24 +28,26 @@ function InsumoTable() {
         {insumos.map((insumo) => (
           <tr key={insumo.id}>
             <td>{insumo.description}</td>
-            <td>{insumo.quantity}</td>
+            <td>
+              {insumo.tb_warehouses && insumo.tb_warehouses.length > 0
+                ? insumo.tb_warehouses[0].stock
+                : "N/A"}
+            </td>{" "}
             <td>{insumo.status}</td>
             <td>
               {insumo.photos_entry &&
-                insumo.photos_entry
-                  .split(",")
-                  .map((photo, index) => (
-                    <img
-                      key={index}
-                      src={photo}
-                      alt="Foto del insumo"
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        marginRight: "5px",
-                      }}
-                    />
-                  ))}
+                insumo.photos_entry.split(",").map((photo, index) => (
+                  <img
+                    key={index}
+                    src={photo}
+                    alt="Foto del insumo"
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      marginRight: "5px",
+                    }}
+                  />
+                ))}
             </td>
           </tr>
         ))}
