@@ -11,13 +11,12 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
-
 const showHeaderRoutes = [
   "/inicio",
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
-  "/assignations",
+  "/Assignations",
   "/bienes",
   "/usuarios/gestionUsuarios",
 ];
@@ -28,7 +27,7 @@ const routeTitles = {
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
-  "/assignations": "Asignaciones",
+  "/Assignations": "Asignaciones",
   "/bienes": "Bienes",
   "/usuarios/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
@@ -55,7 +54,7 @@ const App = () => {
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
-          <Route path="/assignations" element={<Assignations />} />
+          <Route path="/Assignations" element={<Assignations />} />
           <Route path="/bienes" element={<Goods />} />
           <Route path="/usuarios/gestionUsuarios" element={<SeeUser />} />
           <Route
@@ -66,7 +65,6 @@ const App = () => {
             path="/articulos/insertarArticulo"
             element={<CreateArticle />}
           />
-              <Route path='/Solicitude' element = {<Solicitude/>}/>
     </Routes>
       </main>
     </div>

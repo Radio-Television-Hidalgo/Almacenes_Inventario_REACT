@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css"; // Importa los estilos CSS
 
@@ -79,7 +79,7 @@ const Header = () => {
             <Link to="/estadoProductos">Estado de los productos</Link>
           </li>
           <li>
-            <Link to="/asignaciones">Asignaciones</Link>
+            <Link to="/Assignations">Asignaciones</Link>
           </li>
           <li>
             <Link to="/bienes">Bienes</Link>

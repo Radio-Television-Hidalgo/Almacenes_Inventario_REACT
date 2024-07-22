@@ -1,66 +1,125 @@
-import '../styles/bills.css';
-import { useState } from 'react';
-
+import "../styles/Forms.css";
+import { useState, useEffect } from "react";
 
 function Assignations() {
 
-        const [userData, setUserData] = useState({
-            userNumber: '',
-            name: '',
-            area: '',
-            department: '',
-            deliveryDate: '',
-            inventoryNumber: '',
-            photos: null
-        });
+  const fetchData = async (url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  };
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setUserData(prevData => ({
-                ...prevData,
-                [name]: value
-            }));
-        };
+  const currentDate = new Date();
+  const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const currentYear = currentDate.getFullYear();
 
-        const handleFileChange = (e) => {
-            const file = e.target.files[0];
-            setUserData(prevData => ({
-                ...prevData,
-                photos: file
-            }));
-        };
+  const [inventoryNumber, setInventoryNumber] = useState(
+    `RTH/${currentMonth}/${currentYear}/`
+  );
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            // Handle form submission logic here
-        };
-
-        return (
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="userNumber">Número de Usuario:</label>
-                <input type="text" id="userNumber" name="userNumber" value={userData.userNumber} onChange={handleChange} />
-
-                <label htmlFor="name">Nombre:</label>
-                <input type="text" id="name" name="name" value={userData.name} onChange={handleChange} />
-
-                <label htmlFor="area">Área del Usuario:</label>
-                <input type="text" id="area" name="area" value={userData.area} onChange={handleChange} />
-
-                <label htmlFor="department">Departamento del Usuario:</label>
-                <input type="text" id="department" name="department" value={userData.department} onChange={handleChange} />
-
-                <label htmlFor="deliveryDate">Fecha de Entrega:</label>
-                <input type="date" id="deliveryDate" name="deliveryDate" value={userData.deliveryDate} onChange={handleChange} />
-
-                <label htmlFor="inventoryNumber">Número de Inventario:</label>
-                <input type="text" id="inventoryNumber" name="inventoryNumber" value={userData.inventoryNumber} onChange={handleChange} />
-
-                <label htmlFor="photos">Fotos del Bien:</label>
-                <input type="file" id="photos" name="photos" onChange={handleFileChange} />
-
-                <button type="submit">Submit</button>
-            </form>
-        );
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const prefix = `RTH/${currentMonth}/${currentYear}/`;
+    if (!value.startsWith(prefix)) {
+      setInventoryNumber(prefix);
+    } else {
+      setInventoryNumber(value);
     }
+  };
+  const [areas, setAreas] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [usuario, setUsuario] = useState([]);
+
+  useEffect(() => {
+    // Llamadas corregidas con los endpoints correctos
+    fetchData("/api/areas").then((data) => setAreas(data));
+    fetchData("/api/departamentos").then((data) => setDepartments(data));
+    fetchData("/usuario/usuariosGestion").then((data) => {
+      if (Array.isArray(data)) {
+        setUsuario(data);
+      }else{
+        console.error("Error al cargar los usuarios", data);
+      }
+     }).catch(console.error);
+  }, []);
+
+  return (
+    <form>
+      <label htmlFor="InventoryNumber">Numero de inventario</label>
+      <input
+        type="text"
+        id="InventoryNumber"
+        name="InventoryNumber"
+        value={inventoryNumber}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="Nameoftheresponsible">Nombre del responsable</label>
+      <select id="Nameoftheresponsible" name="Nameoftheresponsible" required>
+        {usuario.map((user)=>(
+          <option key={user.id} value= {user.id}>
+            {user.name}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="Departmentoftheresponsible">
+        Departamento del responsable
+      </label>
+      <select
+        id="Departmentoftheresponsible"
+        name="Departmentoftheresponsible"
+        required
+      >
+        {departments.map((department) => (
+          <option key={department.id} value={department.id}>
+            {department.name}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="presupuestalArea">Area presupuestal</label>
+      <input
+        type="text"
+        id="presupuestalArea"
+        name="presupuestalArea"
+        required
+      />
+
+      <label htmlFor="ResponsibleArea">Área del responsable</label>
+      <select id="ResponsibleArea" name="ResponsibleArea" required>
+        {areas.map((area) => (
+          <option key={area.id} value={area.id}>
+            {area.name}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="Photo">Foto del bien cuando se recibio</label>
+      <input type="file" id="Photo" name="Photo" required />
+
+      <label htmlFor="Rfc">RFC</label>
+      <input type="text" id="Rfc" name="Rfc" required />
+
+      <label htmlFor="Date">Fecha de resguardo</label>
+      <input type="date" id="Date" name="Date" required />
+
+      <label htmlFor="Description">Descripcion</label>
+      <input type="text" id="Description" name="Description" required />
+
+      <label htmlFor="Brand">Marca</label>
+      <input type="text" id="Brand" name="Brand" required />
+
+      <label htmlFor="Model">Modelo</label>
+      <input type="text" id="Model" name="Model" required />
+
+      <label htmlFor="SerialNumber">Numero de serie</label>
+      <input type="text" id="SerialNumber" name="SerialNumber" required />
+
+      <button type="submit">Asignar</button>
+    </form>
+  );
+}
 
 export default Assignations;
