@@ -10,9 +10,9 @@ function InventoryScreen() {
           <h1>Facturas</h1>
         </div>
       </Link>
-      <Link>
+      <Link to={"/entregaArticulo"}>
         <div>
-          <h1>Entregar de bien a usuario</h1>
+          <h1>Entrega de bien a usuario</h1>
         </div>
       </Link>
       <Link>
