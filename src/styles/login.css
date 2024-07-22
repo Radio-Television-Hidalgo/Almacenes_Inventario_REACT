@@ -16,10 +16,10 @@
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
   padding: 2rem;
-  border-radius: 150px 15px 15px 150px;
+  border-radius: 150px 20px 20px 150px; /* Cambiado a ovalada para pantallas pequeñas */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 450px;
+  max-width: 600px; /* Aumento del tamaño */
   margin: 20px;
   text-align: center;
   display: flex;
@@ -27,6 +27,7 @@
   align-items: center;
 }
 
+/* Asegura que la imagen del logo sea responsiva */
 .logo-container img {
   max-width: 100%;
   height: auto;
@@ -37,25 +38,25 @@
 .login-form {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
-  padding: 2rem;
-  border-radius: 15px;
+  padding: 2.5rem; /* Aumento del tamaño del padding */
+  border-radius: 20px; /* Aumento del radio de borde */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 450px;
+  max-width: 500px; /* Aumento del tamaño */
   text-align: center;
   margin: 20px;
 }
 
 /* Estilo para el encabezado del formulario */
 .login-form h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  margin-bottom: 1.5rem; /* Aumento del margen inferior */
+  font-size: 1.8rem; /* Aumento del tamaño de la fuente */
   color: #333;
 }
 
 /* Estilo para el subtítulo */
 .login-form p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Aumento del margen inferior */
   color: #666;
 }
 
@@ -63,7 +64,7 @@
 .login-form label {
   display: block;
   text-align: left;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem; /* Aumento del margen inferior */
   font-weight: bold;
   color: #555;
 }
@@ -71,7 +72,7 @@
 /* Estilo para los inputs */
 .login-form input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 1rem; /* Aumento del padding */
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -81,13 +82,13 @@
 /* Estilo para el botón de enviar */
 .login-form button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 1rem; /* Aumento del padding */
   background-color: #800000;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Aumento del tamaño de la fuente */
 }
 
 /* Cambio de color al pasar el mouse sobre el botón */
@@ -106,4 +107,18 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: rgb(14, 10, 5);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .logo-container {
+    border-radius: 100px; /* Ovalada en pantallas más pequeñas */
+    max-width: 90%; /* Ajuste del tamaño */
+    margin: 10px auto; /* Reducción del margen */
+  }
+  
+  .login-form {
+    max-width: 90%; /* Ajuste del tamaño */
+    margin: 10px auto; /* Reducción del margen */
+  }
 }
