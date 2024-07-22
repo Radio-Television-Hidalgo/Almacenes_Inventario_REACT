@@ -10,7 +10,9 @@ export default function DownArticle() {
     const [confirmationId, setConfirmationId] = useState('');
     const [requestWithdrawId, setRequestWithdrawId] = useState('');
     const [articlesId, setArticlesId] = useState('');
-    const [inventoryId, setInventoryId] = useState('');
+    const [inventoryId, setInventoryId] = useState(''); // ID del inventario visible
+    const [hiddenInventoryId, setHiddenInventoryId] = useState(''); // ID del inventario para enviar
+    const [articleName, setArticleName] = useState('');
     const [userName, setUserName] = useState('');
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +45,35 @@ export default function DownArticle() {
         fetchUsers();
     }, []);
 
+    const handleInventoryIdChange = async (e) => {
+        const inventoryId = e.target.value;
+        setInventoryId(inventoryId);
+
+        if (inventoryId) {
+            try {
+                const response = await axios.get(`/api/bajas/article-name/${inventoryId}`);
+                if (response.data.articleDetails) {
+                    setArticleName(response.data.articleDetails.name); // Establecer el nombre del artículo
+                    setArticlesId(response.data.articleDetails.id); // Establecer el ID del artículo
+                    setHiddenInventoryId(response.data.inventoryId); // Establecer el ID del inventario para enviar
+                } else {
+                    setArticleName(''); // Limpiar el nombre del artículo si no se encuentra
+                    setArticlesId(''); // Limpiar el ID del artículo si no se encuentra
+                    setHiddenInventoryId(''); // Limpiar el ID del inventario en caso de no encontrar datos
+                }
+            } catch (error) {
+                console.error('Error fetching article details:', error);
+                setArticleName(''); // Limpiar el nombre del artículo en caso de error
+                setArticlesId(''); // Limpiar el ID del artículo en caso de error
+                setHiddenInventoryId(''); // Limpiar el ID del inventario en caso de error
+            }
+        } else {
+            setArticleName(''); // Limpiar el nombre del artículo si el campo de inventario está vacío
+            setArticlesId(''); // Limpiar el ID del artículo si el campo de inventario está vacío
+            setHiddenInventoryId(''); // Limpiar el ID del inventario si el campo está vacío
+        }
+    };
+
     const handleSubmit = async () => {
         const payload = {
             type: removalType,
@@ -52,20 +83,24 @@ export default function DownArticle() {
             confirmation_id: confirmationId,
             request_withdraw_id: parseInt(requestWithdrawId, 10),
             articles_id: parseInt(articlesId, 10),
-            inventori_id: parseInt(inventoryId, 10),
+            inventori_id: parseInt(hiddenInventoryId, 10), // Usar el ID del inventario para enviar
         };
-    
+
         console.log('Payload being sent:', payload);
-    
+
         try {
+            setIsLoading(true); // Iniciar el estado de carga
             const response = await axios.post('/api/bajas/casualtys', payload);
             console.log('Casualty created:', response.data);
+            setSuccess('Baja registrada exitosamente.'); // Mensaje de éxito
             navigate('/inicio'); // Redirige a la página de inicio
         } catch (error) {
             console.error('Error creating casualty:', error);
+            setError('Error al registrar la baja.'); // Mensaje de error
+        } finally {
+            setIsLoading(false); // Detener el estado de carga
         }
     };
-    
 
     return (
         <div style={styles.container}>
@@ -136,72 +171,72 @@ export default function DownArticle() {
                 </select>
             </div>
             <div style={styles.formGroup}>
-                <label>Id del Artículo</label>
-                <input 
-                    type="text" 
-                    value={articlesId} 
-                    onChange={e => setArticlesId(e.target.value)} 
-                    style={styles.input}
-                />
-            </div>
-            <div style={styles.formGroup}>
                 <label>Número de Inventario</label>
                 <input 
                     type="text" 
                     value={inventoryId} 
-                    onChange={e => setInventoryId(e.target.value)} 
+                    onChange={handleInventoryIdChange} // Actualizar al cambiar el número de inventario
                     style={styles.input}
                 />
             </div>
-            {error&& (
-<div style={styles.error}>
-{error}
-</div>
-)}
-{success && (
-<div style={styles.success}>
-{success}
-</div>
-)}
-<button onClick={handleSubmit} style={styles.button} disabled={isLoading}>
-{isLoading ? 'Cargando...' : 'Registrar Baja'}
-</button>
-</div>
-);
+            <div style={styles.formGroup}>
+                <label>Id del Artículo</label>
+                <input 
+                    type="text" 
+                    value={articleName} // Mostrar el nombre del artículo
+                    readOnly 
+                    style={styles.input}
+                />
+            </div>
+            {error && (
+                <div style={styles.error}>
+                    {error}
+                </div>
+            )}
+            {success && (
+                <div style={styles.success}>
+                    {success}
+                </div>
+            )}
+            <button onClick={handleSubmit} style={styles.button} disabled={isLoading}>
+                {isLoading ? 'Cargando...' : 'Registrar Baja'}
+            </button>
+        </div>
+    );
 }
 
 const styles = {
-container: {
-display: 'flex',
-flexDirection: 'column',
-alignItems: 'center',
-padding: '20px',
-},
-formGroup: {
-marginBottom: '15px',
-color: "black",
-width: '100%',
-maxWidth: '400px',
-},
-input: {
-width: '100%',
-padding: '10px',
-marginTop: '5px',
-},
-button: {
-padding: '10px 20px',
-backgroundColor: '#007BFF',
-color: '#FFF',
-border: 'none',
-borderRadius: '5px',
-cursor: 'pointer',
-},
-error: {
-color: 'red',
-marginBottom: '10px',
-},
-success: {
-color: 'green',
-marginBottom: '10px',
-},
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px',
+    },
+    formGroup: {
+        marginBottom: '15px',
+        color: 'black',
+        width: '100%',
+        maxWidth: '400px',
+    },
+    input: {
+        width: '100%',
+        padding: '10px',
+        marginTop: '5px',
+    },
+    button: {
+        padding: '10px 20px',
+        backgroundColor: '#007BFF',
+        color: '#FFF',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
+    error: {
+        color: 'red',
+        marginBottom: '10px',
+    },
+    success: {
+        color: 'green',
+        marginBottom: '10px',
+    },
 };
