@@ -3,6 +3,7 @@ import InsumoTable from "./insumoTable";
 import BienTable from "./bienTable";
 
 function MaterialRequest() {
+  const [userInfo, setUserInfo] = useState({});
   const [formData, setFormData] = useState({
     description: "",
     quantity: "",
@@ -29,6 +30,27 @@ function MaterialRequest() {
         console.error("Error fetching warehouse data:", error);
       }
     };
+
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch('/api/usuario/infoUsuario', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserInfo(data); 
+        } else {
+          console.error('Error al obtener la información del usuario');
+        }
+      } catch (error) {
+        console.error('Error al obtener la información del usuario', error);
+      }
+    };
+
+    fetchUserInfo();
     fetchWarehouseData();
   }, []); 
 
@@ -95,12 +117,12 @@ function MaterialRequest() {
           required
         />
         <input
-          type="text"
+          type="number"
           name="requesting_user_id"
-          value={formData.user_charge}
+          value={userInfo.id}
           onChange={handleChange}
           placeholder="ID del usuario que solicita"
-          required
+          hidden
         />
         <input
           type="number"
