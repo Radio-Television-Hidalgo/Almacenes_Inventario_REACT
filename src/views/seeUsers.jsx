@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../components/ContextUser";
 
+import "../styles/seeUsers.css";
+
 function SeeUser() {
     const [state, setState] = useState(false);
     const [datos, setDatos] = useState({ data: [] });
@@ -72,6 +74,7 @@ function SeeUser() {
         <div>
             <h1>Información de Usuarios</h1>
             <input
+                className="search"
                 type="text"
                 placeholder="Buscar por nombre o correo"
                 value={searchTerm}
@@ -79,7 +82,7 @@ function SeeUser() {
             />
             <table>
                 <thead>
-                    <tr>
+                    <tr className="UserData" >
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo Electrónico</th>
@@ -93,7 +96,7 @@ function SeeUser() {
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="InfoUser" >
                     {filteredDatos.map((dato) => (
                         <tr key={dato.id}>
                             <td>{dato.id}</td>
@@ -107,8 +110,9 @@ function SeeUser() {
                             <td>
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
-                            <td><button onClick={() => handleEdit(dato)}>Editar</button></td>
+                            <td><button onClick={() => handleEdit(dato)} className="Edit" >Editar</button></td>
                             <td><button
+                                className="Delete"
                                 onClick={(event) => handleStatus(event, dato.id)}
                                 disabled={state}
                             >Eliminar</button></td>
