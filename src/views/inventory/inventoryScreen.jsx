@@ -44,6 +44,11 @@ function InventoryScreen() {
           <h1>Baja de Bienes</h1>
         </div>
       </Link>
+      <Link to="/inventarios/usuario">
+      <div>
+        <h1>inventarios de Usuario</h1>
+        </div></Link>
+
       </div>
       
       
