@@ -42,7 +42,7 @@ const showHeaderRoutes = [
   "/poliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
-  "/inventarios/usuario"
+  "/inventarios/usuario",
   "/Bajadebien",
 ];
 
