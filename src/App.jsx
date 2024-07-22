@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
-import Login from "./views/login";
+import Login from "./views/users/login";
 import Home from "./views/home/home";
-import InventoryControl from "./views/InventoryControl";
-import Policy from "./views/policy";
-import Invoice from "./views/invoice";
-import User from "./views/formUser";
+import InventoryControl from "./views/inventory/InventoryControl";
+import Policy from "./views/articles/policy";
+import Invoice from "./views/articles/invoice";
+import User from "./views/users/formUser";
 import Header from "./components/Header";
-import Bills from "./views/Bills";
+import Bills from "./views/articles/Bills";
 import StateofThegoods from "./views/StateofThegoods";
 import Assignations from "./views/Assignations";
-import Goods from "./views/Goods";
-import SeeUser from "./views/seeUsers";
+import Goods from "./views/articles/Goods";
+import SeeUser from "./views/users/seeUsers"
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
 import EditUser from "./views/users/editUser";
