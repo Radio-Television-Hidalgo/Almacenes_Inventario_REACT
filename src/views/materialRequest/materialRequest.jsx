@@ -15,25 +15,22 @@ function MaterialRequest() {
     inventory_number_id: "",
   });
 
-  // Fetch data from the API when the component mounts
   useEffect(() => {
     const fetchWarehouseData = async () => {
       try {
-        const response = await fetch("/api/articulos/warehouse/3"); // Ajusta la URL según tu API
+        const response = await fetch("/api/articulos/warehouse/3"); 
         const data = await response.json();
         console.log(data)
         setFormData({
           ...formData,
-          approving_user_id: data.user_charge_id, // Ajusta según el nombre del campo en la respuesta
-          // Otros campos si es necesario
+          user_charge: data.user_charge.name, 
         });
       } catch (error) {
         console.error("Error fetching warehouse data:", error);
       }
     };
-
     fetchWarehouseData();
-  }, []); // El array vacío asegura que se ejecuta solo una vez cuando el componente se monta
+  }, []); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +53,6 @@ function MaterialRequest() {
         method: "POST",
         body: formDataToSend,
         headers: {
-          // No es necesario establecer el Content-Type al usar FormData; el navegador lo hace automáticamente
         },
       });
       const data = await response.json();
@@ -91,17 +87,17 @@ function MaterialRequest() {
         </select>
         <input type="file" name="file" onChange={handleFileChange} />
         <input
-          type="number"
+          type="text"
           name="approving_user_id"
-          value={formData.approving_user_id}
+          value={formData.user_charge}
           onChange={handleChange}
           placeholder="ID del usuario que aprueba"
           required
         />
         <input
-          type="number"
+          type="text"
           name="requesting_user_id"
-          value={formData.requesting_user_id}
+          value={formData.user_charge}
           onChange={handleChange}
           placeholder="ID del usuario que solicita"
           required

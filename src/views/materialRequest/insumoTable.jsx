@@ -32,7 +32,7 @@ function InsumoTable() {
               {insumo.tb_warehouses && insumo.tb_warehouses.length > 0
                 ? insumo.tb_warehouses[0].stock
                 : "N/A"}
-            </td>{" "}
+            </td>
             <td>{insumo.status}</td>
             <td>
               {insumo.photos_entry &&
