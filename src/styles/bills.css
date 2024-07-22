@@ -1,24 +1,56 @@
-body {
-    background-color: #2D2D2D;
-    color: #D3D3D3;
-}
+/* bills.css */
 
-table {
-    border-collapse: collapse;
+.bills-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #e0f7fa;
+  }
+  
+  .bills-title {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .bills-search {
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .bills-table {
     width: 100%;
-    color: #D3D3D3;
-}
-
-th, td {
-    text-align: left;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .bills-table th, .bills-table td {
+    border: 1px solid #ddd;
     padding: 8px;
-    border: 1px solid #D3D3D3;
-}
-
-th {
-    background-color: #3E3E3E;
-}
-
-tr:nth-child(even) {
-    background-color: #3E3E3E;
-}
+    text-align: center; /* Centrar el texto */
+  }
+  
+  .bills-table th {
+    background-color: #691B31;
+    color: white;
+  }
+  
+  .bills-table td {
+    white-space: nowrap; /* Evitar que el contenido se rompa en varias líneas */
+  }
+  
+  .bills-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .bills-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .bills-footer {
+    color: #777;
+    font-size: 14px;
+  }
+ 
