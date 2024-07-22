@@ -9,9 +9,10 @@ function Home() {
       <div className="home-container">
         <h3>¿Qué deseas hacer hoy?</h3>
         <h2>Selecciona una Opcion</h2>
+        <br />
         <div className="home-columns">
-
-        <div className="home-column">
+    
+        <div className="home-column home-column-left">
             <Link to="/ControlInventario" className="home-card">
               <div className="home-content">
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
@@ -42,7 +43,7 @@ function Home() {
               </div>
             </Link>
           </div>
-          <div className="home-column">
+          <div className="home-column home-column-right">
             <Link to="/solicitudMaterial" className="home-card">
               <div className="home-content">
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-inboxes" viewBox="0 0 16 16">

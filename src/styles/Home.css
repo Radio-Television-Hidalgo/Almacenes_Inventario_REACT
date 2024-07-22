@@ -12,7 +12,9 @@
   flex-direction: column;
   box-sizing: border-box;
 }
-
+h2{
+  color: #333;
+}
 /* Estilo para el encabezado h3 */
 .home-container h3 {
   font-size: 2rem; /* Tamaño de fuente para el h3 */
@@ -50,7 +52,22 @@
   height: 200px; /* Altura fija de las tarjetas */
   margin: 10px; /* Margen para separar las tarjetas */
 }
+/* Estilo específico para las columnas */
+.home-column-left .home-content {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
+.home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .home-content {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
@@ -97,4 +114,24 @@
     max-width: 100%;
     height: auto;
   }
+  /* Estilo específico para las columnas */
+.home-column-left .home-content {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 }

@@ -38,7 +38,7 @@ function InventoryControl() {
           </div>
           
           <div className="column">
-            <Link to="" className="card">
+            <Link to="/articulos/bajaBien" className="card">
               <div className="content">
                 <h1>Baja de Bienes</h1>
               </div>
