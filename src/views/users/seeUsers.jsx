@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../components/ContextUser";
+import { useUser } from "../../components/ContextUser";
 
-import "../styles/seeUsers.css";
+import "../../styles/seeUsers.css";
 
 function SeeUser() {
     const [state, setState] = useState(false);

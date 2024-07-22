@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import useLogin from '../controllers/useLogin.js';
-import '../styles/login.css'; // Asegúrate de que la ruta sea correcta
+import useLogin from '../../controllers/useLogin.js';
+import '../../styles/login.css'; // Asegúrate de que la ruta sea correcta
 import { useEffect } from 'react';
 
 function Login() {
@@ -15,6 +15,7 @@ function Login() {
   }, []);
 
   return (
+
     <div className="login-container">
       <div className="logo-container">
         <img src="public/SIA.webp" alt="Logotipo de la empresa" />

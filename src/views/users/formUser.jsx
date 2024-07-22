@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/formUser.css'; 
+import '../../styles/formUser.css'; 
 
 const CreateUserForm = ({ userId }) => {
   const navigate = useNavigate();
