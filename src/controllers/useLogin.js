@@ -34,7 +34,7 @@ function useLogin(email, password, setLoginError) {
         navigate('/inicio');
         console.log('Inicio de sesión exitoso');
       } else {
-        setLoginError('Inicio de sesión fallido');
+        setLoginError('Usuario no encontrado en el sistema');
       }
     } catch (error) {
       console.log('Error al iniciar sesión: ', error);
