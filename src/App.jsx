@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
 import Login from "./views/login";
-import Home from "./views/home";
+import Home from "./views/home/home";
 import InventoryControl from "./views/InventoryControl";
 import Policy from "./views/policy";
 import Invoice from "./views/invoice";
