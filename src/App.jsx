@@ -21,6 +21,7 @@ import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
+import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -97,6 +98,7 @@ const App = () => {
             <Route path="/factura" element={<Invoice />} />
             <Route path="/poliza" element={<Policy />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
