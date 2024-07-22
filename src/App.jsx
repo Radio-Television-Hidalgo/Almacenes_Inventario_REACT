@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { UserProvider } from "./components/ContextUser";
 import Login from "./views/login";
 import Home from "./views/home";
+import InventoryControl from "./views/InventoryControl";
+import Policy from "./views/policy";
+import Invoice from "./views/invoice";
 import User from "./views/formUser";
 import Header from "./components/Header";
 import Bills from "./views/Bills";
@@ -11,27 +15,49 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
+import EditUser from "./views/users/editUser"
+import WerehouseScreen from "./views/werehouse/werehouseScreen";
+import InventoryScreen from "./views/inventory/inventoryScreen";
+import MaterialRequest from "./views/materialRequest/materialRequest";
+import DownArticle from "./views/articles/downArticle";
 const showHeaderRoutes = [
   "/inicio",
+  "/almacen",
+  "/inventario",
+  "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
   "/Assignations",
-  "/bienes",
-  "/usuarios/gestionUsuarios",
+  "/usuario/misBienes",
+  "/usuario/gestionUsuarios",
+  "/articulos/insertarArticulo",
+  "/usuario/editarUsuario",
+  "/ControlInventario",
+  "/factura",
+  "/poliza",
+  "/articulos/bajaBien",
 ];
 
 const routeTitles = {
+  "/poliza": "Póliza",
+  "/factura": "Factura",
+  "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
+  "/inventario": "Control de Inventario",
+  "/almacen": "Control de Almacen",
+  "/solicitudMaterial": "Solicitar Material",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
   "/Assignations": "Asignaciones",
-  "/bienes": "Bienes",
-  "/usuarios/gestionUsuarios": "Gestión de Usuarios",
+  "/usuario/misBienes": "Bienes",
+  "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
+  "/usuario/editarUsuario": "Edicion de usuario",
+  "/articulos/bajaBien": "Baja de Bien"
 };
 
 const App = () => {
@@ -48,15 +74,23 @@ const App = () => {
     <div>
       {showHeader && <Header />}
       <main>
+        <UserProvider>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/inicio" element={<Home />} />
+          <Route path="/almacen" element={<WerehouseScreen />} />
+          <Route path="/inventario" element={<InventoryScreen />} />
+          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
           <Route path="/Assignations" element={<Assignations />} />
-          <Route path="/bienes" element={<Goods />} />
-          <Route path="/usuarios/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/misBienes" element={<Goods />} />
+          <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/editarUsuario" element={<EditUser />}/>
+          <Route path="/ControlInventario" element={<InventoryControl />} />
+          <Route path="/factura" element={<Invoice />} />
+          <Route path="/poliza" element={<Policy />} />
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}
@@ -65,7 +99,12 @@ const App = () => {
             path="/articulos/insertarArticulo"
             element={<CreateArticle />}
           />
+          <Route
+            path="/articulos/bajaBien"
+            element={<DownArticle />}
+          />
     </Routes>
+        </UserProvider>
       </main>
     </div>
   );
