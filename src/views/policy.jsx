@@ -12,6 +12,7 @@ function Policy() {
     indemnity_limits: "",
     validity_period: "",
     exclusion_clauses: "",
+    file: null,
     date: "",
   });
 
@@ -19,18 +20,19 @@ function Policy() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, file: e.target.files[0] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData();
+    for (const key in formData) {
+      data.append(key, formData[key]);
+    }
     try {
-      const response = await fetch("http://localhost:3000/facturas/policy", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      console.log("Success:", data);
+      const response = await axios.post("http://localhost:3000/facturas/policy", data);
+      console.log("Success:", response.data);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -61,7 +63,7 @@ function Policy() {
       <div>
         <label>Tipo:</label>
         <select name="type" value={formData.type} onChange={handleChange}>
-          <option value="">Select type</option>
+          <option value="">Seleccionar tipo</option>
           <option value="egresos">Egresos</option>
           <option value="presupuestales">Presupuestales</option>
           <option value="diario">Diario</option>
@@ -105,7 +107,7 @@ function Policy() {
       <div>
         <label>Periodo de vigencia:</label>
         <input
-          type="text"
+          type="date"
           name="validity_period"
           value={formData.validity_period}
           onChange={handleChange}
@@ -119,6 +121,14 @@ function Policy() {
           name="exclusion_clauses"
           value={formData.exclusion_clauses}
           onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Archivo:</label>
+        <input
+          type="file"
+          name="file"
+          onChange={handleFileChange}
         />
       </div>
 

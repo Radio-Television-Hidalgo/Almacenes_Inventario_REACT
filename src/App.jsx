@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
 import Login from "./views/login";
-import Home from "./views/home";
+import Home from "./views/home/home";
 import InventoryControl from "./views/InventoryControl";
 import Policy from "./views/policy";
 import Invoice from "./views/invoice";
@@ -19,6 +19,7 @@ import EditUser from "./views/users/editUser"
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
+import DownArticle from "./views/articles/downArticle";
 import ArticleDelivery from "./views/articles/articleDelivery";
 
 const showHeaderRoutes = [
@@ -37,6 +38,7 @@ const showHeaderRoutes = [
   "/ControlInventario",
   "/factura",
   "/poliza",
+  "/articulos/bajaBien",
   "/entregaArticulo",
 ];
 
@@ -58,6 +60,7 @@ const routeTitles = {
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
   "/usuario/editarUsuario": "Edicion de usuario",
+  "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos"
 };
 
@@ -100,6 +103,10 @@ const App = () => {
           <Route
             path="/articulos/insertarArticulo"
             element={<CreateArticle />}
+          />
+          <Route
+            path="/articulos/bajaBien"
+            element={<DownArticle />}
           />
         </Routes>
         </UserProvider>

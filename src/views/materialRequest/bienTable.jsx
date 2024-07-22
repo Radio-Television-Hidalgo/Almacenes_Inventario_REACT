@@ -21,6 +21,7 @@ function BienTable() {
         <tr>
           <th>Descripción</th>
           <th>Cantidad</th>
+          <th>Número de Inventario</th>
           <th>Estado</th>
           <th>Fotos</th>
         </tr>
@@ -32,6 +33,11 @@ function BienTable() {
             <td>
               {bien.tb_warehouses && bien.tb_warehouses.length > 0
                 ? bien.tb_warehouses[0].stock
+                : "N/A"}
+            </td>
+            <td>
+              {bien.tb_inventories && bien.tb_inventories.length > 0
+                ? bien.tb_inventories[0].inventory_number
                 : "N/A"}
             </td>
             <td>{bien.status}</td>

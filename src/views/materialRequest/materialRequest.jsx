@@ -19,13 +19,15 @@ function MaterialRequest() {
   useEffect(() => {
     const fetchWarehouseData = async () => {
       try {
-        const response = await fetch("/api/articulos/warehouse/3"); 
+        const response = await fetch("/api/articulos/warehouse/3");
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setFormData({
           ...formData,
-          user_charge: data.user_charge.name, 
+          user_charge: data.user_charge.name,
+          approving_user_id: data.user_charge.id,
         });
+        console.log(user_charge_id);
       } catch (error) {
         console.error("Error fetching warehouse data:", error);
       }
@@ -33,26 +35,26 @@ function MaterialRequest() {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch('/api/usuario/infoUsuario', {
-          method: 'GET',
+        const response = await fetch("/api/usuario/infoUsuario", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         });
         if (response.ok) {
           const data = await response.json();
-          setUserInfo(data); 
+          setUserInfo(data);
         } else {
-          console.error('Error al obtener la información del usuario');
+          console.error("Error al obtener la información del usuario");
         }
       } catch (error) {
-        console.error('Error al obtener la información del usuario', error);
+        console.error("Error al obtener la información del usuario", error);
       }
     };
 
     fetchUserInfo();
     fetchWarehouseData();
-  }, []); 
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,8 +76,7 @@ function MaterialRequest() {
       const response = await fetch("/api/articulos/crearSolicitud", {
         method: "POST",
         body: formDataToSend,
-        headers: {
-        },
+        headers: {},
       });
       const data = await response.json();
       console.log("Solicitud creada:", data);
@@ -110,11 +111,18 @@ function MaterialRequest() {
         <input type="file" name="file" onChange={handleFileChange} />
         <input
           type="text"
-          name="approving_user_id"
+          name="a"
           value={formData.user_charge}
           onChange={handleChange}
           placeholder="ID del usuario que aprueba"
           required
+        />
+        <input
+          type="number"
+          name="approving_user_id"
+          value={userInfo.approving_user_id}
+          onChange={handleChange}
+          hidden
         />
         <input
           type="number"
