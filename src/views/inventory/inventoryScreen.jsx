@@ -1,20 +1,24 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function InventoryScreen() {
   return (
     <div>
-      <Link>
+      <Link to="/factura">
+        <div>
+          <h1>Crear Factura</h1>
+        </div>
+      </Link>
+      <Link to="/facturas">
         <div>
           <h1>Facturas</h1>
         </div>
       </Link>
-      <Link>
+      <Link to="/Assignations">
         <div>
           <h1>Entregar de bien a usuario</h1>
         </div>
       </Link>
-      <Link>
+      <Link to="/Bajadebien">
         <div>
           <h1>Baja de Bien</h1>
         </div>

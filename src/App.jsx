@@ -20,6 +20,7 @@ import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle";
+import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
@@ -37,6 +38,7 @@ const showHeaderRoutes = [
   "/factura",
   "/poliza",
   "/articulos/bajaBien",
+  "/Bajadebien",
 ];
 
 const routeTitles = {
@@ -81,6 +83,7 @@ const App = () => {
           <Route path="/almacen" element={<WerehouseScreen />} />
           <Route path="/inventario" element={<InventoryScreen />} />
           <Route path="/solicitudMaterial" element={<MaterialRequest />} />
+          <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
           <Route path="/usuario/nuevoUsuario" element={<User />} />
           <Route path="/facturas" element={<Bills />} />
           <Route path="/stateOfThegoods" element={<StateofThegoods />} />
