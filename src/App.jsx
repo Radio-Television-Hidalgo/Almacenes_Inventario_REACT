@@ -15,11 +15,11 @@ import Goods from "./views/Goods";
 import SeeUser from "./views/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
-import EditUser from "./views/users/editUser"
+import EditUser from "./views/users/editUser";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
-import DownArticle from "./views/articles/downArticle";
+import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
 
 const showHeaderRoutes = [
@@ -61,7 +61,7 @@ const routeTitles = {
   "/articulos/insertarArticulo": "Crear Artículo",
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
-  "/entregaArticulo": "Entrega de Articulos"
+  "/entregaArticulo": "Entrega de Articulos",
 };
 
 const App = () => {
@@ -79,36 +79,33 @@ const App = () => {
       {showHeader && <Header />}
       <main>
         <UserProvider>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={<Home />} />
-          <Route path="/almacen" element={<WerehouseScreen />} />
-          <Route path="/inventario" element={<InventoryScreen />} />
-          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
-          <Route path="/usuario/nuevoUsuario" element={<User />} />
-          <Route path="/facturas" element={<Bills />} />
-          <Route path="/stateOfThegoods" element={<StateofThegoods />} />
-          <Route path="/assignations" element={<Assignations />} />
-          <Route path="/usuario/misBienes" element={<Goods />} />
-          <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
-          <Route path="/usuario/editarUsuario" element={<EditUser />}/>
-          <Route path="/ControlInventario" element={<InventoryControl />} />
-          <Route path="/factura" element={<Invoice />} />
-          <Route path="/poliza" element={<Policy />} />
-          <Route path="/entregaArticulo" element={<ArticleDelivery />} />
-          <Route
-            path="/articulos/:inventoryNumber"
-            element={<ArticleDetails />}
-          />
-          <Route
-            path="/articulos/insertarArticulo"
-            element={<CreateArticle />}
-          />
-          <Route
-            path="/articulos/bajaBien"
-            element={<DownArticle />}
-          />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/inicio" element={<Home />} />
+            <Route path="/almacen" element={<WerehouseScreen />} />
+            <Route path="/inventario" element={<InventoryScreen />} />
+            <Route path="/solicitudMaterial" element={<MaterialRequest />} />
+            <Route path="/usuario/nuevoUsuario" element={<User />} />
+            <Route path="/facturas" element={<Bills />} />
+            <Route path="/stateOfThegoods" element={<StateofThegoods />} />
+            <Route path="/assignations" element={<Assignations />} />
+            <Route path="/usuario/misBienes" element={<Goods />} />
+            <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+            <Route path="/usuario/editarUsuario" element={<EditUser />} />
+            <Route path="/ControlInventario" element={<InventoryControl />} />
+            <Route path="/factura" element={<Invoice />} />
+            <Route path="/poliza" element={<Policy />} />
+            <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route
+              path="/articulos/:inventoryNumber"
+              element={<ArticleDetails />}
+            />
+            <Route
+              path="/articulos/insertarArticulo"
+              element={<CreateArticle />}
+            />
+            <Route path="/articulos/bajaBien" element={<DownArticle />} />
+          </Routes>
         </UserProvider>
       </main>
     </div>
