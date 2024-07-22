@@ -9,7 +9,6 @@ const Header = () => {
   const location = useLocation(); // Hook para obtener la ubicación actual
 
   useEffect(() => {
-    // Función para hacer fetch a la API y obtener la información del usuario
     const fetchUserInfo = async () => {
       try {
         const response = await fetch('/api/usuario/infoUsuario', {
@@ -20,8 +19,7 @@ const Header = () => {
         });
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
-          setUserInfo(data); // Almacena la información del usuario en el estado
+          setUserInfo(data); 
         } else {
           console.error('Error al obtener la información del usuario');
         }
@@ -30,7 +28,7 @@ const Header = () => {
       }
     };
 
-    fetchUserInfo(); // Llama a la función para obtener la información del usuario cuando el componente se monte
+    fetchUserInfo(); 
   }, []);
 
   const handleLogout = async (event) => {

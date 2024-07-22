@@ -19,6 +19,7 @@ import EditUser from "./views/users/editUser"
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
+import DownArticle from "./views/articles/downArticle";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -36,6 +37,7 @@ const showHeaderRoutes = [
   "/ControlInventario",
   "/factura",
   "/poliza",
+  "/articulos/bajaBien",
 ];
 
 const routeTitles = {
@@ -55,7 +57,8 @@ const routeTitles = {
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
-  "/usuario/editarUsuario": "Edicion de usuario"
+  "/usuario/editarUsuario": "Edicion de usuario",
+  "/articulos/bajaBien": "Baja de Bien"
 };
 
 const App = () => {
@@ -96,6 +99,10 @@ const App = () => {
           <Route
             path="/articulos/insertarArticulo"
             element={<CreateArticle />}
+          />
+          <Route
+            path="/articulos/bajaBien"
+            element={<DownArticle />}
           />
         </Routes>
         </UserProvider>
