@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
 import Login from "./views/login";
-import Home from "./views/home";
+import Home from "./views/home/home";
 import InventoryControl from "./views/InventoryControl";
 import Policy from "./views/policy";
 import Invoice from "./views/invoice";
@@ -20,6 +20,7 @@ import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle";
+import ArticleDelivery from "./views/articles/articleDelivery";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 const showHeaderRoutes = [
   "/inicio",
@@ -38,6 +39,7 @@ const showHeaderRoutes = [
   "/factura",
   "/poliza",
   "/articulos/bajaBien",
+  "/entregaArticulo",
   "/Bajadebien",
 ];
 
@@ -59,7 +61,8 @@ const routeTitles = {
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
   "/usuario/editarUsuario": "Edicion de usuario",
-  "/articulos/bajaBien": "Baja de Bien"
+  "/articulos/bajaBien": "Baja de Bien",
+  "/entregaArticulo": "Entrega de Articulos"
 };
 
 const App = () => {
@@ -94,6 +97,7 @@ const App = () => {
           <Route path="/ControlInventario" element={<InventoryControl />} />
           <Route path="/factura" element={<Invoice />} />
           <Route path="/poliza" element={<Policy />} />
+          <Route path="/entregaArticulo" element={<ArticleDelivery />} />
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}

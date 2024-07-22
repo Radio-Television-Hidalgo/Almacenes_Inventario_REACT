@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "/src/styles/inventoryScreen.css";
 
 function InventoryScreen() {
   return (
@@ -13,9 +14,9 @@ function InventoryScreen() {
           <h1>Facturas</h1>
         </div>
       </Link>
-      <Link to="/Assignations">
+      <Link to={"/entregaArticulo"}>
         <div>
-          <h1>Entregar de bien a usuario</h1>
+          <h1>Entrega de bien a usuario</h1>
         </div>
       </Link>
       <Link to="/Bajadebien">

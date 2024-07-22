@@ -31,7 +31,7 @@ tbody {
 }
 
 .UserData th {
-    background-color: #BC955B;
+    background-color: #691B31;
     text-align: left;
     padding: 10px;
 }
@@ -65,7 +65,6 @@ tbody {
 
 .Edit:hover, .Delete:hover {
     background-color: #691B31;
-    color: #BC955B;
 }
 
 /* Para hacer las imágenes más pequeñas si es necesario */

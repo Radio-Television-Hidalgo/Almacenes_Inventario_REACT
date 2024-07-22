@@ -16,10 +16,13 @@ function Login() {
 
   return (
     <div className="login-container">
+      <div className="logo-container">
+        <img src="public/SIA.webp" alt="Logotipo de la empresa" />
+      </div>
       <form className="login-form" onSubmit={handleLogin}>
-        <h2>Iniciar Sesión</h2>
-        <p>bienvenido a sitema inventarios</p>
-        <label htmlFor="correo">Usuario o email</label>
+        <h2>Radio y Television de Hidalgo</h2>
+        <p>Sistema Inventario y almacen de radio y Television de Hidalgo</p>
+        <label htmlFor="correo">Usuario o Email</label>
         <input
           type="email"
           id="correo"
@@ -35,7 +38,7 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Iniciar sesión</button>
+        <button type="submit">Siguiente</button>
         {loginError && <p className="login-error">{loginError}</p>}
       </form>
     </div>
