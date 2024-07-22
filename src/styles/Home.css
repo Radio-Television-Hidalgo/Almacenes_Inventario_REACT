@@ -3,9 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(236, 199, 195);
-  min-height: calc(100vh - 80px); /* Ajustamos para dejar espacio para el navbar */
-  background-size: cover;
+  background-image: radial-gradient(at 10.358991888443558% 16.017426549337266%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 79.67844051819783% 18.838452180171593%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 56.573798740936596% 42.70753445603801%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 0) 100%);  background-size: cover;
   background-position: center;
   text-align: center;
   padding: 20px; /* Espaciado interno */
