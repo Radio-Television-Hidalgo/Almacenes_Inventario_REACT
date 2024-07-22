@@ -23,19 +23,27 @@ const CreateUserForm = ({ userId }) => {
     charge_id: ''
   });
 
+  const [departments, setDepartments] = useState([]);
+  const [charges, setCharges] = useState([]);
+
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/usuario/${userId}`);
-        setUserData(response.data);
+        const userResponse = userId ? await axios.get(`/api/usuario/${userId}`) : null;
+        const departmentsResponse = await axios.get('http://localhost:3000/depertments/depertments'); 
+        const chargesResponse = await axios.get('http://localhost:3000/depertments/charges'); 
+        
+        if (userResponse) {
+          setUserData(userResponse.data);
+        }
+        setDepartments(departmentsResponse.data.data);
+        setCharges(chargesResponse.data.data);
       } catch (error) {
-        console.error('Error al obtener datos del usuario:', error);
+        console.error('Error al obtener datos:', error);
       }
     };
 
-    if (userId) {
-      fetchUserData();
-    }
+    fetchData();
   }, [userId]);
 
   const handleInputChange = (e) => {
@@ -54,10 +62,6 @@ const CreateUserForm = ({ userId }) => {
     const formData = new FormData();
     for (const key in userData) {
       formData.append(key, userData[key]);
-    }
-
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
     }
 
     try {
@@ -118,12 +122,38 @@ const CreateUserForm = ({ userId }) => {
           <input type="text" id="CURP" name="CURP" placeholder="CURP" value={userData.CURP} onChange={handleInputChange} required />
         </div>
         <div className="form-group">
-          <label htmlFor="department_id">ID del Departamento</label>
-          <input type="text" id="department_id" name="department_id" placeholder="ID del Departamento" value={userData.department_id} onChange={handleInputChange} required />
+          <label htmlFor="department_id">Departamento</label>
+          <select
+            id="department_id"
+            name="department_id"
+            value={userData.department_id}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Seleccionar Departamento</option>
+            {departments.map(department => (
+              <option key={department.id} value={department.id}>
+                {department.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-group">
-          <label htmlFor="charge_id">ID del Cargo</label>
-          <input type="text" id="charge_id" name="charge_id" placeholder="ID del Cargo" value={userData.charge_id} onChange={handleInputChange} required />
+          <label htmlFor="charge_id">Cargo</label>
+          <select
+            id="charge_id"
+            name="charge_id"
+            value={userData.charge_id}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Seleccionar Cargo</option>
+            {charges.map(charge => (
+              <option key={charge.id} value={charge.id}>
+                {charge.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="form-group checkbox-group">
           <input type="checkbox" id="status" name="status" checked={userData.status} onChange={() => setUserData({ ...userData, status: !userData.status })} />
