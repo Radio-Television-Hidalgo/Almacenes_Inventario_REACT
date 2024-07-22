@@ -114,4 +114,24 @@ h2{
     max-width: 100%;
     height: auto;
   }
+  /* Estilo específico para las columnas */
+.home-column-left .home-content {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 }
