@@ -18,7 +18,7 @@ function Login() {
 
     <div className="login-container">
       <div className="logo-container">
-        <img src="public/SIA.webp" alt="Logotipo de la empresa" />
+        <img src="SIA.webp" alt="Logotipo de la empresa" />
       </div>
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Radio y Television de Hidalgo</h2>
