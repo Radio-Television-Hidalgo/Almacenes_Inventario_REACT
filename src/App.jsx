@@ -21,6 +21,7 @@ import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
+import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 
 const showHeaderRoutes = [
@@ -41,6 +42,7 @@ const showHeaderRoutes = [
   "/poliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
+  "/inventarios/usuario"
   "/Bajadebien",
 ];
 
@@ -64,6 +66,7 @@ const routeTitles = {
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos",
+  "/inventarios/usuario" : "Inventarios de Usuarios"
 };
 
 const App = () => {
@@ -98,6 +101,7 @@ const App = () => {
             <Route path="/factura" element={<Invoice />} />
             <Route path="/poliza" element={<Policy />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route
               path="/articulos/:inventoryNumber"
