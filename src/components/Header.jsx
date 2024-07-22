@@ -84,50 +84,9 @@ const Header = () => {
       }
   };
 
-  // Función para obtener el mensaje basado en el pathname
-  const getPageTitle = () => {
-    const path = location.pathname;
-    switch (path) {
-      case '/inicio':
-        return 'Bienvenido';
-      case '/usuario/nuevoUsuario':
-        return 'Usuarios';
-      case '/facturas':
-        return 'Facturas';
-      case '/stateOfThegoods':
-        return 'Estado de los productos';
-      case '/assignations':
-        return 'Asignaciones';
-      case '/poliza':
-        return 'Polizas';
-      case '/inventario':
-        return 'Mi inventario';
-      case '/ControlInventario':
-        return' Centro de Control';
-      case '/usuario/misBienes':
-        return ' Mis Bienes';
-      case '/solicitudMaterial':
-        return  'Subir material';  
-      case '/usuario/gestionUsuarios' :
-        return 'Usuarios';
-      case '/almacen':
-        return 'Almacen';
-      }
-  };
 
 
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
-
-
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
 
   return (
     <div>
@@ -150,8 +109,10 @@ const Header = () => {
         </div>
 
         <div className="header-top">
-          {isMenuVisible &&(
-    <h1 className="invent">{getPageTitle()}</h1>
+            <div>
+              <h1 className="invent">{getPageTitle()}</h1>
+            </div>
+          
         </div>
   
           <div className="header-top2">
@@ -185,7 +146,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      )}
     </div>
   );
 };
