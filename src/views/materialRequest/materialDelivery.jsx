@@ -1,6 +1,6 @@
 import React from 'react'
 
-function materialDelivery() {
+function MaterialDelivery() {
   return (
     <div>
         <input type="text" />
@@ -30,4 +30,4 @@ function materialDelivery() {
   )
 }
 
-export default materialDelivery
+export default MaterialDelivery
