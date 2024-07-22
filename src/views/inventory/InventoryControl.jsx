@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/InventoryControl.css";
+import "../../styles/InventoryControl.css";
 
 function InventoryControl() {
   return (

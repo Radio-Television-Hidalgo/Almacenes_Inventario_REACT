@@ -4,15 +4,19 @@ import "/src/styles/inventoryScreen.css";
 
 function InventoryScreen() {
   return (
+
+    
     <div>
+
+      <div>
       <Link>
         <div>
           <h1>Facturas</h1>
         </div>
       </Link>
-      <Link>
+      <Link to={"/entregaArticulo"}>
         <div>
-          <h1>Entregar de bien a usuario</h1>
+          <h1>Entrega de bien a usuario</h1>
         </div>
       </Link>
       <Link>
@@ -20,6 +24,11 @@ function InventoryScreen() {
           <h1>Baja de Bien</h1>
         </div>
       </Link>
+      </div>
+
+
+
+      <div>
       <Link>
         <div>
           <h1>Resguardo General</h1>
@@ -35,6 +44,9 @@ function InventoryScreen() {
           <h1>Baja de Bienes</h1>
         </div>
       </Link>
+      </div>
+      
+      
     </div>
   );
 }

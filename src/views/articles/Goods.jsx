@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import '../styles/Goods.css'; 
+import '../../styles/Goods.css'; 
 
 
 function Goods() {
