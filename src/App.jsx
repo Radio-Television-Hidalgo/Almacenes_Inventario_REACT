@@ -19,6 +19,7 @@ import EditUser from "./views/users/editUser"
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
+import ArticleDelivery from "./views/articles/articleDelivery";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -36,6 +37,7 @@ const showHeaderRoutes = [
   "/ControlInventario",
   "/factura",
   "/poliza",
+  "/entregaArticulo",
 ];
 
 const routeTitles = {
@@ -55,7 +57,8 @@ const routeTitles = {
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
   "/articulos/insertarArticulo": "Crear Artículo",
-  "/usuario/editarUsuario": "Edicion de usuario"
+  "/usuario/editarUsuario": "Edicion de usuario",
+  "/entregaArticulo": "Entrega de Articulos"
 };
 
 const App = () => {
@@ -89,6 +92,7 @@ const App = () => {
           <Route path="/ControlInventario" element={<InventoryControl />} />
           <Route path="/factura" element={<Invoice />} />
           <Route path="/poliza" element={<Policy />} />
+          <Route path="/entregaArticulo" element={<ArticleDelivery />} />
           <Route
             path="/articulos/:inventoryNumber"
             element={<ArticleDetails />}
