@@ -4,7 +4,7 @@
 }
 
 .style-table {
-    width: 90%;
+    width: 80%;
     border-collapse: collapse;
     font-family: 'Arial', sans-serif;
     table-layout: fixed; /* Esto ayuda a que las columnas tengan un ancho fijo */
@@ -25,7 +25,7 @@
 }
 
 .style-table td {
-    width: 310px;
+    width: 340px;
 }
 
 .style-table tbody tr:nth-child(even) {

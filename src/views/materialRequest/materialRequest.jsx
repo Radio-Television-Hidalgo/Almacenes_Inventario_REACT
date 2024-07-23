@@ -22,13 +22,11 @@ function MaterialRequest() {
       try {
         const response = await fetch("/api/articulos/warehouse/3");
         const data = await response.json();
-        console.log(data);
         setFormData({
           ...formData,
           user_charge: data.user_charge.name,
           approving_user_id: data.user_charge.id,
         });
-        console.log(user_charge_id);
       } catch (error) {
         console.error("Error fetching warehouse data:", error);
       }
@@ -87,8 +85,8 @@ function MaterialRequest() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="material-request-container">
+      <form className="material-request-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="description"
@@ -96,6 +94,7 @@ function MaterialRequest() {
           onChange={handleChange}
           placeholder="Descripción"
           required
+          className="material-request-input"
         />
         <input
           type="number"
@@ -104,19 +103,31 @@ function MaterialRequest() {
           onChange={handleChange}
           placeholder="Cantidad"
           required
+          className="material-request-input"
         />
-        <select name="type" value={formData.type} onChange={handleChange}>
+        <select
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          className="material-request-select"
+        >
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-        <input type="file" name="file" onChange={handleFileChange} />
+        <input
+          type="file"
+          name="file"
+          onChange={handleFileChange}
+          className="material-request-file"
+        />
         <input
           type="text"
-          name="a"
+          name="user_charge"
           value={formData.user_charge}
           onChange={handleChange}
           placeholder="ID del usuario que aprueba"
           required
+          className="material-request-input"
         />
         <input
           type="number"
@@ -140,6 +151,7 @@ function MaterialRequest() {
           onChange={handleChange}
           placeholder="ID del artículo"
           required
+          className="material-request-input"
         />
         <input
           type="number"
@@ -148,20 +160,23 @@ function MaterialRequest() {
           onChange={handleChange}
           placeholder="Número de inventario"
           required
+          className="material-request-input"
         />
-        <button className="button-morado" type="submit">Solicitar Material</button>
+        <button className="material-request-button" type="submit">
+          Solicitar Material
+        </button>
       </form>
 
       {formData.type === "Insumo" && (
         <>
-          <h2>Insumos</h2>
+          <h2 className="material-request-title">Insumos</h2>
           <InsumoTable />
         </>
       )}
 
       {formData.type === "Bien" && (
         <>
-          <h2>Bienes</h2>
+          <h2 className="material-request-title">Bienes</h2>
           <BienTable />
         </>
       )}
