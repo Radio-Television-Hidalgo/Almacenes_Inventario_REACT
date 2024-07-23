@@ -25,7 +25,8 @@ import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
-import Footer from "./components/Footer"; // Importa el Footer
+import Footer from "./components/Footer";
+import GeneralReceipt from "./views/inventory/generalReceipt";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -50,6 +51,7 @@ const showHeaderRoutes = [
   "/articulos",
   "/assignations",
   "/polizas",
+  "/resguardoGeneral"
 ];
 
 const routeTitles = {
@@ -75,6 +77,7 @@ const routeTitles = {
   "/entregaArticulo": "Entrega de Articulos",
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
+  "/resguardoGeneral": "Resguardo General",
 };
 
 const App = () => {
@@ -112,6 +115,7 @@ const App = () => {
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
+            <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
@@ -125,7 +129,7 @@ const App = () => {
           </Routes>
         </UserProvider>
       </main>
-      <Footer /> {/* Agrega el Footer después del main */}
+      <Footer />
     </div>
   );
 };
