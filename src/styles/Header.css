@@ -27,7 +27,7 @@ html {
 }
 .header-top2 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center; /* Ajustado para centrar correctamente */
   align-items: center;
 

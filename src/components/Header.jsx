@@ -107,21 +107,25 @@ const Header = () => {
                   src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
                   alt="User"
                 />
-                <p>{userInfo.name}</p> {/* Muestra el nombre del usuario */}
+                <p>{userInfo.name}</p> 
+                
               </>
             ) : (
               <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
             )}
+            
           </div>
+          <button onClick={handleAvatarClick}>Ver más</button>
         </div>
 
         <div className="header-top">
-          <div>
-            <h1 className="invent">{getPageTitle()}</h1>
-          </div>
+          
+            
+          
         </div>
   
         <div className="header-top2">
+        <h1 className="invent">{getPageTitle()}</h1>
           <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
         </div>
         
@@ -148,7 +152,6 @@ const Header = () => {
                 <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
               </div>
             </div>
-            <Link><button onClick={handleAvatarClick}>Informacion</button></Link>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>
