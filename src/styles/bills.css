@@ -1,56 +1,63 @@
 /* bills.css */
 
 .bills-container {
-    text-align: center;
-    padding: 20px;
-    background-color: #e0f7fa;
-  }
-  
-  .bills-title {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .bills-search {
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .bills-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .bills-table th, .bills-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center; /* Centrar el texto */
-  }
-  
-  .bills-table th {
-    background-color: #691B31;
-    color: white;
-  }
-  
-  .bills-table td {
-    white-space: nowrap; /* Evitar que el contenido se rompa en varias líneas */
-  }
-  
-  .bills-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .bills-table tr:hover {
-    background-color: #ddd;
-  }
-  
-  .bills-footer {
-    color: #777;
-    font-size: 14px;
-  }
- 
+  text-align: center;
+  padding: 20px;
+  background-color: #e0f7fa;
+}
+
+.bills-title {
+  font-size: 24px;
+  color: #333;
+}
+
+.bills-search {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.bills-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bills-header, .bills-row {
+  display: table-row;
+}
+
+.bills-header div, .bills-row div {
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.bills-header {
+  background-color: #691B31;
+  color: white;
+  font-weight: bold;
+}
+
+.bills-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.bills-row:hover {
+  background-color: #ddd;
+}
+
+.bills-footer {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Ajustar el ancho de las columnas si es necesario */
+.bills-header div, .bills-row div {
+  min-width: 100px; /* Cambia esto según lo necesario */
+}

@@ -4,6 +4,8 @@
   justify-content: center;
   align-items: center;
   background-image: radial-gradient(at 10.358991888443558% 16.017426549337266%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 79.67844051819783% 18.838452180171593%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 56.573798740936596% 42.70753445603801%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 0) 100%);  background-size: cover;
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  background-attachment: fixed; /* Hace que la imagen de fondo permanezca fija en su lugar */
   background-position: center;
   text-align: center;
   padding: 20px; /* Espaciado interno */
@@ -112,6 +114,16 @@ h2{
     max-width: 100%;
     height: auto;
   }
+  
+  .home-content{
+    
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+    
+  }
   /* Estilo específico para las columnas */
 .home-column-left .home-content {
   justify-content: flex-start;
@@ -132,4 +144,56 @@ h2{
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+}
+/* Footer Styles */
+.footer {
+  background: linear-gradient(90deg, #691B31, #1d070d);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  animation: slideIn 1s ease-out;
+  border-top: 20px solid #BC955B;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #e0e0e0;
+}
+
+.footer-logos {
+  margin-top: 10px;
+}
+
+.footer-logos img {
+  width: 100px;
+  margin: 0 15px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
