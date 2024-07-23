@@ -22,6 +22,7 @@ import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
+import StockOut from "./views/stockOut";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -42,6 +43,7 @@ const showHeaderRoutes = [
   "/articulos/bajaBien",
   "/entregaArticulo",
   "/Bajadebien",
+  "/SalidadeExistencia"
 ];
 
 const routeTitles = {
@@ -99,6 +101,7 @@ const App = () => {
             <Route path="/poliza" element={<Policy />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
+            <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
