@@ -162,16 +162,17 @@ const Header = () => {
             <span className="close" onClick={closeModal}>&times;</span>
             <img
               className="modal-avatar"
-              src={userInfo?.img || 'https://via.placeholder.com/150'}
+              src={userInfo.img || 'https://via.placeholder.com/150'}
               alt="User"
             />
             <div className="modal-content">
-              <h2>{userInfo?.name}</h2>
-              <p>Campo 1: </p>
-              <p>Campo 2:</p>
-              <p>Campo 3: </p>
-              <p>Campo 4: </p>
-              <p>Campo 5:</p>
+              <h2>{userInfo.name}</h2>
+              <p>Numero de trabajador: {userInfo.worker_nomber} </p>
+              <p>Adscripcion: {userInfo.ascription} </p>
+              <p>Correo Electrónico: {userInfo.email} </p>
+              <p>RFC: {userInfo.RFC} </p>
+              <p>Cargo: {userInfo.tbc_charge.name} </p>
+              <p>Departamento: {userInfo.tbc_department.name} </p>
             </div>
           </div>
         </div>
