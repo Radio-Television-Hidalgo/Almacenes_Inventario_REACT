@@ -24,6 +24,7 @@ import ArticleDelivery from "./views/articles/articleDelivery";
 import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
+import PolicyScreen from "./views/articles/policyScreen";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -40,17 +41,19 @@ const showHeaderRoutes = [
   "/usuario/editarUsuario",
   "/ControlInventario",
   "/factura",
-  "/poliza",
+  "/crearPoliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
   "/inventarios/usuario",
   "/Bajadebien",
   "/articulos",
-  "/assignations"
+  "/assignations",
+  "/polizas"
 ];
 
 const routeTitles = {
-  "/poliza": "Póliza",
+  "/crearPoliza": "Nueva Póliza",
+  "/polizas":"Todas las Pólizas",
   "/factura": "Factura",
   "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
@@ -103,7 +106,8 @@ const App = () => {
             <Route path="/usuario/editarUsuario" element={<EditUser />} />
             <Route path="/ControlInventario" element={<InventoryControl />} />
             <Route path="/factura" element={<Invoice />} />
-            <Route path="/poliza" element={<Policy />} />
+            <Route path="/crearPoliza" element={<Policy />} />
+            <Route path="/polizas" element={<PolicyScreen />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
