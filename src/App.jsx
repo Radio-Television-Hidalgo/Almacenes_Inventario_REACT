@@ -45,7 +45,8 @@ const showHeaderRoutes = [
   "/entregaArticulo",
   "/inventarios/usuario",
   "/Bajadebien",
-  "/articulos"
+  "/articulos",
+  "/assignations"
 ];
 
 const routeTitles = {

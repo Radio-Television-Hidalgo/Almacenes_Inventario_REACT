@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "/src/styles/TablaInsumos.css"
 
 function InsumoTable() {
   const [insumos, setInsumos] = useState([]);
@@ -15,13 +16,12 @@ function InsumoTable() {
   }, []);
 
   return (
-    <table>
+    <table className="style-table">
       <thead>
         <tr>
-          <th>Descripción</th>
+          <th className="th-descripcion">Descripción</th>
           <th>Cantidad</th>
           <th>Número de Almacén</th>
-          <th>Número de Inventario</th>
           <th>Foto</th>
         </tr>
       </thead>
@@ -39,11 +39,7 @@ function InsumoTable() {
                 ? insumo.tb_warehouses[0].warehouses_number
                 : "N/A"}
             </td>
-            <td>
-              {insumo.tb_inventories && insumo.tb_inventories.length > 0
-                ? insumo.tb_inventories[0].inventory_number
-                : "N/A"}
-            </td>
+           
             <td>
               {insumo.photos_entry &&
                 insumo.photos_entry.split(",").map((photo, index) => (
