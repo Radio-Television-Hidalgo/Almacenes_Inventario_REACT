@@ -1,69 +1,145 @@
 /* Estilo para el contenedor principal */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Alinea los elementos al centro verticalmente */
-    background: rgb(236, 199, 195);
-    height: calc(100vh - 80px); /* Ajustamos para dejar espacio para el navbar */
-    background-size: cover;
-    background-position: center;
-    text-align: center; /* Centra el texto horizontalmente */
-    padding: 5px; /* Espaciado interno */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(at 10.358991888443558% 16.017426549337266%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 79.67844051819783% 18.838452180171593%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 56.573798740936596% 42.70753445603801%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 0) 100%);  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 20px; /* Espaciado interno */
+  flex-direction: column;
+  box-sizing: border-box;
+}
+h2{
+  color: #333;
+}
+/* Estilo para el encabezado h3 */
+.home-container h3 {
+  font-size: 2rem; /* Tamaño de fuente para el h3 */
+  color: #333; /* Color de texto para el h3 */
+  margin: 20px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+}
+
+/* Estilo para las columnas */
+.home-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para las columnas */
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan para mejor responsividad */
+}
+
+/* Estilo para cada columna */
+.home-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las tarjetas dentro de una columna */
+  flex: 1;
+  min-width: 300px; /* Ancho mínimo para las columnas */
+  max-width: 300px; /* Ancho máximo de las columnas */
+}
+
+/* Estilo para las tarjetas (cards) */
+.home-card {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  max-width: 300px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
+}
+/* Estilo específico para las columnas */
+.home-column-left .home-content {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.home-content {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-content:hover {
+  transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
+}
+
+/* Estilo para el encabezado */
+.home-content h1, .home-content h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .home-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .home-columns {
     flex-direction: column;
+    align-items: center;
   }
-  
-  /* Estilo para el encabezado h3 */
-  .container h3 {
-    font-size: 3rem; /* Tamaño de fuente para el h3 */
-    color: #333; /* Color de texto para el h3 */
-    margin: 20px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
-  }
-  
-  /* Estilo para las columnas */
-  .columns {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
-    gap: 10px; /* Espacio entre las columnas */
+
+  .home-column {
+    max-width: none;
     width: 100%;
-    max-width: 1200px; /* Ancho máximo para las columnas */
+  }
+
+  .home-card {
+    max-width: 100%;
+    height: auto;
   }
   
-  /* Estilo para cada columna */
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espacio entre las tarjetas dentro de una columna */
+  .home-content{
+    
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+    
   }
-  
-  /* Estilo para las tarjetas (cards) */
-  .card {
-    text-decoration: none; /* Quita la decoración de enlace */
-    display: flex;
-    flex: 1;
-    max-width: 300px; /* Ancho máximo de las tarjetas */
-    height: 200px; /* Altura fija de las tarjetas */
-    margin: 10px; /* Margen para separar las tarjetas */
-  }
-  
-  .content {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
-    height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .content:hover {
-    transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
-  }
-  
-  /* Estilo para el encabezado */
-  .content h1 {
-    margin-bottom: 1rem;
-    color: #333;
-    font-size: 1.5rem  ;
-  }
+  /* Estilo específico para las columnas */
+.home-column-left .home-content {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+}

@@ -33,7 +33,7 @@ function UserInventory() {
     const groupedData = datos.reduce((acc, dato) => {
         if (!acc[dato.user_id]) {
             acc[dato.user_id] = {
-                user: dato.tb_user,
+                user: dato.user, // Asegúrate de que el dato tiene la estructura correcta
                 items: []
             };
         }
@@ -55,6 +55,9 @@ function UserInventory() {
               item.name.toLowerCase().includes(searchTerm.toLowerCase())
           )
         : [];
+
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div style={{ padding: '20px', display: 'flex', flexWrap: 'wrap', gap: '20px' }}>

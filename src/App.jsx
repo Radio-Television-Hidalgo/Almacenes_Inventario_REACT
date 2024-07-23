@@ -47,6 +47,7 @@ const showHeaderRoutes = [
   "/inventarios/usuario",
   "/Bajadebien",
   "/articulos",
+  "/assignations",
   "/SalidadeExistencia",
 ];
 
