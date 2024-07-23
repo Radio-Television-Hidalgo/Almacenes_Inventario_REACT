@@ -112,6 +112,16 @@ h2{
     max-width: 100%;
     height: auto;
   }
+  
+  .home-content{
+    
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+    
+  }
   /* Estilo específico para las columnas */
 .home-column-left .home-content {
   justify-content: flex-start;
