@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css"; // Importa los estilos CSS
 
@@ -84,6 +84,10 @@ const Header = () => {
       }
   };
 
+
+
+
+
   return (
     <div>
       <nav>
@@ -105,7 +109,10 @@ const Header = () => {
         </div>
 
         <div className="header-top">
-          <h1 className="invent">{getPageTitle()}</h1>
+            <div>
+              <h1 className="invent">{getPageTitle()}</h1>
+            </div>
+          
         </div>
   
           <div className="header-top2">
@@ -125,6 +132,7 @@ const Header = () => {
             <Link to="/usuario/nuevoUsuario">Usuarios</Link>
             <Link to="/facturas">Facturas</Link>
             <Link to="/stateOfThegoods">Estado de los productos</Link>
+            <Link to="/almacen">Almacen</Link>
             <Link to="/assignations">Asignaciones</Link>
             <div className="dropdown">
               <Link to="#" className="dropdown-toggle">Inventario</Link>

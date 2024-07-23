@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "/src/styles/TablaInsumos.css";
 
 function BienTable() {
   const [bienes, setBienes] = useState([]);
@@ -16,7 +17,7 @@ function BienTable() {
   }, []);
 
   return (
-    <table>
+    <table className="style-table">
       <thead>
         <tr>
           <th>Descripción</th>
@@ -48,11 +49,7 @@ function BienTable() {
                     key={index}
                     src={photo}
                     alt="Foto del bien"
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      marginRight: "5px",
-                    }}
+                    className="photo"
                   />
                 ))}
             </td>

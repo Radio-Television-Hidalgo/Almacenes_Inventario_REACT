@@ -21,6 +21,9 @@ import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
+import UserInventory from "./views/users/userInventory";
+import DeregistrationofMaterial from "./views/deregistrationofMaterial";
+import Articles from "./views/articles/Articles";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -30,7 +33,7 @@ const showHeaderRoutes = [
   "/usuario/nuevoUsuario",
   "/facturas",
   "/stateOfThegoods",
-  "/assignations",
+  "/Assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
@@ -40,6 +43,10 @@ const showHeaderRoutes = [
   "/poliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
+  "/inventarios/usuario",
+  "/Bajadebien",
+  "/articulos",
+  "/assignations"
 ];
 
 const routeTitles = {
@@ -54,7 +61,7 @@ const routeTitles = {
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
   "/stateOfThegoods": "Estado de los Bienes",
-  "/assignations": "Asignaciones",
+  "/Assignations": "Asignaciones",
   "/usuario/misBienes": "Bienes",
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
@@ -62,6 +69,8 @@ const routeTitles = {
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos",
+  "/inventarios/usuario" : "Inventarios de Usuarios",
+  "/articulos": "Lista de Bienes"
 };
 
 const App = () => {
@@ -96,6 +105,8 @@ const App = () => {
             <Route path="/factura" element={<Invoice />} />
             <Route path="/poliza" element={<Policy />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route path="/inventarios/usuario" element={<UserInventory />} />
+            <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
@@ -105,6 +116,10 @@ const App = () => {
               element={<CreateArticle />}
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
+            <Route
+            path="/articulos"
+            element={<Articles/>}
+          />
           </Routes>
         </UserProvider>
       </main>
