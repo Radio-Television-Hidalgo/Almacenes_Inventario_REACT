@@ -21,7 +21,9 @@ import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
+import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
+import Articles from "./views/articles/Articles";
 import StockOut from "./views/stockOut";
 
 const showHeaderRoutes = [
@@ -42,8 +44,10 @@ const showHeaderRoutes = [
   "/poliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
+  "/inventarios/usuario",
   "/Bajadebien",
-  "/SalidadeExistencia"
+  "/articulos",
+  "/SalidadeExistencia",
 ];
 
 const routeTitles = {
@@ -66,6 +70,8 @@ const routeTitles = {
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos",
+  "/inventarios/usuario" : "Inventarios de Usuarios",
+  "/articulos": "Lista de Bienes"
 };
 
 const App = () => {
@@ -100,6 +106,7 @@ const App = () => {
             <Route path="/factura" element={<Invoice />} />
             <Route path="/poliza" element={<Policy />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route
@@ -111,6 +118,10 @@ const App = () => {
               element={<CreateArticle />}
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
+            <Route
+            path="/articulos"
+            element={<Articles/>}
+          />
           </Routes>
         </UserProvider>
       </main>
