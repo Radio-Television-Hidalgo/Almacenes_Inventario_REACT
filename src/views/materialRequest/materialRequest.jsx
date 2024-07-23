@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InsumoTable from "./insumoTable";
 import BienTable from "./bienTable";
+import "/src/styles/MaterialRequest.css"
 
 function MaterialRequest() {
   const [userInfo, setUserInfo] = useState({});
@@ -148,7 +149,7 @@ function MaterialRequest() {
           placeholder="Número de inventario"
           required
         />
-        <button type="submit">Solicitar Material</button>
+        <button className="button-morado" type="submit">Solicitar Material</button>
       </form>
 
       {formData.type === "Insumo" && (
