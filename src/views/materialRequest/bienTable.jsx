@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "/src/styles/TablaInsumos.css";
+import "/src/styles/BienTable.css";
 
 function BienTable() {
   const [bienes, setBienes] = useState([]);
