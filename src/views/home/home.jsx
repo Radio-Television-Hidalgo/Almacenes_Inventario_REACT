@@ -4,7 +4,7 @@ import "/src/styles/Home.css";
 
 function Home() {
   return (
-    <div>
+    
       <div className="home-container">
         <h3>¿Qué deseas hacer hoy?</h3>
         <h2>Selecciona una Opción</h2>
@@ -69,18 +69,7 @@ function Home() {
         </div>
       </div>
       
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>Desarrollado por TICS</p>
-          <p>Radio y Televisión de Hidalgo</p>
-          <div className="footer-logos">
-            <img src="public/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
-            <img src="public/image.png" alt="Logo Empresa" className="logo-empresa" />
-          </div>
-        </div>
-      </footer>
-    </div>
+    
   );
 }
 
