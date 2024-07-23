@@ -1,7 +1,9 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import axios from "axios";
 import QRCode from "react-qr-code";
 import { useDropzone } from "react-dropzone";
+import '../../styles/createArticle.css'; 
+
 
 export default function CreateArticle() {
   const [formData, setFormData] = useState({
@@ -97,112 +99,167 @@ export default function CreateArticle() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Nombre"
-        required
-      />
-      <input
-        type="text"
-        name="inventory_number"
-        value={formData.inventory_number}
-        onChange={handleChange}
-        placeholder="Número de Inventario"
-        required
-      />
-      <input
-        type="text"
-        name="brand"
-        value={formData.brand}
-        onChange={handleChange}
-        placeholder="Marca"
-        required
-      />
-      <input
-        type="text"
-        name="model"
-        value={formData.model}
-        onChange={handleChange}
-        placeholder="Modelo"
-        required
-      />
-      <input
-        type="date"
-        name="acquisition_date"
-        value={formData.acquisition_date}
-        onChange={handleChange}
-        placeholder="Fecha de Adquisición"
-      />
-      <input
-        type="text"
-        name="number_series"
-        value={formData.number_series}
-        onChange={handleChange}
-        placeholder="Número de Serie"
-      />
-      <select
-        name="status"
-        value={formData.status}
-        onChange={handleChange}
-        required
-      >
-        <option value="reparacion">Reparación</option>
-        <option value="en uso">En uso</option>
-        <option value="baja">Baja</option>
-        <option value="descompuesto">Descompuesto</option>
-      </select>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Descripción"
-        required
-      ></textarea>
-      <textarea
-        name="caracteristics"
-        value={formData.caracteristics}
-        onChange={handleChange}
-        placeholder="Características"
-        required
-      ></textarea>
-      <select
-        name="type"
-        value={formData.type}
-        onChange={handleChange}
-        required
-      >
-        <option value="Insumos">Insumos</option>
-        <option value="Bien">Bien</option>
-      </select>
-      <input
-        type="number"
-        name="userful_live_id"
-        value={formData.userful_live_id}
-        onChange={handleChange}
-        placeholder="ID de Vida Útil"
-        required
-      />
-      <input
-        type="number"
-        name="policy_id"
-        value={formData.policy_id}
-        onChange={handleChange}
-        placeholder="ID de Póliza"
-        required
-      />
-      <input
-        type="number"
-        name="bill_id"
-        value={formData.bill_id}
-        onChange={handleChange}
-        placeholder="ID de Factura"
-        required
-      />
+<div class="article-container">
+  <form onSubmit={handleSubmit} className="article-form">
+    <div className="form-grid2">
+      <div className="form-group2">
+        <label htmlFor="name">Nombre</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Nombre"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="inventory_number">Número de Inventario</label>
+        <input
+          type="text"
+          name="inventory_number"
+          value={formData.inventory_number}
+          onChange={handleChange}
+          placeholder="Número de Inventario"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="brand">Marca</label>
+        <input
+          type="text"
+          name="brand"
+          value={formData.brand}
+          onChange={handleChange}
+          placeholder="Marca"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="model">Modelo</label>
+        <input
+          type="text"
+          name="model"
+          value={formData.model}
+          onChange={handleChange}
+          placeholder="Modelo"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="acquisition_date">Fecha de Adquisición</label>
+        <input
+          type="date"
+          name="acquisition_date"
+          value={formData.acquisition_date}
+          onChange={handleChange}
+          placeholder="Fecha de Adquisición"
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="number_series">Número de Serie</label>
+        <input
+          type="text"
+          name="number_series"
+          value={formData.number_series}
+          onChange={handleChange}
+          placeholder="Número de Serie"
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="status">Estado</label>
+        <select
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+          required
+        >
+          <option value="reparacion">Reparación</option>
+          <option value="en uso">En uso</option>
+          <option value="baja">Baja</option>
+          <option value="descompuesto">Descompuesto</option>
+        </select>
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="description">Descripción</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Descripción"
+          required
+        ></textarea>
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="caracteristics">Características</label>
+        <textarea
+          name="caracteristics"
+          value={formData.caracteristics}
+          onChange={handleChange}
+          placeholder="Características"
+          required
+        ></textarea>
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="type">Tipo</label>
+        <select
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          required
+        >
+          <option value="Insumos">Insumos</option>
+          <option value="Bien">Bien</option>
+        </select>
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="userful_live_id">ID de Vida Útil</label>
+        <input
+          type="number"
+          name="userful_live_id"
+          value={formData.userful_live_id}
+          onChange={handleChange}
+          placeholder="ID de Vida Útil"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="policy_id">ID de Póliza</label>
+        <input
+          type="number"
+          name="policy_id"
+          value={formData.policy_id}
+          onChange={handleChange}
+          placeholder="ID de Póliza"
+          required
+        />
+      </div>
+
+      <div className="form-group2">
+        <label htmlFor="bill_id">ID de Factura</label>
+        <input
+          type="number"
+          name="bill_id"
+          value={formData.bill_id}
+          onChange={handleChange}
+          placeholder="ID de Factura"
+          required
+        />
+      </div>
+
       <div
+        className="form-group2"
         {...getRootProps()}
         style={{
           border: "2px dashed #cccccc",
@@ -212,8 +269,7 @@ export default function CreateArticle() {
       >
         <input {...getInputProps()} />
         <p>
-          Arrastra y suelta algunas fotos aquí, o haz clic para seleccionar
-          fotos
+          Arrastra y suelta algunas fotos aquí, o haz clic para seleccionar fotos
         </p>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {formData.previewPhotos.map((file, index) => (
@@ -239,13 +295,20 @@ export default function CreateArticle() {
           ))}
         </div>
       </div>
-      <button type="submit">Crear Artículo</button>
-      {qrValue && (
-        <div>
-          <h3>Código QR generado:</h3>
-          <QRCode value={qrValue} />
-        </div>
-      )}
-    </form>
+
+      <div className="form-group2">
+        <button type="submit" className="submit-button">Crear Artículo</button>
+      </div>
+    </div>
+
+    {qrValue && (
+      <div className="form-group2">
+        <h3>Código QR generado:</h3>
+        <QRCode value={qrValue} />
+      </div>
+    )}
+  </form>
+</div>
+
   );
 }

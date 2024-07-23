@@ -23,6 +23,7 @@ import DownArticle from "./views/articles/downArticle"
 import ArticleDelivery from "./views/articles/articleDelivery";
 import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
+import Articles from "./views/articles/Articles";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -44,6 +45,7 @@ const showHeaderRoutes = [
   "/entregaArticulo",
   "/inventarios/usuario",
   "/Bajadebien",
+  "/articulos"
 ];
 
 const routeTitles = {
@@ -66,7 +68,8 @@ const routeTitles = {
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos",
-  "/inventarios/usuario" : "Inventarios de Usuarios"
+  "/inventarios/usuario" : "Inventarios de Usuarios",
+  "/articulos": "Lista de Bienes"
 };
 
 const App = () => {
@@ -112,6 +115,10 @@ const App = () => {
               element={<CreateArticle />}
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
+            <Route
+            path="/articulos"
+            element={<Articles/>}
+          />
           </Routes>
         </UserProvider>
       </main>
