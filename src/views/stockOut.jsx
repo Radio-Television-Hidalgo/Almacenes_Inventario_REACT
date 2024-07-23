@@ -6,18 +6,22 @@ function StockOut(){
 
     const [articulos, setArticulos]= useState([]);
 
-    useEffect(() => { 
+    useEffect(() => {
         const fetchData = async() => {
             try{
-                const response = await fetch('articulos?type=Insumos');
+                const response = await fetch("/api/articulos?type=Bien");
                 const data = await response.json();
-                setArticulos(data);
+                if(Array.isArray(data)) {
+                    setArticulos(data);
+                }else {
+                    console.error('error al obtener los datos', data);
+                }
             } catch (error) {
                 console.error('error al obtener los datos', error);
             }
         };
         fetchData();
-    })
+    }, []);
 
     const fechahoy= new Date();
 
@@ -53,6 +57,7 @@ function StockOut(){
         <table>
             <thead>
                 <tr>
+                    <th>Numero de inventario</th>
                     <th>Nombre</th>
                     <th>Marca</th>
                     <th>Modelo</th>
@@ -68,11 +73,16 @@ function StockOut(){
             <tbody>
                 {articulos.map((articulo)=>(
                     <tr key= {articulo.id}>
+                        <td>
+                            {articulo.tb_inventories && articulo.tb_inventories.length > 0
+                            ? articulo.tb_inventories[0].inventory_number
+                        : "N/A"}
+                        </td>
                         <td>{articulo.name}</td>
                         <td>{articulo.brand}</td>
                         <td>{articulo.model}</td>
                         <td>{articulo.acquisition_date}</td>
-                        <td>{articulo.nuumber_series}</td>
+                        <td>{articulo.number_series}</td>
                         <td>{articulo.status}</td>
                         <td>{articulo.description}</td>
                         <td>{articulo.caracteristics}</td>
