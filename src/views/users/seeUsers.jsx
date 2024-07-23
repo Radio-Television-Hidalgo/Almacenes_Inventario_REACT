@@ -83,7 +83,6 @@ function SeeUser() {
             <table>
                 <thead>
                     <tr className="UserData" >
-                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo Electrónico</th>
                         <th>Identificación</th>
@@ -92,14 +91,12 @@ function SeeUser() {
                         <th>Departamento</th>
                         <th>Estado</th>
                         <th>Foto</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody className="InfoUser" >
                     {filteredDatos.map((dato) => (
                         <tr key={dato.id}>
-                            <td>{dato.id}</td>
                             <td>{dato.name}</td>
                             <td>{dato.email}</td>
                             <td>{dato.identification}</td>
@@ -110,12 +107,16 @@ function SeeUser() {
                             <td>
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
-                            <td><button onClick={() => handleEdit(dato)} className="Edit" >Editar</button></td>
-                            <td><button
-                                className="Delete"
-                                onClick={(event) => handleStatus(event, dato.id)}
-                                disabled={state}
-                            >Eliminar</button></td>
+                            <td>
+                                <button 
+                                    onClick={() => handleEdit(dato)}   
+                                    className="Edit" 
+                                >Editar</button>
+                                <button
+                                    className="Delete"
+                                    onClick={(event) => handleStatus(event, dato.id)}
+                                    disabled={state}
+                                >Eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>
