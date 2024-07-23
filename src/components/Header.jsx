@@ -5,6 +5,7 @@ import "../styles/Header.css"; // Importa los estilos CSS
 const Header = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal
   const navigate = useNavigate();
   const location = useLocation(); // Hook para obtener la ubicación actual
 
@@ -81,18 +82,24 @@ const Header = () => {
         return 'Usuarios';
       case '/almacen':
         return 'Almacen';
-      }
+      default:
+        return '';
+    }
   };
 
+  const handleAvatarClick = () => {
+    setIsModalOpen(true);
+  };
 
-
-
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div>
       <nav>
         <div className="header-top1">
-          <div className="user-info">
+          <div className="user-info" >
             {userInfo ? (
               <>
                 <img
@@ -109,15 +116,14 @@ const Header = () => {
         </div>
 
         <div className="header-top">
-            <div>
-              <h1 className="invent">{getPageTitle()}</h1>
-            </div>
-          
+          <div>
+            <h1 className="invent">{getPageTitle()}</h1>
+          </div>
         </div>
   
-          <div className="header-top2">
-            <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
-          </div>
+        <div className="header-top2">
+          <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
+        </div>
         
         <div className="header-bottom">
           <input type="checkbox" id="sidebar-active" />
@@ -134,6 +140,7 @@ const Header = () => {
             <Link to="/stateOfThegoods">Estado de los productos</Link>
             <Link to="/almacen">Almacen</Link>
             <Link to="/assignations">Asignaciones</Link>
+
             <div className="dropdown">
               <Link to="#" className="dropdown-toggle">Inventario</Link>
               <div className="dropdown-menu">
@@ -141,12 +148,34 @@ const Header = () => {
                 <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
               </div>
             </div>
+            <Link><button onClick={handleAvatarClick}>Informacion</button></Link>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>
           </div>
         </div>
       </nav>
+
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={closeModal}>&times;</span>
+            <img
+              className="modal-avatar"
+              src={userInfo?.img || 'https://via.placeholder.com/150'}
+              alt="User"
+            />
+            <div className="modal-content">
+              <h2>{userInfo?.name}</h2>
+              <p>Campo 1: </p>
+              <p>Campo 2:</p>
+              <p>Campo 3: </p>
+              <p>Campo 4: </p>
+              <p>Campo 5:</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
