@@ -132,7 +132,7 @@ const Header = () => {
             <Link to="/usuario/nuevoUsuario">Usuarios</Link>
             <Link to="/facturas">Facturas</Link>
             <Link to="/stateOfThegoods">Estado de los productos</Link>
-            <Link to="">Almacen</Link>
+            <Link to="/almacen">Almacen</Link>
             <Link to="/assignations">Asignaciones</Link>
             <div className="dropdown">
               <Link to="#" className="dropdown-toggle">Inventario</Link>
