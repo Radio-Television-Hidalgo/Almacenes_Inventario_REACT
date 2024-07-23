@@ -12,18 +12,20 @@ import Bills from "./views/articles/Bills";
 import StateofThegoods from "./views/StateofThegoods";
 import Assignations from "./views/Assignations";
 import Goods from "./views/articles/Goods";
-import SeeUser from "./views/users/seeUsers"
+import SeeUser from "./views/users/seeUsers";
 import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
 import EditUser from "./views/users/editUser";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
-import DownArticle from "./views/articles/downArticle"
+import DownArticle from "./views/articles/downArticle";
 import ArticleDelivery from "./views/articles/articleDelivery";
 import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
+import PolicyScreen from "./views/articles/policyScreen";
+import Footer from "./components/Footer"; // Importa el Footer
 
 const showHeaderRoutes = [
   "/inicio",
@@ -40,17 +42,19 @@ const showHeaderRoutes = [
   "/usuario/editarUsuario",
   "/ControlInventario",
   "/factura",
-  "/poliza",
+  "/crearPoliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
   "/inventarios/usuario",
   "/Bajadebien",
   "/articulos",
-  "/assignations"
+  "/assignations",
+  "/polizas",
 ];
 
 const routeTitles = {
-  "/poliza": "Póliza",
+  "/crearPoliza": "Nueva Póliza",
+  "/polizas": "Todas las Pólizas",
   "/factura": "Factura",
   "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
@@ -69,8 +73,8 @@ const routeTitles = {
   "/usuario/editarUsuario": "Edicion de usuario",
   "/articulos/bajaBien": "Baja de Bien",
   "/entregaArticulo": "Entrega de Articulos",
-  "/inventarios/usuario" : "Inventarios de Usuarios",
-  "/articulos": "Lista de Bienes"
+  "/inventarios/usuario": "Inventarios de Usuarios",
+  "/articulos": "Lista de Bienes",
 };
 
 const App = () => {
@@ -103,7 +107,8 @@ const App = () => {
             <Route path="/usuario/editarUsuario" element={<EditUser />} />
             <Route path="/ControlInventario" element={<InventoryControl />} />
             <Route path="/factura" element={<Invoice />} />
-            <Route path="/poliza" element={<Policy />} />
+            <Route path="/crearPoliza" element={<Policy />} />
+            <Route path="/polizas" element={<PolicyScreen />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
@@ -116,13 +121,11 @@ const App = () => {
               element={<CreateArticle />}
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
-            <Route
-            path="/articulos"
-            element={<Articles/>}
-          />
+            <Route path="/articulos" element={<Articles />} />
           </Routes>
         </UserProvider>
       </main>
+      <Footer /> {/* Agrega el Footer después del main */}
     </div>
   );
 };

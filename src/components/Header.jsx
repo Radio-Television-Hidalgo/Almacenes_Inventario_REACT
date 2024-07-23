@@ -68,8 +68,8 @@ const Header = () => {
         return 'Estado de los productos';
       case '/assignations':
         return 'Asignaciones';
-      case '/poliza':
-        return 'Polizas';
+      case '/crearcrearPoliza':
+        return 'crearPolizas';
       case '/inventario':
         return 'Mi inventario';
       case '/ControlInventario':
@@ -144,7 +144,7 @@ const Header = () => {
             <div className="dropdown">
               <Link to="#" className="dropdown-toggle">Inventario</Link>
               <div className="dropdown-menu">
-                <Link to="/poliza" className="dropdown-item">Polizas</Link>
+                <Link to="/crearPoliza" className="dropdown-item">Polizas</Link>
                 <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
               </div>
             </div>
