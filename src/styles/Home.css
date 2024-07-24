@@ -31,6 +31,7 @@ h2{
   font-size: 2rem;
 }
 
+
 /* Estilo para el encabezado h3 */
 .home-container h4 {
   font-size: 4rem; /* Tamaño de fuente para el h3 */
@@ -78,6 +79,17 @@ h2{
   font-weight: 300;
   font-style: normal;
 }
+.home-cards {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  width: 500px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 /* Estilo específico para las columnas */
 .home-column-left .home-content {
   justify-content: flex-start;
@@ -89,6 +101,17 @@ h2{
   font-weight: 300;
   font-style: normal;
 }
+.home-column-left .home-contents {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 
 .home-column-right .home-content {
   justify-content: flex-end;
@@ -96,6 +119,16 @@ h2{
   border-bottom-right-radius: 60px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.home-column-right .home-contents {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -112,14 +145,39 @@ h2{
   font-weight: 300;
   font-style: normal;
 }
+.home-contents {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 
 .home-content:hover {
+  transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
+}
+.home-contents:hover {
   transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
 }
 
 /* Estilo para el encabezado */
 .home-content h1, .home-content h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+}
+.home-contents h1, .home-contents h2 {
   margin-bottom: 1rem;
   color: #333;
   font-size: 1.5rem;
@@ -153,8 +211,24 @@ h2{
     max-width: 100%;
     height: auto;
   }
+  .home-cards {
+    max-width: 100%;
+    height: auto;
+  }
   
   .home-content{
+    
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    
+  }
+  .home-contents{
     
     align-items: center;
     justify-content: center;
@@ -176,8 +250,26 @@ h2{
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.home-column-left .home-contents {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
 .home-column-right .home-content {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.home-column-right .home-contents {
   justify-content: flex-end;
   border-top-right-radius: 60px;
   border-bottom-right-radius: 60px;
