@@ -82,6 +82,16 @@ const Header = () => {
         return 'Usuarios';
       case '/almacen':
         return 'Almacen';
+      case '/resguardoGeneral':
+        return 'Resguardo General';
+      case '/factura':
+        return 'Crear Factura';
+      case '/entregaArticulo':
+        return 'Entrega de bienes';
+      case '/inventarios/usuario':
+        return 'Inventarios de Usuario';
+        case '/articulos/bajaBien':
+          return 'Baja de Bienes';
       default:
         return '';
     }
