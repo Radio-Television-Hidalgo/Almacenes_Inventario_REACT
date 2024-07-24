@@ -83,7 +83,8 @@ function SeeUser() {
             <table>
                 <thead>
                     <tr className="UserData" >
-                        <th>Nombre</th>
+                        <th>Nombre Completo</th>
+                        <th>Numero de Trabajador</th>
                         <th>Correo Electrónico</th>
                         <th>Identificación</th>
                         <th>RFC</th>
@@ -98,6 +99,7 @@ function SeeUser() {
                     {filteredDatos.map((dato) => (
                         <tr key={dato.id}>
                             <td>{dato.name}</td>
+                            <td>{dato.worker_nomber}</td>
                             <td>{dato.email}</td>
                             <td>{dato.identification}</td>
                             <td>{dato.RFC}</td>
