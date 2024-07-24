@@ -44,14 +44,16 @@ function BienTable() {
             <td>{bien.status}</td>
             <td>
               {bien.photos_entry &&
-                bien.photos_entry.split(",").map((photo, index) => (
-                  <img
-                    key={index}
-                    src={photo}
-                    alt="Foto del bien"
-                    className="photo"
-                  />
-                ))}
+                bien.photos_entry
+                  .split(",")
+                  .map((photo, index) => (
+                    <img
+                      key={index}
+                      src={`/api/${photo}`}
+                      alt="Foto del bien"
+                      className="photo"
+                    />
+                  ))}
             </td>
           </tr>
         ))}

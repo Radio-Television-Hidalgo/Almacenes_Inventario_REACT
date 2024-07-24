@@ -14,7 +14,6 @@ function InsumoTable() {
         console.error("Error fetching insumos:", error);
       });
   }, []);
-
   return (
     <table className="style-table">
       <thead>
@@ -45,7 +44,7 @@ function InsumoTable() {
                 insumo.photos_entry.split(",").map((photo, index) => (
                   <img
                     key={index}
-                    src={photo}
+                    src={`/api/${photo}`}
                     alt="Foto del insumo"
                     style={{
                       width: "50px",
@@ -61,5 +60,4 @@ function InsumoTable() {
     </table>
   );
 }
-
 export default InsumoTable;
