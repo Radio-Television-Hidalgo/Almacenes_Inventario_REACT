@@ -90,7 +90,7 @@ function CreateArticle() {
         setUsefulLives(data.usefulLives);
         setPolicies(data.policies);
         setBills(data.bills);
-  
+        console.log(data.policies)
         // Obtener todos los artículos
         const billsResponse = await fetch("/api/articulos/articulos");
         const articles = await billsResponse.json();
