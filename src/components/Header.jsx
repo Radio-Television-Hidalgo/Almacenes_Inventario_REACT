@@ -117,15 +117,16 @@ const Header = () => {
                   src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
                   alt="User"
                 />
-                <p>{userInfo.name}</p> 
+                <button className="btn" onClick={handleAvatarClick}>{userInfo.name}</button> 
                 
               </>
             ) : (
               <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+              
             )}
             
           </div>
-          <button className="btn" onClick={handleAvatarClick}>Ver más</button>
+          
         </div>
 
         <div className="header-top">
