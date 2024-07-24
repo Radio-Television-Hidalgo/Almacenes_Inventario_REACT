@@ -25,7 +25,7 @@
 }
 
 .style-table td {
-    width: 340px;
+    width: 330px;
 }
 
 .style-table tbody tr:nth-child(even) {
@@ -72,5 +72,17 @@
 
     .style-table th {
         width: 67px;
+    }
+}
+
+@media (min-width: 826px) and (max-width: 1440px) {
+    .style-table td {
+        width: 281px;
+    }
+}
+
+@media (min-width: 716px) and (max-width: 1024px) {
+    .style-table td {
+        width: 199px;
     }
 }
