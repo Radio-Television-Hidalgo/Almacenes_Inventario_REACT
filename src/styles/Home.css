@@ -20,6 +20,8 @@
   flex-direction: column;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 h2{
   color: #253238;
@@ -32,9 +34,9 @@ h2{
 /* Estilo para el encabezado h3 */
 .home-container h4 {
   font-size: 4rem; /* Tamaño de fuente para el h3 */
-  color: #253238; /* Color de texto para el h3 */
   margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
   font-family: "Bebas Neue", sans-serif;
+  color: #253238;
 }
 
 /* Estilo para las columnas */
@@ -46,6 +48,9 @@ h2{
   width: 100%;
   max-width: 1200px; /* Ancho máximo para las columnas */
   flex-wrap: wrap; /* Permite que las columnas se envuelvan para mejor responsividad */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 /* Estilo para cada columna */
@@ -56,6 +61,9 @@ h2{
   flex: 1;
   min-width: 300px; /* Ancho mínimo para las columnas */
   max-width: 300px; /* Ancho máximo de las columnas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 /* Estilo para las tarjetas (cards) */
@@ -66,6 +74,9 @@ h2{
   max-width: 300px; /* Ancho máximo de las tarjetas */
   height: 200px; /* Altura fija de las tarjetas */
   margin: 10px; /* Margen para separar las tarjetas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 /* Estilo específico para las columnas */
 .home-column-left .home-content {
@@ -74,6 +85,9 @@ h2{
   border-bottom-left-radius: 60px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .home-column-right .home-content {
@@ -82,6 +96,9 @@ h2{
   border-bottom-right-radius: 60px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .home-content {
   text-align: center;
@@ -91,6 +108,9 @@ h2{
   width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
   height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
   transition: transform 0.3s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .home-content:hover {
@@ -141,6 +161,9 @@ h2{
     width: 200px;
     height: 200px; /* Haciendo los elementos cuadrados */
     margin: 0 auto; /* Centrar los elementos */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
     
   }
   /* Estilo específico para las columnas */
