@@ -69,11 +69,12 @@ h2 {
   flex: 1;
   max-width: 300px; /* Ancho máximo de las tarjetas */
   height: 200px; /* Altura fija de las tarjetas */
-  margin: 10px; /* Margen para separar las tarjetas */
+  margin: 6px; /* Margen para separar las tarjetas */
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 
 .werehouse-card {
   border-top-left-radius: 60px;
