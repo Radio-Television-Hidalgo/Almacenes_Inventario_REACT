@@ -14,7 +14,7 @@ function GeneralReceipt() {
 
 
   return (
-    <div>
+    <div class="table-container">
       <h1>Lista de Artículos</h1>
       <table className="article-table">
         <thead>

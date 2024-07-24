@@ -1,0 +1,108 @@
+.custom-form-container {
+    width: 90%; /* Ajustar para ocupar el 90% del ancho de la pantalla */
+    background-color: rgba(255, 255, 255, 0.449); /* Fondo blanco con opacidad del 50% */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    border: 1px solid rgba(221, 221, 221, 0.5); /* Borde con opacidad */
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 1s ease-in; /* Animación de aparición */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    max-width: 1000px; /* Limitar el ancho máximo para que no se expanda demasiado en pantallas grandes */
+}
+
+.custom-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Espaciado entre los campos */
+    transition: grid-template-columns 0.3s ease; /* Transición suave para el cambio de columnas */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.custom-form-group {
+    margin-bottom: 15px;
+}
+
+.custom-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Color del texto */
+}
+
+.custom-form-group select, .custom-form-group input {
+    width: 100%;
+    padding: 10px; /* Aumentar el padding para mejor accesibilidad */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones para los estados de focus */
+}
+
+.custom-form-group select:focus, .custom-form-group input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra en el estado de focus */
+    outline: none;
+}
+
+.custom-form-group input[readonly] {
+    background-color: #e9ecef;
+}
+
+.custom-error-message, .custom-success-message {
+    grid-column: span 2; /* Ocupa toda la fila */
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.custom-error-message {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1); /* Fondo translúcido para el mensaje de error */
+}
+
+.custom-success-message {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1); /* Fondo translúcido para el mensaje de éxito */
+}
+
+.custom-submit-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto 0; /* Centrado del botón */
+    padding: 12px; /* Aumentar el padding para mejorar la accesibilidad */
+    border: none;
+    border-radius: 4px;
+    background-color: #691B31;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para el botón */
+}
+
+.custom-submit-button:hover {
+    background-color: #BC955B;
+    transform: translateY(-2px); /* Efecto de levantamiento al pasar el mouse */
+}
+
+.custom-submit-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

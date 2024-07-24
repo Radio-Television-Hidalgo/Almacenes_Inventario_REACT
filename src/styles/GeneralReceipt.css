@@ -1,23 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Permite el scroll horizontal */
+  margin: 20px 0;
+}
 
 .article-table {
   width: 100%;
+  min-width: 1000px; /* Asegura que la tabla tenga un ancho mínimo */
   border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 18px;
+  font-size: 14px; /* Ajustar tamaño de la fuente para reducir la tabla */
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: left;
+  table-layout: auto; /* Dejar que las celdas ajusten su tamaño automáticamente */
 }
 
 .article-table th, .article-table td {
-  padding: 12px 15px;
+  padding: 8px 10px; /* Reducir el padding para ajustar mejor */
+  border: 1px solid #ddd; /* Añadir borde a las celdas */
+  font-size: 14px; /* Tamaño de fuente consistente para todos los textos */
+  word-wrap: break-word; /* Permitir que el texto se ajuste dentro de las celdas */
 }
 
 .article-table th {
+  background-color: #691B31; /* Color de fondo según la referencia */
+  color: white; /* Color del texto del encabezado */
   cursor: pointer;
-  background-color: #f2f2f2;
+  text-align: center; /* Centrar texto del encabezado */
+  font-weight: 600; /* Aumentar el peso de la fuente para el encabezado */
+  font-size: 14px; /* Reducir el tamaño de la fuente del encabezado */
 }
 
 .article-table tr:nth-of-type(even) {
@@ -26,4 +40,16 @@
 
 .article-table tr:hover {
   background-color: #f1f1f1;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .article-table {
+    font-size: 12px; /* Reducir el tamaño de fuente en pantallas pequeñas */
+  }
+
+  .article-table th, .article-table td {
+    padding: 6px; /* Reducir el padding en pantallas pequeñas */
+    font-size: 12px; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+  }
 }
