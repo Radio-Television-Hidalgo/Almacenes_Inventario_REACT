@@ -24,6 +24,7 @@ function CreateArticle() {
   const [policies, setPolicies] = useState([]);
   const [bills, setBills] = useState([]);
   const [availableBills, setAvailableBills] = useState([]);
+  const [availablePolicies, setAvailablePolicies] = useState([]);
 
   const onDrop = (acceptedFiles) => {
     setFiles([...files, ...acceptedFiles]);
@@ -99,14 +100,25 @@ function CreateArticle() {
           acc[article.bill_id] = (acc[article.bill_id] || 0) + 1;
           return acc;
         }, {});
+        //contar articulo por piliza
+        const articleCountByPolicy = articles.reduce((acc, article) => {
+          acc[article.policy_id] = (acc[article.policy_id] || 0) + 1;
+          return acc;
+        }, {});
   
         // Filtrar las facturas disponibles
         const availableBills = data.bills.filter(bill => {
           const articleCount = articleCountByBill[bill.id] || 0;
           return articleCount < bill.quantity;
         });
+        //filtrar las polizas disponibles
+        const availablePolicies = data.policies.filter(policy => {
+          const articleCount = articleCountByPolicy[policy.id] || 0;
+          return articleCount < policy.quantity;
+        });
   
         setAvailableBills(availableBills);
+        setAvailablePolicies(availablePolicies);
       } catch (error) {
         console.error("Error fetching catalogs:", error);
       }
@@ -239,7 +251,7 @@ function CreateArticle() {
             required
           >
             <option value="">Select Policy</option>
-            {policies.map((policy) => (
+            {availablePolicies.map((policy) => (
               <option key={policy.id} value={policy.id}>
                 {policy.description}
               </option>
