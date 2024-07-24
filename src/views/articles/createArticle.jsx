@@ -23,6 +23,8 @@ function CreateArticle() {
   const [usefulLives, setUsefulLives] = useState([]);
   const [policies, setPolicies] = useState([]);
   const [bills, setBills] = useState([]);
+  const [availableBills, setAvailableBills] = useState([]);
+  const [availablePolicies, setAvailablePolicies] = useState([]);
 
   const onDrop = (acceptedFiles) => {
     setFiles([...files, ...acceptedFiles]);
@@ -81,19 +83,50 @@ function CreateArticle() {
   useEffect(() => {
     const fetchCatalogs = async () => {
       try {
+        // Obtener datos de catálogo
         const response = await fetch("/api/articulos/datosCatalogo");
         const data = await response.json();
         console.log(data);
         setUsefulLives(data.usefulLives);
         setPolicies(data.policies);
         setBills(data.bills);
+  
+        // Obtener todos los artículos
+        const billsResponse = await fetch("/api/articulos/articulos");
+        const articles = await billsResponse.json();
+  
+        // Contar artículos por factura
+        const articleCountByBill = articles.reduce((acc, article) => {
+          acc[article.bill_id] = (acc[article.bill_id] || 0) + 1;
+          return acc;
+        }, {});
+        //contar articulo por piliza
+        const articleCountByPolicy = articles.reduce((acc, article) => {
+          acc[article.policy_id] = (acc[article.policy_id] || 0) + 1;
+          return acc;
+        }, {});
+  
+        // Filtrar las facturas disponibles
+        const availableBills = data.bills.filter(bill => {
+          const articleCount = articleCountByBill[bill.id] || 0;
+          return articleCount < bill.quantity;
+        });
+        //filtrar las polizas disponibles
+        const availablePolicies = data.policies.filter(policy => {
+          const articleCount = articleCountByPolicy[policy.id] || 0;
+          return articleCount < policy.quantity;
+        });
+  
+        setAvailableBills(availableBills);
+        setAvailablePolicies(availablePolicies);
       } catch (error) {
         console.error("Error fetching catalogs:", error);
       }
     };
-
+  
     fetchCatalogs();
   }, []);
+  
 
   return (
     <div className="main-container2">
@@ -219,7 +252,7 @@ function CreateArticle() {
               required
             >
               <option value="">Select Policy</option>
-              {policies.map((policy) => (
+              {availablePolicies.map((policy) => (
                 <option key={policy.id} value={policy.id}>
                   {policy.description}
                 </option>
@@ -235,7 +268,7 @@ function CreateArticle() {
               required
             >
               <option value="">Select Bill</option>
-              {bills.map((bill) => (
+              {availableBills.map((bill) => (
                 <option key={bill.id} value={bill.id}>
                   {bill.bill_number}
                 </option>
