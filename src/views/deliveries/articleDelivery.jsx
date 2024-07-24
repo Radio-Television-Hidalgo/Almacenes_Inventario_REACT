@@ -8,7 +8,7 @@ function ArticleDelivery() {
         quantity: 0,
         delivery_date: '',
         description: "",
-        status: '',
+        status: 'proceso',
         observations: "",
         photos_entrance: null,
         type: "",
@@ -66,15 +66,9 @@ function ArticleDelivery() {
                     <label htmlFor="">Descripcion</label><br />
                     <input type="text" placeholder='Descripcion' name='description' onChange={handleInputChange} />
                 </div>
-                <div>
+                <div hidden>
                     <label htmlFor="">Estatus</label>
-                    <select name="status" id="" onChange={handleInputChange}>
-                        <option value="#" selected disabled>Selecciona un estatus</option>
-                        <option value="proceso">Proceso</option>
-                        <option value="entregado">Entregado</option>
-                        <option value="en inventario">En Inventario</option>
-                        <option value="bajo resguardo">Bajo Resguardo</option>
-                    </select>
+                    <input type="text" name='status' onChange={handleInputChange} defaultValue={"proceso"} />
                 </div>
                 <div>
                     <label htmlFor="">Observaciones</label><br />
