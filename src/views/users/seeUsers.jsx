@@ -104,7 +104,7 @@ function SeeUser() {
                             <td>{dato.identification}</td>
                             <td>{dato.RFC}</td>
                             <td>{dato.CURP}</td>
-                            <td>{dato.departmentId}</td>
+                            <td>{dato.tbc_department.name}</td>
                             <td>{dato.status ? "Activo" : "Inactivo"}</td>
                             <td>
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
