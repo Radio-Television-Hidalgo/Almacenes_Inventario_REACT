@@ -1,68 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-table {
-    width: 100%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    overflow-x: auto;
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
+* {
+    box-sizing: border-box;
 }
 
-thead, tbody {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-
-
-tbody {
-    display: block;
-    overflow-y: auto;
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .search {
-    display: flex;
-    justify-content: center;
+    display: block;
     width: 70%;
     padding: 10px;
+    margin: 0 auto 20px auto;
     border-radius: 40px;
+    border: 1px solid #ccc;
     background-color: #f5f5f5;
-    margin: 20px auto;
-    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    font-style: normal;
 }
 
-.UserData th {
-    background-color: #691B31;
-    text-align: left;
-    padding: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.InfoUser {
-    color: black;
-}
-
-.InfoUser tr {
-    border-radius: 10px;
+thead {
     display: table;
     width: 100%;
     table-layout: fixed;
+}
+
+tbody {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #691B31;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+tr {
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
 }
 
 .InfoUser td {
     background: #f5f5f5;
-    padding: 10px;
     word-wrap: break-word;
-    text-align: left;
 }
 
 .Edit, .Delete {
@@ -74,16 +85,49 @@ tbody {
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    font-style: normal;
+    transition: background-color 0.3s;
 }
 
 .Edit:hover, .Delete:hover {
     background-color: #691B31;
 }
 
-/* Para hacer las imágenes más pequeñas si es necesario */
 .InfoUser img {
     max-width: 100%;
     height: auto;
     display: block;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .search {
+        width: 90%;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    .InfoUser tr {
+        margin-bottom: 15px;
+    }
+
+    .InfoUser td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .InfoUser td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
 }
