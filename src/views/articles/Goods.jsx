@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import '../../styles/Goods.css'; 
 
-
 function Goods() {
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,53 +34,49 @@ function Goods() {
   }
 
   return (
-<div>
-  <h1>Bienes Adquiridos</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Modelo</th>
-        <th>Descripción</th>
-        <th>Marca</th>
-        <th>Número de serie</th>
-        <th>Número de inventario</th>
-        <th>Origen</th>
-        <th>Foto</th>
-        <th>Ubicación</th>
-        <th>Depreciación</th>
-        <th>Valor</th>
-        <th>QR</th>
-      </tr>
-    </thead>
-    <tbody>
-      {datos.map((dato) => (
-        <tr key={dato.id}>
-          <td>{dato.name}</td>
-          <td>{dato.model}</td>
-          <td>{dato.description}</td>
-          <td>{dato.brand}</td>
-          <td>{dato.number_series}</td>
-          <td>{dato.inventory_number}</td>
-          <td>{dato.origin}</td>
-          <td>
-            <img
-              src={dato.photos_entry ? dato.photos_entry.split(",")[0] : ""}
-              alt={`Foto de ${dato.name}`}
-              width="100"
-            />
-          </td>
-          <td>{dato.ubication}</td>
-          <td>{dato.accumulated_depreciation}</td>
-          <td>{dato.value}</td>
-          <td>
-            <QRCode className="qr-code" value={dato.QR} />
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+    <div>
+      <h1>Bienes Adquiridos</h1>
+      <div className="goods-table">
+        <div className="goods-header goods-row">
+          <div>Nombre</div>
+          <div>Modelo</div>
+          <div>Descripción</div>
+          <div>Marca</div>
+          <div>Número de serie</div>
+          <div>Número de inventario</div>
+          <div>Origen</div>
+          <div>Foto</div>
+          <div>Ubicación</div>
+          <div>Depreciación</div>
+          <div>Valor</div>
+          <div>QR</div>
+        </div>
+        {datos.map((dato) => (
+          <div className="goods-row" key={dato.id}>
+            <div>{dato.name}</div>
+            <div>{dato.model}</div>
+            <div>{dato.description}</div>
+            <div>{dato.brand}</div>
+            <div>{dato.number_series}</div>
+            <div>{dato.inventory_number}</div>
+            <div>{dato.origin}</div>
+            <div>
+              <img
+                src={dato.photos_entry ? dato.photos_entry.split(",")[0] : ""}
+                alt={`Foto de ${dato.name}`}
+                width="100"
+              />
+            </div>
+            <div>{dato.ubication}</div>
+            <div>{dato.accumulated_depreciation}</div>
+            <div>{dato.value}</div>
+            <div>
+              <QRCode className="qr-code" value={dato.QR} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

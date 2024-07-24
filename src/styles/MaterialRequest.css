@@ -1,12 +1,10 @@
-/* styles/materialRequest.css */
-
 /* Form Styles */
-form {
+.material-request-form {
     max-width: 900px;
     margin: 0 auto;
     padding: 10px;
     margin-top: 20px;
-    border: 2px;
+    border: 2px solid #ccc;
     border-radius: 12px;
     background-color: #f9f9f980;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -15,10 +13,11 @@ form {
     gap: 10px;
 }
 
-input[type="text"],
-input[type="number"],
-select {
-    width: calc(30% - 22px);
+.material-request-input,
+.material-request-select,
+.material-request-textarea,
+.material-request-file {
+    width: calc(30% - 2px);
     margin: 10px 0;
     padding: 10px;
     border: 2px solid orange;
@@ -26,18 +25,13 @@ select {
     box-sizing: border-box;
 }
 
-textarea {
+.material-request-textarea {
     width: calc(10% - 22px);
-    margin: 10px 0;
-    padding: 10px;
-    border: 2px solid orange;
-    border-radius: 8px;
-    box-sizing: border-box;
     resize: vertical;
 }
 
-input[type="file"] {
-    background-color: #beaf8d; /* Color maroon */
+.material-request-file {
+    background-color: #beaf8d;
     color: white;
     border: none;
     border-radius: 12px;
@@ -45,109 +39,103 @@ input[type="file"] {
     text-align: center;
     text-decoration: none;
     font-size: 14px;
-    width: calc(59% - 22px); /* Ensure full width for the file input */
+    width: calc(59% - 22px);
     margin: 10px 0;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-select:focus,
-textarea:focus {
+.material-request-input:focus,
+.material-request-select:focus,
+.material-request-textarea:focus {
     outline: none;
     border-color: #800000;
 }
 
 /* Button Styles */
-.button-morado {
-    background-color: #691B31; /* Color maroon */
+.material-request-button {
+    background-color: #691B31;
     color: white;
     border: none;
     border-radius: 12px;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-   
     font-size: 16px;
     margin: 10px 300px;
     cursor: pointer;
-    width: calc(40% - 50px); /* Ensure full width for the button */
+    width: calc(40% - 50px);
 }
 
-button:hover {
+.material-request-button:hover {
     opacity: 0.9;
 }
 
-h2 {
+.material-request-title {
     text-align: center;
     color: #800000;
     margin-top: 20px;
 }
 
-
-.container {
+.material-request-container {
     margin: 20px auto;
     padding: 20px;
 }
 
 /* Additional styles for better alignment */
-.section {
+.material-request-section {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.section label {
+.material-request-section label {
     width: 100%;
     margin-bottom: 5px;
     color: #691B31;
 }
 
-.section input[type="text"],
-.section input[type="number"],
-.section select {
-    width: calc(50% - 20px); /* Adjust width to 50% of parent container minus margin */
+.material-request-section .material-request-input,
+.material-request-section .material-request-select {
+    width: calc(50% - 20px);
 }
 
-.section textarea {
+.material-request-section .material-request-textarea {
     width: 100%;
 }
 
 /* Mobile Styles */
 @media (min-width: 357px) and (max-width: 667px) {
-    form {
+    .material-request-form {
         padding: 10px;
         margin-top: 10px;
         gap: 5px;
     }
 
-    input[type="text"],
-    input[type="number"],
-    select,
-    textarea,
-    input[type="file"],
-    .button-morado {
+    .material-request-input,
+    .material-request-select,
+    .material-request-textarea,
+    .material-request-file,
+    .material-request-button {
         width: 100%;
         margin: 5px 0;
     }
 
-    .button-morado {
+    .material-request-button {
         margin: 5px 0;
         width: 100%;
     }
 
-    h2 {
+    .material-request-title {
         font-size: 20px;
     }
 
-    .section {
+    .material-request-section {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .section input[type="text"],
-    .section input[type="number"],
-    .section select {
+    .material-request-section .material-request-input,
+    .material-request-section .material-request-select {
         width: 100%;
     }
 }

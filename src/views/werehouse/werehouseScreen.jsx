@@ -34,6 +34,11 @@ export default function WerehouseScreen() {
           <h1>Salida de Insumos</h1>
         </div>
       </Link>
+      <Link to="/polizas" >
+        <div>
+          <h1>Ver Polizas</h1>
+        </div>
+      </Link>
     </div>
   );
 }

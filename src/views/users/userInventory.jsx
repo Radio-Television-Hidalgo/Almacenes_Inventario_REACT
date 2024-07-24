@@ -52,8 +52,8 @@ function UserInventory() {
 
     const filteredModalData = modalData
         ? modalData.filter(item =>
-              item.name.toLowerCase().includes(searchTerm.toLowerCase())
-          )
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
         : [];
 
     if (loading) return <p>Cargando...</p>;
@@ -91,6 +91,7 @@ function UserInventory() {
                         <table style={styles.table}>
                             <thead>
                                 <tr>
+                                    <th style={styles.tableHeaderCell}>IMG</th>
                                     <th style={styles.tableHeaderCell}>Nombre</th>
                                     <th style={styles.tableHeaderCell}>Descripción</th>
                                     <th style={styles.tableHeaderCell}>Categoría</th>
@@ -108,6 +109,13 @@ function UserInventory() {
                             <tbody>
                                 {filteredModalData.map(item => (
                                     <tr key={item.id} style={styles.tableRow}>
+                                        <td style={styles.tableCell}>
+                                            <img
+                                                src={item.articles.photos_entry} // Utiliza la ruta completa desde el backend
+                                                alt="Foto del Artículo"
+                                                style={styles.userImage} // Aplica el estilo de imagen
+                                            />
+                                        </td>
                                         <td style={styles.tableCell}>{item.name}</td>
                                         <td style={styles.tableCell}>{item.description}</td>
                                         <td style={styles.tableCell}>{item.category}</td>
@@ -123,6 +131,8 @@ function UserInventory() {
                                     </tr>
                                 ))}
                             </tbody>
+
+
                         </table>
                     </div>
                 </div>
