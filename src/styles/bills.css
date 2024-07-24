@@ -1,5 +1,3 @@
-/* bills.css */
-
 .bills-container {
   text-align: center;
   padding: 20px;
@@ -18,6 +16,10 @@
   width: 200px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.bills-table-wrapper {
+  overflow-x: auto;
 }
 
 .bills-table {
