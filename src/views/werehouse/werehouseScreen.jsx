@@ -5,8 +5,8 @@ import "/src/styles/AlmacenMenu.css";
 export default function WerehouseScreen() {
   return (
     <div className="werehouse-container">
-      <h3>Almacén</h3>
-      <h2>Selecciona una Opción</h2>
+        <h4>¿Qué deseas hacer hoy?</h4>
+        <h2>Selecciona una Opción</h2>
       <br />
       <div className="werehouse-columns">
         <div className="werehouse-column">
