@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "/src/styles/TablaInsumos.css"
+import "/src/styles/TablaInsumos.css";
 
 function InsumoTable() {
   const [insumos, setInsumos] = useState([]);
@@ -14,7 +14,6 @@ function InsumoTable() {
         console.error("Error fetching insumos:", error);
       });
   }, []);
-
   return (
     <table className="style-table">
       <thead>
@@ -39,13 +38,13 @@ function InsumoTable() {
                 ? insumo.tb_warehouses[0].warehouses_number
                 : "N/A"}
             </td>
-           
+
             <td>
               {insumo.photos_entry &&
                 insumo.photos_entry.split(",").map((photo, index) => (
                   <img
                     key={index}
-                    src={photo}
+                    src={`/api/${photo}`}
                     alt="Foto del insumo"
                     style={{
                       width: "50px",
@@ -61,5 +60,4 @@ function InsumoTable() {
     </table>
   );
 }
-
 export default InsumoTable;

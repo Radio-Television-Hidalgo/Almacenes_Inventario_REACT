@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+/* font-family: "Bebas Neue", sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*font-family: 'Poppins', sans-serif; */
+
+/* Estilo para el contenedor principal */
+.werehouse-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(at 10.358991888443558% 16.017426549337266%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(190.96153846153845, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 79.67844051819783% 18.838452180171593%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(219.8076923076923, 75.36231884057972%, 72.94117647058825%, 0) 100%), radial-gradient(at 56.573798740936596% 42.70753445603801%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 1) 0%, hsla(249.23076923076925, 75.36231884057972%, 72.94117647058825%, 0) 100%);
+  background-size: cover;
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  background-attachment: fixed; /* Hace que la imagen de fondo permanezca fija en su lugar */
+  background-position: center;
+  text-align: center;
+  padding: 20px; /* Espaciado interno */
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h2 {
+  color: #253238;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+/* Estilo para el encabezado h3 */
+.werehouse-container h4 {
+  font-size: 4rem; /* Tamaño de fuente para el h3 */
+  color: #253238; /* Color de texto para el h3 */
+  margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Estilo para las columnas */
+.werehouse-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para las columnas */
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan para mejor responsividad */
+}
+
+/* Estilo para cada columna */
+.werehouse-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las tarjetas dentro de una columna */
+  flex: 1;
+  min-width: 300px; /* Ancho mínimo para las columnas */
+  max-width: 300px; /* Ancho máximo de las columnas */
+}
+
+/* Estilo para las tarjetas (cards) */
+.werehouse-card,
+.werehouse-cards,
+.werehouse-cardss {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  max-width: 300px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 6px; /* Margen para separar las tarjetas */
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.werehouse-card {
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.werehouse-cards,
+.werehouse-cardss {
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  justify-content: flex-end;
+}
+
+.werehouse-card:hover,
+.werehouse-cards:hover,
+.werehouse-cardss:hover {
+  transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra */
+}
+
+.werehouse-content {
+  text-align: center;
+  width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el encabezado dentro de las tarjetas */
+.werehouse-content h1,
+.werehouse-content h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .werehouse-container {
+    padding: 10px;
+  }
+
+  .werehouse-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .werehouse-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .werehouse-column {
+    max-width: none;
+    width: 100%;
+  }
+
+  .werehouse-card,
+  .werehouse-cards {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .werehouse-content {
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+  }
+}
