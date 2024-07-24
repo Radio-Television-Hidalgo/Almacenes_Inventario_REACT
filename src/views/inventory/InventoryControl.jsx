@@ -102,4 +102,5 @@ function InventoryControl() {
   );
 }
 
+
 export default InventoryControl;
