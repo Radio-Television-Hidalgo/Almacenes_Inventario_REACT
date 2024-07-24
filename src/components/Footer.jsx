@@ -1,4 +1,3 @@
-
 import "../styles/footer.css"; 
 
 const Footer = () => {
@@ -10,7 +9,7 @@ const Footer = () => {
           <p>Radio y Televisión de Hidalgo</p>
           <div className="footer-logos">
             <img src="/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
-            <img src="/image.png" alt="Logo Empresa" className="logo-empresa" />
+            <img src="/logo_radio.webp" alt="Logo Empresa" className="logo-empresa" />
           </div>
         </div>
       </footer>

@@ -31,6 +31,10 @@
   border: 1px solid #ccc;
 }
 
+.bills-table-wrapper {
+  overflow-x: auto;
+}
+
 .bills-table {
   display: table;
   width: 100%;

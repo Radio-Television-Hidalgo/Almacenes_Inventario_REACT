@@ -1,65 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 /* Footer Styles */
 .footer {
-    background: linear-gradient(90deg, #691B31, #1d070d);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    animation: slideIn 1s ease-out;
-    border-top: 20px solid #BC955B;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
+  background: linear-gradient(90deg, #691B31, #1d070d);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  animation: slideIn 1s ease-out;
+  border-top: 20px solid #BC955B;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #e0e0e0;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center; /* Centra los logos horizontalmente */
+  align-items: center; /* Alinea los logos verticalmente */
+  margin-top: 10px;
+}
+
+.footer-logos img {
+  margin: 0 15px;
+}
+
+.logo-tics {
+  width: 100px;
+}
+
+.logo-empresa {
+  width: 200px; /* Incrementa el tamaño del logo de la empresa */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .footer p {
-    margin: 0;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .footer a {
-    color: #f8f9fa;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;  }
-  
-  .footer a:hover {
-    color: #e0e0e0;
-  }
-  
-  .footer-logos {
-    margin-top: 10px;
-  }
-  
-  .footer-logos img {
-    width: 100px;
-    margin: 0 15px;
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
