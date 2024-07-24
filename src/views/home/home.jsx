@@ -6,7 +6,7 @@ function Home() {
   return (
     
       <div className="home-container">
-        <h3>¿Qué deseas hacer hoy?</h3>
+        <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
         <br />
         <div className="home-columns">
