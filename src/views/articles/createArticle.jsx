@@ -75,6 +75,11 @@ function CreateArticle() {
       });
       setFiles([]);
       setQrValue(result.name); // Usar el nombre del artículo para generar el QR
+
+    // Redirigir a /articulos/almacen con los datos del artículo creado
+    const queryParams = new URLSearchParams(result).toString();
+    window.location.href = `/articulos/almacen?${queryParams}`;
+
     } catch (error) {
       console.error("Error:", error);
     }

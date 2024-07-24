@@ -27,6 +27,7 @@ import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import WarehouseArticle from "./views/werehouse/warehouseArticle";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -51,7 +52,8 @@ const showHeaderRoutes = [
   "/articulos",
   "/assignations",
   "/polizas",
-  "/resguardoGeneral"
+  "/resguardoGeneral",
+  "/articulos/almacen",
 ];
 
 const routeTitles = {
@@ -78,6 +80,7 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/articulos/almacen": "Articulos en Almacen",
 };
 
 const App = () => {
@@ -126,6 +129,7 @@ const App = () => {
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
+            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
           </Routes>
         </UserProvider>
       </main>
