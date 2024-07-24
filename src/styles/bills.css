@@ -64,9 +64,12 @@
 .bills-row:nth-child(even) {
   background-color: #f2f2f2;
 }
-
+.bills-table-wrapper {
+  overflow-x: auto;
+  background-color: #FFFFFF; /* Cambia #FFFFFF por el color sólido que prefieras */
+} 
 .bills-row:hover {
-  background-color: #ddd;
+  background-color: #BC955B;
 }
 
 .bills-footer {
