@@ -5,7 +5,7 @@ import "../../styles/InventoryControl.css";
 function InventoryControl() {
   return (
     <div className="home-container">
-      <h3>¿Qué deseas hacer hoy?</h3> {/* Movemos el h3 aquí */}
+      <h4>¿Qué deseas hacer hoy?</h4> {/* Movemos el h3 aquí */}
       <div className="home-columns">
         <div className="home-column">
           <Link to="" className="home-card">
