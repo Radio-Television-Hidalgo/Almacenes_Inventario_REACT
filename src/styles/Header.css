@@ -27,7 +27,7 @@ html {
 }
 .header-top2 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center; /* Ajustado para centrar correctamente */
   align-items: center;
 
@@ -41,7 +41,7 @@ nav a i:hover {
   margin-right: 8px;
 }
 nav {
-  background-color: #691B31;
+  background: linear-gradient(90deg, #691B31, #691B31, #441220);
   color: white;
 }
 
@@ -248,8 +248,14 @@ nav a i {
     margin-top: 10px; /* Add a little space above */
   }
 }
-
-
+.btn{
+  background-color: transparent;
+  color: white;
+  border: transparent;
+}
+.btn:hover{
+  color: #BC955B;
+}
 
 
 .modal-overlay {
@@ -258,7 +264,7 @@ nav a i {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background:rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,9 +275,10 @@ nav a i {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 80%;
-  max-width: 500px;
+  width: 350px; /* Ajusta el ancho para que parezca más una tarjeta */
+  max-width: 90%;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra para un efecto de tarjeta */
 }
 
 .close {
@@ -284,13 +291,30 @@ nav a i {
 
 .modal-avatar {
   display: block;
-  margin: 0 auto;
-  width: 150px;
-  height: 150px;
+  margin: 0 auto 20px auto; /* Centra la imagen y añade espacio inferior */
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  border: 2px solid #007BFF; /* Añade un borde colorido para un efecto de tarjeta */
 }
 
 .modal-content {
-  text-align: center;
-  margin-top: 20px;
+  text-align: left; /* Alinea el texto a la izquierda */
 }
+
+.modal-content h2 {
+  text-align: center; /* Centra el nombre del usuario */
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.modal-content p {
+  margin: 5px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.modal-content p span {
+  font-weight: bold;
+}
+

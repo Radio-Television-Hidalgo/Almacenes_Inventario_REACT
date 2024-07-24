@@ -82,6 +82,16 @@ const Header = () => {
         return 'Usuarios';
       case '/almacen':
         return 'Almacen';
+      case '/resguardoGeneral':
+        return 'Resguardo General';
+      case '/factura':
+        return 'Crear Factura';
+      case '/entregaArticulo':
+        return 'Entrega de bienes';
+      case '/inventarios/usuario':
+        return 'Inventarios de Usuario';
+        case '/articulos/bajaBien':
+          return 'Baja de Bienes';
       default:
         return '';
     }
@@ -107,21 +117,25 @@ const Header = () => {
                   src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
                   alt="User"
                 />
-                <p>{userInfo.name}</p> {/* Muestra el nombre del usuario */}
+                <p>{userInfo.name}</p> 
+                
               </>
             ) : (
               <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
             )}
+            
           </div>
+          <button className="btn" onClick={handleAvatarClick}>Ver más</button>
         </div>
 
         <div className="header-top">
-          <div>
-            <h1 className="invent">{getPageTitle()}</h1>
-          </div>
+          
+            
+          
         </div>
   
         <div className="header-top2">
+        <h1 className="invent">{getPageTitle()}</h1>
           <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
         </div>
         
@@ -148,7 +162,6 @@ const Header = () => {
                 <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
               </div>
             </div>
-            <Link><button onClick={handleAvatarClick}>Informacion</button></Link>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>
@@ -158,23 +171,25 @@ const Header = () => {
 
       {isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={closeModal}>&times;</span>
-            <img
-              className="modal-avatar"
-              src={userInfo?.img || 'https://via.placeholder.com/150'}
-              alt="User"
-            />
-            <div className="modal-content">
-              <h2>{userInfo?.name}</h2>
-              <p>Campo 1: </p>
-              <p>Campo 2:</p>
-              <p>Campo 3: </p>
-              <p>Campo 4: </p>
-              <p>Campo 5:</p>
-            </div>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <span className="close" onClick={closeModal}>&times;</span>
+          <img
+            className="modal-avatar"
+            src={userInfo.img || 'https://via.placeholder.com/150'}
+            alt="User"
+          />
+          <div className="modal-content">
+            <h2>{userInfo.name}</h2>
+            <p>Número de trabajador: {userInfo.worker_nomber}</p>
+            <p>Adscripción: {userInfo.ascription}</p>
+            <p>Correo Electrónico: {userInfo.email}</p>
+            <p>RFC: {userInfo.RFC}</p>
+            <p>Cargo: {userInfo.tbc_charge?.name}</p>
+            <p>Departamento: {userInfo.tbc_department?.name}</p>
           </div>
         </div>
+      </div>
+      
       )}
     </div>
   );

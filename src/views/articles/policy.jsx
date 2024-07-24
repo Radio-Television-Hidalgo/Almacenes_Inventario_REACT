@@ -14,6 +14,7 @@ function Policy() {
     exclusion_clauses: "",
     file: null,
     date: "",
+    quantity: "",
   });
 
   const handleChange = (e) => {
@@ -138,6 +139,15 @@ function Policy() {
           type="date"
           name="date"
           value={formData.date}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Cantidad:</label>
+        <input
+          type="number"
+          name="quantity"
+          value={formData.quantity}
           onChange={handleChange}
         />
       </div>
