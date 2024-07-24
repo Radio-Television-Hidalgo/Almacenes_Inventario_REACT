@@ -21,7 +21,8 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-style: normal;}
+  font-style: normal;
+}
 h2{
   color: #253238;
   font-family: 'Poppins', sans-serif;
@@ -33,9 +34,9 @@ h2{
 /* Estilo para el encabezado h3 */
 .home-container h4 {
   font-size: 4rem; /* Tamaño de fuente para el h3 */
-  color: #253238; /* Color de texto para el h3 */
   margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
   font-family: "Bebas Neue", sans-serif;
+  color: #253238;
 }
 
 /* Estilo para las columnas */
