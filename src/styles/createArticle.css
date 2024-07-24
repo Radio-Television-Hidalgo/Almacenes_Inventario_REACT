@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* Estilo para el contenedor principal */
 .main-container2 {
   width: 80%;
   margin: 0 auto;
   padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 /* Estilos para el formulario */
@@ -15,7 +20,12 @@
   border: 1px solid rgba(221, 221, 221, 0.5);
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centrar elementos */
   animation: fadeIn 1s ease-in;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
 }
 
 @keyframes fadeIn {
@@ -32,14 +42,23 @@
 /* Grid para organizar el formulario en tres columnas */
 .form-grid2 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
   gap: 20px;
   transition: grid-template-columns 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+  width: 100%; /* Asegura que el grid ocupe el 100% del contenedor */
 }
 
 @media (max-width: 768px) {
-  .form-grid2, .qr-container{
-    grid-template-columns: 1fr;
+  .form-grid2 {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+  .qr-container {
+    margin-left: 0;
+    margin-top: 20px; /* Añade margen superior para separación */
   }
 }
 
@@ -48,6 +67,9 @@
   display: flex;
   flex-direction: column;
   animation: slideIn 0.5s ease-out;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 @keyframes slideIn {
@@ -62,7 +84,9 @@
 }
 
 .form-group2 label {
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   margin-bottom: 5px;
   color: #333;
   transition: color 0.3s ease;
@@ -84,6 +108,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   width: 100%;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -103,6 +130,9 @@
   border-color: #e63946;
   box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
   outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   transform: scale(1.02);
 }
 
@@ -113,6 +143,9 @@
   border: none;
   border-radius: 4px;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -126,6 +159,9 @@
 .form-group2 input[name="file"] {
   padding: 5px;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   transition: background-color 0.3s ease;
 }
 
@@ -135,6 +171,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   width: 100%;
   height: 40px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -155,6 +194,17 @@
 }
 
 /* Estilos para el contenedor de la zona de carga y el código QR */
+.dropzone-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%; /* Asegura que el contenedor ocupe el 100% */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 .dropzone {
   border: 2px dashed #c31010;
   border-radius: 4px;
@@ -162,6 +212,10 @@
   text-align: center;
   cursor: pointer;
   transition: border-color 0.3s ease;
+  width: 100%; /* Asegura que la dropzone ocupe el 100% */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .dropzone:hover {
@@ -190,6 +244,9 @@
 
 .file-item span {
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
   color: #333;
 }
 
@@ -208,5 +265,13 @@
 }
 
 .qr-container {
-  margin-left: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto; /* Asegura que el QR esté a la derecha */
+  margin-right: auto; /* Centra el QR horizontalmente */
+  margin-top: 20px; /* Espacio superior para separación */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }

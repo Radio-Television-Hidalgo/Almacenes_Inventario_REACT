@@ -20,7 +20,7 @@ import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import InventoryScreen from "./views/inventory/inventoryScreen";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import DownArticle from "./views/articles/downArticle";
-import ArticleDelivery from "./views/articles/articleDelivery";
+import ArticleDelivery from "./views/deliveries/articleDelivery";
 import UserInventory from "./views/users/userInventory";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";

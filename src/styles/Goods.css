@@ -1,82 +1,96 @@
-/* Estilos generales para el título */
-h1 {
-  text-align: center;
-  color: #4a3835;
-  margin: 20px 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Estilos para la tabla */
-table {
+/* Contenedor principal para la tabla */
+.goods-table {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border-collapse: collapse;
   margin: 20px 0;
   font-size: 16px;
-  text-align: left;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
-  transition: box-shadow 0.3s ease; /* Transición para sombra */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  border: 1px solid #ddd; /* Borde alrededor de toda la tabla */
+  border-collapse: collapse;
 }
 
-table:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
-}
-
-table thead th {
-  background-color: #691B31; /* Azul para el encabezado */
-  transition: background-color 0.3s ease; /* Transición para el color de fondo */
-}
-
-table thead th:hover {
-  background-color: #BC955B; /* Color más oscuro al pasar el mouse */
-}
-
-/* Estilos para las celdas de encabezado y datos */
-table th,
-table td {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición para el color de fondo y texto */
-}
-
-table th {
+/* Fila de encabezado */
+.goods-header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columnas para coincidir con las celdas */
+  background-color: #691B31;
   color: white;
   text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  border-bottom: 1px solid #ddd; /* Línea de separación en la parte inferior del encabezado */
 }
 
-table tbody tr {
-  background-color: white; /* Fondo blanco para las filas */
-  color: black; /* Texto negro para las filas */
+/* Celda del encabezado */
+.goods-header > div {
+  text-align: center; /* Centrar el texto en el encabezado */
+  padding: 12px;
+  border-left: 1px solid #ddd; /* Línea de separación entre celdas del encabezado */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.goods-header > div:first-child {
+  border-left: none; /* Eliminar la línea del borde izquierdo de la primera celda */
+}
+
+/* Fila de datos */
+.goods-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columnas para coincidir con las celdas */
+  padding: 12px 0;
   border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s ease; /* Transición para el color de fondo */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-table tbody tr:nth-of-type(even) {
-  background-color: rgba(245, 245, 245, 0.8); /* Fondo semitransparente para las filas pares */
+.goods-row:nth-of-type(even) {
+  background-color: rgba(245, 245, 245, 0.8);
 }
 
-table tbody tr:hover {
-  background-color: rgba(235, 235, 235, 0.9); /* Fondo semitransparente al pasar el mouse */
+.goods-row:hover {
+  background-color: rgba(235, 235, 235, 0.9);
 }
 
-/* Estilos para las imágenes en la tabla */
-table img {
+/* Estilo de las celdas */
+.goods-row > div {
+  padding: 12px;
+  border-left: 1px solid #ddd; /* Borde alrededor de cada celda */
+  text-align: center; /* Centrar el texto en las celdas */
+}
+
+.goods-row > div:first-child {
+  border-left: none; /* Eliminar la línea del borde izquierdo de la primera celda */
+}
+
+/* Estilo para imágenes */
+.goods-row img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
   border-radius: 5px;
-  transition: transform 0.3s ease; /* Transición para la transformación */
+  transition: transform 0.3s ease;
 }
 
-table img:hover {
-  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+.goods-row img:hover {
+  transform: scale(1.05);
 }
 
-/* Estilos para el código QR */
-table .qr-code {
+/* Estilo para QR code */
+.goods-row .qr-code {
   width: 50px;
   height: 50px;
-  transition: transform 0.3s ease; /* Transición para la transformación */
+  transition: transform 0.3s ease;
 }
 
-table .qr-code:hover {
-  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+.goods-row .qr-code:hover {
+  transform: scale(1.1);
 }

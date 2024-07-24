@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "/src/styles/TablaInsumos.css"
+import "/src/styles/TablaInsumos.css";
 
 function InsumoTable() {
   const [insumos, setInsumos] = useState([]);
@@ -39,7 +39,7 @@ function InsumoTable() {
                 ? insumo.tb_warehouses[0].warehouses_number
                 : "N/A"}
             </td>
-           
+
             <td>
               {insumo.photos_entry &&
                 insumo.photos_entry.split(",").map((photo, index) => (
