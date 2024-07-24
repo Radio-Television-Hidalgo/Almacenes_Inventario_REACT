@@ -115,7 +115,7 @@ const Header = () => {
             )}
             
           </div>
-          <button onClick={handleAvatarClick}>Ver más</button>
+          <button className="btn" onClick={handleAvatarClick}>Ver más</button>
         </div>
 
         <div className="header-top">
@@ -161,24 +161,25 @@ const Header = () => {
 
       {isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={closeModal}>&times;</span>
-            <img
-              className="modal-avatar"
-              src={userInfo.img || 'https://via.placeholder.com/150'}
-              alt="User"
-            />
-            <div className="modal-content">
-              <h2>{userInfo.name}</h2>
-              <p>Numero de trabajador: {userInfo.worker_nomber} </p>
-              <p>Adscripcion: {userInfo.ascription} </p>
-              <p>Correo Electrónico: {userInfo.email} </p>
-              <p>RFC: {userInfo.RFC} </p>
-              <p>Cargo: {userInfo.tbc_charge.name} </p>
-              <p>Departamento: {userInfo.tbc_department.name} </p>
-            </div>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <span className="close" onClick={closeModal}>&times;</span>
+          <img
+            className="modal-avatar"
+            src={userInfo.img || 'https://via.placeholder.com/150'}
+            alt="User"
+          />
+          <div className="modal-content">
+            <h2>{userInfo.name}</h2>
+            <p>Número de trabajador: {userInfo.worker_nomber}</p>
+            <p>Adscripción: {userInfo.ascription}</p>
+            <p>Correo Electrónico: {userInfo.email}</p>
+            <p>RFC: {userInfo.RFC}</p>
+            <p>Cargo: {userInfo.tbc_charge?.name}</p>
+            <p>Departamento: {userInfo.tbc_department?.name}</p>
           </div>
         </div>
+      </div>
+      
       )}
     </div>
   );
