@@ -71,65 +71,61 @@ function SeeUser() {
       dato.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return (
-    <div>
-      <h1>Información de Usuarios</h1>
-      <input
-        className="search"
-        type="text"
-        placeholder="Buscar por nombre o correo"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <table>
-        <thead>
-          <tr className="UserData">
-            <th>Nombre</th>
-            <th>Correo Electrónico</th>
-            <th>Identificación</th>
-            <th>RFC</th>
-            <th>CURP</th>
-            <th>Departamento</th>
-            <th>Estado</th>
-            <th>Foto</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody className="InfoUser">
-          {filteredDatos.map((dato) => (
-            <tr key={dato.id}>
-              <td>{dato.name}</td>
-              <td>{dato.email}</td>
-              <td>{dato.identification}</td>
-              <td>{dato.RFC}</td>
-              <td>{dato.CURP}</td>
-              <td>{dato.departmentId}</td>
-              <td>{dato.status ? "Activo" : "Inactivo"}</td>
-              <td>
-                <img
-                  src={`${dato.img}`}
-                  alt={`Foto de ${dato.name}`}
-                  width="100"
-                />
-              </td>
-              <td>
-                <button onClick={() => handleEdit(dato)} className="Edit">
-                  Editar
-                </button>
-                <button
-                  className="Delete"
-                  onClick={(event) => handleStatus(event, dato.id)}
-                  disabled={state}
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Información de Usuarios</h1>
+            <input
+                className="search"
+                type="text"
+                placeholder="Buscar por nombre o correo"
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+            />
+            <table>
+                <thead>
+                    <tr className="UserData" >
+                        <th>Nombre Completo</th>
+                        <th>Numero de Trabajador</th>
+                        <th>Correo Electrónico</th>
+                        <th>Identificación</th>
+                        <th>RFC</th>
+                        <th>CURP</th>
+                        <th>Departamento</th>
+                        <th>Estado</th>
+                        <th>Foto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody className="InfoUser" >
+                    {filteredDatos.map((dato) => (
+                        <tr key={dato.id}>
+                            <td>{dato.name}</td>
+                            <td>{dato.worker_nomber}</td>
+                            <td>{dato.email}</td>
+                            <td>{dato.identification}</td>
+                            <td>{dato.RFC}</td>
+                            <td>{dato.CURP}</td>
+                            <td>{dato.departmentId}</td>
+                            <td>{dato.status ? "Activo" : "Inactivo"}</td>
+                            <td>
+                                <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
+                            </td>
+                            <td>
+                                <button 
+                                    onClick={() => handleEdit(dato)}   
+                                    className="Edit" 
+                                >Editar</button>
+                                <button
+                                    className="Delete"
+                                    onClick={(event) => handleStatus(event, dato.id)}
+                                    disabled={state}
+                                >Eliminar</button></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }
 
 export default SeeUser;
