@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../../styles/downArticle.css";
+
 
 export default function DownArticle() {
     const [removalType, setRemovalType] = useState('');
@@ -103,140 +105,103 @@ export default function DownArticle() {
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.formGroup}>
-                <label>Tipo de Baja</label>
-                <select 
-                    value={removalType} 
-                    onChange={e => setRemovalType(e.target.value)} 
-                    style={styles.input}
-                >
-                    <option value="">Seleccione una opción</option>
-                    <option value="prestamo">Préstamo</option>
-                    <option value="descompuesto">Descompuesto</option>
-                    <option value="descontinuación">Descontinuación</option>
-                </select>
-            </div>
-            <div style={styles.formGroup}>
-                <label>Fecha de Baja</label>
-                <input 
-                    type="datetime-local" 
-                    value={removalDate} 
-                    onChange={e => setRemovalDate(e.target.value)} 
-                    style={styles.input}
-                />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Razón de Baja</label>
-                <input 
-                    type="text" 
-                    value={removalReason} 
-                    onChange={e => setRemovalReason(e.target.value)} 
-                    style={styles.input}
-                />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Estatus</label>
-                <select 
-                    value={status} 
-                    onChange={e => setStatus(e.target.value)} 
-                    style={styles.input}
-                >
-                    <option value="">Seleccione una opción</option>
-                    <option value="Revisión">Revisión</option>
-                    <option value="Aceptada">Aceptada</option>
-                    <option value="Rechazada">Rechazada</option>
-                </select>
-            </div>
-            <div style={styles.formGroup}>
-                <label>Id de Confirmación</label>
-                <input 
-                    type="text" 
-                    value={userName} // Muestra el nombre del usuario
-                    readOnly 
-                    style={styles.input}
-                />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Id de Solicitud de Retiro</label>
-                <select 
-                    value={requestWithdrawId} 
-                    onChange={e => setRequestWithdrawId(e.target.value)} 
-                    style={styles.input}
-                >
-                    <option value="">Seleccione una opción</option>
-                    {Array.isArray(users) && users.map(user => (
-                        <option key={user.id} value={user.id}>{user.name}</option>
-                    ))}
-                </select>
-            </div>
-            <div style={styles.formGroup}>
-                <label>Número de Inventario</label>
-                <input 
-                    type="text" 
-                    value={inventoryId} 
-                    onChange={handleInventoryIdChange} // Actualizar al cambiar el número de inventario
-                    style={styles.input}
-                />
-            </div>
-            <div style={styles.formGroup}>
-                <label>Id del Artículo</label>
-                <input 
-                    type="text" 
-                    value={articleName} // Mostrar el nombre del artículo
-                    readOnly 
-                    style={styles.input}
-                />
-            </div>
-            {error && (
-                <div style={styles.error}>
-                    {error}
+        <div className="custom-form-container">
+            <div className="custom-form-grid">
+                <div className="custom-form-group">
+                    <label>Tipo de Baja</label>
+                    <select 
+                        value={removalType} 
+                        onChange={e => setRemovalType(e.target.value)} 
+                    >
+                        <option value="">Seleccione una opción</option>
+                        <option value="prestamo">Préstamo</option>
+                        <option value="descompuesto">Descompuesto</option>
+                        <option value="descontinuación">Descontinuación</option>
+                    </select>
                 </div>
-            )}
-            {success && (
-                <div style={styles.success}>
-                    {success}
+                <div className="custom-form-group">
+                    <label>Fecha de Baja</label>
+                    <input 
+                        type="datetime-local" 
+                        value={removalDate} 
+                        onChange={e => setRemovalDate(e.target.value)} 
+                    />
                 </div>
-            )}
-            <button onClick={handleSubmit} style={styles.button} disabled={isLoading}>
+                <div className="custom-form-group">
+                    <label>Razón de Baja</label>
+                    <input 
+                        type="text" 
+                        value={removalReason} 
+                        onChange={e => setRemovalReason(e.target.value)} 
+                    />
+                </div>
+                <div className="custom-form-group">
+                    <label>Estatus</label>
+                    <select 
+                        value={status} 
+                        onChange={e => setStatus(e.target.value)} 
+                    >
+                        <option value="">Seleccione una opción</option>
+                        <option value="Revisión">Revisión</option>
+                        <option value="Aceptada">Aceptada</option>
+                        <option value="Rechazada">Rechazada</option>
+                    </select>
+                </div>
+                <div className="custom-form-group">
+                    <label>Id de Confirmación</label>
+                    <input 
+                        type="text" 
+                        value={userName} // Muestra el nombre del usuario
+                        readOnly 
+                    />
+                </div>
+                <div className="custom-form-group">
+                    <label>Id de Solicitud de Retiro</label>
+                    <select 
+                        value={requestWithdrawId} 
+                        onChange={e => setRequestWithdrawId(e.target.value)} 
+                    >
+                        <option value="">Seleccione una opción</option>
+                        {Array.isArray(users) && users.map(user => (
+                            <option key={user.id} value={user.id}>{user.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="custom-form-group">
+                    <label>Número de Inventario</label>
+                    <input 
+                        type="text" 
+                        value={inventoryId} 
+                        onChange={handleInventoryIdChange} // Actualizar al cambiar el número de inventario
+                    />
+                </div>
+                <div className="custom-form-group">
+                    <label>Id del Artículo</label>
+                    <input 
+                        type="text" 
+                        value={articleName} // Mostrar el nombre del artículo
+                        readOnly 
+                    />
+                </div>
+                {error && (
+                    <div className="custom-error-message">
+                        {error}
+                    </div>
+                )}
+                {success && (
+                    <div className="custom-success-message">
+                        {success}
+                    </div>
+                )}
+            </div>
+            <button 
+                className="custom-submit-button"
+                onClick={handleSubmit} 
+                disabled={isLoading}
+            >
                 {isLoading ? 'Cargando...' : 'Registrar Baja'}
             </button>
         </div>
     );
 }
 
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px',
-    },
-    formGroup: {
-        marginBottom: '15px',
-        color: 'black',
-        width: '100%',
-        maxWidth: '400px',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        marginTop: '5px',
-    },
-    button: {
-        padding: '10px 20px',
-        backgroundColor: '#007BFF',
-        color: '#FFF',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
-    error: {
-        color: 'red',
-        marginBottom: '10px',
-    },
-    success: {
-        color: 'green',
-        marginBottom: '10px',
-    },
-};
