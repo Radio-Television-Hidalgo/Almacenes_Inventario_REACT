@@ -157,6 +157,26 @@ h2{
   font-weight: 300;
   font-style: normal;
 }
+.Material-H1{
+  color: #253238;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+}
+.home-contentss {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 67px;
+  width: 80%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-left: -210px; /* Ajusta este valor según sea necesario */
+}
 
 .home-content:hover {
   transform: translateY(-5px); /* Levanta ligeramente la tarjeta al pasar el ratón */
@@ -240,6 +260,17 @@ h2{
     font-style: normal;
     
   }
+  .home-contentss{
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px; /* Haciendo los elementos cuadrados */
+    margin: 0 auto; /* Centrar los elementos */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    
+  }
   /* Estilo específico para las columnas */
 .home-column-left .home-content {
   justify-content: flex-start;
@@ -251,6 +282,15 @@ h2{
   border-bottom-left-radius: 0;
 }
 .home-column-left .home-contents {
+  justify-content: flex-start;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.home-column-left .home-contentss {
   justify-content: flex-start;
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
@@ -278,4 +318,17 @@ h2{
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.home-column-right .home-contentss {
+  justify-content: flex-end;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
+.Material-H1{
+  font-size: 25px;
+}
+}
+
