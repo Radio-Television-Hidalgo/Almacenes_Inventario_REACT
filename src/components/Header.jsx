@@ -119,6 +119,12 @@ const Header = () => {
       <nav>
         <div className="header-top1">
           <div className="user-info">
+
+          <div>
+          <img src="/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
+          </div>
+          
+
             {userInfo ? (
               <>
                 <img
@@ -164,14 +170,13 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
                   <div className="dropdown-menu">
-                    <Link to="/historialSalida" className="dropdown-item">Historial de Salida de Bienes</Link>
-                    <Link to="/entradaBienes" className="dropdown-item">Entrada de Bienes </Link>
-                    <Link to="/salidaBienes" className="dropdown-item">Salida de Bienes</Link>
-                    <Link to="/poliza" className="dropdown-item">Crear Poliza </Link>
-                    <Link to="/recepcionSolicitudes" className="dropdown-item">Recepción de Solicitudes </Link>
-                    <Link to="/entradaInsumos" className="dropdown-item">Entrada de Insumos </Link>
-                    <Link to="/salidaInsumos" className="dropdown-item">Salida de Insumos </Link>
-                    <Link to="/polizas" className="dropdown-item">Ver Pólizas </Link>
+                    <Link to="" className="dropdown-item">Documentacion </Link>
+                    <Link to="" className="dropdown-item"> Entrada de existencias</Link>
+                    <Link to="" className="dropdown-item">Historial de Insumos </Link>
+                    <Link to="" className="dropdown-item">Entregar insumos </Link>
+                    <Link to="" className="dropdown-item">Historial de salida de bienes </Link>
+                    <Link to="" className="dropdown-item">Salida de existencias </Link>
+                    <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
                 <Link to="/assignations">Asignaciones</Link>
