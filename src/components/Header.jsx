@@ -149,9 +149,7 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
-            <Link to="/inicio">Inicio</Link>
-            <Link to="/usuario/nuevoUsuario">Usuarios</Link>
-            <Link to="/facturas">Facturas</Link>
+            <Link to="/inicio">Inicio</Link>            
             <Link to="/stateOfThegoods">Estado de los productos</Link>
             <div className="dropdown">
               <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
@@ -199,12 +197,12 @@ const Header = () => {
           />
           <div className="modal-content">
             <h2>{userInfo.name}</h2>
-            <p>Número de trabajador: {userInfo.worker_nomber}</p>
-            <p>Adscripción: {userInfo.ascription}</p>
-            <p>Correo Electrónico: {userInfo.email}</p>
-            <p>RFC: {userInfo.RFC}</p>
-            <p>Cargo: {userInfo.tbc_charge?.name}</p>
-            <p>Departamento: {userInfo.tbc_department?.name}</p>
+            <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
+            <h3>Adscripción: {userInfo.ascription}</h3>
+            <h3>Correo Electrónico: {userInfo.email}</h3>
+            <h3>RFC: {userInfo.RFC}</h3>
+            <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
+            <h3>Departamento: {userInfo.tbc_department?.name}</h3>
           </div>
         </div>
       </div>
