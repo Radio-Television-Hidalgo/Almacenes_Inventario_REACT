@@ -206,28 +206,44 @@ const Header = () => {
       </nav>
 
       {isModalOpen && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={closeModal}>&times;</span>
-            <div className="modal-header">
-              <img
-                className="modal-avatar"
-                src={userInfo.img || 'https://via.placeholder.com/150'}
-                alt="User"
-              />
-            </div>
-            <div className="modal-content">
-              <h2>{userInfo.name}</h2>
-              <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
-              <h3>Adscripción: {userInfo.ascription}</h3>
-              <h3>Correo Electrónico: {userInfo.email}</h3>
-              <h3>RFC: {userInfo.RFC}</h3>
-              <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
-              <h3>Departamento: {userInfo.tbc_department?.name}</h3>
-            </div>
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <span className="close" onClick={closeModal}>&times;</span>
+      <div className="modal-header">
+        <img
+          className="modal-avatar"
+          src={userInfo.img || 'https://via.placeholder.com/150'}
+          alt="User"
+        />
+      </div>
+      <div className="modal-content">
+        <h2>{userInfo.name}</h2>
+        <h3>Administrador</h3>
+        <div className="info-section">
+          <h3>Adscripción: {userInfo.ascription}</h3>
+          <h3>Correo Electrónico: {userInfo.email}</h3>
+          <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+        </div>
+        <hr />
+        <div className="info-grid">
+          <div>
+            <span>RFC</span>
+            <p>{userInfo.RFC}</p>
+          </div>
+          <div>
+            <span>CARGO</span>
+            <p>{userInfo.tbc_charge?.name}</p>
+          </div>
+          <div>
+            <span>NUMERO DE TRABAJADOR</span>
+            <p>{userInfo.worker_nomber}</p>
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
