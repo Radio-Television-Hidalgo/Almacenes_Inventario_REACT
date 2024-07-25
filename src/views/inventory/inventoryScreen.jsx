@@ -33,24 +33,7 @@ function InventoryScreen() {
             </div>
           </Link>
           
-          <Link to={"/entregaArticulo"} className="home-card-i">
-            <div className="home-content-i">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                fill="currentColor"
-                class="bi bi-arrow-down-up"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5"
-                />
-              </svg>
-              <h1>Entrega de bien a usuario</h1>
-            </div>
-          </Link>
+        
           <Link to="/articulos/bajaBien" className="home-card-i">
             <div className="home-content-i">
               <svg
@@ -73,6 +56,40 @@ function InventoryScreen() {
               <h1>Baja de Bienes</h1>
             </div>
           </Link>
+          <Link to={"/entregaArticulo"} className="home-card-i">
+            <div className="home-content-i">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5"
+                />
+              </svg>
+              <h1>Entrega de bien a usuario</h1>
+            </div>
+          </Link>
+          <Link to="" className="home-card-i">
+  <div className="home-content-i">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50"
+      height="50"
+      fill="currentColor"
+      class="bi bi-chat-left-text-fill"
+      viewBox="0 0 16 16"
+    >
+      <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"/>
+    </svg>
+    <h1>Recepción de Solicitudes</h1>
+  </div>
+</Link>
+
         </div>
         <div className="home-column-i home-column-right-i">
           <Link to="/resguardoGeneral" className="home-card-i">
@@ -137,7 +154,7 @@ function InventoryScreen() {
                 <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" />
                 <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" />
               </svg>
-              <h1>Historial de Bajas</h1>
+              <h1> Historial de Bajas de Bienes</h1>
             </div>
           </Link>
         </div>
@@ -147,3 +164,4 @@ function InventoryScreen() {
 }
 
 export default InventoryScreen;
+
