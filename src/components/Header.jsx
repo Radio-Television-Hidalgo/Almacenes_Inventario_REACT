@@ -179,7 +179,6 @@ const Header = () => {
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
                     <Link to="/facturas" className="dropdown-item">Facturas</Link>
-                    <Link to="/factura" className="dropdown-item">Crear Factura</Link>
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
