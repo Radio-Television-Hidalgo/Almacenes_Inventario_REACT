@@ -164,3 +164,4 @@ function InventoryScreen() {
 }
 
 export default InventoryScreen;
+
