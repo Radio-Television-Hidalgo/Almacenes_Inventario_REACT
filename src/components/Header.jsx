@@ -149,7 +149,16 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
-            <Link to="/inicio">Inicio</Link>            
+          <div className="dropdown">
+              <Link to="/Inicio" className="dropdown-toggle">Inicio</Link>
+              <div className="dropdown-menu">
+                <Link to="/" className="dropdown-item">Inventario</Link>
+                <Link to="/" className="dropdown-item">Control de Usuarios </Link>
+                <Link to="/" className="dropdown-item">Almacen</Link>
+                <Link to="/" className="dropdown-item">Mi resguardo </Link>
+                <Link to="/" className="dropdown-item">Solicitudes de Material</Link>
+              </div>
+            </div>            
             <Link to="/stateOfThegoods">Estado de los productos</Link>
             <div className="dropdown">
               <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
