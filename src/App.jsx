@@ -27,6 +27,7 @@ import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import { InventoryForm } from "./views/inventory/inventoryForm";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 
 const showHeaderRoutes = [
@@ -53,6 +54,7 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
+  "/formulario/inventario",
   "/entregasPendientes"
 ];
 
@@ -80,6 +82,7 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/formulario/inventario":"Formulario de Inventario",
   "/entregasPendientes": "Entregas Pendientes"
 };
 
@@ -119,6 +122,7 @@ const App = () => {
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
+            <Route path="/formulario/inventario" element={<InventoryForm/>}/>
             <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/:inventoryNumber"

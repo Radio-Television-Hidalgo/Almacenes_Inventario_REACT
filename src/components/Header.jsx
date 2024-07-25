@@ -117,15 +117,16 @@ const Header = () => {
                   src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
                   alt="User"
                 />
-                <p>{userInfo.name}</p> 
+                <button className="btn" onClick={handleAvatarClick}>{userInfo.name}</button> 
                 
               </>
             ) : (
               <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+              
             )}
             
           </div>
-          <button className="btn" onClick={handleAvatarClick}>Ver más</button>
+          
         </div>
 
         <div className="header-top">
@@ -148,18 +149,34 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
-            <Link to="/inicio">Inicio</Link>
-            <Link to="/usuario/nuevoUsuario">Usuarios</Link>
-            <Link to="/facturas">Facturas</Link>
+            <Link to="/inicio">Inicio</Link>            
             <Link to="/stateOfThegoods">Estado de los productos</Link>
-            <Link to="/almacen">Almacen</Link>
+            <div className="dropdown">
+              <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
+              <div className="dropdown-menu">
+                <Link to="/historialSalida" className="dropdown-item">Historial de Salida de Bienes</Link>
+                <Link to="/entradaBienes" className="dropdown-item">Entrada de Bienes </Link>
+                <Link to="/salidaBienes" className="dropdown-item">Salida de Bienes</Link>
+                <Link to="/poliza" className="dropdown-item">Crear Poliza </Link>
+                <Link to="/recepcionSolicitudes" className="dropdown-item">Recepción de Solicitudes </Link>
+                <Link to="/entradaInsumos" className="dropdown-item">Entrada de Insumos </Link>
+                <Link to="/salidaInsumos" className="dropdown-item">Salida de Insumos </Link>
+                <Link to="/polizas" className="dropdown-item">Ver Pólizas </Link>
+              </div>
+            </div>
             <Link to="/assignations">Asignaciones</Link>
 
             <div className="dropdown">
-              <Link to="#" className="dropdown-toggle">Inventario</Link>
+              <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
               <div className="dropdown-menu">
-                <Link to="/crearPoliza" className="dropdown-item">Polizas</Link>
-                <Link to="/inventario" className="dropdown-item">Mi inventario</Link>
+                <Link to="/facturas" className="dropdown-item">Facturas</Link>
+                <Link to="/factura" className="dropdown-item">Crear Factura</Link>
+                <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
+                <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
+                <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
+                <Link to="/" className="dropdown-item">Alta de Bienes</Link>
+                <Link to="/inventarios" className="dropdown-item">inventarios de Usuario</Link>
+                <Link to="/" className="dropdown-item">Historial de Bajas</Link>
               </div>
             </div>
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
@@ -180,12 +197,12 @@ const Header = () => {
           />
           <div className="modal-content">
             <h2>{userInfo.name}</h2>
-            <p>Número de trabajador: {userInfo.worker_nomber}</p>
-            <p>Adscripción: {userInfo.ascription}</p>
-            <p>Correo Electrónico: {userInfo.email}</p>
-            <p>RFC: {userInfo.RFC}</p>
-            <p>Cargo: {userInfo.tbc_charge?.name}</p>
-            <p>Departamento: {userInfo.tbc_department?.name}</p>
+            <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
+            <h3>Adscripción: {userInfo.ascription}</h3>
+            <h3>Correo Electrónico: {userInfo.email}</h3>
+            <h3>RFC: {userInfo.RFC}</h3>
+            <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
+            <h3>Departamento: {userInfo.tbc_department?.name}</h3>
           </div>
         </div>
       </div>
