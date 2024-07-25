@@ -117,28 +117,28 @@ const Header = () => {
   return (
     <div>
       <nav>
-        <div className="header-top1">
-          <div className="user-info">
-
+      <div className="header-top1">
+    <div className="user-info">
+      {userInfo ? (
+        <>
+          <img
+            className="user-avatar"
+            src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
+            alt="User"
+          />
           <div>
-          <img src="/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
+            <p className="user-name">{userInfo.name}</p>
+            <p className="user-role">Administrador</p>
           </div>
-          
-
-            {userInfo ? (
-              <>
-                <img
-                  className="user-avatar"
-                  src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
-                  alt="User"
-                />
-                <button className="btn" onClick={handleAvatarClick}>{userInfo.name}</button> 
-              </>
-            ) : (
-              <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
-            )}
-          </div>
-        </div>
+          <button className="profile-button" onClick={handleAvatarClick}>
+            Ver Perfil
+          </button>
+        </>
+      ) : (
+        <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+      )}
+    </div>
+  </div>
 
         <div className="header-top2">
           <h1 className="invent">{getPageTitle()}</h1>
