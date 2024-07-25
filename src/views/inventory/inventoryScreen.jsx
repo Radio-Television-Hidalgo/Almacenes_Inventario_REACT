@@ -123,7 +123,7 @@ function InventoryScreen() {
             </div>
           </Link>
 
-          <Link className="home-card-i" to="/inventarios/usuario-i">
+          <Link className="home-card-i" to="/inventarios/usuario">
             <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
