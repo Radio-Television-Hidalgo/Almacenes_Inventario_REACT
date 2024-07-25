@@ -6,6 +6,7 @@ const Header = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768); // Estado para controlar el tamaño de pantalla
   const navigate = useNavigate();
   const location = useLocation(); // Hook para obtener la ubicación actual
 
@@ -32,6 +33,15 @@ const Header = () => {
     fetchUserInfo(); 
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleLogout = async (event) => {
     event.preventDefault(); // Previene el comportamiento predeterminado del enlace
     setIsLoggingOut(true);
@@ -54,7 +64,6 @@ const Header = () => {
     }
   };
 
-  // Función para obtener el mensaje basado en el pathname
   const getPageTitle = () => {
     const path = location.pathname;
     switch (path) {
@@ -90,8 +99,8 @@ const Header = () => {
         return 'Entrega de bienes';
       case '/inventarios/usuario':
         return 'Inventarios de Usuario';
-        case '/articulos/bajaBien':
-          return 'Baja de Bienes';
+      case '/articulos/bajaBien':
+        return 'Baja de Bienes';
       default:
         return '';
     }
@@ -109,7 +118,7 @@ const Header = () => {
     <div>
       <nav>
         <div className="header-top1">
-          <div className="user-info" >
+          <div className="user-info">
             {userInfo ? (
               <>
                 <img
@@ -118,28 +127,18 @@ const Header = () => {
                   alt="User"
                 />
                 <button className="btn" onClick={handleAvatarClick}>{userInfo.name}</button> 
-                
               </>
             ) : (
               <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
-              
             )}
-            
           </div>
-          
         </div>
 
-        <div className="header-top">
-          
-            
-          
-        </div>
-  
         <div className="header-top2">
-        <h1 className="invent">{getPageTitle()}</h1>
+          <h1 className="invent">{getPageTitle()}</h1>
           <p className="header-paragraph">Sistema inventario y Almacen de Radio y Televisión de Hidalgo</p>
         </div>
-        
+
         <div className="header-bottom">
           <input type="checkbox" id="sidebar-active" />
           <label htmlFor="sidebar-active" className="open-sidebar-button">
@@ -149,36 +148,56 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
-            <Link to="/inicio">Inicio</Link>            
-            <Link to="/stateOfThegoods">Estado de los productos</Link>
-            <div className="dropdown">
-              <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
-              <div className="dropdown-menu">
-                <Link to="/historialSalida" className="dropdown-item">Historial de Salida de Bienes</Link>
-                <Link to="/entradaBienes" className="dropdown-item">Entrada de Bienes </Link>
-                <Link to="/salidaBienes" className="dropdown-item">Salida de Bienes</Link>
-                <Link to="/poliza" className="dropdown-item">Crear Poliza </Link>
-                <Link to="/recepcionSolicitudes" className="dropdown-item">Recepción de Solicitudes </Link>
-                <Link to="/entradaInsumos" className="dropdown-item">Entrada de Insumos </Link>
-                <Link to="/salidaInsumos" className="dropdown-item">Salida de Insumos </Link>
-                <Link to="/polizas" className="dropdown-item">Ver Pólizas </Link>
-              </div>
-            </div>
-            <Link to="/assignations">Asignaciones</Link>
-
-            <div className="dropdown">
-              <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
-              <div className="dropdown-menu">
-                <Link to="/facturas" className="dropdown-item">Facturas</Link>
-                <Link to="/factura" className="dropdown-item">Crear Factura</Link>
-                <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
-                <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
-                <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
-                <Link to="/" className="dropdown-item">Alta de Bienes</Link>
-                <Link to="/inventarios" className="dropdown-item">inventarios de Usuario</Link>
-                <Link to="/" className="dropdown-item">Historial de Bajas</Link>
-              </div>
-            </div>
+            {isLargeScreen ? (
+              <>
+                <div className="dropdown">
+                  <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
+                  <div className="dropdown-menu">
+                    <Link to="/" className="dropdown-item">Inventario</Link>
+                    <Link to="/" className="dropdown-item">Control de Usuarios </Link>
+                    <Link to="/" className="dropdown-item">Almacen</Link>
+                    <Link to="/" className="dropdown-item">Mi resguardo </Link>
+                    <Link to="/" className="dropdown-item">Solicitudes de Material</Link>
+                  </div>
+                </div>
+                <Link to="/stateOfThegoods">Estado de los productos</Link>
+                <div className="dropdown">
+                  <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
+                  <div className="dropdown-menu">
+                    <Link to="/historialSalida" className="dropdown-item">Historial de Salida de Bienes</Link>
+                    <Link to="/entradaBienes" className="dropdown-item">Entrada de Bienes </Link>
+                    <Link to="/salidaBienes" className="dropdown-item">Salida de Bienes</Link>
+                    <Link to="/poliza" className="dropdown-item">Crear Poliza </Link>
+                    <Link to="/recepcionSolicitudes" className="dropdown-item">Recepción de Solicitudes </Link>
+                    <Link to="/entradaInsumos" className="dropdown-item">Entrada de Insumos </Link>
+                    <Link to="/salidaInsumos" className="dropdown-item">Salida de Insumos </Link>
+                    <Link to="/polizas" className="dropdown-item">Ver Pólizas </Link>
+                  </div>
+                </div>
+                <Link to="/assignations">Asignaciones</Link>
+                <div className="dropdown">
+                  <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
+                  <div className="dropdown-menu">
+                    <Link to="/facturas" className="dropdown-item">Facturas</Link>
+                    <Link to="/factura" className="dropdown-item">Crear Factura</Link>
+                    <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
+                    <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
+                    <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
+                    <Link to="/" className="dropdown-item">Alta de Bienes</Link>
+                    <Link to="/inventarios" className="dropdown-item">inventarios de Usuario</Link>
+                    <Link to="/" className="dropdown-item">Historial de Bajas</Link>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link to="/inicio">Inicio</Link>
+                <Link to="/stateOfThegoods">Estado de los productos</Link>
+                <Link to="/almacen">Almacen</Link>
+                <Link to="/assignations">Asignaciones</Link>
+                <Link to="/inventario">Inventario</Link>
+              </>
+            )}
             <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>
@@ -188,25 +207,26 @@ const Header = () => {
 
       {isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <span className="close" onClick={closeModal}>&times;</span>
-          <img
-            className="modal-avatar"
-            src={userInfo.img || 'https://via.placeholder.com/150'}
-            alt="User"
-          />
-          <div className="modal-content">
-            <h2>{userInfo.name}</h2>
-            <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
-            <h3>Adscripción: {userInfo.ascription}</h3>
-            <h3>Correo Electrónico: {userInfo.email}</h3>
-            <h3>RFC: {userInfo.RFC}</h3>
-            <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
-            <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={closeModal}>&times;</span>
+            <div className="modal-header">
+              <img
+                className="modal-avatar"
+                src={userInfo.img || 'https://via.placeholder.com/150'}
+                alt="User"
+              />
+            </div>
+            <div className="modal-content">
+              <h2>{userInfo.name}</h2>
+              <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
+              <h3>Adscripción: {userInfo.ascription}</h3>
+              <h3>Correo Electrónico: {userInfo.email}</h3>
+              <h3>RFC: {userInfo.RFC}</h3>
+              <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
+              <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+            </div>
           </div>
         </div>
-      </div>
-      
       )}
     </div>
   );
