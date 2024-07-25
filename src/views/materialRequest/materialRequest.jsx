@@ -105,6 +105,24 @@ function MaterialRequest() {
           required
           className="material-request-input"
         />
+        <input
+          type="number"
+          name="item_id"
+          value={formData.item_id}
+          onChange={handleChange}
+          placeholder="ID del artículo"
+          required
+          className="material-request-input"
+        />
+        <input
+          type="number"
+          name="inventory_number_id"
+          value={formData.inventory_number_id}
+          onChange={handleChange}
+          placeholder="Número de inventario"
+          required
+          className="material-request-input"
+        />
         <select
           name="type"
           value={formData.type}
@@ -114,12 +132,7 @@ function MaterialRequest() {
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-        <input
-          type="file"
-          name="file"
-          onChange={handleFileChange}
-          className="material-request-file"
-        />
+        
         <input
           type="text"
           name="user_charge"
@@ -145,22 +158,10 @@ function MaterialRequest() {
           hidden
         />
         <input
-          type="number"
-          name="item_id"
-          value={formData.item_id}
-          onChange={handleChange}
-          placeholder="ID del artículo"
-          required
-          className="material-request-input"
-        />
-        <input
-          type="number"
-          name="inventory_number_id"
-          value={formData.inventory_number_id}
-          onChange={handleChange}
-          placeholder="Número de inventario"
-          required
-          className="material-request-input"
+          type="file"
+          name="file"
+          onChange={handleFileChange}
+          className="material-request-file"
         />
         <button className="material-request-button" type="submit">
           Solicitar Material
@@ -185,4 +186,3 @@ function MaterialRequest() {
 }
 
 export default MaterialRequest;
-
