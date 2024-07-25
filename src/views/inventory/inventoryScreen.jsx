@@ -4,14 +4,14 @@ import "/src/styles/inventoryScreen.css";
 
 function InventoryScreen() {
   return (
-    <div className="home-container">
+    <div className="home-container-i">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
         <br />
-      <div className="home-columns ">
-        <div className="home-column home-column-left">
-          <Link to="/facturas" className="home-card">
-            <div className="home-content">
+      <div className="home-columns-i ">
+        <div className="home-column-i home-column-left-i">
+          <Link to="/facturas" className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -32,8 +32,8 @@ function InventoryScreen() {
               <h1>Facturas</h1>
             </div>
           </Link>
-          <Link to="/factura" className="home-card">
-            <div className="home-content">
+          <Link to="/factura" className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -48,8 +48,8 @@ function InventoryScreen() {
               <h1>Crear Factura</h1>
             </div>
           </Link>
-          <Link to={"/entregaArticulo"} className="home-card">
-            <div className="home-content">
+          <Link to={"/entregaArticulo"} className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -66,8 +66,8 @@ function InventoryScreen() {
               <h1>Entrega de bien a usuario</h1>
             </div>
           </Link>
-          <Link to="/articulos/bajaBien" className="home-card">
-            <div className="home-content">
+          <Link to="/articulos/bajaBien" className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -89,9 +89,9 @@ function InventoryScreen() {
             </div>
           </Link>
         </div>
-        <div className="home-column home-column-right">
-          <Link to="/resguardoGeneral" className="home-card">
-            <div className="home-content">
+        <div className="home-column-i home-column-right-i">
+          <Link to="/resguardoGeneral" className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -105,8 +105,8 @@ function InventoryScreen() {
               <h1>Resguardo General</h1>
             </div>
           </Link>
-          <Link className="home-card">
-            <div className="home-content">
+          <Link className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -123,8 +123,8 @@ function InventoryScreen() {
             </div>
           </Link>
 
-          <Link className="home-card" to="/inventarios/usuario">
-            <div className="home-content">
+          <Link className="home-card-i" to="/inventarios/usuario-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
@@ -138,8 +138,8 @@ function InventoryScreen() {
               <h1>inventarios de Usuario</h1>
             </div>
           </Link>
-          <Link to="" className="home-card">
-            <div className="home-content">
+          <Link to="" className="home-card-i">
+            <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
