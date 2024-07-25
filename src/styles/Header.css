@@ -331,29 +331,28 @@ nav a i {
 .btn:hover{
   color: #BC955B;
 }
-
-
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background:rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Asegura que el modal esté encima de todo */
+  z-index: 1000;
 }
 
 .modal {
   background: white;
   padding: 20px;
-  border-radius: 10px;
-  width: 350px; /* Ajusta el ancho para que parezca más una tarjeta */
+  border-radius: 20px;
+  width: 350px;
   max-width: 90%;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra para un efecto de tarjeta */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .close {
@@ -364,21 +363,32 @@ nav a i {
   cursor: pointer;
 }
 
+.modal-header {
+  background-image: radial-gradient(at 31.664175714488387% 60.695074745041055%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), radial-gradient(at 5.022180727951042% 3.1912018041176937%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%), radial-gradient(at 29.062494414551843% 55.35431973231275%, hsla(351.28205128205127, 100%, 77.05882352941175%, 1) 0%, hsla(351.28205128205127, 100%, 77.05882352941175%, 0) 100%), radial-gradient(at 9.401421041608149% 22.69125754752055%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 1) 0%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 0) 100%), radial-gradient(at 53.14514626565521% 82.83729560123858%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), radial-gradient(at 13.992954815075564% 79.21376212372542%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), radial-gradient(at 85.07041760976652% 42.15866485874431%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%), radial-gradient(at 60.28655279997501% 96.73133166971333%, hsla(351.28205128205127, 100%, 77.05882352941175%, 1) 0%, hsla(351.28205128205127, 100%, 77.05882352941175%, 0) 100%), radial-gradient(at 40.46961252309684% 24.105473892288963%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 1) 0%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 0) 100%), radial-gradient(at 21.025049420859034% 44.61631642302131%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), radial-gradient(at 7.611191619018509% 95.91275097432712%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), radial-gradient(at 34.12294551093049% 31.984848987074077%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%);  background-size: cover;
+  height: 120px; /* Altura del fondo de portada */
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  align-items: center;
+  position: relative;
+}
+
 .modal-avatar {
-  display: block;
-  margin: 0 auto 20px auto; /* Centra la imagen y añade espacio inferior */
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 2px solid #007BFF; /* Añade un borde colorido para un efecto de tarjeta */
+  border: 3px solid white;
+  position: absolute;
+  bottom: -50px; /* Coloca el avatar en el fondo de portada */
 }
 
 .modal-content {
-  text-align: left; /* Alinea el texto a la izquierda */
+  text-align: left;
+  padding-top: 60px; /* Añade espacio superior para el avatar */
 }
 
 .modal-content h2 {
-  text-align: center; /* Centra el nombre del usuario */
+  text-align: center;
   margin-bottom: 10px;
   font-size: 22px;
   font-weight: 500;
@@ -390,11 +400,8 @@ nav a i {
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-style: normal;
-
 }
 
 .modal-content p span {
   font-weight: bold;
 }
-

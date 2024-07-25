@@ -196,27 +196,29 @@ const Header = () => {
       </nav>
 
       {isModalOpen && (
-        <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <span className="close" onClick={closeModal}>&times;</span>
-          <img
-            className="modal-avatar"
-            src={userInfo.img || 'https://via.placeholder.com/150'}
-            alt="User"
-          />
-          <div className="modal-content">
-            <h2>{userInfo.name}</h2>
-            <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
-            <h3>Adscripción: {userInfo.ascription}</h3>
-            <h3>Correo Electrónico: {userInfo.email}</h3>
-            <h3>RFC: {userInfo.RFC}</h3>
-            <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
-            <h3>Departamento: {userInfo.tbc_department?.name}</h3>
-          </div>
-        </div>
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <span className="close" onClick={closeModal}>&times;</span>
+      <div className="modal-header">
+        <img
+          className="modal-avatar"
+          src={userInfo.img || 'https://via.placeholder.com/150'}
+          alt="User"
+        />
       </div>
-      
-      )}
+      <div className="modal-content">
+        <h2>{userInfo.name}</h2>
+        <h3>Número de trabajador: {userInfo.worker_nomber}</h3>
+        <h3>Adscripción: {userInfo.ascription}</h3>
+        <h3>Correo Electrónico: {userInfo.email}</h3>
+        <h3>RFC: {userInfo.RFC}</h3>
+        <h3>Cargo: {userInfo.tbc_charge?.name}</h3>
+        <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
