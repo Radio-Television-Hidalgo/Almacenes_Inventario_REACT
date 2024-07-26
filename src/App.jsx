@@ -27,6 +27,7 @@ import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import ReceptionRequests from "./views/materialRequest/receptionRequests";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -51,7 +52,8 @@ const showHeaderRoutes = [
   "/articulos",
   "/assignations",
   "/polizas",
-  "/resguardoGeneral"
+  "/resguardoGeneral",
+  "/recepcionSolicitudes"
 ];
 
 const routeTitles = {
@@ -78,6 +80,7 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/recepcionSolicitudes":"Recpcion de Solicitudes"
 };
 
 const App = () => {
@@ -116,6 +119,7 @@ const App = () => {
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
+            <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
