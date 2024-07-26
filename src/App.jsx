@@ -35,6 +35,7 @@ import ReceptionRequests from "./views/materialRequest/receptionRequests";
 import StockOut from "./views/stockOut";
 import RequestforSupplies from "./views/RequestforSupplies";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
+import PolicyDetail from "./views/articles/PolicyDetail";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -156,6 +157,7 @@ const App = () => {
             <Route path="/articulos" element={<Articles />} />
             <Route path="/articulos/almacen" element={<WarehouseArticle />} />
             <Route path="/facturas/:billNumber" element={<BillDetails />} />
+            <Route path="/polizas/:policyId" element={<PolicyDetail />} />
           </Routes>
         </UserProvider>
       </main>

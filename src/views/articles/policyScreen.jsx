@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom"; // Importa Link para la navegación
 import "../../styles/PolicyScreen.css";
+
 function PolicyScreen() {
   const [policies, setPolicies] = useState([]);
   const [search, setSearch] = useState("");
@@ -40,26 +41,18 @@ function PolicyScreen() {
           <div>Descripción</div>
           <div>Cobertura</div>
           <div>Tipo</div>
-          <div>Prima</div>
-          <div>Deducible</div>
-          <div>Límites de Indemnización</div>
-          <div>Periodo de Vigencia</div>
-          <div>Cláusulas de Exclusión</div>
-          <div>Archivo</div>
-          <div>Fecha</div>
+          <div>Acciones</div> {/* Nueva columna para acciones */}
         </div>
         {filteredPolicies.map((policy) => (
           <div className="policy-row" key={policy.id}>
             <div>{policy.description}</div>
             <div>{policy.coverage}</div>
             <div>{policy.type}</div>
-            <div>{policy.premium}</div>
-            <div>{policy.deductible}</div>
-            <div>{policy.indemnity_limits}</div>
-            <div>{new Date(policy.validity_period).toLocaleDateString()}</div>
-            <div>{policy.exclusion_clauses}</div>
-            <div>{policy.file}</div>
-            <div>{new Date(policy.date).toLocaleDateString()}</div>
+            <div>
+              <Link to={`/polizas/${policy.id}`} className="policy-view-more">
+                Ver más
+              </Link>
+            </div>
           </div>
         ))}
       </div>
