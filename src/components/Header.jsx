@@ -116,10 +116,16 @@ const Header = () => {
 
   return (
     <div>
-      <nav>
+      <nav >
+        <div className="header-top3">
+        <img src="/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
+        </div>
       <div className="header-top1">
+      
     <div className="user-info">
+      
       {userInfo ? (
+        
         <>
           <img
             className="user-avatar"
