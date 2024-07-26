@@ -26,8 +26,14 @@ import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
+import Documentacion from "./views/documentacion/documentacion";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import { InventoryForm } from "./views/inventory/inventoryForm";
+import BillDetails from "./views/articles/BillDetails";
+import ReceptionRequests from "./views/materialRequest/receptionRequests";
+import StockOut from "./views/stockOut";
+import RequestforSupplies from "./views/RequestforSupplies";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 
 const showHeaderRoutes = [
@@ -44,7 +50,7 @@ const showHeaderRoutes = [
   "/articulos/insertarArticulo",
   "/usuario/editarUsuario",
   "/ControlInventario",
-  "/factura",
+  "/crearFactura",
   "/crearPoliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
@@ -54,14 +60,19 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
+  "/recepcionSolicitudes",
+  "/SalidadeExistencia",
+  "/articulos/almacen",
   "/formulario/inventario",
+  "/solicitudInsumos",
+  "/documentacion",
   "/entregasPendientes"
 ];
 
 const routeTitles = {
   "/crearPoliza": "Nueva Póliza",
   "/polizas": "Todas las Pólizas",
-  "/factura": "Factura",
+  "/crearFactura": "Crear Factura",
   "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
@@ -82,7 +93,11 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/articulos/almacen": "Articulos en Almacen",
   "/formulario/inventario":"Formulario de Inventario",
+  "/documentacion":" Documentacion",
+  "/facturas/:billNumber": "Detalles de Factura",
+  "/recepcionSolicitudes":"Recpcion de Solicitudes"
   "/entregasPendientes": "Entregas Pendientes"
 };
 
@@ -115,7 +130,7 @@ const App = () => {
             <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
             <Route path="/usuario/editarUsuario" element={<EditUser />} />
             <Route path="/ControlInventario" element={<InventoryControl />} />
-            <Route path="/factura" element={<Invoice />} />
+            <Route path="/crearFactura" element={<Invoice />} />
             <Route path="/crearPoliza" element={<Policy />} />
             <Route path="/polizas" element={<PolicyScreen />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
@@ -123,6 +138,10 @@ const App = () => {
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
             <Route path="/formulario/inventario" element={<InventoryForm/>}/>
+            <Route path="/documentacion" element={<Documentacion />}/>
+            <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
+            <Route path="/SalidadeExistencia" element={<StockOut />} />
+            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
             <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/:inventoryNumber"
@@ -134,6 +153,8 @@ const App = () => {
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
+            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
+            <Route path="/facturas/:billNumber" element={<BillDetails />} />
           </Routes>
         </UserProvider>
       </main>
