@@ -65,69 +65,69 @@ function UserInventory() {
             {Object.values(groupedData).map(({ user, items }) => (
                 <div key={user.worker_nomber} className="card-u">
                     <div className="userInfo-u">
-                        <img src={user.img} alt="Foto del Usuario" className="userImage" />
+                        <img src={user.img} alt="Foto del Usuario" className="userImage-u" />
                         <div>
-                            <p className="C"><strong>Nombre:</strong> {user.name}</p>
-                            <p className="userText"><strong>Número de Trabajador:</strong> {user.worker_nomber}</p>
-                            <p className="userText"><strong>Tipo:</strong> {user.type}</p>
+                            <p className="userText-u"><strong>{user.name}</strong></p>
+                            <p className="userRole-u">{user.type.toUpperCase()}</p>
                         </div>
                     </div>
+                    <p className="userText-u"><strong>Número de Trabajador:</strong> {user.worker_nomber}</p>
                     <button className="button-u" onClick={() => handleViewMore(items)}>
-                        Ver Más
+                        Ver más
                     </button>
                 </div>
             ))}
             {modalData && (
                 <div className="modal-u">
                     <div className="modalContent-u">
-                        <span className="closeButton" onClick={closeModal}>&times;</span>
+                        <span className="closeButton-u" onClick={closeModal}>&times;</span>
                         <input
                             type="text"
                             placeholder="Buscar por nombre"
-                            className="searchInput"
+                            className="searchInput-u"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                         <table className="table-u">
                             <thead>
                                 <tr>
-                                    <th className="tableHeaderCell">IMG</th>
-                                    <th className="tableHeaderCell">Nombre</th>
-                                    <th className="tableHeaderCell">Descripción</th>
-                                    <th className="tableHeaderCell">Categoría</th>
-                                    <th className="tableHeaderCell">Fecha de Entrada</th>
-                                    <th className="tableHeaderCell">Fecha de Salida</th>
-                                    <th className="tableHeaderCell">Locación</th>
-                                    <th className="tableHeaderCell">Estatus</th>
-                                    <th className="tableHeaderCell">Fecha de Resguardo</th>
-                                    <th className="tableHeaderCell">Motivo no Asignado</th>
-                                    <th className="tableHeaderCell">Comentario</th>
-                                    <th className="tableHeaderCell">Número de Serie</th>
-                                    <th className="tableHeaderCell">Número de Inventario</th>
+                                    <th className="tableHeaderCell-u">IMG</th>
+                                    <th className="tableHeaderCell-u">Nombre</th>
+                                    <th className="tableHeaderCell-u">Descripción</th>
+                                    <th className="tableHeaderCell-u">Categoría</th>
+                                    <th className="tableHeaderCell-u">Fecha de Entrada</th>
+                                    <th className="tableHeaderCell-u">Fecha de Salida</th>
+                                    <th className="tableHeaderCell-u">Locación</th>
+                                    <th className="tableHeaderCell-u">Estatus</th>
+                                    <th className="tableHeaderCell-u">Fecha de Resguardo</th>
+                                    <th className="tableHeaderCell-u">Motivo no Asignado</th>
+                                    <th className="tableHeaderCell-u">Comentario</th>
+                                    <th className="tableHeaderCell-u">Número de Serie</th>
+                                    <th className="tableHeaderCell-u">Número de Inventario</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredModalData.map(item => (
-                                    <tr key={item.id} className="tableRow">
-                                        <td className="tableCell">
+                                    <tr key={item.id} className="tableRow-u">
+                                        <td className="tableCell-u">
                                             <img
                                                 src={item.articles.photos_entry}
                                                 alt="Foto del Artículo"
-                                                className="userImage"
+                                                className="userImage-u"
                                             />
                                         </td>
-                                        <td className="tableCell">{item.name}</td>
-                                        <td className="tableCell">{item.description}</td>
-                                        <td className="tableCell">{item.category}</td>
-                                        <td className="tableCell">{new Date(item.entry_date).toLocaleDateString()}</td>
-                                        <td className="tableCell">{new Date(item.exit_date).toLocaleDateString()}</td>
-                                        <td className="tableCell">{item.location}</td>
-                                        <td className="tableCell">{item.status}</td>
-                                        <td className="tableCell">{item.safeguard_date ? new Date(item.safeguard_date).toLocaleDateString() : 'N/A'}</td>
-                                        <td className="tableCell">{item.reason_not_assigned || 'N/A'}</td>
-                                        <td className="tableCell">{item.comment || 'N/A'}</td>
-                                        <td className="tableCell">{item.serial_number}</td>
-                                        <td className="tableCell">{item.inventory_number}</td>
+                                        <td className="tableCell-u">{item.name}</td>
+                                        <td className="tableCell-u">{item.description}</td>
+                                        <td className="tableCell-u">{item.category}</td>
+                                        <td className="tableCell-u">{new Date(item.entry_date).toLocaleDateString()}</td>
+                                        <td className="tableCell-u">{new Date(item.exit_date).toLocaleDateString()}</td>
+                                        <td className="tableCell-u">{item.location}</td>
+                                        <td className="tableCell-u">{item.status}</td>
+                                        <td className="tableCell-u">{new Date(item.guard_date).toLocaleDateString()}</td>
+                                        <td className="tableCell-u">{item.reason_not_assigned}</td>
+                                        <td className="tableCell-u">{item.comment}</td>
+                                        <td className="tableCell-u">{item.series_number}</td>
+                                        <td className="tableCell-u">{item.inventory_number}</td>
                                     </tr>
                                 ))}
                             </tbody>
