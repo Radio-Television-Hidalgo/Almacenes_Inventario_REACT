@@ -64,7 +64,8 @@ const showHeaderRoutes = [
   "/articulos/almacen",
   "/formulario/inventario",
   "/solicitudInsumos",
-  "/documentacion"
+  "/documentacion",
+  "/articulos/insertararticulo"
 ];
 
 const routeTitles = {
