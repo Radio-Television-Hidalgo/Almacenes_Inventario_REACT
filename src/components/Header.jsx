@@ -73,10 +73,10 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
-      case '/stateOfThegoods':
+ {/*     case '/stateOfThegoods':
         return 'Estado de los productos';
       case '/assignations':
-        return 'Asignaciones';
+        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -104,7 +104,9 @@ const Header = () => {
       case '/documentacion':
         return 'Documentación';
       case '/solicitudInsumos':
-        return 'Solicitud de insumos'
+        return 'Solicitud de insumos';
+      case '/articulos/insertararticulo':
+        return 'Insertar articulo'
       default:
         return '';
     }
@@ -170,7 +172,7 @@ const Header = () => {
                   <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
                   <div className="dropdown-menu">
                     <Link to="/inventario" className="dropdown-item">Inventario</Link>
-                    <Link to="/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
+                    <Link to="/usuario/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
                     <Link to="/almacen" className="dropdown-item">Almacen</Link>
                     <Link to="/usuario/misBienes" className="dropdown-item">Mi resguardo </Link>
                     <Link to="/solicitudMaterial" className="dropdown-item">Solicitudes de Material</Link>
@@ -193,7 +195,7 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
-                    <Link to="/facturas" className="dropdown-item">Facturas</Link>
+{/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
@@ -206,9 +208,9 @@ const Header = () => {
             ) : (
               <>
                 <Link to="/inicio">Inicio</Link>
-                
+{/*                <Link to="/stateOfThegoods">Estado de los productos</Link>      */}
                 <Link to="/almacen">Almacen</Link>
-                
+{/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
               </>
             )}
