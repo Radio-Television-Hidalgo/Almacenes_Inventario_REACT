@@ -56,8 +56,8 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
-  "/SalidadeExistencia",,
-  "/articulos/almacen",,
+  "/SalidadeExistencia",
+  "/articulos/almacen",
   "/formulario/inventario",
   "/facturas/:billNumber", // Asegúrate de agregar esta línea
 ];
