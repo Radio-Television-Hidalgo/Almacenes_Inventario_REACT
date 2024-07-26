@@ -26,6 +26,7 @@ import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
+import Documentacion from "./views/documentacion/documentacion";
 import GeneralReceipt from "./views/inventory/generalReceipt";
 import { InventoryForm } from "./views/inventory/inventoryForm";
 
@@ -53,7 +54,8 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
-  "/formulario/inventario"
+  "/formulario/inventario",
+  "/documentacion"
 ];
 
 const routeTitles = {
@@ -81,6 +83,7 @@ const routeTitles = {
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
   "/formulario/inventario":"Formulario de Inventario",
+  "/documentacion": "documentacion"
 };
 
 const App = () => {
@@ -120,6 +123,7 @@ const App = () => {
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
             <Route path="/formulario/inventario" element={<InventoryForm/>}/>
+            <Route path="/documentacion" element={<Documentacion />}/>
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
