@@ -223,11 +223,12 @@ nav a i {
     flex-direction: column;
     height: 45px;
   }
-
   .header-logo {
     display: none;
   }
-
+  .logo-empresa{
+    display: none;
+  }
   .header-paragraph {
     display: none;
   }

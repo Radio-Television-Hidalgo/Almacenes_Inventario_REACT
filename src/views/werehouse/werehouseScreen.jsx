@@ -7,7 +7,7 @@ export default function WerehouseScreen() {
     <div className="werehouse-container">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
-      <br />
+      
       <div className="werehouse-columns">
         <div className="werehouse-column">
           <Link to="/documentacion" className="werehouse-card">
