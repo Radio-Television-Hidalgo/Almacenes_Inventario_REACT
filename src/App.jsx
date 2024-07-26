@@ -26,10 +26,12 @@ import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
+import Documentacion from "./views/documentacion/documentacion";
 import GeneralReceipt from "./views/inventory/generalReceipt";
 import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import { InventoryForm } from "./views/inventory/inventoryForm";
 import BillDetails from "./views/articles/BillDetails";
+import ReceptionRequests from "./views/materialRequest/receptionRequests";
 import StockOut from "./views/stockOut";
 
 const showHeaderRoutes = [
@@ -56,10 +58,12 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
+  "/recepcionSolicitudes",
   "/SalidadeExistencia",
   "/articulos/almacen",
   "/formulario/inventario",
   "/facturas/:billNumber", // Asegúrate de agregar esta línea
+  "/documentacion"
 ];
 
 const routeTitles = {
@@ -88,7 +92,9 @@ const routeTitles = {
   "/resguardoGeneral": "Resguardo General",
   "/articulos/almacen": "Articulos en Almacen",
   "/formulario/inventario":"Formulario de Inventario",
+  "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
+  "/recepcionSolicitudes":"Recpcion de Solicitudes"
 };
 
 const App = () => {
@@ -128,6 +134,8 @@ const App = () => {
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
             <Route path="/formulario/inventario" element={<InventoryForm/>}/>
+            <Route path="/documentacion" element={<Documentacion />}/>
+            <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route
               path="/articulos/:inventoryNumber"
