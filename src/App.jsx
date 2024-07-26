@@ -31,6 +31,7 @@ import GeneralReceipt from "./views/inventory/generalReceipt";
 import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import { InventoryForm } from "./views/inventory/inventoryForm";
 import BillDetails from "./views/articles/BillDetails";
+import ReceptionRequests from "./views/materialRequest/receptionRequests";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -56,6 +57,7 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
+  "/recepcionSolicitudes",
   "/articulos/almacen",,
   "/formulario/inventario",
   "/facturas/:billNumber", // Asegúrate de agregar esta línea
@@ -90,6 +92,7 @@ const routeTitles = {
   "/formulario/inventario":"Formulario de Inventario",
   "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
+  "/recepcionSolicitudes":"Recpcion de Solicitudes"
 };
 
 const App = () => {
@@ -130,6 +133,7 @@ const App = () => {
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
             <Route path="/formulario/inventario" element={<InventoryForm/>}/>
             <Route path="/documentacion" element={<Documentacion />}/>
+            <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
