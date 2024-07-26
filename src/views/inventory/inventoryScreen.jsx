@@ -7,7 +7,7 @@ function InventoryScreen() {
     <div className="home-container-i">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
-        <br />
+        
       <div className="home-columns-i ">
         <div className="home-column-i home-column-left-i">
 {/*          <Link to="/facturas" className="home-card-i">
