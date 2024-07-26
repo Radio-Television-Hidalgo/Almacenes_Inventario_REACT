@@ -61,6 +61,7 @@ const showHeaderRoutes = [
   "/articulos/almacen",,
   "/formulario/inventario",
   "/facturas/:billNumber", // Asegúrate de agregar esta línea
+  "/documentacion"
 ];
 
 const routeTitles = {
