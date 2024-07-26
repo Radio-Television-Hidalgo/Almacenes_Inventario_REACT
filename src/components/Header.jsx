@@ -104,7 +104,9 @@ const Header = () => {
       case '/documentacion':
         return 'Documentación';
       case '/solicitudInsumos':
-        return 'Solicitud de insumos'
+        return 'Solicitud de insumos';
+      case '/articulos/insertararticulo':
+        return 'Insertar articulo'
       default:
         return '';
     }
