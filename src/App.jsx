@@ -32,6 +32,8 @@ import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import { InventoryForm } from "./views/inventory/inventoryForm";
 import BillDetails from "./views/articles/BillDetails";
 import ReceptionRequests from "./views/materialRequest/receptionRequests";
+import StockOut from "./views/stockOut";
+import RequestforSupplies from "./views/RequestforSupplies";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -58,10 +60,10 @@ const showHeaderRoutes = [
   "/polizas",
   "/resguardoGeneral",
   "/recepcionSolicitudes",
-  "/articulos/almacen",,
+  "/SalidadeExistencia",
+  "/articulos/almacen",
   "/formulario/inventario",
-  "/facturas/:billNumber", 
-  "/documentacion"
+  "/solicitudInsumos",
 ];
 
 const routeTitles = {
@@ -134,6 +136,8 @@ const App = () => {
             <Route path="/formulario/inventario" element={<InventoryForm/>}/>
             <Route path="/documentacion" element={<Documentacion />}/>
             <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
+            <Route path="/SalidadeExistencia" element={<StockOut />} />
+            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
