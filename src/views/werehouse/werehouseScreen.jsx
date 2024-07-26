@@ -10,7 +10,7 @@ export default function WerehouseScreen() {
       <br />
       <div className="werehouse-columns">
         <div className="werehouse-column">
-          <Link to="" className="werehouse-card">
+          <Link to="/documentacion" className="werehouse-card">
             <div className="werehouse-content">
               <h1>Documentacion</h1>
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
@@ -69,7 +69,7 @@ export default function WerehouseScreen() {
             </svg>
             </div>
           </Link>
-          <Link to="" className="werehouse-cards">
+          <Link to="/solicitudInsumos" className="werehouse-cards">
             <div className="werehouse-content">
               <h1>Solicitudes de insumos</h1>
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-inboxes" viewBox="0 0 16 16">

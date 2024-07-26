@@ -33,6 +33,7 @@ import { InventoryForm } from "./views/inventory/inventoryForm";
 import BillDetails from "./views/articles/BillDetails";
 import ReceptionRequests from "./views/materialRequest/receptionRequests";
 import StockOut from "./views/stockOut";
+import RequestforSupplies from "./views/RequestforSupplies";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -63,7 +64,8 @@ const showHeaderRoutes = [
   "/articulos/almacen",
   "/formulario/inventario",
   "/facturas/:billNumber", // Asegúrate de agregar esta línea
-  "/documentacion"
+  "/documentacion",
+  "/solicitudInsumos",
 ];
 
 const routeTitles = {
@@ -137,6 +139,7 @@ const App = () => {
             <Route path="/documentacion" element={<Documentacion />}/>
             <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
+            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
