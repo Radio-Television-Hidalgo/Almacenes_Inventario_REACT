@@ -27,6 +27,7 @@ function InventoryControl() {
               <h1>Historial de Bajas</h1>
             </div>
           </Link>
+          
           <Link to="" className="inventario-tarjeta">
             <div className="inventario-contenido">
               <svg

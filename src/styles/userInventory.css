@@ -1,0 +1,147 @@
+/* styles/UserInventory.css */
+
+/* Estilos para el contenedor principal */
+.container-u {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Para centrar las tarjetas horizontalmente */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
+/* Estilos para las tarjetas */
+.card-u {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 10px; /* Para separación entre cards */
+}
+
+.card-u:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la información del usuario */
+.userInfo-u {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.userImage-u {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #800000; /* Borde alrededor de la imagen */
+}
+
+.userText-u {
+    color: black;
+}
+
+.userRole-u {
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Estilos para el botón */
+.button-u {
+    background-color: #800000; /* Color guinda */
+    color: #fff;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-u:hover {
+    background-color: #691B31; /* Color guinda más oscuro */
+}
+
+/* Estilos para el modal */
+.modal-u {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent-u {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    overflow-x: auto;
+}
+
+.closeButton-u {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.searchInput-u {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para la tabla */
+.table-u {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableHeaderCell-u {
+    background-color: #800000; /* Color guinda */
+    color: #fff;
+    border: 1px solid #000;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tableRow-u {
+    background-color: #ddd; /* Color de fondo para las filas */
+}
+
+.tableCell-u {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .card-u {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .modalContent-u {
+        width: 95%;
+    }
+}
