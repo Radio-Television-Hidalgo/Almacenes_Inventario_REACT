@@ -101,6 +101,8 @@ const Header = () => {
         return 'Inventarios de Usuario';
       case '/articulos/bajaBien':
         return 'Baja de Bienes';
+      case '/documentacion':
+        return 'Documentación'
       default:
         return '';
     }
@@ -118,7 +120,7 @@ const Header = () => {
     <div>
       <nav >
         <div className="header-top3">
-        <img src="/SIA_gold.webp" alt="Logo TICS" className="logo-tics" />
+        <img src="/logo_radio.webp"  className="logo-empresa" />
         </div>
       <div className="header-top1">
       
