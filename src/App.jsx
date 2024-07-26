@@ -28,7 +28,9 @@ import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
 import Documentacion from "./views/documentacion/documentacion";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import { InventoryForm } from "./views/inventory/inventoryForm";
+import BillDetails from "./views/articles/BillDetails";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -54,8 +56,9 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
+  "/articulos/almacen",,
   "/formulario/inventario",
-  "/documentacion"
+  "/facturas/:billNumber", // Asegúrate de agregar esta línea
 ];
 
 const routeTitles = {
@@ -82,8 +85,9 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/articulos/almacen": "Articulos en Almacen",
   "/formulario/inventario":"Formulario de Inventario",
-  "/documentacion": "documentacion"
+  "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
 };
 
 const App = () => {
@@ -134,6 +138,8 @@ const App = () => {
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
+            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
+            <Route path="/facturas/:billNumber" element={<BillDetails />} /> {/* Nueva ruta */}
           </Routes>
         </UserProvider>
       </main>

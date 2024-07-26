@@ -117,22 +117,28 @@ const Header = () => {
   return (
     <div>
       <nav>
-        <div className="header-top1">
-          <div className="user-info">
-            {userInfo ? (
-              <>
-                <img
-                  className="user-avatar"
-                  src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
-                  alt="User"
-                />
-                <button className="btn" onClick={handleAvatarClick}>{userInfo.name}</button> 
-              </>
-            ) : (
-              <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
-            )}
+      <div className="header-top1">
+    <div className="user-info">
+      {userInfo ? (
+        <>
+          <img
+            className="user-avatar"
+            src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
+            alt="User"
+          />
+          <div>
+            <p className="user-name">{userInfo.name}</p>
+            <p className="user-role">Administrador</p>
           </div>
-        </div>
+          <button className="profile-button" onClick={handleAvatarClick}>
+            Ver Perfil
+          </button>
+        </>
+      ) : (
+        <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+      )}
+    </div>
+  </div>
 
         <div className="header-top2">
           <h1 className="invent">{getPageTitle()}</h1>
@@ -164,14 +170,13 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
                   <div className="dropdown-menu">
-                    <Link to="/historialSalida" className="dropdown-item">Historial de Salida de Bienes</Link>
-                    <Link to="/entradaBienes" className="dropdown-item">Entrada de Bienes </Link>
-                    <Link to="/salidaBienes" className="dropdown-item">Salida de Bienes</Link>
-                    <Link to="/poliza" className="dropdown-item">Crear Poliza </Link>
-                    <Link to="/recepcionSolicitudes" className="dropdown-item">Recepción de Solicitudes </Link>
-                    <Link to="/entradaInsumos" className="dropdown-item">Entrada de Insumos </Link>
-                    <Link to="/salidaInsumos" className="dropdown-item">Salida de Insumos </Link>
-                    <Link to="/polizas" className="dropdown-item">Ver Pólizas </Link>
+                    <Link to="" className="dropdown-item">Documentacion </Link>
+                    <Link to="" className="dropdown-item"> Entrada de existencias</Link>
+                    <Link to="" className="dropdown-item">Historial de Insumos </Link>
+                    <Link to="" className="dropdown-item">Entregar insumos </Link>
+                    <Link to="" className="dropdown-item">Historial de salida de bienes </Link>
+                    <Link to="" className="dropdown-item">Salida de existencias </Link>
+                    <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
                 <Link to="/assignations">Asignaciones</Link>
@@ -179,7 +184,6 @@ const Header = () => {
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
                     <Link to="/facturas" className="dropdown-item">Facturas</Link>
-                    <Link to="/factura" className="dropdown-item">Crear Factura</Link>
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
