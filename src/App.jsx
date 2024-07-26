@@ -34,6 +34,7 @@ import BillDetails from "./views/articles/BillDetails";
 import ReceptionRequests from "./views/materialRequest/receptionRequests";
 import StockOut from "./views/stockOut";
 import RequestforSupplies from "./views/RequestforSupplies";
+import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -64,7 +65,9 @@ const showHeaderRoutes = [
   "/articulos/almacen",
   "/formulario/inventario",
   "/solicitudInsumos",
-  "/documentacion"
+  "/documentacion",
+  "/articulos/insertararticulo",
+  "/entregasPendientes"
 ];
 
 const routeTitles = {
@@ -95,7 +98,8 @@ const routeTitles = {
   "/formulario/inventario":"Formulario de Inventario",
   "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
-  "/recepcionSolicitudes":"Recpcion de Solicitudes"
+  "/recepcionSolicitudes":"Recpcion de Solicitudes",
+  "/entregasPendientes": "Entregas Pendientes"
 };
 
 const App = () => {
@@ -139,6 +143,7 @@ const App = () => {
             <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+            <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}

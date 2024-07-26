@@ -104,7 +104,9 @@ const Header = () => {
       case '/documentacion':
         return 'Documentación';
       case '/solicitudInsumos':
-        return 'Solicitud de insumos'
+        return 'Solicitud de insumos';
+      case '/articulos/insertararticulo':
+        return 'Insertar articulo'
       default:
         return '';
     }
@@ -236,7 +238,7 @@ const Header = () => {
         <div className="info-section">
           <h3>Adscripción: {userInfo.ascription}</h3>
           <h3>Correo Electrónico: {userInfo.email}</h3>
-          <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+          <h3>Departamento: {userInfo.userDepartment.name}</h3>
         </div>
         <hr />
         <div className="info-grid">
@@ -246,7 +248,7 @@ const Header = () => {
           </div>
           <div>
             <span>CARGO</span>
-            <p>{userInfo.tbc_charge?.name}</p>
+            <p>{userInfo.userCharge.name}</p>
           </div>
           <div>
             <span>NUMERO</span>
