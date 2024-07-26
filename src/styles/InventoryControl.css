@@ -85,7 +85,7 @@ h2{
   flex: 1;
   width: 500px; /* Ancho máximo de las tarjetas */
   height: 200px; /* Altura fija de las tarjetas */
-  margin: 50px; /* Margen para separar las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -139,7 +139,7 @@ h2{
   padding: 20px;
   border-radius: 10px;
   width: 100%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
-  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+  height: 170px; /* Asegura que la tarjeta ocupe toda la altura disponible */
   transition: transform 0.3s, box-shadow 0.3s;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
