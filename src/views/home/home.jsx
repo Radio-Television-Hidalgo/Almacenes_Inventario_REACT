@@ -8,7 +8,6 @@ function Home() {
       <div className="home-container">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
-        <br />
         <div className="home-columns">
           <div className="home-column home-column-left">
           <Link to="/inventario" className="home-card">
