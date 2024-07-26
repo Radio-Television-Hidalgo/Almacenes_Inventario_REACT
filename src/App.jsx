@@ -47,7 +47,7 @@ const showHeaderRoutes = [
   "/articulos/insertarArticulo",
   "/usuario/editarUsuario",
   "/ControlInventario",
-  "/factura",
+  "/crearFactura",
   "/crearPoliza",
   "/articulos/bajaBien",
   "/entregaArticulo",
@@ -60,14 +60,14 @@ const showHeaderRoutes = [
   "/recepcionSolicitudes",
   "/articulos/almacen",,
   "/formulario/inventario",
-  "/facturas/:billNumber", // Asegúrate de agregar esta línea
+  "/facturas/:billNumber", 
   "/documentacion"
 ];
 
 const routeTitles = {
   "/crearPoliza": "Nueva Póliza",
   "/polizas": "Todas las Pólizas",
-  "/factura": "Factura",
+  "/crearFactura": "Crear Factura",
   "/ControlInventario": "Control de Inventario",
   "/": "Iniciar Sesión",
   "/inicio": "Inicio",
@@ -91,7 +91,7 @@ const routeTitles = {
   "/articulos/almacen": "Articulos en Almacen",
   "/formulario/inventario":"Formulario de Inventario",
   "/documentacion":" Documentacion",
-  "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
+  "/facturas/:billNumber": "Detalles de Factura",
   "/recepcionSolicitudes":"Recpcion de Solicitudes"
 };
 
@@ -124,7 +124,7 @@ const App = () => {
             <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
             <Route path="/usuario/editarUsuario" element={<EditUser />} />
             <Route path="/ControlInventario" element={<InventoryControl />} />
-            <Route path="/factura" element={<Invoice />} />
+            <Route path="/crearFactura" element={<Invoice />} />
             <Route path="/crearPoliza" element={<Policy />} />
             <Route path="/polizas" element={<PolicyScreen />} />
             <Route path="/entregaArticulo" element={<ArticleDelivery />} />
@@ -145,7 +145,7 @@ const App = () => {
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
             <Route path="/articulos/almacen" element={<WarehouseArticle />} />
-            <Route path="/facturas/:billNumber" element={<BillDetails />} /> {/* Nueva ruta */}
+            <Route path="/facturas/:billNumber" element={<BillDetails />} />
           </Routes>
         </UserProvider>
       </main>

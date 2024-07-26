@@ -93,7 +93,7 @@ const Header = () => {
         return 'Almacen';
       case '/resguardoGeneral':
         return 'Resguardo General';
-      case '/factura':
+      case '/crearFactura':
         return 'Crear Factura';
       case '/entregaArticulo':
         return 'Entrega de bienes';
@@ -170,7 +170,7 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
                   <div className="dropdown-menu">
-                    <Link to="" className="dropdown-item">Documentacion </Link>
+                    <Link to="/documentacion" className="dropdown-item">Documentacion </Link>
                     <Link to="" className="dropdown-item"> Entrada de existencias</Link>
                     <Link to="" className="dropdown-item">Historial de Insumos </Link>
                     <Link to="" className="dropdown-item">Entregar insumos </Link>
@@ -187,9 +187,9 @@ const Header = () => {
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
-                    <Link to="/" className="dropdown-item">Alta de Bienes</Link>
-                    <Link to="/inventarios" className="dropdown-item">inventarios de Usuario</Link>
-                    <Link to="/" className="dropdown-item">Historial de Bajas</Link>
+                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
+                    <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
+                    <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
                 </div>
               </>
