@@ -56,6 +56,12 @@ html {
 
   position: relative;
 }
+.header-top3{
+ height: 1px; 
+}
+.logo-empresa{
+  width: 200px;
+}
 .close:hover{
   color: red;
 }
@@ -217,11 +223,12 @@ nav a i {
     flex-direction: column;
     height: 45px;
   }
-
   .header-logo {
     display: none;
   }
-
+  .logo-empresa{
+    display: none;
+  }
   .header-paragraph {
     display: none;
   }

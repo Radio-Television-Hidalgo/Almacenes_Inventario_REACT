@@ -7,10 +7,10 @@ function InventoryScreen() {
     <div className="home-container-i">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
-        <br />
+        
       <div className="home-columns-i ">
         <div className="home-column-i home-column-left-i">
-          <Link to="/facturas" className="home-card-i">
+{/*          <Link to="/facturas" className="home-card-i">
             <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ function InventoryScreen() {
               <h1>Facturas</h1>
             </div>
           </Link>
-          
+*/}          
         
           <Link to="/articulos/bajaBien" className="home-card-i">
             <div className="home-content-i">
@@ -140,8 +140,8 @@ function InventoryScreen() {
               <h1>inventarios de Usuario</h1>
             </div>
           </Link>
-          <Link to="" className="home-card-i">
-            <div className="home-content-i">
+          <Link to="" className="home-cards-i">
+            <div className="home-contents-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"

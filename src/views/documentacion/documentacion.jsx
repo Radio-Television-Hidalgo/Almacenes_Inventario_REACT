@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 const Documentation = () => {
   return (
     <div className="container">
+      <br />
       <main className="main-content">
         <h1>Documentación</h1>
         <tr></tr>
+        
         <div className="buttons-container">
           <Link to="/facturas" className="dropdown-item button">
             <span className="icon">🚪</span>

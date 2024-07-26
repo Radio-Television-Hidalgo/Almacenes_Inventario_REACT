@@ -73,10 +73,10 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
-      case '/stateOfThegoods':
+ {/*     case '/stateOfThegoods':
         return 'Estado de los productos';
       case '/assignations':
-        return 'Asignaciones';
+        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -101,6 +101,10 @@ const Header = () => {
         return 'Inventarios de Usuario';
       case '/articulos/bajaBien':
         return 'Baja de Bienes';
+      case '/documentacion':
+        return 'Documentación';
+      case '/solicitudInsumos':
+        return 'Solicitud de insumos'
       default:
         return '';
     }
@@ -116,10 +120,16 @@ const Header = () => {
 
   return (
     <div>
-      <nav>
+      <nav >
+        <div className="header-top3">
+        <img src="/logo_radio.webp"  className="logo-empresa" />
+        </div>
       <div className="header-top1">
+      
     <div className="user-info">
+      
       {userInfo ? (
+        
         <>
           <img
             className="user-avatar"
@@ -148,7 +158,7 @@ const Header = () => {
         <div className="header-bottom">
           <input type="checkbox" id="sidebar-active" />
           <label htmlFor="sidebar-active" className="open-sidebar-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-grid" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-grid" viewBox="0 0 16 16">
               <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
             </svg>
           </label>
@@ -160,7 +170,7 @@ const Header = () => {
                   <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
                   <div className="dropdown-menu">
                     <Link to="/inventario" className="dropdown-item">Inventario</Link>
-                    <Link to="/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
+                    <Link to="/usuario/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
                     <Link to="/almacen" className="dropdown-item">Almacen</Link>
                     <Link to="/usuario/misBienes" className="dropdown-item">Mi resguardo </Link>
                     <Link to="/solicitudMaterial" className="dropdown-item">Solicitudes de Material</Link>
@@ -183,7 +193,7 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
-                    <Link to="/facturas" className="dropdown-item">Facturas</Link>
+{/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
@@ -196,9 +206,9 @@ const Header = () => {
             ) : (
               <>
                 <Link to="/inicio">Inicio</Link>
-                <Link to="/stateOfThegoods">Estado de los productos</Link>
+{/*                <Link to="/stateOfThegoods">Estado de los productos</Link>      */}
                 <Link to="/almacen">Almacen</Link>
-                <Link to="/assignations">Asignaciones</Link>
+{/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
               </>
             )}
