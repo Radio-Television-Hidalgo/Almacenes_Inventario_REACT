@@ -26,7 +26,7 @@ function PendingDeliveries() {
     }, []);
 
     return (
-        <div>pendingDeliveries
+        <div>
             <h1>Entregas pendientes</h1>
             <table>
                 <thead>

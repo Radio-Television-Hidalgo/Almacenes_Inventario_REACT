@@ -97,7 +97,7 @@ const routeTitles = {
   "/formulario/inventario":"Formulario de Inventario",
   "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
-  "/recepcionSolicitudes":"Recpcion de Solicitudes"
+  "/recepcionSolicitudes":"Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes"
 };
 
