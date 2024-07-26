@@ -88,6 +88,7 @@ const routeTitles = {
   "/resguardoGeneral": "Resguardo General",
   "/articulos/almacen": "Articulos en Almacen",
   "/formulario/inventario":"Formulario de Inventario",
+  "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
 };
 
