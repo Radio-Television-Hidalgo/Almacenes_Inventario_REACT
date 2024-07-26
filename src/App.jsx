@@ -66,6 +66,7 @@ const showHeaderRoutes = [
   "/formulario/inventario",
   "/solicitudInsumos",
   "/documentacion",
+  "/articulos/insertararticulo",
   "/entregasPendientes"
 ];
 
