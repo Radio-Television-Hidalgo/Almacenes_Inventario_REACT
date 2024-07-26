@@ -27,6 +27,9 @@ import Articles from "./views/articles/Articles";
 import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
 import GeneralReceipt from "./views/inventory/generalReceipt";
+import WarehouseArticle from "./views/werehouse/warehouseArticle";
+import { InventoryForm } from "./views/inventory/inventoryForm";
+import BillDetails from "./views/articles/BillDetails";
 import StockOut from "./views/stockOut";
 
 const showHeaderRoutes = [
@@ -53,7 +56,10 @@ const showHeaderRoutes = [
   "/assignations",
   "/polizas",
   "/resguardoGeneral",
-  "/SalidadeExistencia",
+  "/SalidadeExistencia",,
+  "/articulos/almacen",,
+  "/formulario/inventario",
+  "/facturas/:billNumber", // Asegúrate de agregar esta línea
 ];
 
 const routeTitles = {
@@ -80,6 +86,9 @@ const routeTitles = {
   "/inventarios/usuario": "Inventarios de Usuarios",
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
+  "/articulos/almacen": "Articulos en Almacen",
+  "/formulario/inventario":"Formulario de Inventario",
+  "/facturas/:billNumber": "Detalles de Factura", // Agrega esta línea
 };
 
 const App = () => {
@@ -118,6 +127,7 @@ const App = () => {
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
+            <Route path="/formulario/inventario" element={<InventoryForm/>}/>
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route
               path="/articulos/:inventoryNumber"
@@ -129,6 +139,8 @@ const App = () => {
             />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
+            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
+            <Route path="/facturas/:billNumber" element={<BillDetails />} /> {/* Nueva ruta */}
           </Routes>
         </UserProvider>
       </main>
