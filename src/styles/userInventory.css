@@ -1,5 +1,14 @@
 /* styles/UserInventory.css */
 
+/* Estilos para el contenedor principal */
+.container-u {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Para centrar las tarjetas horizontalmente */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
 /* Estilos para las tarjetas */
 .card-u {
     background-color: #fff;
