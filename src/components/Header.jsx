@@ -240,7 +240,7 @@ const Header = () => {
             <p>{userInfo.tbc_charge?.name}</p>
           </div>
           <div>
-            <span>NUMERO DE TRABAJADOR</span>
+            <span>NUMERO</span>
             <p>{userInfo.worker_nomber}</p>
           </div>
         </div>
