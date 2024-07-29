@@ -170,16 +170,9 @@ const Header = () => {
           <div className="links-container">
             {isLargeScreen ? (
               <>
-                <div className="dropdown">
+                
                   <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
-                  <div className="dropdown-menu">
-                    <Link to="/inventario" className="dropdown-item">Inventario</Link>
-                    <Link to="/usuario/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
-                    <Link to="/almacen" className="dropdown-item">Almacen</Link>
-                    <Link to="/usuario/misBienes" className="dropdown-item">Mi resguardo </Link>
-                    <Link to="/solicitudMaterial" className="dropdown-item">Solicitudes de Material</Link>
-                  </div>
-                </div>
+                 
 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
