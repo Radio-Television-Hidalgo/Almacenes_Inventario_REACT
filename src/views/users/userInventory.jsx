@@ -5,7 +5,6 @@ function UserInventory() {
     const [datos, setDatos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [expandedUser, setExpandedUser] = useState(null);
     const [modalData, setModalData] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -53,7 +52,7 @@ function UserInventory() {
 
     const filteredModalData = modalData
         ? modalData.filter(item =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+            item.articles.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
         : [];
 
@@ -68,7 +67,7 @@ function UserInventory() {
                         <img src={user.img} alt="Foto del Usuario" className="userImage-u" />
                         <div>
                             <p className="userText-u"><strong>{user.name}</strong></p>
-                            <p className="userRole-u">{user.type.toUpperCase()}</p>
+                            <p className="userRole-u">{user.type}</p>
                         </div>
                     </div>
                     <p className="userText-u"><strong>Número de Trabajador:</strong> {user.worker_nomber}</p>
@@ -94,16 +93,12 @@ function UserInventory() {
                                     <th className="tableHeaderCell-u">IMG</th>
                                     <th className="tableHeaderCell-u">Nombre</th>
                                     <th className="tableHeaderCell-u">Descripción</th>
-                                    <th className="tableHeaderCell-u">Categoría</th>
-                                    <th className="tableHeaderCell-u">Fecha de Entrada</th>
-                                    <th className="tableHeaderCell-u">Fecha de Salida</th>
                                     <th className="tableHeaderCell-u">Locación</th>
                                     <th className="tableHeaderCell-u">Estatus</th>
                                     <th className="tableHeaderCell-u">Fecha de Resguardo</th>
-                                    <th className="tableHeaderCell-u">Motivo no Asignado</th>
                                     <th className="tableHeaderCell-u">Comentario</th>
                                     <th className="tableHeaderCell-u">Número de Serie</th>
-                                    <th className="tableHeaderCell-u">Número de Inventario</th>
+                                    <th className="tableHeaderCell-u">Ver más</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,18 +111,14 @@ function UserInventory() {
                                                 className="userImage-u"
                                             />
                                         </td>
-                                        <td className="tableCell-u">{item.name}</td>
-                                        <td className="tableCell-u">{item.description}</td>
-                                        <td className="tableCell-u">{item.category}</td>
-                                        <td className="tableCell-u">{new Date(item.entry_date).toLocaleDateString()}</td>
-                                        <td className="tableCell-u">{new Date(item.exit_date).toLocaleDateString()}</td>
-                                        <td className="tableCell-u">{item.location}</td>
+                                        <td className="tableCell-u">{item.articles.name}</td>
+                                        <td className="tableCell-u">{item.articles.description}</td>
+                                        <td className="tableCell-u">{item.ubication}</td>
                                         <td className="tableCell-u">{item.status}</td>
-                                        <td className="tableCell-u">{new Date(item.sheltered_date).toLocaleDateString()}</td>
-                                        <td className="tableCell-u">{item.not_assigned_reason}</td>
-                                        <td className="tableCell-u">{item.commentary}</td>
-                                        <td className="tableCell-u">{item.serial_number}</td>
-                                        <td className="tableCell-u">{item.inventory_number}</td>
+                                        <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
+                                        <td className="tableCell-u">{item.observations}</td>
+                                        <td className="tableCell-u">{item.articles.number_series}</td>
+                                        <td className="tableCell-u"><button>Ver mas</button></td>
                                     </tr>
                                 ))}
                             </tbody>
