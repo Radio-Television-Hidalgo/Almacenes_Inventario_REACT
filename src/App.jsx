@@ -35,6 +35,7 @@ import StockOut from "./views/stockOut";
 import RequestforSupplies from "./views/RequestforSupplies";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 import PolicyDetail from "./views/articles/PolicyDetail";
+import StockEntry from "./views/werehouse/StockEntry";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -67,7 +68,8 @@ const showHeaderRoutes = [
   "/documentacion",
   "/articulos/insertararticulo",
   "/entregasPendientes",
-  "/facturas/:billNumber"
+  "/facturas/:billNumber",
+  "/entrada/existencias",
 ];
 
 const routeTitles = {
@@ -97,6 +99,9 @@ const routeTitles = {
   "/articulos/almacen": "Articulos en Almacen",
   "/documentacion": "Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
+  "/recepcionSolicitudes":"Recpcion de Solicitudes",
+  "/entregasPendientes": "Entregas Pendientes",
+  "/entrada/existencias":"Entrada de Existencias",
   "/recepcionSolicitudes": "Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes"
 };
@@ -158,6 +163,7 @@ const App = () => {
             <Route path="/articulos/almacen" element={<WarehouseArticle />} />
             <Route path="/facturas/:billNumber" element={<BillDetails />} />
             <Route path="/polizas/:policyId" element={<PolicyDetail />} />
+            <Route path="/entrada/existencias" element={<StockEntry/>} />
           </Routes>
         </UserProvider>
       </main>
