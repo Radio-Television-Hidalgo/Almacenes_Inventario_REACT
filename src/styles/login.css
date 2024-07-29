@@ -120,9 +120,25 @@
 
 /* Estilo para el mensaje de error */
 .login-error {
-  color: red;
+  color: white !important;
   margin-top: 1rem;
+  background: #691B31;
+  border-radius: 30px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px; /* Alinea verticalmente el texto */
+  animation: fadeIn 1s ease-in-out; /* Aplica la animación de aparición */
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 /* Estilo para el cuerpo */
 body {
