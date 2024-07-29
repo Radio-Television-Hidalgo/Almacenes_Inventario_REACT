@@ -109,7 +109,21 @@ const Header = () => {
         return 'Insertar articulo';
         case '/articulos':
           return 'Articulos';
-      default:
+      case '/usuario/editarUsuario':
+        return 'Editar usuario';
+      case '/crearPoliza':
+        return 'Crear Poliza';
+      case '/Bajadebien':
+        return 'Baja de bienes';
+      case '/polizas':
+        return 'Polizas';
+      case '/recepcionSolicitudes':
+        return 'Solicitudes';
+      case '/articulos/almacen':
+        return 'Articulos en Almacen';
+      case '/entregasPendientes':
+        return 'Entregas pendientes'
+      default: 
         return '';
     }
   };
