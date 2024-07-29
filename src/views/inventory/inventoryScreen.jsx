@@ -7,10 +7,10 @@ function InventoryScreen() {
     <div className="home-container-i">
         <h4>¿Qué deseas hacer hoy?</h4>
         <h2>Selecciona una Opción</h2>
-        <br />
+        
       <div className="home-columns-i ">
         <div className="home-column-i home-column-left-i">
-          <Link to="/facturas" className="home-card-i">
+{/*          <Link to="/facturas" className="home-card-i">
             <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ function InventoryScreen() {
               <h1>Facturas</h1>
             </div>
           </Link>
-          
+*/}          
         
           <Link to="/articulos/bajaBien" className="home-card-i">
             <div className="home-content-i">
@@ -86,7 +86,7 @@ function InventoryScreen() {
     >
       <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"/>
     </svg>
-    <h1>Recepción de Solicitudes</h1>
+    <h1>Solicitudes de Bienes</h1>
   </div>
 </Link>
 
@@ -107,7 +107,7 @@ function InventoryScreen() {
               <h1>Resguardo General</h1>
             </div>
           </Link>
-          <Link className="home-card-i">
+          <Link className="home-card-i" to="/articulos/insertarArticulo">
             <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +121,7 @@ function InventoryScreen() {
                 <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1z" />
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z" />
               </svg>
-              <h1>Alta de Bienes</h1>
+              <h1>Agrgar Nuevo Articulo</h1>
             </div>
           </Link>
 
@@ -140,8 +140,8 @@ function InventoryScreen() {
               <h1>inventarios de Usuario</h1>
             </div>
           </Link>
-          <Link to="" className="home-card-i">
-            <div className="home-content-i">
+          <Link to="" className="home-cards-i">
+            <div className="home-contents-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"

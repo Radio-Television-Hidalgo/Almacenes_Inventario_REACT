@@ -29,11 +29,12 @@ import Footer from "./components/Footer";
 import Documentacion from "./views/documentacion/documentacion";
 import GeneralReceipt from "./views/inventory/generalReceipt";
 import WarehouseArticle from "./views/werehouse/warehouseArticle";
-import { InventoryForm } from "./views/inventory/inventoryForm";
 import BillDetails from "./views/articles/BillDetails";
 import ReceptionRequests from "./views/materialRequest/receptionRequests";
 import StockOut from "./views/stockOut";
 import RequestforSupplies from "./views/RequestforSupplies";
+import PendingDeliveries from "./views/deliveries/pendingDeliveries";
+import PolicyDetail from "./views/articles/PolicyDetail";
 import StockEntry from "./views/werehouse/StockEntry";
 
 const showHeaderRoutes = [
@@ -43,8 +44,10 @@ const showHeaderRoutes = [
   "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
-  "/stateOfThegoods",
-  "/Assignations",
+
+  "/stateOfThegoods", //pendinete a eliminar
+  "/Assignations",  //pendinete a eliminar
+
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
@@ -63,9 +66,11 @@ const showHeaderRoutes = [
   "/recepcionSolicitudes",
   "/SalidadeExistencia",
   "/articulos/almacen",
-  "/formulario/inventario",
   "/solicitudInsumos",
   "/documentacion",
+  "/articulos/insertararticulo",
+  "/entregasPendientes",
+  "/facturas/:billNumber",
   "/entrada/existencias",
 ];
 
@@ -94,10 +99,10 @@ const routeTitles = {
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
   "/articulos/almacen": "Articulos en Almacen",
-  "/formulario/inventario":"Formulario de Inventario",
   "/documentacion":" Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
   "/recepcionSolicitudes":"Recpcion de Solicitudes",
+  "/entregasPendientes": "Entregas Pendientes",
   "/entrada/existencias":"Entrada de Existencias",
 };
 
@@ -137,11 +142,11 @@ const App = () => {
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
-            <Route path="/formulario/inventario" element={<InventoryForm/>}/>
             <Route path="/documentacion" element={<Documentacion />}/>
             <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+            <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/:inventoryNumber"
               element={<ArticleDetails />}
@@ -154,6 +159,7 @@ const App = () => {
             <Route path="/articulos" element={<Articles />} />
             <Route path="/articulos/almacen" element={<WarehouseArticle />} />
             <Route path="/facturas/:billNumber" element={<BillDetails />} />
+            <Route path="/polizas/:policyId" element={<PolicyDetail />} />
             <Route path="/entrada/existencias" element={<StockEntry/>} />
           </Routes>
         </UserProvider>

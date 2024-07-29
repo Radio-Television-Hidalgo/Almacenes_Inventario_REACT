@@ -73,10 +73,10 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
-      case '/stateOfThegoods':
+ {/*     case '/stateOfThegoods':
         return 'Estado de los productos';
       case '/assignations':
-        return 'Asignaciones';
+        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -104,8 +104,26 @@ const Header = () => {
       case '/documentacion':
         return 'Documentación';
       case '/solicitudInsumos':
-        return 'Solicitud de insumos'
-      default:
+        return 'Solicitud de insumos';
+      case '/articulos/insertarArticulo':
+        return 'Insertar articulo';
+        case '/articulos':
+          return 'Articulos';
+      case '/usuario/editarUsuario':
+        return 'Editar usuario';
+      case '/crearPoliza':
+        return 'Crear Poliza';
+      case '/Bajadebien':
+        return 'Baja de bienes';
+      case '/polizas':
+        return 'Polizas';
+      case '/recepcionSolicitudes':
+        return 'Solicitudes';
+      case '/articulos/almacen':
+        return 'Articulos en Almacen';
+      case '/entregasPendientes':
+        return 'Entregas pendientes'
+      default: 
         return '';
     }
   };
@@ -164,18 +182,36 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
+      <div className="header-top3">
+        <img src="/logo_radio.webp"  className="logo-empresa-nav1" />
+      </div>
+      <div className="header-top1">
+        <div className="user-info-nav1">
+        {userInfo ? (
+          <>
+            <img
+              className="user-avatar"
+              src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
+              alt="User"
+            />
+            <div>
+              <p className="user-name">{userInfo.name}</p>
+              <p className="user-role">Administrador</p>
+            </div>
+            <button className="profile-button" onClick={handleAvatarClick}>
+              Ver Perfil
+            </button>
+          </>
+          ) : (
+            <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+          )}
+        </div>
+      </div>
             {isLargeScreen ? (
               <>
-                <div className="dropdown">
+                
                   <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
-                  <div className="dropdown-menu">
-                    <Link to="/inventario" className="dropdown-item">Inventario</Link>
-                    <Link to="/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
-                    <Link to="/almacen" className="dropdown-item">Almacen</Link>
-                    <Link to="/usuario/misBienes" className="dropdown-item">Mi resguardo </Link>
-                    <Link to="/solicitudMaterial" className="dropdown-item">Solicitudes de Material</Link>
-                  </div>
-                </div>
+                 
 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
@@ -193,7 +229,7 @@ const Header = () => {
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
-                    <Link to="/facturas" className="dropdown-item">Facturas</Link>
+{/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
@@ -206,9 +242,9 @@ const Header = () => {
             ) : (
               <>
                 <Link to="/inicio">Inicio</Link>
-                
+{/*                <Link to="/stateOfThegoods">Estado de los productos</Link>      */}
                 <Link to="/almacen">Almacen</Link>
-                
+{/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
               </>
             )}
@@ -236,7 +272,7 @@ const Header = () => {
         <div className="info-section">
           <h3>Adscripción: {userInfo.ascription}</h3>
           <h3>Correo Electrónico: {userInfo.email}</h3>
-          <h3>Departamento: {userInfo.tbc_department?.name}</h3>
+          <h3>Departamento: {userInfo.userDepartment.name}</h3>
         </div>
         <hr />
         <div className="info-grid">
@@ -246,7 +282,7 @@ const Header = () => {
           </div>
           <div>
             <span>CARGO</span>
-            <p>{userInfo.tbc_charge?.name}</p>
+            <p>{userInfo.userCharge.name}</p>
           </div>
           <div>
             <span>NUMERO</span>

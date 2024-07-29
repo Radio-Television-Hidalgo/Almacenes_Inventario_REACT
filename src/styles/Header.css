@@ -62,6 +62,9 @@ html {
 .logo-empresa{
   width: 200px;
 }
+.logo-empresa-nav1{
+  width: 200px;
+}
 .close:hover{
   color: red;
 }
@@ -210,10 +213,85 @@ nav a i {
   background-color: #5b1528;
 }
 
-/* Mostrar la información del usuario solo en pantallas de laptop y más grandes */
+.user-info-nav1 {
+  z-index: 1;
+  display: none; /* Ocultar por defecto */
+  align-items: center;
+  background: linear-gradient(90deg, #FAF2C9, #BC955B);
+  padding: 10px 20px;
+  margin: -60px 0; /* Agrega margen superior e inferior */
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #253238;
+}
+
+.user-info-nav1 .user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 3px solid black;
+}
+
+.user-info-nav1 .user-name {
+  font-size: 10px;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info-nav1 .user-role {
+  font-size: 8px;
+  font-weight: 300;
+  margin: 0;
+  color: #253238;
+}
+
+.user-info-nav1 .profile-button {
+  background-color: #7E1D37;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-left: 80px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.user-info-nav1 .profile-button:hover {
+  background-color: #5b1528;
+}
+
+
 @media (min-width: 1001px) {
   .user-info {
     display: flex;
+  }
+  .user-info-nav1 {
+    display: none;
+  }
+  .logo-empresa-nav1{
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .user-info {
+    display: none;
+  }
+  .user-info-nav1 {
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 250px;
+    width: 250px;
+    height: 200px;
+  }
+  .logo-empresa-nav1{
+    display: flex;
+    margin-left: 20px;
   }
 }
 
@@ -229,6 +307,9 @@ nav a i {
   .logo-empresa{
     display: none;
   }
+  .logo-empresa-nav1{
+    margin-top: -150px;
+    }
   .header-paragraph {
     display: none;
   }
@@ -296,6 +377,8 @@ nav a i {
     font-style: normal;
   }
 
+
+
   #sidebar-active:checked ~ #overlay {
     height: 100%;
     width: 100%;
@@ -318,7 +401,7 @@ nav a i {
   p{
     display: none;
   }
-  .user-info {
+/*  .user-info {
     display: flex;
     align-items: center;
     margin-right: 50px;
@@ -326,7 +409,7 @@ nav a i {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-  }
+  }     */
 }
 
 .dropdown-menu {

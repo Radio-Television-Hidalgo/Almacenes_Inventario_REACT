@@ -1,35 +1,75 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Modal from 'react-modal';
+import { PulseLoader } from 'react-spinners';
+
+// Configura el modal para el acceso a la raíz
+Modal.setAppElement('#root');
 
 const styles = {
   card: {
-    maxWidth: '600px',
-    margin: '20px auto',
+    maxWidth: '800px',
+    margin: '40px auto',
     padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    borderRadius: '10px',
     backgroundColor: '#fff',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    fontFamily: 'Arial, sans-serif',
   },
   heading: {
     marginBottom: '20px',
-    fontSize: '1.5rem',
+    fontSize: '1.8rem',
     color: '#333',
+    borderBottom: '2px solid #f0f0f0',
+    paddingBottom: '10px',
   },
   paragraph: {
-    margin: '10px 0',
+    margin: '12px 0',
+    fontSize: '1rem',
     color: '#555',
   },
   strong: {
     color: '#000',
+    fontWeight: 'bold',
   },
   pdfContainer: {
-    marginTop: '20px',
+    marginTop: '30px',
     textAlign: 'center',
   },
   pdf: {
     width: '100%',
-    height: '600px',
+    height: '700px',
+    border: 'none',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
+  },
+  modalOverlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '300px', // Tamaño del modal
+    maxWidth: '90vw',
+    height: '200px',
+    borderRadius: '8px',
+    padding: '20px',
+    backgroundColor: '#fff',
+    border: 'none',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    margin: '0 auto', // Asegura que el modal esté centrado
+  },
+  loader: {
+    marginBottom: '20px',
+  },
+  loadingText: {
+    marginTop: '10px',
+    color: '#333',
   },
 };
 
@@ -37,7 +77,9 @@ const BillDetails = () => {
   const { billNumber } = useParams();
   const [bill, setBill] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [pdfUrlFile, setPdfUrlFile] = useState(null);
+  const [pdfUrlSat, setPdfUrlSat] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(true);
 
   useEffect(() => {
     const fetchBill = async () => {
@@ -46,17 +88,25 @@ const BillDetails = () => {
         const data = await response.json();
         setBill(data);
         setLoading(false);
+        setModalIsOpen(false);
         
         if (data.file) {
-          // Fetch the PDF file if the file property is available
-          const pdfResponse = await fetch(`/api/bills/${data.file}`);
-          const pdfBlob = await pdfResponse.blob();
-          const pdfUrl = URL.createObjectURL(pdfBlob);
-          setPdfUrl(pdfUrl);
+          const pdfResponseFile = await fetch(`/api/bills/${data.file}`);
+          const pdfBlobFile = await pdfResponseFile.blob();
+          const pdfUrlFile = URL.createObjectURL(pdfBlobFile);
+          setPdfUrlFile(pdfUrlFile);
+        }
+
+        if (data.file_sat) {
+          const pdfResponseSat = await fetch(`/api/bills/${data.file_sat}`);
+          const pdfBlobSat = await pdfResponseSat.blob();
+          const pdfUrlSat = URL.createObjectURL(pdfBlobSat);
+          setPdfUrlSat(pdfUrlSat);
         }
       } catch (error) {
         console.error('Error fetching bill details:', error);
         setLoading(false);
+        setModalIsOpen(false);
       }
     };
 
@@ -64,14 +114,27 @@ const BillDetails = () => {
   }, [billNumber]);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return (
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: styles.modalOverlay,
+          content: styles.modalContent,
+        }}
+      >
+        <div style={styles.loader}>
+          <PulseLoader color="#3498db" />
+        </div>
+        <p style={styles.loadingText}>Cargando...</p>
+      </Modal>
+    );
   }
 
   if (!bill) {
-    return <div>No se encontró la factura</div>;
+    return <div style={{ textAlign: 'center', padding: '20px' }}>No se encontró la factura</div>;
   }
 
-  // Formatear la fecha
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -98,19 +161,34 @@ const BillDetails = () => {
       <p style={styles.paragraph}><strong style={styles.strong}>RFC del Proveedor:</strong> {bill.supplier_rfc}</p>
       <p style={styles.paragraph}><strong style={styles.strong}>Dirección del Proveedor:</strong> {bill.supplier_address}</p>
 
-      {pdfUrl ? (
+      {pdfUrlFile ? (
         <div style={styles.pdfContainer}>
+          <h2 style={styles.heading}>Factura PDF</h2>
           <iframe
             style={styles.pdf}
-            src={pdfUrl}
+            src={pdfUrlFile}
             title="Factura PDF"
-            frameBorder="0"
           >
             Este navegador no soporta la visualización de PDF.
           </iframe>
         </div>
       ) : (
-        <p>No se encontró el PDF de la factura.</p>
+        <p style={{ textAlign: 'center', padding: '10px' }}>No se encontró el PDF de la factura.</p>
+      )}
+
+      {pdfUrlSat ? (
+        <div style={styles.pdfContainer}>
+          <h2 style={styles.heading}>Archivo SAT PDF</h2>
+          <iframe
+            style={styles.pdf}
+            src={pdfUrlSat}
+            title="Archivo SAT PDF"
+          >
+            Este navegador no soporta la visualización de PDF.
+          </iframe>
+        </div>
+      ) : (
+        <p style={{ textAlign: 'center', padding: '10px' }}>No se encontró el PDF SAT de la factura.</p>
       )}
     </div>
   );

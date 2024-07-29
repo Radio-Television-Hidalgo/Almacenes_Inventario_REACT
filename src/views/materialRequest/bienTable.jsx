@@ -8,8 +8,13 @@ function BienTable() {
     fetch("/api/articulos?type=Bien")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Log para verificar los datos recibidos
-        setBienes(data);
+          const filteredData = data.filter(
+          (bien) =>
+            bien.articleWarehouses &&
+            bien.articleWarehouses.length > 0 &&
+            bien.articleWarehouses[0].inventory_number
+        );
+        setBienes(filteredData);
       })
       .catch((error) => {
         console.error("Error fetching bienes:", error);
@@ -23,7 +28,6 @@ function BienTable() {
           <th>Descripción</th>
           <th>Cantidad</th>
           <th>Número de Inventario</th>
-          <th>Estado</th>
           <th>Fotos</th>
         </tr>
       </thead>
@@ -32,16 +36,15 @@ function BienTable() {
           <tr key={bien.id}>
             <td>{bien.description}</td>
             <td>
-              {bien.tb_warehouses && bien.tb_warehouses.length > 0
-                ? bien.tb_warehouses[0].stock
+              {bien.articleWarehouses && bien.articleWarehouses.length > 0
+                ? bien.articleWarehouses[0].quantity
                 : "N/A"}
             </td>
             <td>
-              {bien.tb_inventories && bien.tb_inventories.length > 0
-                ? bien.tb_inventories[0].inventory_number
+              {bien.articleWarehouses && bien.articleWarehouses.length > 0
+                ? bien.articleWarehouses[0].inventory_number
                 : "N/A"}
             </td>
-            <td>{bien.status}</td>
             <td>
               {bien.photos_entry &&
                 bien.photos_entry
@@ -52,6 +55,11 @@ function BienTable() {
                       src={`/api/${photo}`}
                       alt="Foto del bien"
                       className="photo"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        marginRight: "5px",
+                      }}
                     />
                   ))}
             </td>

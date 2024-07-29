@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { QRCode } from "react-qrcode-logo";
 import "../../styles/GeneralReceipt.css";
 
 function GeneralReceipt() {
@@ -12,9 +11,14 @@ function GeneralReceipt() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  // Función para ordenar la tabla (si es necesario implementarla)
+  const sortTable = (column) => {
+    // Aquí puedes implementar la lógica de ordenamiento
+    console.log(`Sorting by ${column}`);
+  };
 
   return (
-    <div class="table-container">
+    <div className="table-container">
       <h1>Lista de Artículos</h1>
       <table className="article-table">
         <thead>
@@ -50,9 +54,15 @@ function GeneralReceipt() {
               <td>{article.caracteristics}</td>
               <td>{article.type}</td>
               <td>
-                <QRCode value={article.QR} size={50} />
+                {/* Mostrar QR como imagen usando el código Base64 desde la BD */}
+                <img
+                  src={article.QR}  // Directamente usando el valor del campo QR
+                  alt="Código QR"
+                  className="qr-image"
+                />
               </td>
               <td>
+                {/* Mostrar las fotos si existen */}
                 {article.photos_entry &&
                   article.photos_entry
                     .split(",")

@@ -1,116 +1,102 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f4f8;
+/* Estilo para el contenedor principal */
+.documentacion-container {
+  text-align: center;
+ 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Estilo para el encabezado h1 */
+.h1-documentatio {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-.header {
-    width: 100%;
-    background-color: #800000;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Estilo para las columnas */
+.documentacion-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1465px; /* Ancho máximo para las columnas */
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan para mejor responsividad */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
+/* Estilo para cada columna */
+.documentacion-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre las tarjetas dentro de una columna */
+  flex: 1;
+  min-width: 300px; /* Ancho mínimo para las columnas */
+  max-width: 300px; /* Ancho máximo de las columnas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* Estilo para la columna izquierda */
+.documentacion-column-left .documentacion-card {
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.user-profile {
-    display: flex;
-    align-items: center;
+/* Estilo para la columna derecha */
+.documentacion-column-right .documentacion-card {
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.user-info {
-    margin-right: 20px;
+/* Estilo para las tarjetas (cards) */
+.documentacion-card {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  max-width: 300px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.user-info span {
-    display: block;
-    font-size: 1rem;
+.documentacion-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-.user-info a {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
+.documentacion-card span {
+  display: block;
+  font-size: 1.2rem;
 }
 
-.logout-button {
-    background-color: #d3a503;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+.documentacion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.main-content {
-    padding: 50px 20px;
-    background-color: #e0ebf7;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #800000;
-}
-
-h2 {
-    margin: 10px 0 40px;
-    font-size: 1.2rem;
-    color: #800000;
-}
-
-.buttons-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.button {
-    background-color: white;
-    border: none;
-    padding: 20px 40px;
-    font-size: 1.1rem;
-    color: #800000;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.button:hover {
-    transform: scale(1.05);
-}
-
-.icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+/* Estilo para los títulos de las tarjetas */
+.h1-mini {
+  color: #253238;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
 }
