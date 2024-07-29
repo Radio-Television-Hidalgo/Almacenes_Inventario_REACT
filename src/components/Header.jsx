@@ -105,9 +105,25 @@ const Header = () => {
         return 'Documentación';
       case '/solicitudInsumos':
         return 'Solicitud de insumos';
-      case '/articulos/insertararticulo':
-        return 'Insertar articulo'
-      default:
+      case '/articulos/insertarArticulo':
+        return 'Insertar articulo';
+        case '/articulos':
+          return 'Articulos';
+      case '/usuario/editarUsuario':
+        return 'Editar usuario';
+      case '/crearPoliza':
+        return 'Crear Poliza';
+      case '/Bajadebien':
+        return 'Baja de bienes';
+      case '/polizas':
+        return 'Polizas';
+      case '/recepcionSolicitudes':
+        return 'Solicitudes';
+      case '/articulos/almacen':
+        return 'Articulos en Almacen';
+      case '/entregasPendientes':
+        return 'Entregas pendientes'
+      default: 
         return '';
     }
   };
@@ -193,16 +209,9 @@ const Header = () => {
       </div>
             {isLargeScreen ? (
               <>
-                <div className="dropdown">
+                
                   <Link to="/inicio" className="dropdown-toggle">Inicio</Link>
-                  <div className="dropdown-menu">
-                    <Link to="/inventario" className="dropdown-item">Inventario</Link>
-                    <Link to="/usuario/gestionUsuarios" className="dropdown-item">Control de Usuarios </Link>
-                    <Link to="/almacen" className="dropdown-item">Almacen</Link>
-                    <Link to="/usuario/misBienes" className="dropdown-item">Mi resguardo </Link>
-                    <Link to="/solicitudMaterial" className="dropdown-item">Solicitudes de Material</Link>
-                  </div>
-                </div>
+                 
 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
