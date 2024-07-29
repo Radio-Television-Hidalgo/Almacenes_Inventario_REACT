@@ -107,7 +107,7 @@ function InventoryScreen() {
               <h1>Resguardo General</h1>
             </div>
           </Link>
-          <Link className="home-card-i" to="/articulos/insertarArticulos">
+          <Link className="home-card-i" to="/articulos/insertarArticulo">
             <div className="home-content-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
