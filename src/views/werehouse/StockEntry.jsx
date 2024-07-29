@@ -71,6 +71,7 @@ function StockEntry() {
                         <th>Factura</th>
                         <th>Póliza</th>
                         <th>Usuario</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
