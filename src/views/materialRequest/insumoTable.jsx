@@ -8,12 +8,20 @@ function InsumoTable() {
     fetch("/api/articulos?type=Insumos")
       .then((response) => response.json())
       .then((data) => {
-        setInsumos(data);
+        // Filtra los insumos que tienen datos válidos en articleWarehouses
+        const filteredData = data.filter(
+          (insumo) =>
+            insumo.articleWarehouses &&
+            insumo.articleWarehouses.length > 0 &&
+            insumo.articleWarehouses[0].warehouses_number
+        );
+        setInsumos(filteredData);
       })
       .catch((error) => {
         console.error("Error fetching insumos:", error);
       });
   }, []);
+
   return (
     <table className="style-table">
       <thead>
@@ -29,16 +37,15 @@ function InsumoTable() {
           <tr key={insumo.id}>
             <td>{insumo.description}</td>
             <td>
-              {insumo.tb_warehouses && insumo.tb_warehouses.length > 0
-                ? insumo.tb_warehouses[0].stock
+              {insumo.articleWarehouses && insumo.articleWarehouses.length > 0
+                ? insumo.articleWarehouses[0].quantity
                 : "N/A"}
             </td>
             <td>
-              {insumo.tb_warehouses && insumo.tb_warehouses.length > 0
-                ? insumo.tb_warehouses[0].warehouses_number
+              {insumo.articleWarehouses && insumo.articleWarehouses.length > 0
+                ? insumo.articleWarehouses[0].warehouses_number
                 : "N/A"}
             </td>
-
             <td>
               {insumo.photos_entry &&
                 insumo.photos_entry.split(",").map((photo, index) => (
@@ -60,4 +67,5 @@ function InsumoTable() {
     </table>
   );
 }
+
 export default InsumoTable;

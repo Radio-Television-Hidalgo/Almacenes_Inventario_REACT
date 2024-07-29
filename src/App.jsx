@@ -43,8 +43,10 @@ const showHeaderRoutes = [
   "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
-  "/stateOfThegoods",
-  "/Assignations",
+
+  "/stateOfThegoods", //pendinete a eliminar
+  "/Assignations",  //pendinete a eliminar
+
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
@@ -66,7 +68,8 @@ const showHeaderRoutes = [
   "/solicitudInsumos",
   "/documentacion",
   "/articulos/insertararticulo",
-  "/entregasPendientes"
+  "/entregasPendientes",
+  "/facturas/:billNumber"
 ];
 
 const routeTitles = {

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import InsumoTable from "./insumoTable";
 import BienTable from "./bienTable";
-import "/src/styles/MaterialRequest.css"
+import "/src/styles/MaterialRequest.css";
 
 function MaterialRequest() {
   const [userInfo, setUserInfo] = useState({});
+  const [warehouseManager, setWarehouseManager] = useState("");
   const [formData, setFormData] = useState({
     description: "",
     quantity: "",
@@ -13,25 +14,14 @@ function MaterialRequest() {
     file: "",
     approving_user_id: "",
     requesting_user_id: "",
-    item_id: "",
+    article_id: "",
     inventory_number_id: "",
+    warehouses_number_id: "",
   });
+  const [articles, setArticles] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState("");
 
   useEffect(() => {
-    const fetchWarehouseData = async () => {
-      try {
-        const response = await fetch("/api/articulos/warehouse/3");
-        const data = await response.json();
-        setFormData({
-          ...formData,
-          user_charge: data.user_charge.name,
-          approving_user_id: data.user_charge.id,
-        });
-      } catch (error) {
-        console.error("Error fetching warehouse data:", error);
-      }
-    };
-
     const fetchUserInfo = async () => {
       try {
         const response = await fetch("/api/usuario/infoUsuario", {
@@ -43,6 +33,11 @@ function MaterialRequest() {
         if (response.ok) {
           const data = await response.json();
           setUserInfo(data);
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            requesting_user_id: data.id || "",
+            approving_user_id: data.approving_user_id || "",
+          }));
         } else {
           console.error("Error al obtener la información del usuario");
         }
@@ -51,17 +46,98 @@ function MaterialRequest() {
       }
     };
 
+    const fetchWarehouseManager = async () => {
+      try {
+        const response = await fetch("/api/usuario/encargadoAlmacen", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setWarehouseManager(data.name);
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            approving_user_id: data.id || "",
+          }));
+        } else {
+          console.error("Error al obtener al encargado de almacén");
+        }
+      } catch (error) {
+        console.error("Error al obtener al encargado de almacén", error);
+      }
+    };
+
     fetchUserInfo();
-    fetchWarehouseData();
+    fetchWarehouseManager();
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    if (name === "warehouses_number_id" && value) {
+      fetchArticlesByWarehouse(value);
+    }
+    if (name === "inventory_number_id" && value) {
+      fetchArticlesByInventoryNumber(value);
+    }
   };
 
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, file: e.target.files[0] });
+  const fetchArticlesByWarehouse = async (warehouseNumber) => {
+    try {
+      const response = await fetch(
+        `/api/articulos/porAlmacen/${warehouseNumber}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setArticles(data);
+      } else {
+        console.error("Error al obtener los artículos por almacén");
+      }
+    } catch (error) {
+      console.error("Error al obtener los artículos por almacén", error);
+    }
+  };
+
+  const fetchArticlesByInventoryNumber = async (inventoryNumber) => {
+    try {
+      const response = await fetch(
+        `/api/articulos/porInventario/${inventoryNumber}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setArticles(data);
+      } else {
+        console.error(
+          "Error al obtener los artículos por número de inventario"
+        );
+      }
+    } catch (error) {
+      console.error(
+        "Error al obtener los artículos por número de inventario",
+        error
+      );
+    }
+  };
+
+  const handleArticleSelect = (e) => {
+    const articleId = e.target.value;
+    setSelectedArticle(articleId);
+    setFormData({ ...formData, article_id: articleId });
   };
 
   const handleSubmit = async (e) => {
@@ -75,10 +151,13 @@ function MaterialRequest() {
       const response = await fetch("/api/articulos/crearSolicitud", {
         method: "POST",
         body: formDataToSend,
-        headers: {},
       });
-      const data = await response.json();
-      console.log("Solicitud creada:", data);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Solicitud creada:", data);
+      } else {
+        console.error("Error al crear la solicitud:", response.statusText);
+      }
     } catch (error) {
       console.error("Error al crear la solicitud:", error);
     }
@@ -105,24 +184,45 @@ function MaterialRequest() {
           required
           className="material-request-input"
         />
-        <input
-          type="number"
-          name="item_id"
-          value={formData.item_id}
-          onChange={handleChange}
-          placeholder="ID del artículo"
-          required
-          className="material-request-input"
-        />
-        <input
-          type="number"
-          name="inventory_number_id"
-          value={formData.inventory_number_id}
-          onChange={handleChange}
-          placeholder="Número de inventario"
-          required
-          className="material-request-input"
-        />
+
+        {formData.type === "Insumo" && (
+          <input
+            type="text"
+            name="warehouses_number_id"
+            value={formData.warehouses_number_id}
+            onChange={handleChange}
+            placeholder="Número de Almacén"
+            className="material-request-input"
+          />
+        )}
+
+        {formData.type === "Bien" && (
+          <input
+            type="text"
+            name="inventory_number_id"
+            value={formData.inventory_number_id}
+            onChange={handleChange}
+            placeholder="Número de Inventario"
+            className="material-request-input"
+          />
+        )}
+
+        {articles.length > 0 && (
+          <select
+            value={selectedArticle}
+            onChange={handleArticleSelect}
+            className="material-request-select"
+            required
+          >
+            <option value="">Seleccionar artículo</option>
+            {articles.map((article) => (
+              <option key={article.id} value={article.id}>
+                {article.name}
+              </option>
+            ))}
+          </select>
+        )}
+
         <select
           name="type"
           value={formData.type}
@@ -132,36 +232,21 @@ function MaterialRequest() {
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-        
-        <input
-          type="text"
-          name="user_charge"
-          value={formData.user_charge}
-          onChange={handleChange}
-          placeholder="ID del usuario que aprueba"
-          required
-          className="material-request-input"
-        />
-        <input
-          type="number"
-          name="approving_user_id"
-          value={userInfo.approving_user_id}
-          onChange={handleChange}
-          hidden
-        />
-        <input
-          type="number"
-          name="requesting_user_id"
-          value={userInfo.id}
-          onChange={handleChange}
-          placeholder="ID del usuario que solicita"
-          hidden
-        />
         <input
           type="file"
           name="file"
-          onChange={handleFileChange}
+          onChange={(e) =>
+            setFormData({ ...formData, file: e.target.files[0] })
+          }
           className="material-request-file"
+        />
+        <input
+          type="text"
+          name="warehouseManager"
+          value={warehouseManager}
+          readOnly
+          className="material-request-input"
+          placeholder="Encargado de Almacén"
         />
         <button className="material-request-button" type="submit">
           Solicitar Material
