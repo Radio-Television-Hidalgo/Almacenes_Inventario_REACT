@@ -2,13 +2,47 @@ import React, { useState, useEffect } from "react";
 
 function StockEntry() {
     const [formData, setFormData] = useState([]);
+    const [editIndex, setEditIndex] = useState(null); 
+    const [editQuantity, setEditQuantity] = useState(null); 
 
+    // useEffect para obtener los datos del API al montar el componente
     useEffect(() => {
         fetch("/api/almacen/almacen")
             .then((response) => response.json())
-            .then((data) => setFormData(data.data)) // Acceder a data dentro de la respuesta
+            .then((data) => setFormData(data.data)) 
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
+
+    // Función para manejar el cambio en el campo de cantidad
+    const handleQuantityChange = (e) => {
+        setEditQuantity(e.target.value); // Actualiza el estado con el valor del input
+    };
+
+    // Función para iniciar la edición, estableciendo el índice del elemento y la cantidad actual
+    const handleEditClick = (index) => {
+        setEditIndex(index); 
+        setEditQuantity(formData[index].quantity); 
+    };
+
+    // Función para guardar la cantidad editada y enviar la actualización al servidor
+    const handleSaveClick = (id) => {
+        fetch(`/api/almacen/almacen/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ quantity: editQuantity }), 
+        })
+        .then((response) => response.json())
+        .then((updatedData) => {
+            setFormData((prevData) =>
+                prevData.map((item) => (item.id === id ? { ...item, quantity: editQuantity } : item))
+            );
+            setEditIndex(null);
+            setEditQuantity(null);
+        })
+        .catch((error) => console.error("Error updating quantity:", error)); // Manejo de errores
+    };
 
     return (
         <div>
@@ -51,7 +85,17 @@ function StockEntry() {
                             <td>{item.asset_type}</td>
                             <td>{item.harmonizable_code}</td>
                             <td>{item.accounting_record}</td>
-                            <td>{item.quantity}</td>
+                            <td>
+                                {editIndex === index ? (
+                                    <input
+                                        type="number"
+                                        value={editQuantity}
+                                        onChange={handleQuantityChange}
+                                    />
+                                ) : (
+                                    item.quantity 
+                                )}
+                            </td>
                             <td>{item.location}</td>
                             <td>{item.status ? 'Activo' : 'Inactivo'}</td>
                             <td>{item.serial_number}</td>
@@ -63,6 +107,13 @@ function StockEntry() {
                             <td>{item.invoice_id}</td>
                             <td>{item.policy_id}</td>
                             <td>{item.user_id}</td>
+                            <td>
+                                {editIndex === index ? (
+                                    <button onClick={() => handleSaveClick(item.id)}>Guardar</button>
+                                ) : (
+                                    <button onClick={() => handleEditClick(index)}>Editar</button>
+                                )}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
