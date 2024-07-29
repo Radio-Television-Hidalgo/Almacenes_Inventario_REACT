@@ -121,7 +121,7 @@ function GeneralReceipt() {
                     {selectedArticle.photos_entry.split(",").map((photo, index) => (
                       <div key={index} className="carousel-slide" style={{ display: currentSlide === index ? 'block' : 'none' }}>
                         <img
-                          src={`/api/${photo}`} // Actualiza la ruta según sea necesario
+                          src={`/api/${photo}`}
                           alt={`Foto ${index + 1}`}
                           className="carousel-photo"
                         />
