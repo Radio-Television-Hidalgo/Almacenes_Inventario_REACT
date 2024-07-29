@@ -11,8 +11,9 @@ function GeneralReceipt() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Realiza la petición para obtener los artículos
   useEffect(() => {
-    fetch("/api/articulos/articulos")
+    fetch("/api/articulos/articulos") // Asegúrate que esta URL es correcta
       .then((response) => response.json())
       .then((data) => setArticles(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -30,11 +31,13 @@ function GeneralReceipt() {
   };
 
   const moveSlide = (direction) => {
-    const totalSlides = selectedArticle.photos_entry.split(",").length;
-    let newIndex = currentSlide + direction;
-    if (newIndex >= totalSlides) newIndex = 0;
-    if (newIndex < 0) newIndex = totalSlides - 1;
-    setCurrentSlide(newIndex);
+    if (selectedArticle && selectedArticle.photos_entry) {
+      const totalSlides = selectedArticle.photos_entry.split(",").length;
+      let newIndex = currentSlide + direction;
+      if (newIndex >= totalSlides) newIndex = 0;
+      if (newIndex < 0) newIndex = totalSlides - 1;
+      setCurrentSlide(newIndex);
+    }
   };
 
   const sortTable = (column) => {
@@ -51,18 +54,19 @@ function GeneralReceipt() {
             <th onClick={() => sortTable("name")}>Nombre</th>
             <th onClick={() => sortTable("brand")}>Marca</th>
             <th onClick={() => sortTable("model")}>Modelo</th>
-{/*            <th onClick={() => sortTable("acquisition_date")}>Fecha de Adquisición</th>
+            {/* Descomenta las columnas que necesites */}
+            {/* <th onClick={() => sortTable("acquisition_date")}>Fecha de Adquisición</th>
             <th onClick={() => sortTable("number_series")}>Número de Serie</th>
             <th onClick={() => sortTable("status")}>Estado</th>
             <th onClick={() => sortTable("description")}>Descripción</th>
             <th onClick={() => sortTable("caracteristics")}>Características</th>
-            <th onClick={() => sortTable("type")}>Tipo</th>                                                 */}
+            <th onClick={() => sortTable("type")}>Tipo</th> */}
             <th>QR</th>
             <th></th>
-{/*            <th onClick={() => sortTable("photos_entry")}>Fotos</th>
+            {/* <th onClick={() => sortTable("photos_entry")}>Fotos</th>
             <th onClick={() => sortTable("userful_live_id")}>Vida Útil</th>
             <th onClick={() => sortTable("policy_id")}>Póliza</th>
-            <th onClick={() => sortTable("bill_id")}>Factura</th>                                           */}
+            <th onClick={() => sortTable("bill_id")}>Factura</th> */}
           </tr>
         </thead>
         <tbody>
@@ -71,23 +75,15 @@ function GeneralReceipt() {
               <td>{article.name}</td>
               <td>{article.brand}</td>
               <td>{article.model}</td>
-{/*              <td>{article.acquisition_date}</td>
+              {/* <td>{article.acquisition_date}</td>
               <td>{article.number_series}</td>
               <td>{article.status}</td>
               <td>{article.description}</td>
               <td>{article.caracteristics}</td>
-              <td>{article.type}</td>                                            */}
+              <td>{article.type}</td> */}
               <td>
                 <img src={article.QR} alt="Código QR" className="qr-image" />
               </td>
-{/*               <td>
-                {article.photos_entry && article.photos_entry.split(",").map((photo, index) => (
-                  <img key={index} src={photo} alt="Foto del bien" className="photo" />
-                ))}
-              </td>
-              <td>{article.userful_live_id}</td>
-              <td>{article.policy_id}</td>
-              <td>{article.bill_id}</td>                                           */}
               <td>
                 <button onClick={() => openModal(article)}>Ver más</button>
               </td>
@@ -124,7 +120,11 @@ function GeneralReceipt() {
                   <div className="carousel">
                     {selectedArticle.photos_entry.split(",").map((photo, index) => (
                       <div key={index} className="carousel-slide" style={{ display: currentSlide === index ? 'block' : 'none' }}>
-                        <img src={photo} alt={`Foto ${index + 1}`} className="carousel-photo" />
+                        <img
+                          src={`/api/${photo}`} // Actualiza la ruta según sea necesario
+                          alt={`Foto ${index + 1}`}
+                          className="carousel-photo"
+                        />
                       </div>
                     ))}
                   </div>
