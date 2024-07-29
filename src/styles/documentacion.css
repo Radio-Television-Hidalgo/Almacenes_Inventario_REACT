@@ -1,57 +1,102 @@
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .main-content {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.493); /* Fondo semi-transparente */
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  
-  .buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .button {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .card .icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .card span {
-    display: block;
-    font-size: 1.2rem;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
+/* Estilo para el contenedor principal */
+.documentacion-container {
+  text-align: center;
+ 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el encabezado h1 */
+.h1-documentatio {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Estilo para las columnas */
+.documentacion-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 10px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1465px; /* Ancho máximo para las columnas */
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan para mejor responsividad */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Estilo para cada columna */
+.documentacion-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre las tarjetas dentro de una columna */
+  flex: 1;
+  min-width: 300px; /* Ancho mínimo para las columnas */
+  max-width: 300px; /* Ancho máximo de las columnas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Estilo para la columna izquierda */
+.documentacion-column-left .documentacion-card {
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Estilo para la columna derecha */
+.documentacion-column-right .documentacion-card {
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Estilo para las tarjetas (cards) */
+.documentacion-card {
+  text-decoration: none; /* Quita la decoración de enlace */
+  display: flex;
+  flex: 1;
+  max-width: 300px; /* Ancho máximo de las tarjetas */
+  height: 200px; /* Altura fija de las tarjetas */
+  margin: 10px; /* Margen para separar las tarjetas */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.documentacion-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.documentacion-card span {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.documentacion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para los títulos de las tarjetas */
+.h1-mini {
+  color: #253238;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+}
