@@ -40,25 +40,27 @@ function Bills() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="bills-table">
-        <div className="bills-row bills-header">
-          <div>No. Factura</div>
-          <div>Tipo de Compra</div>
-          <div>Concepto</div>
-          <div>Ver Más</div>
-        </div>
-        {filteredBills.map((bill) => (
-          <div className="bills-row" key={bill.bill_number}>
-            <div>{bill.bill_number}</div>
-            <div>{bill.purchase_type}</div>
-            <div>{bill.concept}</div>
-            <div>
-              <Link to={`/facturas/${bill.bill_number}`} className="bills-show-more">
-                Ver más
-              </Link>
-            </div>
+      <div className="bills-table-wrapper">
+        <div className="bills-table">
+          <div className="bills-row bills-header">
+            <div>No. Factura</div>
+            <div>Tipo de Compra</div>
+            <div>Concepto</div>
+            <div>Ver Más</div>
           </div>
-        ))}
+          {filteredBills.map((bill) => (
+            <div className="bills-row" key={bill.bill_number}>
+              <div>{bill.bill_number}</div>
+              <div>{bill.purchase_type}</div>
+              <div>{bill.concept}</div>
+              <div>
+                <Link to={`/facturas/${bill.bill_number}`} className="bills-show-more">
+                  Ver más
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
