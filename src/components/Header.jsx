@@ -105,10 +105,8 @@ const Header = () => {
         return 'Documentación';
       case '/solicitudInsumos':
         return 'Solicitud de insumos';
-      case '/articulos/insertarArticulo':
-        return 'Insertar articulo';
-        case '/articulos':
-          return 'Articulos';
+      case '/articulos/insertararticulo':
+        return 'Insertar articulo'
       default:
         return '';
     }
@@ -168,6 +166,31 @@ const Header = () => {
           </label>
           <label id="overlay" htmlFor="sidebar-active"></label>
           <div className="links-container">
+      <div className="header-top3">
+        <img src="/logo_radio.webp"  className="logo-empresa-nav1" />
+      </div>
+      <div className="header-top1">
+        <div className="user-info-nav1">
+        {userInfo ? (
+          <>
+            <img
+              className="user-avatar"
+              src={userInfo.img || 'https://via.placeholder.com/150'} // Usa la URL del avatar del usuario, o un marcador de posición si no está disponible
+              alt="User"
+            />
+            <div>
+              <p className="user-name">{userInfo.name}</p>
+              <p className="user-role">Administrador</p>
+            </div>
+            <button className="profile-button" onClick={handleAvatarClick}>
+              Ver Perfil
+            </button>
+          </>
+          ) : (
+            <p>Cargando...</p> // Muestra un mensaje de carga mientras se obtiene la información del usuario
+          )}
+        </div>
+      </div>
             {isLargeScreen ? (
               <>
                 <div className="dropdown">
