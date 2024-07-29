@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Modal from "react-modal";
+import { PulseLoader } from "react-spinners";
+
+Modal.setAppElement('#root'); // Establece el elemento raíz para el modal
 
 const styles = {
   card: {
@@ -30,6 +34,17 @@ const styles = {
   pdf: {
     width: "100%",
     height: "600px",
+  },
+  modalContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#fff",
+    borderRadius: "8px",
+    padding: "20px",
   },
 };
 
@@ -68,16 +83,8 @@ function PolicyDetail() {
     fetchPolicy();
   }, [policyId]);
 
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
-
   if (error) {
     return <div>Error: {error}</div>;
-  }
-
-  if (!policy) {
-    return <div>No se encontró la póliza</div>;
   }
 
   // Formatear la fecha
@@ -92,54 +99,86 @@ function PolicyDetail() {
 
   return (
     <div style={styles.card}>
-      <h1 style={styles.heading}>Detalles de la Póliza</h1>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Descripción:</strong> {policy.description}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Cobertura:</strong> {policy.coverage}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Tipo:</strong> {policy.type}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Prima:</strong> {policy.premium}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Deducible:</strong> {policy.deductible}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Límites de Indemnización:</strong>{" "}
-        {policy.indemnity_limits}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Periodo de Vigencia:</strong>{" "}
-        {formatDate(policy.validity_period)}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Cláusulas de Exclusión:</strong>{" "}
-        {policy.exclusion_clauses}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Fecha:</strong> {formatDate(policy.date)}
-      </p>
-      <p style={styles.paragraph}>
-        <strong style={styles.strong}>Cantidad:</strong> {policy.quantity}
-      </p>
-
-      {pdfUrl ? (
-        <div style={styles.pdfContainer}>
-          <iframe
-            style={styles.pdf}
-            src={pdfUrl}
-            title="Póliza PDF"
-            frameBorder="0"
-          >
-            Este navegador no soporta la visualización de PDF.
-          </iframe>
+      <Modal
+        isOpen={loading}
+        onRequestClose={() => setLoading(false)}
+        style={{
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width: '300px',
+            height: '200px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        }}
+        contentLabel="Cargando"
+      >
+        <div style={styles.modalContent}>
+          <PulseLoader color="#007bff" />
+          <p>Cargando...</p>
         </div>
+      </Modal>
+
+      {policy ? (
+        <>
+          <h1 style={styles.heading}>Detalles de la Póliza</h1>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Descripción:</strong> {policy.description}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Cobertura:</strong> {policy.coverage}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Tipo:</strong> {policy.type}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Prima:</strong> {policy.premium}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Deducible:</strong> {policy.deductible}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Límites de Indemnización:</strong>{" "}
+            {policy.indemnity_limits}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Periodo de Vigencia:</strong>{" "}
+            {formatDate(policy.validity_period)}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Cláusulas de Exclusión:</strong>{" "}
+            {policy.exclusion_clauses}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Fecha:</strong> {formatDate(policy.date)}
+          </p>
+          <p style={styles.paragraph}>
+            <strong style={styles.strong}>Cantidad:</strong> {policy.quantity}
+          </p>
+
+          {pdfUrl ? (
+            <div style={styles.pdfContainer}>
+              <iframe
+                style={styles.pdf}
+                src={pdfUrl}
+                title="Póliza PDF"
+                frameBorder="0"
+              >
+                Este navegador no soporta la visualización de PDF.
+              </iframe>
+            </div>
+          ) : (
+            <p>No se encontró el PDF de la póliza.</p>
+          )}
+        </>
       ) : (
-        <p>No se encontró el PDF de la póliza.</p>
+        <div>No se encontró la póliza</div>
       )}
     </div>
   );
