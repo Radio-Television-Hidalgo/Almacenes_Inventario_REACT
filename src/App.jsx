@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
 import Login from "./views/users/login";
 import Home from "./views/home/home";
@@ -43,10 +43,8 @@ const showHeaderRoutes = [
   "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
-
-  "/stateOfThegoods", //pendinete a eliminar
-  "/Assignations",  //pendinete a eliminar
-
+  "/stateOfThegoods",
+  "/Assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
@@ -97,9 +95,9 @@ const routeTitles = {
   "/articulos": "Lista de Bienes",
   "/resguardoGeneral": "Resguardo General",
   "/articulos/almacen": "Articulos en Almacen",
-  "/documentacion":" Documentacion",
+  "/documentacion": "Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
-  "/recepcionSolicitudes":"Recpcion de Solicitudes",
+  "/recepcionSolicitudes": "Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes"
 };
 
@@ -108,10 +106,19 @@ const App = () => {
 
   useEffect(() => {
     const currentRoute = location.pathname;
-    document.title = routeTitles[currentRoute] || "Título por Defecto";
+    // Verifica rutas dinámicas para facturas
+    const dynamicRoutes = [
+      { path: "/facturas/:billNumber", title: "Detalles de Factura" },
+      { path: "/articulos/:inventoryNumber", title: "Detalles del Artículo" },
+      { path: "/polizas/:policyId", title: "Detalles de Póliza" }
+    ];
+
+    const matchedRoute = dynamicRoutes.find(route => matchPath(route.path, currentRoute));
+    const pageTitle = matchedRoute ? matchedRoute.title : (routeTitles[currentRoute] || "Título por Defecto");
+    document.title = pageTitle;
   }, [location.pathname]);
 
-  const showHeader = showHeaderRoutes.includes(location.pathname);
+  const showHeader = showHeaderRoutes.some(route => matchPath(route, location.pathname));
 
   return (
     <div>
@@ -139,19 +146,13 @@ const App = () => {
             <Route path="/inventarios/usuario" element={<UserInventory />} />
             <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
             <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
-            <Route path="/documentacion" element={<Documentacion />}/>
+            <Route path="/documentacion" element={<Documentacion />} />
             <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
             <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
             <Route path="/entregasPendientes" element={<PendingDeliveries />} />
-            <Route
-              path="/articulos/:inventoryNumber"
-              element={<ArticleDetails />}
-            />
-            <Route
-              path="/articulos/insertarArticulo"
-              element={<CreateArticle />}
-            />
+            <Route path="/articulos/:inventoryNumber" element={<ArticleDetails />} />
+            <Route path="/articulos/insertarArticulo" element={<CreateArticle />} />
             <Route path="/articulos/bajaBien" element={<DownArticle />} />
             <Route path="/articulos" element={<Articles />} />
             <Route path="/articulos/almacen" element={<WarehouseArticle />} />
