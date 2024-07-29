@@ -70,6 +70,7 @@ const showHeaderRoutes = [
   "/entregasPendientes",
   "/facturas/:billNumber",
   "/entrada/existencias",
+  "/polizas/:policyId"
 ];
 
 const routeTitles = {
