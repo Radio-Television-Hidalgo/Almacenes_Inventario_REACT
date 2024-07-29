@@ -31,13 +31,13 @@ function UserInventory() {
     }, []);
 
     const groupedData = datos.reduce((acc, dato) => {
-        if (!acc[dato.user_id]) {
-            acc[dato.user_id] = {
+        if (!acc[dato.user_id_receives]) {
+            acc[dato.user_id_receives] = {
                 user: dato.user,
                 items: []
             };
         }
-        acc[dato.user_id].items.push(dato);
+        acc[dato.user_id_receives].items.push(dato);
         return acc;
     }, {});
 
