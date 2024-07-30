@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import '../../styles/StockEntry.css'; 
 
 function StockEntry() {
     const [formData, setFormData] = useState([]);
     const [editIndex, setEditIndex] = useState(null); 
     const [editQuantity, setEditQuantity] = useState(null); 
 
-    // useEffect para obtener los datos del API al montar el componente
     useEffect(() => {
         fetch("/api/almacen/almacen")
             .then((response) => response.json())
@@ -13,18 +13,15 @@ function StockEntry() {
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
-    // Función para manejar el cambio en el campo de cantidad
     const handleQuantityChange = (e) => {
-        setEditQuantity(e.target.value); // Actualiza el estado con el valor del input
+        setEditQuantity(e.target.value); 
     };
 
-    // Función para iniciar la edición, estableciendo el índice del elemento y la cantidad actual
     const handleEditClick = (index) => {
         setEditIndex(index); 
         setEditQuantity(formData[index].quantity); 
     };
 
-    // Función para guardar la cantidad editada y enviar la actualización al servidor
     const handleSaveClick = (id) => {
         fetch(`/api/almacen/almacen/${id}`, {
             method: 'PUT',
@@ -41,13 +38,13 @@ function StockEntry() {
             setEditIndex(null);
             setEditQuantity(null);
         })
-        .catch((error) => console.error("Error updating quantity:", error)); // Manejo de errores
+        .catch((error) => console.error("Error updating quantity:", error));
     };
 
     return (
-        <div>
-            <h1>Entrada de existencias</h1>
-            <table>
+        <div className="stock-entry-custom-container">
+            <h1 className="stock-entry-custom-title">Entrada de existencias</h1>
+            <table className="stock-entry-custom-table">
                 <thead>
                     <tr>
                         <th>Tipo de alta</th>
@@ -76,7 +73,7 @@ function StockEntry() {
                 </thead>
                 <tbody>
                     {formData.map((item, index) => (
-                        <tr key={index}>
+                        <tr key={index} className={index % 2 === 0 ? 'stock-entry-custom-row-even' : 'stock-entry-custom-row-odd'}>
                             <td>{item.acquisition_type}</td>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
@@ -89,6 +86,7 @@ function StockEntry() {
                             <td>
                                 {editIndex === index ? (
                                     <input
+                                        className="stock-entry-custom-input"
                                         type="number"
                                         value={editQuantity}
                                         onChange={handleQuantityChange}
@@ -110,9 +108,9 @@ function StockEntry() {
                             <td>{item.user_id}</td>
                             <td>
                                 {editIndex === index ? (
-                                    <button onClick={() => handleSaveClick(item.id)}>Guardar</button>
+                                    <button className="stock-entry-custom-button" onClick={() => handleSaveClick(item.id)}>Guardar</button>
                                 ) : (
-                                    <button onClick={() => handleEditClick(index)}>Editar</button>
+                                    <button className="stock-entry-custom-button" onClick={() => handleEditClick(index)}>Editar</button>
                                 )}
                             </td>
                         </tr>
