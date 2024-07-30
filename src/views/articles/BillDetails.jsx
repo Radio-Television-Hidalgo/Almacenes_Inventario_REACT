@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import { PulseLoader } from 'react-spinners';
+import "../../styles/FacturasInfo.css";
 
 // Configura el modal para el acceso a la raíz
 Modal.setAppElement('#root');
@@ -34,9 +35,10 @@ const styles = {
     paddingBottom: '10px',
   },
   paragraph: {
-    margin: '12px 0',
-    fontSize: '1rem',
-    color: '#555',
+    margin: "10px 0",
+    padding: "10px",
+    borderBottom: "1px solid #eee",
+    color: "#555",
   },
   strong: {
     color: '#000',
@@ -57,7 +59,7 @@ const styles = {
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    backgroundColor: '#007bff',
+    backgroundColor: '#691B31',
     color: '#fff',
     border: 'none',
     padding: '10px',
@@ -185,7 +187,7 @@ const BillDetails = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.card}>
+      <div className='card' style={styles.card}>
         <h1 style={styles.heading}>Detalles de la Factura</h1>
         <p style={styles.paragraph}><strong style={styles.strong}>Número de Factura:</strong> {bill.bill_number}</p>
         <p style={styles.paragraph}><strong style={styles.strong}>Tipo de Compra:</strong> {bill.purchase_type}</p>
