@@ -24,7 +24,7 @@ function StockEntry() {
 
     const handleSaveClick = (id, currentQuantity) => {
         if (editQuantity < 0) {
-            alert("Please enter a positive quantity.");
+            alert("Por favor no ingrese cantidades negativas.");
             return;
         }
         const newQuantity = currentQuantity + editQuantity; // Suma la cantidad ingresada
