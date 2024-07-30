@@ -5,7 +5,7 @@ import "/src/styles/MaterialRequest.css";
 
 function MaterialRequest() {
   const [userInfo, setUserInfo] = useState({});
-  const [warehouseManager, setWarehouseManager] = useState("");
+  const [warehouseManager, setWarehouseManager] = useState({});
   const [formData, setFormData] = useState({
     description: "",
     quantity: "",
@@ -36,7 +36,6 @@ function MaterialRequest() {
           setFormData((prevFormData) => ({
             ...prevFormData,
             requesting_user_id: data.id || "",
-            approving_user_id: data.approving_user_id || "",
           }));
         } else {
           console.error("Error al obtener la información del usuario");
@@ -56,7 +55,7 @@ function MaterialRequest() {
         });
         if (response.ok) {
           const data = await response.json();
-          setWarehouseManager(data.name);
+          setWarehouseManager(data);
           setFormData((prevFormData) => ({
             ...prevFormData,
             approving_user_id: data.id || "",
@@ -98,7 +97,11 @@ function MaterialRequest() {
       );
       if (response.ok) {
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          warehouses_number_id: data.warehouseId,
+        }));
       } else {
         console.error("Error al obtener los artículos por almacén");
       }
@@ -120,7 +123,11 @@ function MaterialRequest() {
       );
       if (response.ok) {
         const data = await response.json();
-        setArticles(data);
+        setArticles(data.articles);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          inventory_number_id: data.inventoryId,
+        }));
       } else {
         console.error(
           "Error al obtener los artículos por número de inventario"
@@ -243,7 +250,7 @@ function MaterialRequest() {
         <input
           type="text"
           name="warehouseManager"
-          value={warehouseManager}
+          value={warehouseManager.name}
           readOnly
           className="material-request-input"
           placeholder="Encargado de Almacén"

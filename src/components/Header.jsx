@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
@@ -124,7 +124,14 @@ const Header = () => {
       case '/entregasPendientes':
         return 'Entregas pendientes'
       default: 
-        return '';
+        if (matchPath('/facturas/:billNumber', path)) {
+        return 'Información de factura';
+      }
+      if (matchPath('/polizas/:policyId', path)) {
+        return 'Información de póliza';
+      }
+      return '';
+      
     }
   };
 

@@ -1,7 +1,7 @@
 /* Estilo para el contenedor principal */
 .documentacion-container {
   text-align: center;
- 
+  background-image: radial-gradient(at 64.85431921869835% 55.07958595820899%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 0) 100%), radial-gradient(at 25.615661877272068% 11.005248897432462%, hsla(189.32270916334662, 100%, 49.2156862745098%, 1) 0%, hsla(189.32270916334662, 100%, 49.2156862745098%, 0) 100%), radial-gradient(at 44.37203638223155% 82.30227351388176%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 0) 100%), radial-gradient(at 20.396933516900106% 66.48911333972742%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 0) 100%), radial-gradient(at 17.634328040228308% 4.154522016825335%, hsla(189.32270916334662, 100%, 49.2156862745098%, 1) 0%, hsla(189.32270916334662, 100%, 49.2156862745098%, 0) 100%), radial-gradient(at 65.18667050618112% 63.31308748048219%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 0) 100%), radial-gradient(at 92.50054658776345% 2.628455630859383%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(36.069364161849705, 92.51336898395725%, 63.33333333333333%, 0) 100%), radial-gradient(at 72.53767082120501% 63.54364312163807%, hsla(189.32270916334662, 100%, 49.2156862745098%, 1) 0%, hsla(189.32270916334662, 100%, 49.2156862745098%, 0) 100%), radial-gradient(at 21.241352167248916% 66.52704746348408%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 1) 0%, hsla(305.8959537572254, 92.51336898395725%, 63.33333333333333%, 0) 100%); 
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -99,4 +99,37 @@
   font-weight: 300;
   font-style: normal;
   font-size: 2rem;
+}
+/* Media Queries para versión móvil */
+@media (max-width: 768px) {
+  .documentacion-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .documentacion-column {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .documentacion-card {
+    width: 80%;
+    max-width: none;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 15px;
+  }
+
+  .documentacion-column-left .documentacion-card,
+  .documentacion-column-right .documentacion-card {
+    border-radius: 15px;
+  }
+
+  .h1-documentatio {
+    font-size: 2rem;
+  }
+
+  .h1-mini {
+    font-size: 1.5rem;
+  }
 }

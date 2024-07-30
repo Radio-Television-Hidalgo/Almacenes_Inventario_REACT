@@ -62,6 +62,7 @@ function Invoice() {
     } catch (error) {
       console.error("Error al crear factura:", error);
     }
+    window.location.reload();
   };
 
   return (
