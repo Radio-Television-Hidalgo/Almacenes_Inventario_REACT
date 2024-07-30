@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import '../../styles/StockEntry.css'; 
 
 function StockEntry() {
     const [formData, setFormData] = useState([]);
@@ -46,9 +47,9 @@ function StockEntry() {
     };
 
     return (
-        <div>
-            <h1>Entrada de existencias</h1>
-            <table>
+        <div className="stock-entry-custom-container">
+            <h1 className="stock-entry-custom-title">Entrada de existencias</h1>
+            <table className="stock-entry-custom-table">
                 <thead>
                     <tr>
                         <th>Tipo de alta</th>
@@ -73,7 +74,7 @@ function StockEntry() {
                 </thead>
                 <tbody>
                     {formData.map((item, index) => (
-                        <tr key={index}>
+                        <tr key={index} className={index % 2 === 0 ? 'stock-entry-custom-row-even' : 'stock-entry-custom-row-odd'}>
                             <td>{item.acquisition_type}</td>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
