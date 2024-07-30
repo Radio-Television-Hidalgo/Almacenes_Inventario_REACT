@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Fondo con degradado */
+body {
+  background-image: radial-gradient(at 31.664175714488387% 60.695074745041055%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), 
+                    radial-gradient(at 5.022180727951042% 3.1912018041176937%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%), 
+                    radial-gradient(at 29.062494414551843% 55.35431973231275%, hsla(351.28205128205127, 100%, 77.05882352941175%, 1) 0%, hsla(351.28205128205127, 100%, 77.05882352941175%, 0) 100%), 
+                    radial-gradient(at 9.401421041608149% 22.69125754752055%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 1) 0%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 0) 100%), 
+                    radial-gradient(at 53.14514626565521% 82.83729560123858%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), 
+                    radial-gradient(at 13.992954815075564% 79.21376212372542%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), 
+                    radial-gradient(at 85.07041760976652% 42.15866485874431%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%), 
+                    radial-gradient(at 60.28655279997501% 96.73133166971333%, hsla(351.28205128205127, 100%, 77.05882352941175%, 1) 0%, hsla(351.28205128205127, 100%, 77.05882352941175%, 0) 100%), 
+                    radial-gradient(at 40.46961252309684% 24.105473892288963%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 1) 0%, hsla(39.130434782608695, 68.04733727810651%, 66.86274509803923%, 0) 100%), 
+                    radial-gradient(at 21.025049420859034% 44.61631642302131%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(117.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), 
+                    radial-gradient(at 7.611191619018509% 95.91275097432712%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 1) 0%, hsla(207.16981132075472, 71.6216216216216%, 70.98039215686273%, 0) 100%), 
+                    radial-gradient(at 34.12294551093049% 31.984848987074077%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 1) 0%, hsla(265.2, 90.90909090909092%, 78.43137254901961%, 0) 100%);  
+  background-size: cover;
+  color: #333;
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  background-attachment: fixed; /* Hace que la imagen de fondo permanezca fija en su lugar */
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Estilo para el contenedor principal */
+.main-container {
+  width: 80%; /* Ocupa el 80% del ancho de la pantalla */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Estilos para el formulario */
+.user-form {
+  background-color: rgba(255, 255, 255, 0.449); /* Fondo blanco con opacidad del 50% */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  border: 1px solid rgba(221, 221, 221, 0.5); /* Borde con opacidad */
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 1s ease-in; /* Animación de aparición */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Animación de aparición del formulario */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos para los grupos de formularios */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.5s ease-out; /* Animación de entrada para los grupos de formulario */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;  
+  margin-bottom: 5px;
+  color: #333;
+  transition: color 0.3s ease; /* Transición suave para el color de la etiqueta */
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  width: 100%; /* Asegura que los inputs ocupen todo el ancho disponible */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave para el borde, la sombra y el tamaño */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #e63946;
+  box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+  outline: none;
+  transform: scale(1.02); /* Aumenta ligeramente el tamaño del input al recibir foco */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Estilos para el botón de envío */
+.submit-button {
+  background-color: #691B31;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para el fondo y el tamaño */
+}
+
+.submit-button:hover {
+  background-color: #BC955B;
+  transform: scale(1.01); /* Aumenta el tamaño del botón al pasar el ratón sobre él */
+}
