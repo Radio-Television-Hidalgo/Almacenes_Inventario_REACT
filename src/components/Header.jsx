@@ -234,6 +234,7 @@ const Header = () => {
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
+                <Link to="/documentacion">Documentacion</Link>
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
@@ -253,6 +254,7 @@ const Header = () => {
                 <Link to="/inicio">Inicio</Link>
 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>      */}
                 <Link to="/almacen">Almacen</Link>
+                <Link to="/documentacion">Documentacion</Link>
 {/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
               </>
