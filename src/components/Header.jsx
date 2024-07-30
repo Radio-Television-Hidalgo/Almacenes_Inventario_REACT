@@ -125,9 +125,13 @@ const Header = () => {
         return 'Entregas pendientes'
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
-        return 'Información';
+        return 'Información de factura';
+      }
+      if (matchPath('/polizas/:policyId', path)) {
+        return 'Información de póliza';
       }
       return '';
+      
     }
   };
 
