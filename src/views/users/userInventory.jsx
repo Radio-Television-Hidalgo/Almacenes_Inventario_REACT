@@ -118,7 +118,7 @@ function UserInventory() {
                                         <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
                                         <td className="tableCell-u">{item.observations}</td>
                                         <td className="tableCell-u">{item.articles.number_series}</td>
-                                        <td className="tableCell-u"><button>Ver mas</button></td>
+                                        <td className="tableCell-u"><button class="button-more">Ver mas</button></td>
                                     </tr>
                                 ))}
                             </tbody>
