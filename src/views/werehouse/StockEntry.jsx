@@ -18,6 +18,7 @@ function StockEntry() {
 
     const handleEditClick = (index) => {
         setEditIndex(index); 
+        setEditQuantity(); // Inicializa la cantidad a 0 
     };
 
     const handleSaveClick = (id, currentQuantity) => {
