@@ -6,6 +6,7 @@ function UserInventory() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [modalData, setModalData] = useState(null);
+    const [itemModalData, setItemModalData] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
@@ -45,18 +46,25 @@ function UserInventory() {
         setModalData(items);
     };
 
+    const handleViewItemMore = (item) => {
+        setItemModalData(item);
+    };
+
     const closeModal = () => {
         setModalData(null);
         setSearchTerm("");
     };
 
-    const filteredModalData = modalData
-    ? modalData.filter(item =>
-        item.articles.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.deliveryWarehouse.inventory_number.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    : [];
+    const closeItemModal = () => {
+        setItemModalData(null);
+    };
 
+    const filteredModalData = modalData
+        ? modalData.filter(item =>
+            item.articles.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.deliveryWarehouse.inventory_number.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        : [];
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>{error}</p>;
@@ -114,11 +122,41 @@ function UserInventory() {
                                         <td className="tableCell-u">{item.deliveryWarehouse.inventory_number}</td>
                                         <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
                                         <td className="tableCell-u">{item.articles.number_series}</td>
-                                        <td className="tableCell-u"><button class="button-more">Ver mas</button></td>
+                                        <td className="tableCell-u">
+                                            <button className="button-more" onClick={() => handleViewItemMore(item)}>Ver más</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            )}
+            {itemModalData && (
+                <div className="modal-u">
+                    <div className="modalContent-u">
+                        <span className="closeButton-u" onClick={closeItemModal}>&times;</span>
+                        <div className="card-item-modal">
+                            <img
+                                src={itemModalData.articles.photos_entry}
+                                alt="Foto del Artículo"
+                                className="itemImage-u"
+                                
+                            />
+                            <div className="itemDetails-u">
+                                <h2>{itemModalData.articles.name}</h2>
+                                <p><strong>Número de Inventario:</strong> {itemModalData.deliveryWarehouse.inventory_number}</p>
+                                <p><strong>Fecha de Resguardo:</strong> {new Date(itemModalData.delivery_date).toLocaleDateString()}</p>
+                                <p><strong>Número de serie:</strong> {itemModalData.articles.number_series}</p>
+                                <p><strong>Observaciones:</strong> {itemModalData.observations}</p>
+                                <p><strong>descripcion:</strong> {itemModalData.articles.description}</p>
+                                <p><strong>Marca:</strong> {itemModalData.articles.brand}</p>
+                                <p><strong>Modelo:</strong> {itemModalData.articles.model}</p>
+                                <p><strong>total:</strong> {itemModalData.articles.articleBill.total}</p>
+                                <p><strong>tipo de compra:</strong> {itemModalData.articles.articleBill.purchase_type}</p>
+                                <p><strong>Proveedor:</strong> {itemModalData.articles.articleBill.supplier_name}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
