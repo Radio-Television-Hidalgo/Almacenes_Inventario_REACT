@@ -40,50 +40,53 @@ function CreateArticle() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+// CreateArticle.js
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => data.append(key, formData[key]));
+    files.forEach((file) => data.append("photos_entry", file));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = new FormData();
-      Object.keys(formData).forEach((key) => data.append(key, formData[key]));
-      files.forEach((file) => data.append("photos_entry", file));
+    const response = await fetch("/api/articulos/insertarArticulo", {
+      method: "POST",
+      body: data,
+    });
 
-      const response = await fetch("/api/articulos/insertarArticulo", {
-        method: "POST",
-        body: data,
-      });
-
-      if (!response.ok) {
-        throw new Error("Error creating article");
-      }
-
-      const result = await response.json();
-      console.log("Article created successfully:", result);
-      setFormData({
-        name: "",
-        brand: "",
-        model: "",
-        acquisition_date: "",
-        number_series: "",
-        status: "",
-        description: "",
-        caracteristics: "",
-        type: "",
-        userful_live_id: "",
-        policy_id: "",
-        bill_id: "",
-      });
-      setFiles([]);
-      setQrValue(result.name); // Usar el nombre del artículo para generar el QR
-
-    // Redirigir a /articulos/almacen con los datos del artículo creado
-    const queryParams = new URLSearchParams(result).toString();
-    window.location.href = `/articulos/almacen?${queryParams}`;
-
-    } catch (error) {
-      console.error("Error:", error);
+    if (!response.ok) {
+      throw new Error("Error creating article");
     }
-  };
+
+    const result = await response.json();
+    console.log("Article created successfully:", result);
+    setFormData({
+      name: "",
+      brand: "",
+      model: "",
+      acquisition_date: "",
+      number_series: "",
+      status: "",
+      description: "",
+      caracteristics: "",
+      type: "",
+      userful_live_id: "",
+      policy_id: "",
+      bill_id: "",
+    });
+    setFiles([]);
+    setQrValue(result.name);
+
+    // Guardar el artículo en sessionStorage
+    sessionStorage.setItem('article', JSON.stringify(result));
+
+    // Redirigir a /articulos/almacen
+    window.location.href = `/articulos/almacen`;
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 
   useEffect(() => {
     const fetchCatalogs = async () => {
@@ -135,11 +138,11 @@ function CreateArticle() {
 
   return (
     <div className="main-container2">
-      <h2>Crear nuevo articulo</h2>
+      <h2>Create New Article</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           <div className="form-group2">
-            <label>Nombre:</label>
+            <label>Name:</label>
             <input
               type="text"
               name="name"
@@ -149,7 +152,7 @@ function CreateArticle() {
             />
           </div>
           <div className="form-group2">
-            <label>Marca:</label>
+            <label>Brand:</label>
             <input
               type="text"
               name="brand"
@@ -159,7 +162,7 @@ function CreateArticle() {
             />
           </div>
           <div className="form-group2">
-            <label>Modelo:</label>
+            <label>Model:</label>
             <input
               type="text"
               name="model"
@@ -169,7 +172,7 @@ function CreateArticle() {
             />
           </div>
           <div className="form-group2">
-            <label> Fecha de Adquisición:</label>
+            <label>Acquisition Date:</label>
             <input
               type="date"
               name="acquisition_date"
@@ -178,7 +181,7 @@ function CreateArticle() {
             />
           </div>
           <div className="form-group2">
-            <label>Número de serie:</label>
+            <label>Number Series:</label>
             <input
               type="text"
               name="number_series"
@@ -187,14 +190,14 @@ function CreateArticle() {
             />
           </div>
           <div className="form-group2">
-            <label>Estado:</label>
+            <label>Status:</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
               required
             >
-              <option value="">Seleccione estado</option>
+              <option value="">Select Status</option>
               <option value="reparacion">Reparacion</option>
               <option value="en uso">En Uso</option>
               <option value="baja">Baja</option>
@@ -202,7 +205,7 @@ function CreateArticle() {
             </select>
           </div>
           <div className="form-group2">
-            <label>Descripción:</label>
+            <label>Description:</label>
             <textarea
               name="description"
               value={formData.description}
@@ -211,7 +214,7 @@ function CreateArticle() {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Características:</label>
+            <label>Caracteristics:</label>
             <textarea
               name="caracteristics"
               value={formData.caracteristics}
@@ -220,27 +223,27 @@ function CreateArticle() {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Tipo:</label>
+            <label>Type:</label>
             <select
               name="type"
               value={formData.type}
               onChange={handleChange}
               required
             >
-              <option value="">Seleccione tipo</option>
+              <option value="">Select Type</option>
               <option value="Insumos">Insumos</option>
               <option value="Bien">Bien</option>
             </select>
           </div>
           <div className="form-group2">
-            <label>Vida útil:</label>
+            <label>Useful Life:</label>
             <select
               name="userful_live_id"
               value={formData.userful_live_id}
               onChange={handleChange}
               required
             >
-              <option value="">Seleccione vida util</option>
+              <option value="">Select Useful Life</option>
               {usefulLives.map((life) => (
                 <option key={life.id} value={life.id}>
                   {life.concept}
@@ -249,14 +252,14 @@ function CreateArticle() {
             </select>
           </div>
           <div className="form-group2">
-            <label>Póliza:</label>
+            <label>Policy:</label>
             <select
               name="policy_id"
               value={formData.policy_id}
               onChange={handleChange}
               required
             >
-              <option value="">Seleccione poliza</option>
+              <option value="">Select Policy</option>
               {availablePolicies.map((policy) => (
                 <option key={policy.id} value={policy.id}>
                   {policy.description}
@@ -265,14 +268,14 @@ function CreateArticle() {
             </select>
           </div>
           <div className="form-group2">
-            <label>Factura:</label>
+            <label>Bill:</label>
             <select
               name="bill_id"
               value={formData.bill_id}
               onChange={handleChange}
               required
             >
-              <option value="">Seleccione factura </option>
+              <option value="">Select Bill</option>
               {availableBills.map((bill) => (
                 <option key={bill.id} value={bill.id}>
                   {bill.bill_number}
@@ -283,9 +286,9 @@ function CreateArticle() {
         <div className="form-group2" {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} />
           {isDragActive ? (
-            <p>Suelta los archivos aquí...<br></br></p>
+            <p>Drop the files here...</p>
           ) : (
-            <p> Arrastre y suelte algunos archivos aquí... o haga clic para seleccionar archivos</p>
+            <p>Drag 'n' drop some files here, or click to select files</p>
           )}
           <div className="files-preview">
             {files.map((file, index) => (
@@ -309,7 +312,7 @@ function CreateArticle() {
         )}
       </div>
     <button type="submit" className="submit-button">
-      Crear articulo
+      Create Article
     </button>
   </form>
     </div>

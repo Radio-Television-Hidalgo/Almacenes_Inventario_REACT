@@ -24,7 +24,7 @@ h1 {
 }
 
 table {
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@ tr:hover {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     transition: background-color 0.3s;
-}
+  }
 
 .Edit:hover, .Delete:hover {
     background-color: #691B31;
