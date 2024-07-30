@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/warehouseArticle.css";
+
 
 function WarehouseArticle() {
   const [formData, setFormData] = useState({
@@ -104,11 +106,12 @@ function WarehouseArticle() {
 
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
-      <div style={styles.column}>
-        <div style={styles.field}>
-          <label style={styles.label}>Tipo de adquisición</label>
-          <select name="acquisition_type" value={formData.acquisition_type} onChange={handleChange} required style={styles.select}>
+  <form onSubmit={handleSubmit} className="asset-container">
+    <div className="asset-form">
+      <div className="asset-grid">
+        <div className="asset-group">
+          <label htmlFor="acquisition_type" className="asset-label">Tipo de adquisición</label>
+          <select name="acquisition_type" value={formData.acquisition_type} onChange={handleChange} required className="asset-input">
             <option value="">Selecciona una opción</option>
             <option value="donacion">Donación</option>
             <option value="compra">Compra</option>
@@ -116,167 +119,117 @@ function WarehouseArticle() {
           </select>
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Nombre</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="name" className="asset-label">Nombre</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Descripción</label>
-          <input type="text" name="description" value={formData.description} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="description" className="asset-label">Descripción</label>
+          <input type="text" name="description" value={formData.description} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Tipo</label>
-          <input type="text" name="type" value={formData.type} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="type" className="asset-label">Tipo</label>
+          <input type="text" name="type" value={formData.type} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Fecha de entrada</label>
-          <input type="date" name="entry_date" value={formData.entry_date} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="entry_date" className="asset-label">Fecha de entrada</label>
+          <input type="date" name="entry_date" value={formData.entry_date} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Fecha de salida</label>
-          <input type="date" name="exit_date" value={formData.exit_date} onChange={handleChange} style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="exit_date" className="asset-label">Fecha de salida</label>
+          <input type="date" name="exit_date" value={formData.exit_date} onChange={handleChange} className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Tipo de activo</label>
-          <select name="asset_type" value={formData.asset_type} onChange={handleChange} required style={styles.select}>
+        <div className="asset-group">
+          <label htmlFor="asset_type" className="asset-label">Tipo de activo</label>
+          <select name="asset_type" value={formData.asset_type} onChange={handleChange} required className="asset-input">
             <option value="">Selecciona una opción</option>
             <option value="mueble">Mueble</option>
             <option value="inmueble">Inmueble</option>
           </select>
         </div>
-      </div>
 
-      <div style={styles.column}>
-        <div style={styles.field}>
-          <label style={styles.label}>Código armonizable</label>
-          <input type="text" name="harmonizable_code" value={formData.harmonizable_code} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="harmonizable_code" className="asset-label">Código armonizable</label>
+          <input type="text" name="harmonizable_code" value={formData.harmonizable_code} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Cuenta contable</label>
-          <input type="text" name="accounting_record" value={formData.accounting_record} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="accounting_record" className="asset-label">Cuenta contable</label>
+          <input type="text" name="accounting_record" value={formData.accounting_record} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Cantidad</label>
-          <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="quantity" className="asset-label">Cantidad</label>
+          <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Locación</label>
-          <input type="text" name="location" value={formData.location} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="location" className="asset-label">Locación</label>
+          <input type="text" name="location" value={formData.location} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Estatus</label>
-          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} style={styles.checkbox} />
+        <div className="asset-group">
+          <label htmlFor="status" className="asset-label">Estatus</label>
+          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Número de serie</label>
-          <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="serial_number" className="asset-label">Número de serie</label>
+          <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Número de almacén</label>
-          <input type="text" name="warehouses_number" value={formData.warehouses_number} onChange={handleChange} required style={styles.input} />
-        </div>
-      </div>
-
-      <div style={styles.column}>
-        <div style={styles.field}>
-          <label style={styles.label}>Número de inventario</label>
-          <input type="text" name="inventory_number" value={formData.inventory_number} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="warehouses_number" className="asset-label">Número de almacén</label>
+          <input type="text" name="warehouses_number" value={formData.warehouses_number} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Motivo</label>
-          <input type="text" name="reason" value={formData.reason} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="inventory_number" className="asset-label">Número de inventario</label>
+          <input type="text" name="inventory_number" value={formData.inventory_number} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>Tipo de resguardo</label>
-          <select name="custody_type" value={formData.custody_type} onChange={handleChange} required style={styles.select}>
+        <div className="asset-group">
+          <label htmlFor="reason" className="asset-label">Motivo</label>
+          <input type="text" name="reason" value={formData.reason} onChange={handleChange} required className="asset-input" />
+        </div>
+
+        <div className="asset-group">
+          <label htmlFor="custody_type" className="asset-label">Tipo de resguardo</label>
+          <select name="custody_type" value={formData.custody_type} onChange={handleChange} required className="asset-input">
             <option value="">Selecciona una opción</option>
             <option value="almacen">Almacén</option>
             <option value="inventario">Inventario</option>
           </select>
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>ID del artículo</label>
-          <input type="" name="article_id" value={formData.article_id} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="article_id" className="asset-label">ID del artículo</label>
+          <input type="text" name="article_id" value={formData.article_id} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>ID de la factura</label>
-          <input type="" name="invoice_id" value={formData.invoice_id} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="invoice_id" className="asset-label">ID de la factura</label>
+          <input type="text" name="invoice_id" value={formData.invoice_id} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div style={styles.field}>
-          <label style={styles.label}>ID de la póliza</label>
-          <input type="number" name="policy_id" value={formData.policy_id} onChange={handleChange} required style={styles.input} />
+        <div className="asset-group">
+          <label htmlFor="policy_id" className="asset-label">ID de la póliza</label>
+          <input type="number" name="policy_id" value={formData.policy_id} onChange={handleChange} required className="asset-input" />
         </div>
       </div>
 
-      <button type="submit" style={styles.button}>Guardar</button>
-    </form>
+      <button type="submit" className="asset-button">Guardar</button>
+    </div>
+  </form>
+  
   );
 }
 
-const styles = {
-  form: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    padding: "20px",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "8px",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-  },
-  column: {
-    display: "flex",
-    flexDirection: "column",
-    width: "300px",
-    margin: "10px",
-  },
-  field: {
-    marginBottom: "15px",
-  },
-  label: {
-    display: "block",
-    marginBottom: "5px",
-    fontWeight: "bold",
-  },
-  input: {
-    width: "100%",
-    padding: "8px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-  },
-  select: {
-    width: "100%",
-    padding: "8px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-  },
-  checkbox: {
-    marginRight: "10px",
-  },
-  button: {
-    padding: "10px 20px",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    fontSize: "16px",
-  }
-};
+
 
 export default WarehouseArticle;
