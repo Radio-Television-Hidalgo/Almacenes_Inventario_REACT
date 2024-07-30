@@ -72,7 +72,8 @@ const showHeaderRoutes = [
   "/facturas/:billNumber",
   "/entrada/existencias",
   "/historial/bajas",
-  "/polizas/:policyId"
+  "/polizas/:policyId",
+  
 
 ];
 
