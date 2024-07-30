@@ -140,7 +140,7 @@ function InventoryScreen() {
               <h1>inventarios de Usuario</h1>
             </div>
           </Link>
-          <Link to="" className="home-cards-i">
+          <Link to="/historial/bajas" className="home-cards-i">
             <div className="home-contents-i">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
