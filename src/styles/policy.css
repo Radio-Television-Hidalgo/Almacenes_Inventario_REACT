@@ -117,3 +117,18 @@
   background-color: #bc955b;
   transform: scale(1.01);
 }
+
+.poliza{
+  padding: 10px 15px;  /* Añadido más padding horizontal para mejor usabilidad */
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  width: 100%;  /* Ajuste al 100% del contenedor padre para mejor responsividad */
+  max-width: 400px;  /* Limite de ancho máximo para mantener consistencia */
+  border-radius: 25px;  /* Redondeado más suave */
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Añadido sombra para profundidad */
+  transition: border-color 0.3s, box-shadow 0.3s;  /* Suavizar transición */
+}
