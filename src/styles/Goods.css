@@ -67,9 +67,6 @@ h1 {
   background-color: rgba(245, 245, 245, 0.8);
 }
 
-.goods-row:hover {
-  background-color: rgba(235, 235, 235, 0.9);
-}
 
 /* Estilo de las celdas */
 .goods-row > div {
