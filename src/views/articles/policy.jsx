@@ -38,38 +38,39 @@ function Policy() {
     } catch (error) {
       console.error("Error:", error);
     }
+    window.location.reload();
   };
 
   return (
-    <form onSubmit={handleSubmit} class="poliza-form">
-    <div class="poliza-form-grid">
-        <div class="poliza-form-group">
-        <label class="poliza-label">Descripción del bien asegurado:</label>
+    <form onSubmit={handleSubmit}   className="poliza-form">
+    <div  className="poliza-form-grid">
+        <div   className="poliza-form-group">
+        <label   className="poliza-label">Descripción del bien asegurado:</label>
         <input
             type="text"
             name="description"
-            class="poliza-input"
+            className="poliza"
             value={formData.description}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Cobertura:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Cobertura:</label>
         <input
             type="text"
             name="coverage"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.coverage}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Tipo:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Tipo:</label>
         <select
             name="type"
-            class="poliza-select"
+            className="poliza-select"
             value={formData.type}
             onChange={handleChange}
         >
@@ -82,98 +83,98 @@ function Policy() {
         </select>
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Prima:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Prima:</label>
         <input
             type="number"
             name="premium"
             step="0.01"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.premium}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Deducible:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Deducible:</label>
         <input
             type="number"
             name="deductible"
             step="0.01"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.deductible}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Límites de indemnización:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Límites de indemnización:</label>
         <input
             type="text"
             name="indemnity_limits"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.indemnity_limits}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Periodo de vigencia:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Periodo de vigencia:</label>
         <input
             type="date"
             name="validity_period"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.validity_period}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Cláusulas de exclusión:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Cláusulas de exclusión:</label>
         <input
             type="text"
             name="exclusion_clauses"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.exclusion_clauses}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Fecha:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Fecha:</label>
         <input
             type="date"
             name="date"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.date}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Cantidad:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Cantidad:</label>
         <input
             type="number"
             name="quantity"
-            class="poliza-input"
+            className="poliza-input"
             value={formData.quantity}
             onChange={handleChange}
         />
         </div>
 
-        <div class="poliza-form-group">
-        <label class="poliza-label">Archivo:</label>
+        <div  className="poliza-form-group">
+        <label  className="poliza-label">Archivo:</label>
         <input
             type="file"
             name="file"
-            class="poliza-input"
+            className="poliza-input"
             onChange={handleFileChange}
         />
         </div>
         
     </div>
 
-    <button type="submit" class="poliza-button">Crear póliza</button>
+    <button type="submit"  className="poliza-button">Crear póliza</button>
     </form>
 
   );

@@ -15,8 +15,10 @@ function MaterialRequest() {
     approving_user_id: "",
     requesting_user_id: "",
     article_id: "",
-    inventory_number_id: "",
-    warehouses_number_id: "",
+    inventory_number: "",
+    inventory_number_id: 0,
+    warehouses_number: "",
+    warehouses_number_id: 0,
   });
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState("");
@@ -76,10 +78,10 @@ function MaterialRequest() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    if (name === "warehouses_number_id" && value) {
+    if (name === "warehouses_number" && value) {
       fetchArticlesByWarehouse(value);
     }
-    if (name === "inventory_number_id" && value) {
+    if (name === "inventory_number" && value) {
       fetchArticlesByInventoryNumber(value);
     }
   };
@@ -97,16 +99,20 @@ function MaterialRequest() {
       );
       if (response.ok) {
         const data = await response.json();
-        setArticles(data.articles);
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          warehouses_number_id: data.warehouseId,
-        }));
+        setArticles(Array.isArray(data) ? data : []);
+        if (data.length > 0) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            warehouses_number_id: data[0].warehouse_id || 0, // Asegúrate de que el ID del almacén esté presente en la respuesta
+          }));
+        }
       } else {
         console.error("Error al obtener los artículos por almacén");
+        setArticles([]);
       }
     } catch (error) {
       console.error("Error al obtener los artículos por almacén", error);
+      setArticles([]);
     }
   };
 
@@ -123,21 +129,25 @@ function MaterialRequest() {
       );
       if (response.ok) {
         const data = await response.json();
-        setArticles(data.articles);
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          inventory_number_id: data.inventoryId,
-        }));
+        setArticles(Array.isArray(data) ? data : []);
+        if (data.length > 0) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            inventory_number_id: data[0].inventory_id || 0, // Asegúrate de que el ID de inventario esté presente en la respuesta
+          }));
+        }
       } else {
         console.error(
           "Error al obtener los artículos por número de inventario"
         );
+        setArticles([]);
       }
     } catch (error) {
       console.error(
         "Error al obtener los artículos por número de inventario",
         error
       );
+      setArticles([]);
     }
   };
 
@@ -149,15 +159,24 @@ function MaterialRequest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      formDataToSend.append(key, formData[key]);
+
+    const formDataToSend = {
+      ...formData,
+      inventory_number_id: formData.inventory_number_id || null,
+      warehouses_number_id: formData.warehouses_number_id || null,
+    };
+
+    const bodyData = new FormData();
+    for (const key in formDataToSend) {
+      if (key !== "warehouses_number" && key !== "inventory_number") {
+        bodyData.append(key, formDataToSend[key]);
+      }
     }
 
     try {
       const response = await fetch("/api/articulos/crearSolicitud", {
         method: "POST",
-        body: formDataToSend,
+        body: bodyData,
       });
       if (response.ok) {
         const data = await response.json();
@@ -195,8 +214,8 @@ function MaterialRequest() {
         {formData.type === "Insumo" && (
           <input
             type="text"
-            name="warehouses_number_id"
-            value={formData.warehouses_number_id}
+            name="warehouses_number"
+            value={formData.warehouses_number}
             onChange={handleChange}
             placeholder="Número de Almacén"
             className="material-request-input"
@@ -206,15 +225,15 @@ function MaterialRequest() {
         {formData.type === "Bien" && (
           <input
             type="text"
-            name="inventory_number_id"
-            value={formData.inventory_number_id}
+            name="inventory_number"
+            value={formData.inventory_number}
             onChange={handleChange}
             placeholder="Número de Inventario"
             className="material-request-input"
           />
         )}
 
-        {articles.length > 0 && (
+        {Array.isArray(articles) && articles.length > 0 && (
           <select
             value={selectedArticle}
             onChange={handleArticleSelect}
@@ -239,14 +258,7 @@ function MaterialRequest() {
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-        <input
-          type="file"
-          name="file"
-          onChange={(e) =>
-            setFormData({ ...formData, file: e.target.files[0] })
-          }
-          className="material-request-file"
-        />
+      
         <input
           type="text"
           name="warehouseManager"
@@ -254,6 +266,14 @@ function MaterialRequest() {
           readOnly
           className="material-request-input"
           placeholder="Encargado de Almacén"
+        />
+          <input
+          type="file"
+          name="file"
+          onChange={(e) =>
+            setFormData({ ...formData, file: e.target.files[0] })
+          }
+          className="material-request-file"
         />
         <button className="material-request-button" type="submit">
           Solicitar Material

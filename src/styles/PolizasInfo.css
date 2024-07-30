@@ -1,0 +1,58 @@
+
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    .pdfContainer {
+      width: 100%;
+    }
+    .detailsContainer {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .pdfContainer {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+    }
+  
+    .pdf {
+      height: 80vh;
+    }
+  }
+  
+  h4 {
+    font-size: 4rem; /* Tamaño de fuente para el h3 */
+    margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+    font-family: "Bebas Neue", sans-serif;
+    color: #253238;
+  }
+  h2{
+    color: #253238;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5rem;
+  }

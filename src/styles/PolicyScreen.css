@@ -70,3 +70,22 @@
   margin-top: 20px;
   color: #777;
 }
+
+.policy-view-more {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* Cambia el color del texto */
+  background-color: #691B31; /* Cambia el color de fondo */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none; /* Quita el subrayado del enlace */
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s; /* Añade transiciones suaves */
+}
+
+.policy-view-more:hover {
+  background-color: #BC955B; /* Cambia el color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}

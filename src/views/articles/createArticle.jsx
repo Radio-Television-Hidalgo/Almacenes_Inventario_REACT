@@ -138,11 +138,11 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="main-container2">
-      <h2>Create New Article</h2>
+      <h2>Crear nuevo articulo</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           <div className="form-group2">
-            <label>Name:</label>
+            <label>Nombre:</label>
             <input
               type="text"
               name="name"
@@ -152,7 +152,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Brand:</label>
+            <label>Marca:</label>
             <input
               type="text"
               name="brand"
@@ -162,7 +162,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Model:</label>
+            <label>Modelo:</label>
             <input
               type="text"
               name="model"
@@ -172,7 +172,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Acquisition Date:</label>
+            <label>Fecha de Adquisición:</label>
             <input
               type="date"
               name="acquisition_date"
@@ -181,7 +181,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Number Series:</label>
+            <label>Número de serie:</label>
             <input
               type="text"
               name="number_series"
@@ -190,14 +190,14 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Status:</label>
+            <label>Estado:</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
               required
             >
-              <option value="">Select Status</option>
+              <option value="">Seleccionar estado</option>
               <option value="reparacion">Reparacion</option>
               <option value="en uso">En Uso</option>
               <option value="baja">Baja</option>
@@ -205,7 +205,7 @@ const handleSubmit = async (e) => {
             </select>
           </div>
           <div className="form-group2">
-            <label>Description:</label>
+            <label>Descripción:</label>
             <textarea
               name="description"
               value={formData.description}
@@ -214,7 +214,7 @@ const handleSubmit = async (e) => {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Caracteristics:</label>
+            <label>Caracteristicas:</label>
             <textarea
               name="caracteristics"
               value={formData.caracteristics}
@@ -223,27 +223,27 @@ const handleSubmit = async (e) => {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Type:</label>
+            <label>Tipo:</label>
             <select
               name="type"
               value={formData.type}
               onChange={handleChange}
               required
             >
-              <option value="">Select Type</option>
+              <option value="">Selecciona tipo</option>
               <option value="Insumos">Insumos</option>
               <option value="Bien">Bien</option>
             </select>
           </div>
           <div className="form-group2">
-            <label>Useful Life:</label>
+            <label>Vida útil:</label>
             <select
               name="userful_live_id"
               value={formData.userful_live_id}
               onChange={handleChange}
               required
             >
-              <option value="">Select Useful Life</option>
+              <option value="">Selecciona vida útil</option>
               {usefulLives.map((life) => (
                 <option key={life.id} value={life.id}>
                   {life.concept}
@@ -252,14 +252,14 @@ const handleSubmit = async (e) => {
             </select>
           </div>
           <div className="form-group2">
-            <label>Policy:</label>
+            <label>Póliza:</label>
             <select
               name="policy_id"
               value={formData.policy_id}
               onChange={handleChange}
               required
             >
-              <option value="">Select Policy</option>
+              <option value="">Selecciona póliza</option>
               {availablePolicies.map((policy) => (
                 <option key={policy.id} value={policy.id}>
                   {policy.description}
@@ -268,14 +268,14 @@ const handleSubmit = async (e) => {
             </select>
           </div>
           <div className="form-group2">
-            <label>Bill:</label>
+            <label>Factura:</label>
             <select
               name="bill_id"
               value={formData.bill_id}
               onChange={handleChange}
               required
             >
-              <option value="">Select Bill</option>
+              <option value="">Selecciona póliza</option>
               {availableBills.map((bill) => (
                 <option key={bill.id} value={bill.id}>
                   {bill.bill_number}
@@ -286,9 +286,9 @@ const handleSubmit = async (e) => {
         <div className="form-group2" {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} />
           {isDragActive ? (
-            <p>Drop the files here...</p>
+            <p>Suelta los archivos aquí...</p>
           ) : (
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Arrastre y suelte algunos archivos aquí o haga clic para seleccionar archivos</p>
           )}
           <div className="files-preview">
             {files.map((file, index) => (
@@ -312,7 +312,7 @@ const handleSubmit = async (e) => {
         )}
       </div>
     <button type="submit" className="submit-button">
-      Create Article
+      Crear articulo
     </button>
   </form>
     </div>
