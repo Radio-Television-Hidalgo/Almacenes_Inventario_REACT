@@ -49,7 +49,7 @@ function Policy() {
         <input
             type="text"
             name="description"
-            className="poliza-input"
+            className="poliza"
             value={formData.description}
             onChange={handleChange}
         />
