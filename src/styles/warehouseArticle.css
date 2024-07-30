@@ -6,10 +6,10 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-  }
-  
-  /* Estilos para el formulario */
-  .asset-form {
+}
+
+/* Estilos para el formulario */
+.asset-form {
     background-color: rgba(255, 255, 255, 0.449);
     padding: 30px;
     border-radius: 8px;
@@ -22,68 +22,67 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-  }
-  
-  /* Animación de aparición del formulario */
-  @keyframes assetFadeIn {
+}
+
+/* Animación de aparición del formulario */
+@keyframes assetFadeIn {
     from {
-      opacity: 0;
-      transform: translateY(10px);
+        opacity: 0;
+        transform: translateY(10px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  /* Grid para organizar el formulario en cuatro columnas */
-  .asset-grid {
+}
+
+/* Grid para organizar el formulario en cuatro columnas */
+.asset-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     transition: grid-template-columns 0.3s ease;
-    font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .asset-grid {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
-  
-  /* Estilos para los grupos de formularios */
-  .asset-group {
+}
+
+/* Estilos para los grupos de formularios */
+.asset-group {
     display: flex;
     flex-direction: column;
     animation: assetSlideIn 0.5s ease-out;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  @keyframes assetSlideIn {
+}
+
+@keyframes assetSlideIn {
     from {
-      opacity: 0;
-      transform: translateY(10px);
+        opacity: 0;
+        transform: translateY(10px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  .asset-label {
+}
+
+.asset-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
     margin-bottom: 5px;
     color: #333;
     transition: color 0.3s ease;
-  }
-  
-  .asset-input {
+}
+
+/* Estilos para los inputs y selects */
+.asset-input,
+.asset-select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -92,39 +91,46 @@
     font-weight: 300;
     font-style: normal;
     width: 100%;
+    box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  .asset-input:focus {
+}
+
+.asset-input:focus,
+.asset-select:focus {
     border-color: #e63946;
     box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
     outline: none;
     transform: scale(1.02);
-  }
-  
-  /* Estilo para los grupos de casillas de verificación */
-  .asset-checkbox-group {
+}
+
+/* Estilo para los grupos de casillas de verificación */
+.asset-checkbox-group {
     display: flex;
-    align-items: center;
-  }
-  
-  .asset-checkbox-group input[type="checkbox"] {
-    margin-right: 10px;
+    align-items: center; /* Alinea verticalmente el checkbox y la etiqueta */
+    margin-bottom: 10px; /* Añade un espacio debajo de cada grupo */
+}
+
+.asset-checkbox-group .asset-label {
+    margin-right: 10px; /* Ajusta el espaciado entre el checkbox y la etiqueta */
+}
+
+.asset-checkbox-group input[type="checkbox"] {
+    margin-right: 10px; /* Ajusta el espaciado entre el checkbox y la etiqueta */
     transition: transform 0.3s ease;
-  }
-  
-  .asset-checkbox-group input[type="checkbox"]:checked {
-    transform: scale(1.1);
-  }
-  
-  /* Evita el contorno rojo en los checkboxes al hacer focus */
-  .asset-checkbox-group input[type="checkbox"]:focus {
+}
+
+.asset-checkbox-group input[type="checkbox"]:checked {
+    transform: scale(1.1); /* Aumenta el tamaño del checkbox al estar seleccionado */
+}
+
+/* Evita el contorno rojo en los checkboxes al hacer focus */
+.asset-checkbox-group input[type="checkbox"]:focus {
     outline: none;
     box-shadow: none;
-  }
-  
-  /* Estilos para el botón de envío */
-  .asset-button {
+}
+
+/* Estilos para el botón de envío */
+.asset-button {
     background-color: #691B31;
     color: #ffffff;
     padding: 10px 20px;
@@ -137,17 +143,16 @@
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .asset-button:hover {
+}
+
+.asset-button:hover {
     background-color: #BC955B;
     transform: scale(1.01);
-  }
-  
-  /* Estilos adicionales */
-  .asset-input[type="file"] {
+}
+
+/* Estilos adicionales para inputs de archivos */
+.asset-input[type="file"] {
     padding: 5px;
     font-size: 14px;
     transition: background-color 0.3s ease;
-  }
-  
+}

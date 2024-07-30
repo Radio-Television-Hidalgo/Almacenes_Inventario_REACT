@@ -174,11 +174,6 @@ function WarehouseArticle() {
         </div>
 
         <div className="asset-group">
-          <label htmlFor="status" className="asset-label">Estatus</label>
-          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} className="asset-input" />
-        </div>
-
-        <div className="asset-group">
           <label htmlFor="serial_number" className="asset-label">Número de serie</label>
           <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required className="asset-input" />
         </div>
@@ -221,12 +216,17 @@ function WarehouseArticle() {
           <label htmlFor="policy_id" className="asset-label">ID de la póliza</label>
           <input type="number" name="policy_id" value={formData.policy_id} onChange={handleChange} required className="asset-input" />
         </div>
-      </div>
 
+        <div className="asset-group asset-group-checkbox">
+          <label htmlFor="status" className="asset-label">Estatus</label>
+          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} className="asset-input-checkbox"/>
+        </div>
+
+      </div>
       <button type="submit" className="asset-button">Guardar</button>
     </div>
   </form>
-  
+
   );
 }
 
