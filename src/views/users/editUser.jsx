@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from "../../components/ContextUser"; // Importar el hook del contexto
+import '../../styles/edituser.css'; // Importar el archivo de estilos
 
 function EditUser() {
     const { user } = useUser(); // Obtener el usuario del contexto
@@ -41,10 +42,9 @@ function EditUser() {
     };
 
     return (
-        <div>
-            <h1>Editar Usuario</h1>
-            <form onSubmit={handleSave}>
-                <div>
+        <div className="main-container">
+            <form className="user-form" onSubmit={handleSave}>
+                <div className="form-group">
                     <label>Correo Electrónico:</label>
                     <input 
                         type="email" 
@@ -52,7 +52,7 @@ function EditUser() {
                         onChange={e => setUserData({ ...userData, email: e.target.value })} 
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Contraseña:</label>
                     <input 
                         type="password" 
@@ -60,7 +60,7 @@ function EditUser() {
                         onChange={e => setUserData({ ...userData, password: e.target.value })} 
                     />
                 </div>
-                <button type="submit">Guardar</button>
+                <button className="submit-button" type="submit">Guardar</button>
             </form>
         </div>
     );

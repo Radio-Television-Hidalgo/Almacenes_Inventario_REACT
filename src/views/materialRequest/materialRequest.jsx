@@ -258,14 +258,7 @@ function MaterialRequest() {
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-        <input
-          type="file"
-          name="file"
-          onChange={(e) =>
-            setFormData({ ...formData, file: e.target.files[0] })
-          }
-          className="material-request-file"
-        />
+      
         <input
           type="text"
           name="warehouseManager"
@@ -273,6 +266,14 @@ function MaterialRequest() {
           readOnly
           className="material-request-input"
           placeholder="Encargado de Almacén"
+        />
+          <input
+          type="file"
+          name="file"
+          onChange={(e) =>
+            setFormData({ ...formData, file: e.target.files[0] })
+          }
+          className="material-request-file"
         />
         <button className="material-request-button" type="submit">
           Solicitar Material
