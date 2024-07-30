@@ -29,7 +29,7 @@ const SeelowWell = () => {
 
   return (
     <div>
-      <h1>Datos de Bajas</h1>
+      <br />
       <table>
         <thead>
           <tr>

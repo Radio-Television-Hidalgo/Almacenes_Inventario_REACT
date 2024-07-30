@@ -1,3 +1,5 @@
+
+
 @keyframes fadeIn {
     from {
       opacity: 0;
@@ -41,3 +43,16 @@
     }
   }
   
+  h4 {
+    font-size: 4rem; /* Tamaño de fuente para el h3 */
+    margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+    font-family: "Bebas Neue", sans-serif;
+    color: #253238;
+  }
+  h2{
+    color: #253238;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5rem;
+  }

@@ -122,7 +122,9 @@ const Header = () => {
       case '/articulos/almacen':
         return 'Articulos en Almacen';
       case '/entregasPendientes':
-        return 'Entregas pendientes'
+        return 'Entregas pendientes';
+      case '/historial/bajas':
+        return 'Datos de Bajas';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';

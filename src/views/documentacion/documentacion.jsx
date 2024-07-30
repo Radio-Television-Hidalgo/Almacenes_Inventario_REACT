@@ -7,7 +7,8 @@ const Documentation = () => {
     <div className="documentacion-container">
       <br />
       <main className="main-content">
-        <h1 className="h1-documentatio">Documentación</h1>
+      <h4>¿Qué deseas hacer hoy?</h4>
+      <h2>Selecciona una Opción</h2>
         
         <div className="documentacion-columns">
           <div className="documentacion-column documentacion-column-left">
