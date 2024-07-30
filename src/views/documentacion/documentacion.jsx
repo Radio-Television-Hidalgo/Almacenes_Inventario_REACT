@@ -5,7 +5,7 @@ import "../../styles/documentacion.css";
 const Documentation = () => {
   return (
     <div className="documentacion-container">
-      <br />
+      
       <main className="main-content">
       <h4>¿Qué deseas hacer hoy?</h4>
       <h2>Selecciona una Opción</h2>
