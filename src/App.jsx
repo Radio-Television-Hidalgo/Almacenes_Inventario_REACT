@@ -102,8 +102,6 @@ const routeTitles = {
   "/recepcionSolicitudes":"Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes",
   "/entrada/existencias":"Entrada de Existencias",
-  "/recepcionSolicitudes": "Recpcion de Solicitudes",
-  "/entregasPendientes": "Entregas Pendientes"
 };
 
 const App = () => {
