@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ClipLoader } from "react-spinners"; // Importa el spinner que deseas usar
-import { Collapse } from 'react-collapse'; // Importa Collapse
+import { ClipLoader } from "react-spinners";
+import { Collapse } from 'react-collapse';
 
 const ArticleDetails = () => {
-  const { inventoryNumber } = useParams(); // Obtenemos el inventoryNumber de los parámetros de la URL
+  const { inventoryNumber } = useParams();
   const [articleData, setArticleData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [policyFileUrl, setPolicyFileUrl] = useState('');
   const [billFileUrl, setBillFileUrl] = useState('');
   const [billFileSatUrl, setBillFileSatUrl] = useState('');
-  
+
   const [isOpen, setIsOpen] = useState({
     general: false,
     internal: false,
@@ -20,7 +20,6 @@ const ArticleDetails = () => {
   });
 
   useEffect(() => {
-    // Función para obtener los datos del artículo
     const fetchArticleData = async () => {
       try {
         const response = await fetch(`/api/articulos/inventory/${inventoryNumber}`);
@@ -29,7 +28,6 @@ const ArticleDetails = () => {
         }
         const data = await response.json();
         setArticleData(data);
-        // Actualiza las URLs de los archivos
         setPolicyFileUrl(`/api/policy/${data.articleData.articlePolicy?.file}`);
         setBillFileUrl(`/api/bills/${data.articleData.articleBill?.file}`);
         setBillFileSatUrl(`/api/bills/${data.articleData.articleBill?.file_sat}`);
@@ -43,7 +41,6 @@ const ArticleDetails = () => {
     fetchArticleData();
   }, [inventoryNumber]);
 
-  // Estilos en línea
   const styles = {
     container: {
       padding: "20px",
@@ -59,7 +56,10 @@ const ArticleDetails = () => {
       marginBottom: "20px",
       fontSize: "24px",
       color: "#333",
-      cursor: "pointer" // Añadido cursor pointer para indicar que es clickable
+      cursor: "pointer",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
     },
     section: {
       marginBottom: "20px"
@@ -92,6 +92,12 @@ const ArticleDetails = () => {
       justifyContent: "center",
       alignItems: "center",
       height: "100vh"
+    },
+    icon: {
+      transition: "transform 0.3s",
+    },
+    iconRotated: {
+      transform: "rotate(180deg)",
     }
   };
 
@@ -115,9 +121,34 @@ const ArticleDetails = () => {
     return <p style={{ textAlign: "center", marginTop: "20px" }}>No se encontraron datos para el artículo.</p>;
   }
 
+  const renderIcon = (section) => (
+    <svg
+      style={{
+        ...styles.icon,
+        ...(isOpen[section] ? styles.iconRotated : {})
+      }}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="feather feather-chevron-down"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  );
+
   return (
+    <div>
+      <br />
     <div style={styles.container}>
-      <h2 style={styles.heading} onClick={() => toggleSection('general')}>Detalles del Artículo</h2>
+      <h2 style={styles.heading} onClick={() => toggleSection('general')}>
+        Detalles del Artículo {renderIcon('general')}
+      </h2>
       <Collapse isOpened={isOpen.general}>
         <div style={styles.section}>
           <p><span style={styles.label}>Nombre:</span><span style={styles.value}> {articleData.name}</span></p>
@@ -130,7 +161,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('internal')}>Detalles del Artículo Interno</h3>
+      <h3 style={styles.heading} onClick={() => toggleSection('internal')}>
+        Detalles del Artículo Interno {renderIcon('internal')}
+      </h3>
       <Collapse isOpened={isOpen.internal}>
         <div style={styles.section}>
           <p><span style={styles.label}>Marca:</span><span style={styles.value}> {articleData.articleData.brand}</span></p>
@@ -140,7 +173,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('usefulLife')}>Vida Útil</h3>
+      <h3 style={styles.heading} onClick={() => toggleSection('usefulLife')}>
+        Vida Útil {renderIcon('usefulLife')}
+      </h3>
       <Collapse isOpened={isOpen.usefulLife}>
         <div style={styles.section}>
           <p><span style={styles.label}>Cuenta:</span><span style={styles.value}> {articleData.articleData.usefulLive.account}</span></p>
@@ -152,7 +187,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('files')}>Archivos Adjuntos</h3>
+      <h3 style={styles.heading} onClick={() => toggleSection('files')}>
+        Archivos Adjuntos {renderIcon('files')}
+      </h3>
       <Collapse isOpened={isOpen.files}>
         <div style={styles.fileContainer}>
           {policyFileUrl && (
@@ -175,6 +212,8 @@ const ArticleDetails = () => {
           )}
         </div>
       </Collapse>
+    </div>
+    <br />
     </div>
   );
 };
