@@ -72,96 +72,124 @@ function UserInventory() {
     return (
         <div className="container-u">
             {Object.values(groupedData).map(({ user, items }) => (
-                <div key={user.worker_nomber} className="card-u">
-                    <div className="userInfo-u">
-                        <img src={user.img} alt="Foto del Usuario" className="userImage-u" />
-                        <div>
-                            <p className="userText-u"><strong>{user.name}</strong></p>
-                            <p className="userRole-u">{user.type}</p>
-                        </div>
-                    </div>
-                    <p className="userText-u"><strong>Número de Trabajador:</strong> {user.worker_nomber}</p>
-                    <button className="button-u" onClick={() => handleViewMore(items)}>
-                        Ver más
-                    </button>
-                </div>
+                <UserCard key={user.worker_nomber} user={user} items={items} handleViewMore={handleViewMore} />
             ))}
             {modalData && (
-                <div className="modal-u">
-                    <div className="modalContent-u">
-                        <span className="closeButton-u" onClick={closeModal}>&times;</span>
-                        <input
-                            type="text"
-                            placeholder="Buscar por nombre"
-                            className="searchInput-u"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        <table className="table-u">
-                            <thead>
-                                <tr>
-                                    <th className="tableHeaderCell-u">IMG</th>
-                                    <th className="tableHeaderCell-u">Nombre</th>
-                                    <th className="tableHeaderCell-u">Número de inventario</th>
-                                    <th className="tableHeaderCell-u">Fecha de Resguardo</th>
-                                    <th className="tableHeaderCell-u">Número de Serie</th>
-                                    <th className="tableHeaderCell-u">Ver más</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filteredModalData.map(item => (
-                                    <tr key={item.id} className="tableRow-u">
-                                        <td className="tableCell-u">
-                                            <img
-                                                src={item.articles.photos_entry}
-                                                alt="Foto del Artículo"
-                                                className="userImage-u"
-                                            />
-                                        </td>
-                                        <td className="tableCell-u">{item.articles.name}</td>
-                                        <td className="tableCell-u">{item.deliveryWarehouse.inventory_number}</td>
-                                        <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
-                                        <td className="tableCell-u">{item.articles.number_series}</td>
-                                        <td className="tableCell-u">
-                                            <button className="button-more" onClick={() => handleViewItemMore(item)}>Ver más</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <Modal closeModal={closeModal}>
+                    <input
+                        type="text"
+                        placeholder="Buscar por nombre"
+                        className="searchInput-u"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <ItemTable items={filteredModalData} handleViewItemMore={handleViewItemMore} />
+                </Modal>
             )}
             {itemModalData && (
-                <div className="modal-u">
-                    <div className="modalContent-u">
-                        <span className="closeButton-u" onClick={closeItemModal}>&times;</span>
-                        <div className="card-item-modal">
-                            <img
-                                src={itemModalData.articles.photos_entry}
-                                alt="Foto del Artículo"
-                                className="itemImage-u"
-                                
-                            />
-                            <div className="itemDetails-u">
-                                <h2>{itemModalData.articles.name}</h2>
-                                <p><strong>Número de Inventario:</strong> {itemModalData.deliveryWarehouse.inventory_number}</p>
-                                <p><strong>Fecha de Resguardo:</strong> {new Date(itemModalData.delivery_date).toLocaleDateString()}</p>
-                                <p><strong>Número de serie:</strong> {itemModalData.articles.number_series}</p>
-                                <p><strong>Observaciones:</strong> {itemModalData.observations}</p>
-                                <p><strong>descripcion:</strong> {itemModalData.articles.description}</p>
-                                <p><strong>Marca:</strong> {itemModalData.articles.brand}</p>
-                                <p><strong>Modelo:</strong> {itemModalData.articles.model}</p>
-                                <p><strong>total:</strong> {itemModalData.articles.articleBill.total}</p>
-                                <p><strong>tipo de compra:</strong> {itemModalData.articles.articleBill.purchase_type}</p>
-                                <p><strong>Proveedor:</strong> {itemModalData.articles.articleBill.supplier_name}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Modal closeModal={closeItemModal}>
+                    <ItemDetails item={itemModalData} />
+                </Modal>
             )}
         </div>
     );
 }
+
+const UserCard = ({ user, items, handleViewMore }) => (
+    <div className="card-u">
+        <div className="userInfo-u">
+            <img src={user.img} alt="Foto del Usuario" className="userImage-u" />
+            <div>
+                <p className="userText-u"><strong>{user.name}</strong></p>
+                <p className="userRole-u">{user.type}</p>
+            </div>
+        </div>
+        <p className="userText-u"><strong>Número de Trabajador:</strong> {user.worker_nomber}</p>
+        <button className="button-u" onClick={() => handleViewMore(items)}>
+            Ver más
+        </button>
+    </div>
+);
+
+const Modal = ({ children, closeModal }) => (
+    <div className="modal-u">
+        <div className="modalContent-u">
+            <span className="closeButton-u" onClick={closeModal}>&times;</span>
+            {children}
+        </div>
+    </div>
+);
+
+const ItemTable = ({ items, handleViewItemMore }) => (
+    <table className="table-u">
+        <thead>
+            <tr>
+                <th className="tableHeaderCell-u">IMG</th>
+                <th className="tableHeaderCell-u">Nombre</th>
+                <th className="tableHeaderCell-u">Número de inventario</th>
+                <th className="tableHeaderCell-u">Fecha de Resguardo</th>
+                <th className="tableHeaderCell-u">Número de Serie</th>
+                <th className="tableHeaderCell-u">Ver más</th>
+            </tr>
+        </thead>
+        <tbody>
+            {items.map(item => (
+                <tr key={item.id} className="tableRow-u">
+                    <td className="tableCell-u">
+                        <img
+                            src={item.articles.photos_entry}
+                            alt="Foto del Artículo"
+                            className="userImage-u"
+                        />
+                    </td>
+                    <td className="tableCell-u">{item.articles.name}</td>
+                    <td className="tableCell-u">{item.deliveryWarehouse.inventory_number}</td>
+                    <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
+                    <td className="tableCell-u">{item.articles.number_series}</td>
+                    <td className="tableCell-u">
+                        <button className="button-more" onClick={() => handleViewItemMore(item)}>Ver más</button>
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+);
+
+const ItemDetails = ({ item }) => (
+    <div className="item-modal">
+        
+        <div className="itemDetails-u">
+            <div className="item-image-details">
+                <img
+                    src={item.articles.photos_entry}
+                    alt="Foto del Artículo"
+                    className="item-modal-image"
+                />
+                <h3>{item.articles.name}</h3>
+                <p>Número de inventario: <strong>{item.deliveryWarehouse.inventory_number}</strong></p>
+            </div>
+            <div className="item-info-details">
+                <p><strong>Fecha de Resguardo:</strong> {new Date(item.delivery_date).toLocaleDateString()}</p>
+                <p><strong>Número de serie:</strong> {item.articles.number_series}</p>
+                <p><strong>Observaciones:</strong> {item.observations}</p>
+                <p><strong>Descripción:</strong> {item.articles.description}</p>
+                <div className="item-icons">
+                    <div className="item-icon item-icon-blue">
+                        <span className="item-icon-text">Marca</span>
+                        <span className="item-icon-value">{item.articles.brand}</span>
+                    </div>
+                    <div className="item-icon item-icon-red">
+                        <span className="item-icon-text">Modelo</span>
+                        <span className="item-icon-value">{item.articles.model}</span>
+                    </div>
+                    <div className="item-icon item-icon-green">
+                        <span className="item-icon-text">Total</span>
+                        <span className="item-icon-value">{item.articles.articleBill.total}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+);
 
 export default UserInventory;
