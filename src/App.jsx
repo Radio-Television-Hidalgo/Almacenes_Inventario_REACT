@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
-import { UserProvider } from "./components/ContextUser";
+import { useContext } from "react";
+import {UserContext}  from "./components/ObtenertipoUsuario";
 import Login from "./views/users/login";
 import Home from "./views/home/home";
 import InventoryControl from "./views/inventory/InventoryControl";
@@ -112,6 +113,7 @@ const routeTitles = {
 
 const App = () => {
   const location = useLocation();
+  const { userType } = useContext(UserContext);
 
   useEffect(() => {
     const currentRoute = location.pathname;
@@ -133,10 +135,9 @@ const App = () => {
     <div>
       {showHeader && <Header />}
       <main>
-        <UserProvider>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/inicio" element={<Home />} />
+            <Route path="/inicio" element={<Home userType={userType}/>} />
             <Route path="/almacen" element={<WerehouseScreen />} />
             <Route path="/inventario" element={<InventoryScreen />} />
             <Route path="/solicitudMaterial" element={<MaterialRequest />} />
@@ -170,7 +171,6 @@ const App = () => {
             <Route path="/entrada/existencias" element={<StockEntry/>} />
             <Route path="/historial/bajas" element={<SeelowWell/>} />
           </Routes>
-        </UserProvider>
       </main>
       <Footer />
     </div>
