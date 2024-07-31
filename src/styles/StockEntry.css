@@ -1,12 +1,14 @@
 .stock-entry-custom-container {
     width: 100%;
     padding: 20px;
+    overflow-x: auto;
 }
 
 .stock-entry-custom-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .stock-entry-custom-table {
@@ -23,6 +25,7 @@
 }
 
 .stock-entry-custom-table td {
+    width: 150px;
     padding: 10px;
     border: 1px solid #ccc;
 }
@@ -55,6 +58,61 @@
     cursor: pointer;
 }
 
-.stock-entry-custom-button:hover {
+.botones {
+    display: inline-block;
+    background-color: #691B31;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.botones:hover {
     background-color: #480519;
+}
+
+@media (max-width: 768px) {
+    .stock-entry-custom-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .stock-entry-custom-table thead {
+        display: none;
+    }
+
+    .stock-entry-custom-table tbody,
+    .stock-entry-custom-table tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .stock-entry-custom-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center; /* Centra el texto horizontalmente */
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    .stock-entry-custom-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 45%;
+        font-weight: bold;
+        text-align: left;
+    }
 }

@@ -228,7 +228,7 @@ const Header = () => {
                   <Link to="/almacen" className="dropdown-toggle">Almacen</Link>
                   <div className="dropdown-menu">
                     <Link to="/documentacion" className="dropdown-item">Documentacion </Link>
-                    <Link to="" className="dropdown-item"> Entrada de existencias</Link>
+                    <Link to="/entrada/existencias" className="dropdown-item"> Entrada de existencias</Link>
                     <Link to="" className="dropdown-item">Historial de Insumos </Link>
                     <Link to="" className="dropdown-item">Entregar insumos </Link>
                     <Link to="" className="dropdown-item">Historial de salida de bienes </Link>
@@ -236,7 +236,17 @@ const Header = () => {
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
-                <Link to="/documentacion">Documentacion</Link>
+
+                <div className="dropdown">
+                  <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
+                  <div className="dropdown-menu">
+                    <Link to="/crearFactura" className="dropdown-item">Crear Facturas</Link>
+                    <Link to="/facturas" className="dropdown-item">Ver Facturas </Link>
+                    <Link to="/crearPoliza" className="dropdown-item">Crear Polizas </Link>
+                    <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
+                  </div>
+                </div>
+            
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>

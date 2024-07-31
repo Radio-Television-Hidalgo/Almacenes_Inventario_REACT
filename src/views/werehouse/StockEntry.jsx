@@ -48,7 +48,7 @@ function StockEntry() {
 
     return (
         <div className="stock-entry-custom-container">
-            <h1 className="stock-entry-custom-title">Entrada de existencias</h1>
+            <br />
             <table className="stock-entry-custom-table">
                 <thead>
                     <tr>
@@ -101,10 +101,10 @@ function StockEntry() {
                                             onChange={handleQuantityChange}
                                             placeholder="Cantidad a agregar"
                                         />
-                                        <button onClick={() => handleSaveClick(item.id, item.quantity)}>Guardar</button>
+                                        <button className="botones" onClick={() => handleSaveClick(item.id, item.quantity)}>Guardar</button>
                                     </>
                                 ) : (
-                                    <button onClick={() => handleEditClick(index)}>Agregar mas existencias</button>
+                                    <button className="botones" onClick={() => handleEditClick(index)}>Agregar mas existencias</button>
                                 )}
                             </td>
                         </tr>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "../../styles/Seelowwell.css";
 
 const SeelowWell = () => {
   const [casualtys, setCasualtys] = useState([]);
@@ -28,22 +29,20 @@ const SeelowWell = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
+    <div className="datos-bajas-container">
       <br />
-      <table>
+      <table  className="datos-bajas-table">
         <thead>
           <tr>
-          
             <th>Tipo</th>
             <th>Fecha</th>
             <th>Razón</th>
             <th>Estado</th>
             <th>Alta/Baja</th>
-            <th>usuario Confirmación</th>
-            <th>usuario Solicitud Retiro</th>
+            <th>Usuario Confirmación</th>
+            <th>Usuario Solicitud Retiro</th>
             <th>Artículo</th>
             <th>Inventario</th>
-           
           </tr>
         </thead>
         <tbody>
@@ -54,11 +53,10 @@ const SeelowWell = () => {
               <td>{casualty.reason}</td>
               <td>{casualty.status}</td>
               <td>{casualty.low ? 'Alta' : 'Baja'}</td>
-              <td>{casualty.confirmationUser.name}</td>
-              <td>{casualty.requestWithdrawUser.name}</td>
-              <td>{casualty.casualtyArticle.name}</td> {/* Acceder al nombre del artículo */}
-              <td>{casualty.casualtyInventory.inventory_number}</td> {/* Acceder al número de inventario */}
-              
+              <td>{casualty.confirmation}</td> {/* Acceder al nombre del usuario de confirmación */}
+              <td>{casualty.requestWithdraw}</td> {/* Acceder al nombre del usuario de solicitud de retiro */}
+              <td>{casualty.article}</td> {/* Acceder al nombre del artículo */}
+              <td>{casualty.inventory}</td> {/* Acceder al número de inventario */}
             </tr>
           ))}
         </tbody>
