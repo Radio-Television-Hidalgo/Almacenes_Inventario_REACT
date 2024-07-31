@@ -198,3 +198,12 @@
         width: auto; /* Permitir que las celdas se ajusten automáticamente */
     }
 }
+.itemImage-u {
+    width: 100%;
+    max-width: 300px; /* Ajusta según sea necesario */
+    height: auto;
+    border-radius: 8px; /* Redondea las esquinas de la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
+    margin-bottom: 16px; /* Espacio debajo de la imagen */
+}
+
