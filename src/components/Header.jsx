@@ -163,7 +163,7 @@ const Header = () => {
           />
           <div>
             <p className="user-name">{userInfo.name}</p>
-            <p className="user-role">Administrador</p>
+            <p className="user-role">{userInfo.type}</p>
           </div>
           <button className="profile-button" onClick={handleAvatarClick}>
             Ver Perfil
@@ -203,7 +203,7 @@ const Header = () => {
             />
             <div>
               <p className="user-name">{userInfo.name}</p>
-              <p className="user-role">Administrador</p>
+              <p className="user-role">{userInfo.type}</p>
             </div>
             <button className="profile-button" onClick={handleAvatarClick}>
               Ver Perfil
@@ -275,7 +275,7 @@ const Header = () => {
       </div>
       <div className="modal-content">
         <h2>{userInfo.name}</h2>
-        <h3>Administrador</h3>
+        <h3>{userInfo.type}</h3>
         <div className="info-section">
           <h3>Adscripción: {userInfo.ascription}</h3>
           <h3>Correo Electrónico: {userInfo.email}</h3>
