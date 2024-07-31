@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import "/src/styles/Home.css";
+import { UserContext } from "../../components/ObtenertipoUsuario";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 
-function Home({ userType }) {
+function Home() {
+  const { userType } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    
-    console.log(`El tipo de usuario ha cambiado a: ${userType}`);
+    if (userType !== null) {
+      setLoading(false);
+      console.log(`El tipo de usuario ha cambiado a: ${userType}`);
+    }
   }, [userType]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="home-container">
       <h4>¿Qué deseas hacer hoy?</h4>
@@ -54,6 +64,7 @@ function Home({ userType }) {
                 <h1>Mi resguardo</h1>
               </div>
             </Link>
+
             <Link to="/solicitudMaterial" className="home-cards">
             <div className="home-contentss">
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-inboxes" viewBox="0 0 16 16">
@@ -62,6 +73,7 @@ function Home({ userType }) {
               <h1 className="Material-H1">Solicitudes de Material</h1>
             </div>
           </Link>
+          
        </div>  
          
         
