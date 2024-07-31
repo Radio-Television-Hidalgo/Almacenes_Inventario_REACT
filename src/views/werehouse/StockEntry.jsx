@@ -101,10 +101,10 @@ function StockEntry() {
                                             onChange={handleQuantityChange}
                                             placeholder="Cantidad a agregar"
                                         />
-                                        <button onClick={() => handleSaveClick(item.id, item.quantity)}>Guardar</button>
+                                        <button className="botones" onClick={() => handleSaveClick(item.id, item.quantity)}>Guardar</button>
                                     </>
                                 ) : (
-                                    <button onClick={() => handleEditClick(index)}>Agregar mas existencias</button>
+                                    <button className="botones" onClick={() => handleEditClick(index)}>Agregar mas existencias</button>
                                 )}
                             </td>
                         </tr>
