@@ -2,8 +2,8 @@
 .container-u {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Para centrar las tarjetas horizontalmente */
-    gap: 20px; /* Espacio entre tarjetas */
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
 }
 
@@ -19,7 +19,7 @@
     flex-direction: column;
     gap: 10px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin: 10px; /* Para separación entre cards */
+    margin: 10px;
 }
 
 .card-u:hover {
@@ -29,7 +29,6 @@
 
 /* Estilos para la información del usuario */
 .userInfo-u {
-    z-index: 1;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -37,38 +36,50 @@
 }
 
 .userImage-u {
-    z-index: 1;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    border: 2px solid #800000; /* Borde alrededor de la imagen */
+    border: 2px solid #800000;
 }
 
 .userText-u {
-    z-index: 1;
     color: black;
 }
 
 .userRole-u {
-     z-index: 9PX;
     color: #888;
     font-size: 0.9em;
 }
 
-/* Estilos para el botón */
+/* Estilos para los botones */
 .button-u {
-    background-color: #800000; /* Color guinda */
+    background-color: #800000;
     color: #fff;
     border: none;
-    border-radius: 20px; /* Bordes redondeados */
-    padding: 10px;
+    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
-    text-align: center;
     transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .button-u:hover {
-    background-color: #691B31; /* Color guinda más oscuro */
+    background-color: #a00000;
+}
+
+.button-more {
+    background-color: #BC955B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-more:hover {
+    background-color: #a00000;
 }
 
 /* Estilos para el modal */
@@ -80,130 +91,139 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 1000; /* Add this line to ensure the modal is in front */
+    align-items: center;
+    z-index: 9999;
 }
 
 .modalContent-u {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-    width: 90%;
-    max-width: 1200px;
+    max-width: 800px;
+    width: 100%;
     position: relative;
-    overflow-x: auto;
 }
 
 .closeButton-u {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -3px;
+    right: 5px;
+    font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 20px;
+    color: #BC955B;
 }
 
 .searchInput-u {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 1px solid #691B31;
+    border-radius: 40px;
 }
 
-/* Estilos para la tabla */
 .table-u {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
+    border-collapse: collapse;
 }
 
-/* Estilos para las cabeceras de la tabla */
-.tableHeaderCell-u {
-    background-color: #800000; /* Color guinda */
-    color: #fff;
-    padding: 12px;
+.tableHeaderCell-u, .tableCell-u {
+    padding: 10px;
+    border: 1px solid #ddd;
     text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #ddd;
 }
 
-/* Estilos para las filas pares */
+.tableHeaderCell-u {
+    background-color: #691B31;
+    font-weight: bold;
+}
+
 .tableRow-u:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Estilos para las celdas */
-.tableCell-u {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-/* Efectos al pasar el ratón por las filas */
 .tableRow-u:hover {
     background-color: #f1f1f1;
-    cursor: pointer;
 }
 
-/* Estilo específico para las celdas de la primera columna */
-.tableCell-u:first-child {
-    border-radius: 10px 0 0 10px;
+/* Estilos para el modal de detalles del artículo */
+.item-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-/* Estilo específico para las celdas de la última columna */
-.tableCell-u:last-child {
-    border-radius: 0 10px 10px 0;
+.item-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
-/* Estilo para el botón "Ver más" */
-.button-more {
-    background-color: #800000;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
+.item-modal-image {
+    width: 220px;
+    height: 220px;
+    border-radius: 10%;
+    border: 2px solid #691B31;
 }
 
-.button-more:hover {
-    background-color: #b30000;
+.itemDetails-u {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-@media (max-width: 768px) {
-    .card-u {
-        width: 90%; /* Asegurar que las tarjetas ocupen la mayor parte del espacio en pantallas pequeñas */
-    }
-
-    .modalContent-u {
-        width: 95%;
-    }
-
-    .table-u {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .tableHeaderCell-u,
-    .tableCell-u {
-        display: inline-block;
-        width: auto; /* Permitir que las celdas se ajusten automáticamente */
-    }
-}
-.itemImage-u {
-    width: 100%;
-    max-width: 300px; /* Ajusta según sea necesario */
-    height: auto;
-    border-radius: 8px; /* Redondea las esquinas de la imagen */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
-    margin-bottom: 16px; /* Espacio debajo de la imagen */
+.item-image-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
+.item-info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 14px;
+    width: 200px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.item-icon-blue {
+    background-color: #007bff;
+}
+
+.item-icon-red {
+    background-color: #dc3545;
+}
+
+.item-icon-green {
+    background-color: #28a745;
+}
+
+.item-icon-text {
+    font-size: 0.8em;
+}
+
+.item-icon-value {
+    font-size: 1.2em;
+}

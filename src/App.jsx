@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import { UserContext } from "./components/ObtenertipoUsuario";
+import { UserProvider } from "./components/ContextUser";
 import Login from "./views/users/login";
 import Home from "./views/home/home";
 import InventoryControl from "./views/inventory/InventoryControl";
@@ -140,6 +141,7 @@ const App = () => {
     <div>
       {showHeader && <Header />}
       <main>
+        <UserProvider>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/inicio" element={<Home userType={userType} />} />
@@ -176,6 +178,7 @@ const App = () => {
           <Route path="/historial/bajas" element={<SeelowWell />} />
           <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> {/* Ruta dinámica para los detalles del artículo */}
         </Routes>
+        </UserProvider>
       </main>
       <Footer />
     </div>
