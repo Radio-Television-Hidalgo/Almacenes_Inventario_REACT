@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Routes, Route, useLocation, matchPath } from "react-router-dom";
-import { useContext } from "react";
-import {UserContext}  from "./components/ObtenertipoUsuario";
+import { UserContext } from "./components/ObtenertipoUsuario";
 import Login from "./views/users/login";
 import Home from "./views/home/home";
 import InventoryControl from "./views/inventory/InventoryControl";
+import ArticleDetails from "./views/articles/ArticlesDetails"; // Importación correcta
 import Policy from "./views/articles/policy";
 import Invoice from "./views/articles/invoice";
 import User from "./views/users/formUser";
@@ -14,7 +14,6 @@ import StateofThegoods from "./views/StateofThegoods";
 import Assignations from "./views/Assignations";
 import Goods from "./views/articles/Goods";
 import SeeUser from "./views/users/seeUsers";
-import ArticleDetails from "./views/articles/articleDetails";
 import CreateArticle from "./views/articles/createArticle";
 import EditUser from "./views/users/editUser";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
@@ -74,8 +73,7 @@ const showHeaderRoutes = [
   "/entrada/existencias",
   "/historial/bajas",
   "/polizas/:policyId",
-  
-
+  "/articulos/articulo/:inventoryNumber", // Agregar la ruta dinámica para el artículo
 ];
 
 const routeTitles = {
@@ -105,10 +103,11 @@ const routeTitles = {
   "/articulos/almacen": "Articulos en Almacen",
   "/documentacion": "Documentacion",
   "/facturas/:billNumber": "Detalles de Factura",
-  "/recepcionSolicitudes":"Recpcion de Solicitudes",
+  "/recepcionSolicitudes": "Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes",
-  "/entrada/existencias":"Entrada de Existencias",
-  "/historial/bajas":"Historial de Bajas"
+  "/entrada/existencias": "Entrada de Existencias",
+  "/historial/bajas": "Historial de Bajas",
+  "/articulos/articulo/:inventoryNumber": "Detalles del Artículo", // Agregar el título para la ruta dinámica
 };
 
 const App = () => {
@@ -121,56 +120,62 @@ const App = () => {
     const dynamicRoutes = [
       { path: "/facturas/:billNumber", title: "Detalles de Factura" },
       { path: "/articulos/:inventoryNumber", title: "Detalles del Artículo" },
-      { path: "/polizas/:policyId", title: "Detalles de Póliza" }
+      { path: "/polizas/:policyId", title: "Detalles de Póliza" },
     ];
 
-    const matchedRoute = dynamicRoutes.find(route => matchPath(route.path, currentRoute));
-    const pageTitle = matchedRoute ? matchedRoute.title : (routeTitles[currentRoute] || "Título por Defecto");
+    const matchedRoute = dynamicRoutes.find((route) =>
+      matchPath(route.path, currentRoute)
+    );
+    const pageTitle = matchedRoute
+      ? matchedRoute.title
+      : routeTitles[currentRoute] || "Título por Defecto";
     document.title = pageTitle;
   }, [location.pathname]);
 
-  const showHeader = showHeaderRoutes.some(route => matchPath(route, location.pathname));
+  const showHeader = showHeaderRoutes.some((route) =>
+    matchPath(route, location.pathname)
+  );
 
   return (
     <div>
       {showHeader && <Header />}
       <main>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/inicio" element={<Home userType={userType}/>} />
-            <Route path="/almacen" element={<WerehouseScreen />} />
-            <Route path="/inventario" element={<InventoryScreen />} />
-            <Route path="/solicitudMaterial" element={<MaterialRequest />} />
-            <Route path="/usuario/nuevoUsuario" element={<User />} />
-            <Route path="/facturas" element={<Bills />} />
-            <Route path="/stateOfThegoods" element={<StateofThegoods />} />
-            <Route path="/assignations" element={<Assignations />} />
-            <Route path="/usuario/misBienes" element={<Goods />} />
-            <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
-            <Route path="/usuario/editarUsuario" element={<EditUser />} />
-            <Route path="/ControlInventario" element={<InventoryControl />} />
-            <Route path="/crearFactura" element={<Invoice />} />
-            <Route path="/crearPoliza" element={<Policy />} />
-            <Route path="/polizas" element={<PolicyScreen />} />
-            <Route path="/entregaArticulo" element={<ArticleDelivery />} />
-            <Route path="/inventarios/usuario" element={<UserInventory />} />
-            <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
-            <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
-            <Route path="/documentacion" element={<Documentacion />} />
-            <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
-            <Route path="/SalidadeExistencia" element={<StockOut />} />
-            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
-            <Route path="/entregasPendientes" element={<PendingDeliveries />} />
-            <Route path="/articulos/:inventoryNumber" element={<ArticleDetails />} />
-            <Route path="/articulos/insertarArticulo" element={<CreateArticle />} />
-            <Route path="/articulos/bajaBien" element={<DownArticle />} />
-            <Route path="/articulos" element={<Articles />} />
-            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
-            <Route path="/facturas/:billNumber" element={<BillDetails />} />
-            <Route path="/polizas/:policyId" element={<PolicyDetail />} />
-            <Route path="/entrada/existencias" element={<StockEntry/>} />
-            <Route path="/historial/bajas" element={<SeelowWell/>} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/inicio" element={<Home userType={userType} />} />
+          <Route path="/almacen" element={<WerehouseScreen />} />
+          <Route path="/inventario" element={<InventoryScreen />} />
+          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
+          <Route path="/usuario/nuevoUsuario" element={<User />} />
+          <Route path="/facturas" element={<Bills />} />
+          <Route path="/stateOfThegoods" element={<StateofThegoods />} />
+          <Route path="/assignations" element={<Assignations />} />
+          <Route path="/usuario/misBienes" element={<Goods />} />
+          <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+          <Route path="/usuario/editarUsuario" element={<EditUser />} />
+          <Route path="/ControlInventario" element={<InventoryControl />} />
+          <Route path="/crearFactura" element={<Invoice />} />
+          <Route path="/crearPoliza" element={<Policy />} />
+          <Route path="/polizas" element={<PolicyScreen />} />
+          <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+          <Route path="/inventarios/usuario" element={<UserInventory />} />
+          <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
+          <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
+          <Route path="/documentacion" element={<Documentacion />} />
+          <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
+          <Route path="/SalidadeExistencia" element={<StockOut />} />
+          <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+          <Route path="/entregasPendientes" element={<PendingDeliveries />} />
+          <Route path="/articulos/insertarArticulo" element={<CreateArticle />} />
+          <Route path="/articulos/bajaBien" element={<DownArticle />} />
+          <Route path="/articulos" element={<Articles />} />
+          <Route path="/articulos/almacen" element={<WarehouseArticle />} />
+          <Route path="/facturas/:billNumber" element={<BillDetails />} />
+          <Route path="/polizas/:policyId" element={<PolicyDetail />} />
+          <Route path="/entrada/existencias" element={<StockEntry />} />
+          <Route path="/historial/bajas" element={<SeelowWell />} />
+          <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> {/* Ruta dinámica para los detalles del artículo */}
+        </Routes>
       </main>
       <Footer />
     </div>
