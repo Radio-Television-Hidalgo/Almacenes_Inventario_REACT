@@ -62,7 +62,7 @@ function GeneralReceipt() {
             <th onClick={() => sortTable("caracteristics")}>Características</th>
             <th onClick={() => sortTable("type")}>Tipo</th> */}
             <th>QR</th>
-            <th></th>
+            <th>Ver más</th>
             {/* <th onClick={() => sortTable("photos_entry")}>Fotos</th>
             <th onClick={() => sortTable("userful_live_id")}>Vida Útil</th>
             <th onClick={() => sortTable("policy_id")}>Póliza</th>
@@ -84,8 +84,8 @@ function GeneralReceipt() {
               <td>
                 <img src={article.QR} alt="Código QR" className="qr-image" />
               </td>
-              <td>
-                <button onClick={() => openModal(article)}>Ver más</button>
+              <td className="button-container">
+                <button  className="ver-mas-button" onClick={() => openModal(article)}>Ver más</button>
               </td>
             </tr>
           ))}
