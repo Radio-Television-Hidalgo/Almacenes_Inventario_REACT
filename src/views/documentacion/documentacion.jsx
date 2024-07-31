@@ -12,7 +12,7 @@ const Documentation = () => {
         
         <div className="documentacion-columns">
           <div className="documentacion-column documentacion-column-left">
-          <Link to="/crearFactura" className="documentacion-card button card-left">
+            <Link to="/crearFactura" className="documentacion-card button card-left">
               <span className="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
                   <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
@@ -33,7 +33,7 @@ const Documentation = () => {
           </div>
           <div className="documentacion-column documentacion-column-right">
 
-          <Link to="/facturas" className="documentacion-card button card-right">
+            <Link to="/facturas" className="documentacion-card button card-right">
               <span className="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-clipboard2-fill" viewBox="0 0 16 16">
                   <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
