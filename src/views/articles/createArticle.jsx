@@ -45,7 +45,15 @@ function CreateArticle() {
     e.preventDefault();
     try {
       const data = new FormData();
-      Object.keys(formData).forEach((key) => data.append(key, formData[key]));
+      Object.keys(formData).forEach((key) => {
+        // Check if the key is 'userful_live_id' and the value is empty
+        if (key === "userful_live_id" && formData[key] === "") {
+          // Set the value to null or some other default value
+          data.append(key, null); // You can also use 0 or another default value if needed
+        } else {
+          data.append(key, formData[key]);
+        }
+      });
       files.forEach((file) => data.append("photos_entry", file));
 
       const response = await fetch("/api/articulos/insertarArticulo", {
@@ -59,28 +67,10 @@ function CreateArticle() {
 
       const result = await response.json();
       console.log("Article created successfully:", result);
-      setFormData({
-        name: "",
-        brand: "",
-        model: "",
-        acquisition_date: "",
-        number_series: "",
-        status: "",
-        description: "",
-        caracteristics: "",
-        type: "",
-        userful_live_id: "",
-        policy_id: "",
-        bill_id: "",
-      });
-      setFiles([]);
-      setQrValue(result.name);
-
-      // Guardar el artículo en sessionStorage
-      sessionStorage.setItem("article", JSON.stringify(result));
+      setQrValue(result.name); // Set the QR value with the article's name
 
       // Redirigir a /articulos/almacen
-      window.location.href = `/articulos/almacen`;
+      window.location.href = "/articulos/almacen";
     } catch (error) {
       console.error("Error:", error);
     }
@@ -89,38 +79,34 @@ function CreateArticle() {
   useEffect(() => {
     const fetchCatalogs = async () => {
       try {
-        // Obtener datos de catálogo
         const response = await fetch("/api/articulos/datosCatalogo");
         const data = await response.json();
         console.log(data);
         setUsefulLives(data.usefulLives);
         setPolicies(data.policies);
         setBills(data.bills);
-        console.log(data.policies);
-        // Obtener todos los artículos
+
         const billsResponse = await fetch("/api/articulos/articulos");
         const articles = await billsResponse.json();
 
-        // Contar artículos por factura
         const articleCountByBill = articles.reduce((acc, article) => {
           acc[article.bill_id] = (acc[article.bill_id] || 0) + 1;
           return acc;
         }, {});
-        //contar articulo por piliza
+
         const articleCountByPolicy = articles.reduce((acc, article) => {
           acc[article.policy_id] = (acc[article.policy_id] || 0) + 1;
           return acc;
         }, {});
 
-        // Filtrar las facturas disponibles
         const availableBills = data.bills.filter((bill) => {
           const articleCount = articleCountByBill[bill.id] || 0;
           return articleCount < bill.quantity;
         });
-        //filtrar las polizas disponibles
+
         const availablePolicies = data.policies.filter((policy) => {
           const articleCount = articleCountByPolicy[policy.id] || 0;
-          return accounapoliciesCount < policy.quantity;
+          return articleCount < policy.quantity;
         });
 
         setAvailableBills(availableBills);
@@ -138,6 +124,7 @@ function CreateArticle() {
       <h2>Crear nuevo articulo</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
+          {/* Form fields as before */}
           <div className="form-group2">
             <label>Nombre:</label>
             <input
@@ -239,7 +226,7 @@ function CreateArticle() {
                 name="userful_live_id"
                 value={formData.userful_live_id}
                 onChange={handleChange}
-                required
+                required={formData.type !== "Insumos"}
               >
                 <option value="">Selecciona vida útil</option>
                 {usefulLives.map((life) => (
@@ -274,7 +261,7 @@ function CreateArticle() {
               onChange={handleChange}
               required
             >
-              <option value="">Selecciona póliza</option>
+              <option value="">Selecciona factura</option>
               {availableBills.map((bill) => (
                 <option key={bill.id} value={bill.id}>
                   {bill.bill_number}
@@ -295,31 +282,27 @@ function CreateArticle() {
                 seleccionar archivos
               </p>
             )}
-            <div className="files-preview">
-              {files.map((file, index) => (
-                <div key={index} className="file-item">
-                  {file.type.startsWith("image/") ? (
-                    <img src={URL.createObjectURL(file)} alt={file.name} />
-                  ) : (
-                    <span>{file.name}</span>
-                  )}
+            <div className="file-list">
+              {files.map((file) => (
+                <div key={file.name} className="file-item">
+                  <p>{file.name}</p>
                   <button type="button" onClick={() => removeFile(file)}>
-                    Remove
+                    Eliminar
                   </button>
                 </div>
               ))}
             </div>
           </div>
-          {qrValue && (
-            <div className="qr-container">
-              <QRCode value={qrValue} />
-            </div>
-          )}
         </div>
-        <button type="submit" className="submit-button">
-          Crear articulo
-        </button>
+        <button type="submit">Crear artículo</button>
       </form>
+      {/* Mostrar el código QR solo después de que el artículo ha sido creado */}
+      {qrValue && (
+        <div className="qr-code-container">
+          <h3>Código QR para el artículo:</h3>
+          <QRCode value={qrValue} size={150} />
+        </div>
+      )}
     </div>
   );
 }
