@@ -8,6 +8,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .stock-entry-custom-table {
@@ -24,8 +25,8 @@
 }
 
 .stock-entry-custom-table td {
-
     width: 150px;
+    padding: 10px;
     border: 1px solid #ccc;
 }
 
@@ -56,84 +57,62 @@
     border-radius: 3px;
     cursor: pointer;
 }
+
 .botones {
-    display: inline-block; /* Para que se comporte como un botón */
-    background-color:#691B31 ; /* Color de fondo */
-    color: white; /* Color de texto */
-    padding: 10px 20px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 10px; /* Bordes redondeados */
-    text-align: center; /* Centrar el texto */
-    text-decoration: none; /* Quitar subrayado */
-    font-family: 'Poppins', sans-serif; /* Fuente */
-    font-weight: 300; /* Grosor de la fuente */
-    cursor: pointer; /* Cursor de puntero */
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones para hover */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
-  }
-.stock-entry-custom-button:hover {
+    display: inline-block;
+    background-color: #691B31;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.botones:hover {
     background-color: #480519;
 }
-@media (max-widht:768px) {
-    .stock-entry-custom-container {
-        width: 100%;
-        padding: 20px;
-    }
-    
-    .stock-entry-custom-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-    
+
+@media (max-width: 768px) {
     .stock-entry-custom-table {
+        display: block;
         width: 100%;
-        border-collapse: collapse;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
     }
-    
-    .stock-entry-custom-table th {
-        background-color: #680728;
-        color: white;
+
+    .stock-entry-custom-table thead {
+        display: none;
+    }
+
+    .stock-entry-custom-table tbody,
+    .stock-entry-custom-table tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .stock-entry-custom-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
         padding: 10px;
+        text-align: center; /* Centra el texto horizontalmente */
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    .stock-entry-custom-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 45%;
+        font-weight: bold;
         text-align: left;
     }
-    
-    .stock-entry-custom-table td {
-        padding: 10px;
-        border: 1px solid #ccc;
-    }
-    
-    .stock-entry-custom-row-even {
-        background-color: #f8f8f8;
-    }
-    
-    .stock-entry-custom-row-odd {
-        background-color: #eeeeee;
-    }
-    
-    .stock-entry-custom-row-highlight {
-        background-color: #c8a86b;
-    }
-    
-    .stock-entry-custom-input {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-    
-    .stock-entry-custom-button {
-        padding: 5px 10px;
-        background-color: #680728;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-    
-    .stock-entry-custom-button:hover {
-        background-color: #480519;
-    }
-    
 }
