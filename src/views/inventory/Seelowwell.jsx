@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "../../styles/Seelowwell.css";
 
 const SeelowWell = () => {
   const [casualtys, setCasualtys] = useState([]);
@@ -28,9 +29,9 @@ const SeelowWell = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
+    <div className="datos-bajas-container">
       <br />
-      <table>
+      <table  className="datos-bajas-table">
         <thead>
           <tr>
             <th>Tipo</th>

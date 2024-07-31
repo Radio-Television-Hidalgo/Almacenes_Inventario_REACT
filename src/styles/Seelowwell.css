@@ -1,0 +1,39 @@
+.datos-bajas-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .datos-bajas-table {
+    width: 96%;
+    border-collapse: collapse;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 96px;
+  }
+  
+  .datos-bajas-table th, .datos-bajas-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .datos-bajas-table thead {
+    background-color: #691B31; /* Color de fondo para el encabezado */
+    color: #ffffff; /* Color del texto del encabezado */
+  }
+  
+  .datos-bajas-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .datos-bajas-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  
+  .datos-bajas-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
