@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InsumoTable from "./insumoTable";
 import BienTable from "./bienTable";
+import Modal from "./Modal";
 import "/src/styles/MaterialRequest.css";
 
 function MaterialRequest() {
@@ -22,6 +23,7 @@ function MaterialRequest() {
   });
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -103,7 +105,7 @@ function MaterialRequest() {
         if (data.length > 0) {
           setFormData((prevFormData) => ({
             ...prevFormData,
-            warehouses_number_id: data[0].warehouse_id || 0, // Asegúrate de que el ID del almacén esté presente en la respuesta
+            warehouses_number_id: data[0].warehouse_id || 0,
           }));
         }
       } else {
@@ -133,7 +135,7 @@ function MaterialRequest() {
         if (data.length > 0) {
           setFormData((prevFormData) => ({
             ...prevFormData,
-            inventory_number_id: data[0].inventory_id || 0, // Asegúrate de que el ID de inventario esté presente en la respuesta
+            inventory_number_id: data[0].inventory_id || 0,
           }));
         }
       } else {
@@ -181,12 +183,18 @@ function MaterialRequest() {
       if (response.ok) {
         const data = await response.json();
         console.log("Solicitud creada:", data);
+        setShowModal(true); // Muestra el modal en lugar de redirigir directamente
       } else {
         console.error("Error al crear la solicitud:", response.statusText);
       }
     } catch (error) {
       console.error("Error al crear la solicitud:", error);
     }
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    // Aquí puedes agregar cualquier acción adicional al cerrar el modal si es necesario
   };
 
   return (
@@ -267,7 +275,7 @@ function MaterialRequest() {
           className="material-request-input"
           placeholder="Encargado de Almacén"
         />
-          <input
+        <input
           type="file"
           name="file"
           onChange={(e) =>
@@ -292,6 +300,13 @@ function MaterialRequest() {
           <h2 className="material-request-title">Bienes</h2>
           <BienTable />
         </>
+      )}
+
+      {showModal && (
+        <Modal
+          message="Tu documento se ha hecho exitosamente."
+          onClose={handleModalClose} // Usa la función para cerrar el modal
+        />
       )}
     </div>
   );
