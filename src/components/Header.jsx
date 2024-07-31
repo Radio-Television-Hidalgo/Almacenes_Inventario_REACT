@@ -123,6 +123,8 @@ const Header = () => {
         return 'Articulos en Almacen';
       case '/entregasPendientes':
         return 'Entregas pendientes';
+      case '/entrada/existencias':
+        return 'Entrada de existencias';
       case '/historial/bajas':
         return 'Datos de Bajas';
       default: 
