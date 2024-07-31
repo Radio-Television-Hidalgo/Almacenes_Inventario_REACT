@@ -42,6 +42,32 @@
   background-color: #f1f1f1;
 }
 
+.ver-mas-button {
+  background-color: #691B31;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.ver-mas-button:hover {
+  background-color: #BC955B;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 /* Responsividad */
 @media (max-width: 768px) {
   .article-table {
