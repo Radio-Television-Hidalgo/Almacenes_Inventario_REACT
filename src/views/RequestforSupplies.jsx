@@ -27,6 +27,44 @@ function RequestforSupplies() {
     fetchDatos();
   }, []);
 
+  const handleAcept = async (event, id) => {
+    event.preventDefault(); 
+    try {
+      const response = await fetch(`/api/solicitud/aceptarSolicitud/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.ok) {
+        fetchDatos();
+      } else {
+        console.error("Error al aceptar la solicitud");
+      }
+    } catch (error) {
+      console.error("Error al aceptar la solicitud", error);
+    } 
+  };
+
+  const handleReject = async (event, id) => {
+    event.preventDefault(); 
+    try {
+      const response = await fetch(`/api/solicitud/rechazarSolicitud/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.ok) {
+        fetchDatos();
+      } else {
+        console.error("Error al rechazar la solicitud");
+      }
+    } catch (error) {
+      console.error("Error al rechazar la solicitud", error);
+    } 
+  };
+
   return (
     <div className="request-for-supplies-container">
       <table className="request-for-supplies-table">
@@ -52,8 +90,8 @@ function RequestforSupplies() {
               <td className="request-for-supplies-cell"> <button className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
               <td className="request-for-supplies-cell">
                 <div className="request-for-supplies-button-container">
-                  <button className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
-                  <button className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
+                  <button onClick={(event) => handleAcept(event, dato.id)} className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
+                  <button onClick={(event) => handleReject(event, dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
                 </div>
               </td>
             </tr>
