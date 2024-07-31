@@ -48,7 +48,7 @@ function StockEntry() {
 
     return (
         <div className="stock-entry-custom-container">
-            <h1 className="stock-entry-custom-title">Entrada de existencias</h1>
+            <br />
             <table className="stock-entry-custom-table">
                 <thead>
                     <tr>
