@@ -1,0 +1,79 @@
+.request-for-supplies-container {
+    padding: 20px;
+  }
+  
+  .request-for-supplies-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .request-for-supplies-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .request-for-supplies-header {
+    background-color: #691b31;
+    color: white;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .request-for-supplies-row {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .request-for-supplies-cell {
+    padding: 10px;
+    background-color: #f8f8f8;
+  }
+  
+  .request-for-supplies-button {
+    padding: 10px 20px;
+    margin: 4px 0;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .request-for-supplies-button:hover {
+    background-color: #ddd;
+    color: #691b31;
+  }
+  
+  .request-for-supplies-accept-button {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  .request-for-supplies-accept-button:hover {
+    background-color: #45a049;
+  }
+  
+  .request-for-supplies-reject-button {
+    background-color: #f44336; /* Red */
+  }
+  
+  .request-for-supplies-reject-button:hover {
+    background-color: #e53935;
+  }
+  
+  .request-for-supplies-view-button {
+    background-color: #691b31; /* Dark Red */
+    color: white;
+  }
+  
+  .request-for-supplies-view-button:hover {
+    background-color: #bc955b; /* Lighter Dark Red */
+  }
+  
+  .request-for-supplies-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

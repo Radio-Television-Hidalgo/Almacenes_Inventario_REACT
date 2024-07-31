@@ -51,10 +51,12 @@ function UserInventory() {
     };
 
     const filteredModalData = modalData
-        ? modalData.filter(item =>
-            item.articles.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        : [];
+    ? modalData.filter(item =>
+        item.articles.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.deliveryWarehouse.inventory_number.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    : [];
+
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>{error}</p>;
@@ -92,11 +94,8 @@ function UserInventory() {
                                 <tr>
                                     <th className="tableHeaderCell-u">IMG</th>
                                     <th className="tableHeaderCell-u">Nombre</th>
-                                    <th className="tableHeaderCell-u">Descripción</th>
-                                    <th className="tableHeaderCell-u">Locación</th>
-                                    <th className="tableHeaderCell-u">Estatus</th>
+                                    <th className="tableHeaderCell-u">Número de inventario</th>
                                     <th className="tableHeaderCell-u">Fecha de Resguardo</th>
-                                    <th className="tableHeaderCell-u">Comentario</th>
                                     <th className="tableHeaderCell-u">Número de Serie</th>
                                     <th className="tableHeaderCell-u">Ver más</th>
                                 </tr>
@@ -112,13 +111,10 @@ function UserInventory() {
                                             />
                                         </td>
                                         <td className="tableCell-u">{item.articles.name}</td>
-                                        <td className="tableCell-u">{item.articles.description}</td>
-                                        <td className="tableCell-u">{item.ubication}</td>
-                                        <td className="tableCell-u">{item.status}</td>
+                                        <td className="tableCell-u">{item.deliveryWarehouse.inventory_number}</td>
                                         <td className="tableCell-u">{new Date(item.delivery_date).toLocaleDateString()}</td>
-                                        <td className="tableCell-u">{item.observations}</td>
                                         <td className="tableCell-u">{item.articles.number_series}</td>
-                                        <td className="tableCell-u"><button>Ver mas</button></td>
+                                        <td className="tableCell-u"><button class="button-more">Ver mas</button></td>
                                     </tr>
                                 ))}
                             </tbody>

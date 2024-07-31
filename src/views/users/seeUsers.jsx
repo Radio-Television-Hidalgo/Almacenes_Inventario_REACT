@@ -111,6 +111,7 @@ function SeeUser() {
                                 <img src={`${dato.img}`} alt={`Foto de ${dato.name}`} width="100" />
                             </td>
                             <td>
+                            <div className="button-container">
                                 <button 
                                     onClick={() => handleEdit(dato)}   
                                     className="Edit" 
@@ -119,7 +120,9 @@ function SeeUser() {
                                     className="Delete"
                                     onClick={(event) => handleStatus(event, dato.id)}
                                     disabled={state}
-                                >Eliminar</button></td>
+                                >Eliminar</button>
+                            </div>
+                        </td>
                         </tr>
                     ))}
                 </tbody>

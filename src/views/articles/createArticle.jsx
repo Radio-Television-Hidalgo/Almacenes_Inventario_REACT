@@ -40,53 +40,51 @@ function CreateArticle() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-// CreateArticle.js
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const data = new FormData();
-    Object.keys(formData).forEach((key) => data.append(key, formData[key]));
-    files.forEach((file) => data.append("photos_entry", file));
 
-    const response = await fetch("/api/articulos/insertarArticulo", {
-      method: "POST",
-      body: data,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = new FormData();
+      Object.keys(formData).forEach((key) => data.append(key, formData[key]));
+      files.forEach((file) => data.append("photos_entry", file));
 
-    if (!response.ok) {
-      throw new Error("Error creating article");
+      const response = await fetch("/api/articulos/insertarArticulo", {
+        method: "POST",
+        body: data,
+      });
+
+      if (!response.ok) {
+        throw new Error("Error creating article");
+      }
+
+      const result = await response.json();
+      console.log("Article created successfully:", result);
+      setFormData({
+        name: "",
+        brand: "",
+        model: "",
+        acquisition_date: "",
+        number_series: "",
+        status: "",
+        description: "",
+        caracteristics: "",
+        type: "",
+        userful_live_id: "",
+        policy_id: "",
+        bill_id: "",
+      });
+      setFiles([]);
+      setQrValue(result.name);
+
+      // Guardar el artículo en sessionStorage
+      sessionStorage.setItem("article", JSON.stringify(result));
+
+      // Redirigir a /articulos/almacen
+      window.location.href = `/articulos/almacen`;
+    } catch (error) {
+      console.error("Error:", error);
     }
-
-    const result = await response.json();
-    console.log("Article created successfully:", result);
-    setFormData({
-      name: "",
-      brand: "",
-      model: "",
-      acquisition_date: "",
-      number_series: "",
-      status: "",
-      description: "",
-      caracteristics: "",
-      type: "",
-      userful_live_id: "",
-      policy_id: "",
-      bill_id: "",
-    });
-    setFiles([]);
-    setQrValue(result.name);
-
-    // Guardar el artículo en sessionStorage
-    sessionStorage.setItem('article', JSON.stringify(result));
-
-    // Redirigir a /articulos/almacen
-    window.location.href = `/articulos/almacen`;
-
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
-
+  };
 
   useEffect(() => {
     const fetchCatalogs = async () => {
@@ -98,11 +96,11 @@ const handleSubmit = async (e) => {
         setUsefulLives(data.usefulLives);
         setPolicies(data.policies);
         setBills(data.bills);
-        console.log(data.policies)
+        console.log(data.policies);
         // Obtener todos los artículos
         const billsResponse = await fetch("/api/articulos/articulos");
         const articles = await billsResponse.json();
-  
+
         // Contar artículos por factura
         const articleCountByBill = articles.reduce((acc, article) => {
           acc[article.bill_id] = (acc[article.bill_id] || 0) + 1;
@@ -113,36 +111,35 @@ const handleSubmit = async (e) => {
           acc[article.policy_id] = (acc[article.policy_id] || 0) + 1;
           return acc;
         }, {});
-  
+
         // Filtrar las facturas disponibles
-        const availableBills = data.bills.filter(bill => {
+        const availableBills = data.bills.filter((bill) => {
           const articleCount = articleCountByBill[bill.id] || 0;
           return articleCount < bill.quantity;
         });
         //filtrar las polizas disponibles
-        const availablePolicies = data.policies.filter(policy => {
+        const availablePolicies = data.policies.filter((policy) => {
           const articleCount = articleCountByPolicy[policy.id] || 0;
-          return articleCount < policy.quantity;
+          return accounapoliciesCount < policy.quantity;
         });
-  
+
         setAvailableBills(availableBills);
         setAvailablePolicies(availablePolicies);
       } catch (error) {
         console.error("Error fetching catalogs:", error);
       }
     };
-  
+
     fetchCatalogs();
   }, []);
-  
 
   return (
     <div className="main-container2">
-      <h2>Create New Article</h2>
+      <h2>Crear nuevo articulo</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           <div className="form-group2">
-            <label>Name:</label>
+            <label>Nombre:</label>
             <input
               type="text"
               name="name"
@@ -152,7 +149,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Brand:</label>
+            <label>Marca:</label>
             <input
               type="text"
               name="brand"
@@ -162,7 +159,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Model:</label>
+            <label>Modelo:</label>
             <input
               type="text"
               name="model"
@@ -172,7 +169,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Acquisition Date:</label>
+            <label>Fecha de Adquisición:</label>
             <input
               type="date"
               name="acquisition_date"
@@ -181,7 +178,7 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Number Series:</label>
+            <label>Número de serie:</label>
             <input
               type="text"
               name="number_series"
@@ -190,14 +187,14 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="form-group2">
-            <label>Status:</label>
+            <label>Estado:</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
               required
             >
-              <option value="">Select Status</option>
+              <option value="">Seleccionar estado</option>
               <option value="reparacion">Reparacion</option>
               <option value="en uso">En Uso</option>
               <option value="baja">Baja</option>
@@ -205,7 +202,7 @@ const handleSubmit = async (e) => {
             </select>
           </div>
           <div className="form-group2">
-            <label>Description:</label>
+            <label>Descripción:</label>
             <textarea
               name="description"
               value={formData.description}
@@ -214,7 +211,7 @@ const handleSubmit = async (e) => {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Caracteristics:</label>
+            <label>Caracteristicas:</label>
             <textarea
               name="caracteristics"
               value={formData.caracteristics}
@@ -223,43 +220,45 @@ const handleSubmit = async (e) => {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Type:</label>
+            <label>Tipo:</label>
             <select
               name="type"
               value={formData.type}
               onChange={handleChange}
               required
             >
-              <option value="">Select Type</option>
+              <option value="">Selecciona tipo</option>
               <option value="Insumos">Insumos</option>
               <option value="Bien">Bien</option>
             </select>
           </div>
+          {formData.type !== "Insumos" && (
+            <div className="form-group2">
+              <label>Vida útil:</label>
+              <select
+                name="userful_live_id"
+                value={formData.userful_live_id}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Selecciona vida útil</option>
+                {usefulLives.map((life) => (
+                  <option key={life.id} value={life.id}>
+                    {life.concept}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="form-group2">
-            <label>Useful Life:</label>
-            <select
-              name="userful_live_id"
-              value={formData.userful_live_id}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Useful Life</option>
-              {usefulLives.map((life) => (
-                <option key={life.id} value={life.id}>
-                  {life.concept}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group2">
-            <label>Policy:</label>
+            <label>Póliza:</label>
             <select
               name="policy_id"
               value={formData.policy_id}
               onChange={handleChange}
               required
             >
-              <option value="">Select Policy</option>
+              <option value="">Selecciona póliza</option>
               {availablePolicies.map((policy) => (
                 <option key={policy.id} value={policy.id}>
                   {policy.description}
@@ -268,14 +267,14 @@ const handleSubmit = async (e) => {
             </select>
           </div>
           <div className="form-group2">
-            <label>Bill:</label>
+            <label>Factura:</label>
             <select
               name="bill_id"
               value={formData.bill_id}
               onChange={handleChange}
               required
             >
-              <option value="">Select Bill</option>
+              <option value="">Selecciona póliza</option>
               {availableBills.map((bill) => (
                 <option key={bill.id} value={bill.id}>
                   {bill.bill_number}
@@ -283,38 +282,44 @@ const handleSubmit = async (e) => {
               ))}
             </select>
           </div>
-        <div className="form-group2" {...getRootProps({ className: "dropzone" })}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop the files here...</p>
-          ) : (
-            <p>Drag 'n' drop some files here, or click to select files</p>
+          <div
+            className="form-group2"
+            {...getRootProps({ className: "dropzone" })}
+          >
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Suelta los archivos aquí...</p>
+            ) : (
+              <p>
+                Arrastre y suelte algunos archivos aquí o haga clic para
+                seleccionar archivos
+              </p>
+            )}
+            <div className="files-preview">
+              {files.map((file, index) => (
+                <div key={index} className="file-item">
+                  {file.type.startsWith("image/") ? (
+                    <img src={URL.createObjectURL(file)} alt={file.name} />
+                  ) : (
+                    <span>{file.name}</span>
+                  )}
+                  <button type="button" onClick={() => removeFile(file)}>
+                    Remove
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+          {qrValue && (
+            <div className="qr-container">
+              <QRCode value={qrValue} />
+            </div>
           )}
-          <div className="files-preview">
-            {files.map((file, index) => (
-              <div key={index} className="file-item">
-                {file.type.startsWith("image/") ? (
-                  <img src={URL.createObjectURL(file)} alt={file.name} />
-                ) : (
-                  <span>{file.name}</span>
-                )}
-                <button type="button" onClick={() => removeFile(file)}>
-                  Remove
-                </button>
-              </div>
-            ))}
-          </div>
         </div>
-        {qrValue && (
-          <div className="qr-container">
-            <QRCode value={qrValue} />
-          </div>
-        )}
-      </div>
-    <button type="submit" className="submit-button">
-      Create Article
-    </button>
-  </form>
+        <button type="submit" className="submit-button">
+          Crear articulo
+        </button>
+      </form>
     </div>
   );
 }

@@ -37,6 +37,7 @@ import RequestforSupplies from "./views/RequestforSupplies";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 import PolicyDetail from "./views/articles/PolicyDetail";
 import StockEntry from "./views/werehouse/StockEntry";
+import SeelowWell from "./views/inventory/Seelowwell";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -71,7 +72,10 @@ const showHeaderRoutes = [
   "/entregasPendientes",
   "/facturas/:billNumber",
   "/entrada/existencias",
-  "/polizas/:policyId"
+  "/historial/bajas",
+  "/polizas/:policyId",
+  
+
 ];
 
 const routeTitles = {
@@ -104,6 +108,7 @@ const routeTitles = {
   "/recepcionSolicitudes":"Recpcion de Solicitudes",
   "/entregasPendientes": "Entregas Pendientes",
   "/entrada/existencias":"Entrada de Existencias",
+  "/historial/bajas":"Historial de Bajas"
 };
 
 const App = () => {
@@ -164,6 +169,7 @@ const App = () => {
             <Route path="/facturas/:billNumber" element={<BillDetails />} />
             <Route path="/polizas/:policyId" element={<PolicyDetail />} />
             <Route path="/entrada/existencias" element={<StockEntry/>} />
+            <Route path="/historial/bajas" element={<SeelowWell/>} />
           </Routes>
       </main>
       <Footer />

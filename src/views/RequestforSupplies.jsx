@@ -1,56 +1,66 @@
+import { useEffect, useState } from "react";
+import React from 'react';
+
+import "../styles/RequestforSupplies.css";
+
 function RequestforSupplies() {
-    
+  const [datos, setDatos] = useState([]);
+
+  const fetchDatos = () => {
+    fetch("/api/solicitud/solicitudesInsumos")
+      .then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al cargar los datos: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setDatos(data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar los datos", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchDatos();
+  }, []);
+
   return (
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Usuario solicitante</th>
-        <th>Cantidad</th>
-        <th>Articulo</th>
-        <th>Descripcion</th>
-        <th>Fecha en la que llego</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Juan Pérez</td>
-        <td>10</td>
-        <td>Lápices</td>
-        <td>Lápices de grafito HB</td>
-        <td>01/10/2023</td>
-      </tr>
-      <tr>
-        <td>María López</td>
-        <td>5</td>
-        <td>Cuadernos</td>
-        <td>Cuadernos de 100 hojas</td>
-        <td>02/10/2023</td>
-      </tr>
-      <tr>
-        <td>Carlos García</td>
-        <td>20</td>
-        <td>Plumas</td>
-        <td>Plumas de tinta azul</td>
-        <td>03/10/2023</td>
-      </tr>
-      <tr>
-        <td>Ana Martínez</td>
-        <td>15</td>
-        <td>Borradores</td>
-        <td>Borradores de goma</td>
-        <td>04/10/2023</td>
-      </tr>
-      <tr>
-        <td>Pedro Sánchez</td>
-        <td>8</td>
-        <td>Marcadores</td>
-        <td>Marcadores permanentes</td>
-        <td>05/10/2023</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div className="request-for-supplies-container">
+      <table className="request-for-supplies-table">
+        <thead>
+          <tr>
+            <th className="request-for-supplies-header">Solicita</th>
+            <th className="request-for-supplies-header">Articulo</th>
+            <th className="request-for-supplies-header">Cantidad</th>
+            <th className="request-for-supplies-header">Descripcion de solicitud</th>
+            <th className="request-for-supplies-header">Estatus de solicitud</th>
+            <th className="request-for-supplies-header">Solicitud Completa</th>
+            <th className="request-for-supplies-header">Opciones de continuacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {datos.map((dato) => (
+            <tr key={dato.id} className="request-for-supplies-row">
+              <td className="request-for-supplies-cell"> {dato.requestingUser.name} </td>
+              <td className="request-for-supplies-cell"> {dato.requestArticle.name} </td>
+              <td className="request-for-supplies-cell"> {dato.quantity} </td>
+              <td className="request-for-supplies-cell"> {dato.description} </td>
+              <td className="request-for-supplies-cell"> {dato.status} </td>
+              <td className="request-for-supplies-cell"> <button className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
+              <td className="request-for-supplies-cell">
+                <div className="request-for-supplies-button-container">
+                  <button className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
+                  <button className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

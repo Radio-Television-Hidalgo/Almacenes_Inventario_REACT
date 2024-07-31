@@ -2,26 +2,39 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
 import { PulseLoader } from "react-spinners";
+import "../../styles/PolizasInfo.css";
 
 Modal.setAppElement('#root'); // Establece el elemento raíz para el modal
 
 const styles = {
-  card: {
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    gap: "20px",
+  },
+  column: {
+    flex: "1",
+    minWidth: "300px",
     maxWidth: "600px",
-    margin: "20px auto",
+    margin: "20px",
     padding: "20px",
     border: "1px solid #ddd",
     borderRadius: "8px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
     backgroundColor: "#fff",
+    animation: "fadeIn 1s ease-in-out",
   },
   heading: {
     marginBottom: "20px",
     fontSize: "1.5rem",
     color: "#333",
+    textAlign: "center",
   },
   paragraph: {
     margin: "10px 0",
+    padding: "10px",
+    borderBottom: "1px solid #eee",
     color: "#555",
   },
   strong: {
@@ -98,7 +111,7 @@ function PolicyDetail() {
   };
 
   return (
-    <div style={styles.card}>
+    <div>
       <Modal
         isOpen={loading}
         onRequestClose={() => setLoading(false)}
@@ -126,57 +139,60 @@ function PolicyDetail() {
       </Modal>
 
       {policy ? (
-        <>
-          <h1 style={styles.heading}>Detalles de la Póliza</h1>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Descripción:</strong> {policy.description}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Cobertura:</strong> {policy.coverage}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Tipo:</strong> {policy.type}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Prima:</strong> {policy.premium}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Deducible:</strong> {policy.deductible}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Límites de Indemnización:</strong>{" "}
-            {policy.indemnity_limits}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Periodo de Vigencia:</strong>{" "}
-            {formatDate(policy.validity_period)}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Cláusulas de Exclusión:</strong>{" "}
-            {policy.exclusion_clauses}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Fecha:</strong> {formatDate(policy.date)}
-          </p>
-          <p style={styles.paragraph}>
-            <strong style={styles.strong}>Cantidad:</strong> {policy.quantity}
-          </p>
-
-          {pdfUrl ? (
-            <div style={styles.pdfContainer}>
-              <iframe
-                style={styles.pdf}
-                src={pdfUrl}
-                title="Póliza PDF"
-                frameBorder="0"
-              >
-                Este navegador no soporta la visualización de PDF.
-              </iframe>
-            </div>
-          ) : (
-            <p>No se encontró el PDF de la póliza.</p>
-          )}
-        </>
+        <div style={styles.container} className="container">
+          <div style={styles.column} className="fade-in detailsContainer">
+            <h1 style={styles.heading}>Detalles de la Póliza</h1>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Descripción:</strong> {policy.description}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Cobertura:</strong> {policy.coverage}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Tipo:</strong> {policy.type}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Prima:</strong> {policy.premium}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Deducible:</strong> {policy.deductible}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Límites de Indemnización:</strong>{" "}
+              {policy.indemnity_limits}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Periodo de Vigencia:</strong>{" "}
+              {formatDate(policy.validity_period)}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Cláusulas de Exclusión:</strong>{" "}
+              {policy.exclusion_clauses}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Fecha:</strong> {formatDate(policy.date)}
+            </p>
+            <p style={styles.paragraph}>
+              <strong style={styles.strong}>Cantidad:</strong> {policy.quantity}
+            </p>
+          </div>
+          <div style={styles.column} className="fade-in pdfContainer">
+            {pdfUrl ? (
+              <div style={styles.pdfContainer}>
+                <iframe
+                  style={styles.pdf}
+                  src={pdfUrl}
+                  title="Póliza PDF"
+                  frameBorder="0"
+                >
+                  Este navegador no soporta la visualización de PDF.
+                </iframe>
+              </div>
+            ) : (
+              <p>No se encontró el PDF de la póliza.</p>
+            )}
+          </div>
+        </div>
       ) : (
         <div>No se encontró la póliza</div>
       )}

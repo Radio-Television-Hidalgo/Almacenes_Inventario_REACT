@@ -52,74 +52,74 @@ function ArticleDelivery() {
     }
 
     return (
-        <div class="entrega-bien-main-container">
-        <h1 class="entrega-bien-titulo">Entrega de bien</h1>
-        <form class="entrega-bien-form" onSubmit={handleSave}>
-            <div class="entrega-bien-form-grid">
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Cantidad</label>
-                    <input type="text" class="entrega-bien-input" placeholder='Cantidad' name='quantity' onChange={handleInputChange} />
+        <div className="entrega-bien-main-container">
+        <h1 className="entrega-bien-titulo">Entrega de bien</h1>
+        <form className="entrega-bien-form" onSubmit={handleSave}>
+            <div className="entrega-bien-form-grid">
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Cantidad</label>
+                    <input type="text" className="entrega-bien-input" placeholder='Cantidad' name='quantity' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Fecha de entrega</label>
-                    <input type="date" class="entrega-bien-input" placeholder='Fecha de entrega' name='delivery_date' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Fecha de entrega</label>
+                    <input type="date" className="entrega-bien-input" placeholder='Fecha de entrega' name='delivery_date' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Descripción</label>
-                    <input type="text" class="entrega-bien-input" placeholder='Descripción' name='description' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Descripción</label>
+                    <input type="text" className="entrega-bien-input" placeholder='Descripción' name='description' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group" hidden>
-                    <label htmlFor="" class="entrega-bien-label">Estatus</label>
-                    <input type="text" class="entrega-bien-input" name='status' onChange={handleInputChange} defaultValue={"proceso"} />
+                <div className="entrega-bien-form-group" hidden>
+                    <label htmlFor="" className="entrega-bien-label">Estatus</label>
+                    <input type="text" className="entrega-bien-input" name='status' onChange={handleInputChange} defaultValue={"proceso"} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Observaciones</label>
-                    <input type="text" class="entrega-bien-input" placeholder='Observaciones' name='observations' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Observaciones</label>
+                    <input type="text" className="entrega-bien-input" placeholder='Observaciones' name='observations' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Tipo</label>
-                    <select name="type" id="" class="entrega-bien-select" onChange={handleInputChange}>
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Tipo</label>
+                    <select name="type" id="" className="entrega-bien-select" onChange={handleInputChange}>
                         <option value="#" selected disabled>Selecciona un tipo</option>
                         <option value="externo">Externo</option>
                         <option value="interno">Interno</option>
                     </select>
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Ubicación</label>
-                    <select  name="ubication" id="" class="entrega-bien-select" onChange={handleInputChange}>
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Ubicación</label>
+                    <select  name="ubication" id="" className="entrega-bien-select" onChange={handleInputChange}>
                         <option value="#" selected disabled>Selecciona una ubicación</option>
                         <option value='Ub1'>Ubicación 1</option>
                         <option value='Ub2'>Ubicación 2</option>
                         <option value='Ub3'>Ubicación 3</option>
                     </select>
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="warehous_id" class="entrega-bien-label">Almacén</label>
-                    <input type="text" class="entrega-bien-input" placeholder='Almacén' name='warehous_id' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="warehous_id" className="entrega-bien-label">Almacén</label>
+                    <input type="text" className="entrega-bien-input" placeholder='Almacén' name='warehous_id' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">No de Inventario</label>
-                    <input type="text" class="entrega-bien-input" placeholder='No de Inventario' name='inventori_id' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">No de Inventario</label>
+                    <input type="text" className="entrega-bien-input" placeholder='No de Inventario' name='inventori_id' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Artículo</label>
-                    <input type="text" class="entrega-bien-input" placeholder='Artículo' name='articles_id' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Artículo</label>
+                    <input type="text" className="entrega-bien-input" placeholder='Artículo' name='articles_id' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Entrega: </label>
-                    <input type="number" class="entrega-bien-input" placeholder='Entrega' name='user_id_delivery' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Entrega: </label>
+                    <input type="number" className="entrega-bien-input" placeholder='Entrega' name='user_id_delivery' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Recibe: </label>
-                    <input type="number" class="entrega-bien-input" placeholder='Recibe' name='user_id_receives' onChange={handleInputChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Recibe: </label>
+                    <input type="number" className="entrega-bien-input" placeholder='Recibe' name='user_id_receives' onChange={handleInputChange} />
                 </div>
-                <div class="entrega-bien-form-group">
-                    <label htmlFor="" class="entrega-bien-label">Fotos de entrada: </label>
-                    <input type="file" class="entrega-bien-input" name='photos_entrance' onChange={handleFileChange} />
+                <div className="entrega-bien-form-group">
+                    <label htmlFor="" className="entrega-bien-label">Fotos de entrada: </label>
+                    <input type="file" className="entrega-bien-input" name='photos_entrance' onChange={handleFileChange} />
                 </div>
             </div>
-            <div class="entrega-bien-submit">
-                <input type="submit" class="entrega-bien-button" value={"Guardar entrega"} />
+            <div className="entrega-bien-submit">
+                <input type="submit" className="entrega-bien-button" value={"Guardar entrega"} />
             </div>
         </form>
     </div>

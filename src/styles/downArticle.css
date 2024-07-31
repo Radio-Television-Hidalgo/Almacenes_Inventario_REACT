@@ -63,16 +63,15 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
     background-color: rgba(255, 255, 255, 0.9);
-    color: #007BFF; /* Cambio de color de texto al pasar el mouse */
+    color: #1e1e1e; /* Cambio de color de texto al pasar el mouse */
 }
 
 .custom-form-group select:focus, .custom-form-group input:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 12px rgba(0, 123, 255, 0.5); /* Sombra más pronunciada en focus */
+    border-color: #e63946;
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
     outline: none;
     transform: scale(1.0); /* Ligera ampliación en focus */
     background-color: rgba(255, 255, 255, 1);
-    color: #007BFF;
 }
 
 .custom-form-group input[readonly] {

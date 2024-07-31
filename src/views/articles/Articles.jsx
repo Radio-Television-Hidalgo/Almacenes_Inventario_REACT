@@ -38,7 +38,13 @@ const Articles = () => {
       // Actualiza el estado local con el nuevo valor
       setCasualtys((prevCasualtys) =>
         prevCasualtys.map((casualty) =>
-          casualty.id === id ? { ...casualty, status: newStatus, low: newStatus === 'Aceptada' ? true : (newStatus === 'Rechazada' ? false : null) } : casualty
+          casualty.id === id
+            ? {
+                ...casualty,
+                status: newStatus,
+                low: newStatus === 'Aceptada' ? true : newStatus === 'Rechazada' ? false : null,
+              }
+            : casualty
         )
       );
     } catch (error) {
@@ -63,10 +69,10 @@ const Articles = () => {
             <th>Razón</th>
             <th>Estado</th>
             <th>Alta/Baja</th>
-            <th>ID Confirmación</th>
-            <th>ID Solicitud de Retiro</th>
-            <th>ID Artículo</th>
-            <th>ID Inventario</th>
+            <th>Confirmación</th>
+            <th>Solicitud de Retiro</th>
+            <th>Artículo</th>
+            <th>Inventario</th>
           </tr>
         </thead>
         <tbody>
@@ -89,24 +95,15 @@ const Articles = () => {
                 </td>
                 <td>
                   {casualty.status === 'Rechazada' || casualty.status === 'Aceptada' ? (
-                    <span>{casualty.low !== null ? (casualty.low ? 'Sí' : 'No') : 'No Aplicable'}</span>
+                    <span>{casualty.low ? 'Sí' : 'No'}</span>
                   ) : (
-                    <select
-                      value={casualty.low || ''}
-                      onChange={(e) =>
-                        handleLowChange(casualty.id, e.target.value === 'true')
-                      }
-                    >
-                      <option value="">Seleccione</option>
-                      <option value="true">Sí</option>
-                      <option value="false">No</option>
-                    </select>
+                    <span>{casualty.low !== null ? (casualty.low ? 'Sí' : 'No') : 'No Aplicable'}</span>
                   )}
                 </td>
-                <td>{casualty.confirmation_id}</td>
-                <td>{casualty.request_withdraw_id}</td>
-                <td>{casualty.articles_id}</td>
-                <td>{casualty.inventori_id}</td>
+                <td>{casualty.confirmation}</td>
+                <td>{casualty.requestWithdraw}</td>
+                <td>{casualty.article}</td>
+                <td>{casualty.inventory}</td>
               </tr>
             ))
           ) : (
