@@ -41,40 +41,52 @@ function CreateArticle() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = new FormData();
-      Object.keys(formData).forEach((key) => {
-        // Check if the key is 'userful_live_id' and the value is empty
-        if (key === "userful_live_id" && formData[key] === "") {
-          // Set the value to null or some other default value
-          data.append(key, null); // You can also use 0 or another default value if needed
-        } else {
-          data.append(key, formData[key]);
-        }
-      });
-      files.forEach((file) => data.append("photos_entry", file));
+ // CreateArticle.js
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => data.append(key, formData[key]));
+    files.forEach((file) => data.append("photos_entry", file));
 
-      const response = await fetch("/api/articulos/insertarArticulo", {
-        method: "POST",
-        body: data,
-      });
+    const response = await fetch("/api/articulos/insertarArticulo", {
+      method: "POST",
+      body: data,
+    });
 
-      if (!response.ok) {
-        throw new Error("Error creating article");
-      }
-
-      const result = await response.json();
-      console.log("Article created successfully:", result);
-      setQrValue(result.name); // Set the QR value with the article's name
-
-      // Redirigir a /articulos/almacen
-      window.location.href = "/articulos/almacen";
-    } catch (error) {
-      console.error("Error:", error);
+    if (!response.ok) {
+      throw new Error("Error creating article");
     }
-  };
+
+    const result = await response.json();
+    console.log("Article created successfully:", result);
+    setFormData({
+      name: "",
+      brand: "",
+      model: "",
+      acquisition_date: "",
+      number_series: "",
+      status: "",
+      description: "",
+      caracteristics: "",
+      type: "",
+      userful_live_id: "",
+      policy_id: "",
+      bill_id: "",
+    });
+    setFiles([]);
+    setQrValue(result.name);
+
+    // Guardar el artículo en sessionStorage
+    sessionStorage.setItem('article', JSON.stringify(result));
+
+    // Redirigir a /articulos/almacen
+    window.location.href = `/articulos/almacen`;
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
   useEffect(() => {
     const fetchCatalogs = async () => {
