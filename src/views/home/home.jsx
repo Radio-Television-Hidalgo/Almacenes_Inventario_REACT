@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { useContext, useState } from "react";
 import "/src/styles/Home.css";
-import { UserContext } from "../../components/ObtenertipoUsuario";
 import { UserContext } from "../../components/ObtenertipoUsuario";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
