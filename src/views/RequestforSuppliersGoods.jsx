@@ -3,12 +3,12 @@ import React from 'react';
 
 import "../styles/RequestforSupplies.css";
 
-function RequestforSupplies() {
+function RequestforSuppliesGoods() {
   const [datos, setDatos] = useState([]);
   const [modalData, setModalData] = useState(null);
 
   const fetchDatos = () => {
-    fetch("/api/solicitud/solicitudesInsumos")
+    fetch("/api/solicitud/solicitudesBienes")
       .then((response) => {
         if (!response.ok) {
             throw new Error("Error al cargar los datos: " + response.status);
@@ -107,8 +107,6 @@ function RequestforSupplies() {
           ))}
         </tbody>
       </table>
-
-      
       {modalData && (
         <div className="modal">
           <div className="modal-content">
@@ -139,4 +137,4 @@ function RequestforSupplies() {
   );
 }
 
-export default RequestforSupplies;
+export default RequestforSuppliesGoods;

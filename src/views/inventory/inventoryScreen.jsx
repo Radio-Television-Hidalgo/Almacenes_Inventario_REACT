@@ -74,7 +74,7 @@ function InventoryScreen() {
               <h1>Entrega de bien a usuario</h1>
             </div>
           </Link>
-          <Link to="" className="home-card-i">
+          <Link to="/verSolicitud/bien" className="home-card-i">
   <div className="home-content-i">
     <svg
       xmlns="http://www.w3.org/2000/svg"
