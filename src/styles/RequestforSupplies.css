@@ -1,79 +1,191 @@
+/* RequestforSupplies.css */
+
 .request-for-supplies-container {
-    padding: 20px;
+  padding: 20px;
+}
+
+.request-for-supplies-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.request-for-supplies-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.request-for-supplies-header {
+  background-color: #691b31;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.request-for-supplies-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.request-for-supplies-cell {
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+.request-for-supplies-button {
+  padding: 10px 20px;
+  margin: 4px 0;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.request-for-supplies-button:hover {
+  background-color: #ddd;
+  color: #691b31;
+}
+
+.request-for-supplies-accept-button {
+  background-color: #4CAF50; /* Green */
+}
+
+.request-for-supplies-accept-button:hover {
+  background-color: #45a049;
+}
+
+.request-for-supplies-reject-button {
+  background-color: #f44336; /* Red */
+}
+
+.request-for-supplies-reject-button:hover {
+  background-color: #e53935;
+}
+
+.request-for-supplies-view-button {
+  background-color: #691b31; /* Dark Red */
+  color: white;
+}
+
+.request-for-supplies-view-button:hover {
+  background-color: #bc955b; /* Lighter Dark Red */
+}
+
+.request-for-supplies-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Glass Modal Styles */
+.glass-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.839);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+}
+
+.glass-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.glass-modal-content {
+  color:black; 
+  text-align: center;
+}
+
+.glass-modal-image {
+width: 100px;
+border: 4px solid #691B31;
+height: 100px;
+border-radius: 50%;
+margin-bottom: 20px;
+object-fit: cover;
+transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.glass-modal-image:hover {
+border: 5px solid #BC955B;
+box-shadow: 0 0 20px #f0be73;
+}
+
+.glass-modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.glass-modal-content p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* Detalles alineados al final */
+.glass-modal-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.glass-modal-detail {
+  flex: 1;
+  margin: 0 10px;
+  padding: 10px;
+  color: white; /* Color del texto en los contenedores */
+}
+
+.brand {
+  background-color: #4CAF50; /* Green */
+  border-radius: 100px;
+}
+
+.model {
+  background-color: #2196F3; /* Blue */
+  border-radius: 100px;
+
+}
+
+.series {
+  background-color: #f44336; /* Red */
+  border-radius: 100px;
+
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
   }
-  
-  .request-for-supplies-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
+  to {
+      opacity: 1;
   }
-  
-  .request-for-supplies-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .request-for-supplies-header {
-    background-color: #691b31;
-    color: white;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .request-for-supplies-row {
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .request-for-supplies-cell {
-    padding: 10px;
-    background-color: #f8f8f8;
-  }
-  
-  .request-for-supplies-button {
-    padding: 10px 20px;
-    margin: 4px 0;
-    font-size: 14px;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .request-for-supplies-button:hover {
-    background-color: #ddd;
-    color: #691b31;
-  }
-  
-  .request-for-supplies-accept-button {
-    background-color: #4CAF50; /* Green */
-  }
-  
-  .request-for-supplies-accept-button:hover {
-    background-color: #45a049;
-  }
-  
-  .request-for-supplies-reject-button {
-    background-color: #f44336; /* Red */
-  }
-  
-  .request-for-supplies-reject-button:hover {
-    background-color: #e53935;
-  }
-  
-  .request-for-supplies-view-button {
-    background-color: #691b31; /* Dark Red */
-    color: white;
-  }
-  
-  .request-for-supplies-view-button:hover {
-    background-color: #bc955b; /* Lighter Dark Red */
-  }
-  
-  .request-for-supplies-button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+}
