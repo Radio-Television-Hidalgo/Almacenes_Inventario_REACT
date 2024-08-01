@@ -207,21 +207,22 @@ export default function DownArticle() {
                     />
                 </div>
                 {articleImages.length > 0 && (
-                    <div className="custom-form-group">
-                        <label>Imágenes del Artículo</label>
-                        <div className="article-images">
-                            {articleImages.map((imageUrl, index) => (
-                                <img 
-                                    key={index} 
-                                    src={imageUrl} 
-                                    alt={`Imagen ${index + 1}`} 
-                                    className="article-image" // Asegúrate de definir este estilo en tu CSS
-                                    onClick={() => openModal(imageUrl)} // Abre el modal al hacer clic en la imagen
-                                />
-                            ))}
-                        </div>
-                    </div>
-                )}
+    <div className="custom-form-group">
+        <label>Imágenes del Artículo</label>
+        <div className="article-images">
+            {articleImages.map((imageUrl, index) => (
+                <img 
+                    key={index} 
+                    src={imageUrl} 
+                    alt={`Imagen ${index + 1}`} 
+                    className="article-image" 
+                    onClick={() => openModal(imageUrl)} 
+                />
+            ))}
+        </div>
+    </div>
+)}
+
                 {error && (
                     <div className="custom-error-message">
                         {error}
