@@ -233,8 +233,8 @@ const Header = () => {
                   <div className="dropdown-menu">
                     <Link to="/documentacion" className="dropdown-item">Documentacion </Link>
                     <Link to="/entrada/existencias" className="dropdown-item"> Entrada de existencias</Link>
-                    <Link to="" className="dropdown-item">Historial de Insumos </Link>
-                    <Link to="" className="dropdown-item">Entregar insumos </Link>
+                    <Link to="" className="dropdown-item">Ver insumos </Link>
+                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Agregar nuevo articulo </Link>
                     <Link to="" className="dropdown-item">Historial de salida de bienes </Link>
                     <Link to="" className="dropdown-item">Salida de existencias </Link>
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
