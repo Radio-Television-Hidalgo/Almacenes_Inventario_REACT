@@ -134,6 +134,10 @@ const Header = () => {
       if (matchPath('/polizas/:policyId', path)) {
         return 'Información de póliza';
       }
+      if (matchPath('/articulos/articulo/:inventoryNumber', path)) {
+        return 'Detalles del articulo';
+      }
+      
       return '';
       
     }
