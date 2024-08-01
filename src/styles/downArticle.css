@@ -156,19 +156,24 @@
     75% { transform: translateX(-5px); }
 }
 
+/* Estilos para imágenes del artículo */
 .article-images {
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
     gap: 20px; /* Espacio entre las imágenes */
-    justify-content: center; /* Centrar imágenes */
+    padding: 10px; /* Añade un poco de padding para mejor apariencia */
+    scroll-snap-type: x mandatory; /* Opcional: Para un desplazamiento más suave */
+    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
 }
 
 .article-image {
-    max-width: 200px; /* Ancho máximo de las imágenes */
-    max-height: 200px; /* Altura máxima de las imágenes */
+    flex: 0 0 auto; /* Asegura que las imágenes no se reduzcan ni crezcan fuera del tamaño especificado */
+    width: 200px; /* Ancho fijo para cada imagen */
+    height: 200px; /* Altura fija para cada imagen */
     object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
     border-radius: 8px; /* Bordes redondeados para las imágenes */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: center; /* Opcional: Para un desplazamiento más suave */
 }
 
 .article-image:hover {
@@ -214,4 +219,26 @@
 .modal-image {
     width: 100%;
     height: auto;
+}
+
+/* Media Queries */
+@media (max-width: 1000px) {
+    .article-images {
+        display: flex;
+        overflow-x: auto; /* Habilita el desplazamiento horizontal */
+        gap: 20px; /* Espacio entre las imágenes */
+        padding: 10px; /* Añade un poco de padding para mejor apariencia */
+        scroll-snap-type: x mandatory; /* Opcional: Para un desplazamiento más suave */
+        max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
+    }
+    
+    .article-image {
+        flex: 0 0 auto; /* Asegura que las imágenes no se reduzcan ni crezcan fuera del tamaño especificado */
+        width: 150px; /* Ancho fijo para cada imagen */
+        height: 150px; /* Altura fija para cada imagen */
+        object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
+        border-radius: 8px; /* Bordes redondeados para las imágenes */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        scroll-snap-align: center; /* Opcional: Para un desplazamiento más suave */
+    }
 }
