@@ -39,7 +39,7 @@ import PolicyDetail from "./views/articles/PolicyDetail";
 import StockEntry from "./views/werehouse/StockEntry";
 import SeelowWell from "./views/inventory/Seelowwell";
 import Dictum from "./views/articles/Dictum";
-
+import Lowgoods from "./views/articles/lowgoods";
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
@@ -77,6 +77,7 @@ const showHeaderRoutes = [
   "/polizas/:policyId",
   "/articulos/articulo/:inventoryNumber", // Agregar la ruta dinámica para el artículo
   "/dictamenes",
+  "/dictamenes/dajabien" 
 ];
 
 const routeTitles = {
@@ -112,6 +113,7 @@ const routeTitles = {
   "/historial/bajas": "Historial de Bajas",
   "/articulos/articulo/:inventoryNumber": "Detalles del Artículo", // Agregar el título para la ruta dinámica
   "/dictamenes": "Dictamenes",
+  "/dictamenes/dajabien" : "Dictamen de Baja de Bien"
 };
 
 const App = () => {
@@ -181,6 +183,7 @@ const App = () => {
           <Route path="/historial/bajas" element={<SeelowWell />} />
           <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> {/* Ruta dinámica para los detalles del artículo */}
           <Route path="/dictamenes" element={<Dictum />} />
+          <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
         </Routes>
         </UserProvider>
       </main>
