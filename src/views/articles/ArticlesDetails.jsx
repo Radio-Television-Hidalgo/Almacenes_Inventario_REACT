@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { Collapse } from 'react-collapse';
-import { color } from "faker/lib/internet";
+
 
 const ArticleDetails = () => {
   const { inventoryNumber } = useParams();
