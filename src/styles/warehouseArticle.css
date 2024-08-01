@@ -156,3 +156,41 @@
     font-size: 14px;
     transition: background-color 0.3s ease;
 }
+/* styles/warehouseArticle.css */
+.asset-input-checkbox {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  
+  .asset-input-checkbox + .slider {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .asset-input-checkbox + .slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+    left: 2px;
+    top: 2px;
+  }
+  
+  .asset-input-checkbox:checked + .slider {
+    background-color: #4caf50;
+  }
+  
+  .asset-input-checkbox:checked + .slider::before {
+    transform: translateX(20px);
+  }
+  
