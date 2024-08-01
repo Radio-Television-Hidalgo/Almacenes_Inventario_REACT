@@ -216,115 +216,120 @@ function MaterialRequest() {
 
   return (
     <div className="material-request-container">
-      <form className="material-request-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Descripción"
-          required
-          className="material-request-input"
-        />
-        <input
-          type="number"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          placeholder="Cantidad"
-          required
-          className="material-request-input"
-          max={availableQuantity !== null ? availableQuantity : ""}
-        />
-        {availableQuantity !== null && (
-          <small>Cantidad disponible: {availableQuantity}</small>
-        )}
+    <form className="material-request-form" onSubmit={handleSubmit}>
+      <select
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+        className="material-request-select"
+        required
+      >
+        <option value="">Seleccionar tipo de material</option>
+        <option value="Insumo">Insumo</option>
+        <option value="Bien">Bien</option>
+      </select>
 
-        {formData.type === "Insumo" && (
-          <input
-            type="text"
-            name="warehouses_number"
-            value={formData.warehouses_number}
-            onChange={handleChange}
-            placeholder="Número de Almacén"
-            className="material-request-input"
-          />
-        )}
-
-        {formData.type === "Bien" && (
-          <input
-            type="text"
-            name="inventory_number"
-            value={formData.inventory_number}
-            onChange={handleChange}
-            placeholder="Número de Inventario"
-            className="material-request-input"
-          />
-        )}
-
-        {Array.isArray(articles) && articles.length > 0 && (
-          <select
-            value={selectedArticle}
-            onChange={handleArticleSelect}
-            className="material-request-select"
-            required
-          >
-            <option value="">Seleccionar artículo</option>
-            {articles.map((article) => (
-              <option key={article.id} value={article.id}>
-                {article.name}
-              </option>
-            ))}
-          </select>
-        )}
-
-        <select
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-          className="material-request-select"
-        >
-          <option value="Insumo">Insumo</option>
-          <option value="Bien">Bien</option>
-        </select>
-
-        <input
-          type="text"
-          name="warehouseManager"
-          value={warehouseManager.name}
-          readOnly
-          className="material-request-input"
-          placeholder="Encargado de Almacén"
-        />
-        <input
-          type="file"
-          name="file"
-          onChange={(e) =>
-            setFormData({ ...formData, file: e.target.files[0] })
-          }
-          className="material-request-file"
-        />
-        <button className="material-request-button" type="submit">
-          Solicitar Material
-        </button>
-      </form>
 
       {formData.type === "Insumo" && (
-        <>
-          <h2 className="material-request-title">Insumos</h2>
-          <InsumoTable />
-        </>
+        <input
+          type="text"
+          name="warehouses_number"
+          value={formData.warehouses_number}
+          onChange={handleChange}
+          placeholder="Número de Almacén"
+          className="material-request-input"
+        />
+      )}
+      
+      <input
+        type="text"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Descripción"
+        required
+        className="material-request-input"
+      />
+
+      {Array.isArray(articles) && articles.length > 0 && (
+        <select
+          value={selectedArticle}
+          onChange={handleArticleSelect}
+          className="material-request-select"
+          required
+        >
+          <option value="">Seleccionar artículo</option>
+          {articles.map((article) => (
+            <option key={article.id} value={article.id}>
+              {article.name}
+            </option>
+          ))}
+        </select>
+      )}
+
+      <input
+        type="number"
+        name="quantity"
+        value={formData.quantity}
+        onChange={handleChange}
+        placeholder="Cantidad"
+        required
+        className="material-request-input"
+        max={availableQuantity !== null ? availableQuantity : ""}
+      />
+      {availableQuantity !== null && (
+        <small className="material-request-quantity-info">
+          Cantidad disponible: {availableQuantity}</small>
       )}
 
       {formData.type === "Bien" && (
-        <>
-          <h2 className="material-request-title">Bienes</h2>
-          <BienTable />
-        </>
+        <input
+          type="text"
+          name="inventory_number"
+          value={formData.inventory_number}
+          onChange={handleChange}
+          placeholder="Número de Inventario"
+          className="material-request-input"
+        />
       )}
 
-      {showModal && <Modal onClose={handleModalClose} />}
-    </div>
+      <input
+        type="text"
+        name="warehouseManager"
+        value={warehouseManager.name}
+        readOnly
+        className="material-request-input"
+        placeholder="Encargado de Almacén"
+      />
+      <input
+        type="file"
+        name="file"
+        onChange={(e) =>
+          setFormData({ ...formData, file: e.target.files[0] })
+        }
+        className="material-request-file"
+      />
+      <button className="material-request-button" type="submit">
+        Solicitar Material
+      </button>
+    </form>
+
+    {formData.type === "Insumo" && (
+      <>
+        <h2 className="material-request-title">Insumos</h2>
+        <InsumoTable />
+      </>
+    )}
+
+    {formData.type === "Bien" && (
+      <>
+        <h2 className="material-request-title">Bienes</h2>
+        <BienTable />
+      </>
+    )}
+
+    {showModal && <Modal onClose={handleModalClose} />}
+  </div>
   );
 }
 
