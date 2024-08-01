@@ -1,0 +1,39 @@
+/* ModalSalir.css */
+.mo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .mo-content {
+    background-color: rgba(255, 255, 255, 0.986);
+    padding: 50px;
+    border-radius: 35px;
+    text-align: center;
+  }
+  
+  .mo-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .mo-content button {
+    margin: 10px;
+    padding: 11px 38px;
+    border: none;
+    background-color: #691b31;
+    color: white;
+    border-radius: 19px;
+    cursor: pointer;
+  }
+  
+  .mo-content button:hover {
+    background-color: rgb(224, 192, 7);
+  }
+  
