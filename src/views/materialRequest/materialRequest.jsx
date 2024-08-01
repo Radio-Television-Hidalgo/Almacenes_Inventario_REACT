@@ -24,6 +24,7 @@ function MaterialRequest() {
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [availableQuantity, setAvailableQuantity] = useState(null); // Nuevo estado para la cantidad disponible
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -78,13 +79,23 @@ function MaterialRequest() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
 
-    if (name === "warehouses_number" && value) {
-      fetchArticlesByWarehouse(value);
-    }
-    if (name === "inventory_number" && value) {
-      fetchArticlesByInventoryNumber(value);
+    if (name === "quantity") {
+      const requestedQuantity = parseInt(value);
+      if (availableQuantity !== null && requestedQuantity > availableQuantity) {
+        setFormData({ ...formData, quantity: availableQuantity.toString() });
+      } else {
+        setFormData({ ...formData, [name]: value });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+
+      if (name === "warehouses_number" && value) {
+        fetchArticlesByWarehouse(value);
+      }
+      if (name === "inventory_number" && value) {
+        fetchArticlesByInventoryNumber(value);
+      }
     }
   };
 
@@ -157,6 +168,13 @@ function MaterialRequest() {
     const articleId = e.target.value;
     setSelectedArticle(articleId);
     setFormData({ ...formData, article_id: articleId });
+
+    const selectedArticleData = articles.find(
+      (article) => article.id === parseInt(articleId)
+    );
+    if (selectedArticleData) {
+      setAvailableQuantity(selectedArticleData.quantity);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -183,7 +201,7 @@ function MaterialRequest() {
       if (response.ok) {
         const data = await response.json();
         console.log("Solicitud creada:", data);
-        setShowModal(true); // Muestra el modal en lugar de redirigir directamente
+        setShowModal(true);
       } else {
         console.error("Error al crear la solicitud:", response.statusText);
       }
@@ -194,121 +212,124 @@ function MaterialRequest() {
 
   const handleModalClose = () => {
     setShowModal(false);
-    // Aquí puedes agregar cualquier acción adicional al cerrar el modal si es necesario
   };
 
   return (
     <div className="material-request-container">
-      <form className="material-request-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Descripción"
-          required
-          className="material-request-input"
-        />
-        <input
-          type="number"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          placeholder="Cantidad"
-          required
-          className="material-request-input"
-        />
+    <form className="material-request-form" onSubmit={handleSubmit}>
+      <select
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+        className="material-request-select"
+        required
+      >
+        <option value="">Seleccionar tipo de material</option>
+        <option value="Insumo">Insumo</option>
+        <option value="Bien">Bien</option>
+      </select>
 
-        {formData.type === "Insumo" && (
-          <input
-            type="text"
-            name="warehouses_number"
-            value={formData.warehouses_number}
-            onChange={handleChange}
-            placeholder="Número de Almacén"
-            className="material-request-input"
-          />
-        )}
-
-        {formData.type === "Bien" && (
-          <input
-            type="text"
-            name="inventory_number"
-            value={formData.inventory_number}
-            onChange={handleChange}
-            placeholder="Número de Inventario"
-            className="material-request-input"
-          />
-        )}
-
-        {Array.isArray(articles) && articles.length > 0 && (
-          <select
-            value={selectedArticle}
-            onChange={handleArticleSelect}
-            className="material-request-select"
-            required
-          >
-            <option value="">Seleccionar artículo</option>
-            {articles.map((article) => (
-              <option key={article.id} value={article.id}>
-                {article.name}
-              </option>
-            ))}
-          </select>
-        )}
-
-        <select
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-          className="material-request-select"
-        >
-          <option value="Insumo">Insumo</option>
-          <option value="Bien">Bien</option>
-        </select>
-      
-        <input
-          type="text"
-          name="warehouseManager"
-          value={warehouseManager.name}
-          readOnly
-          className="material-request-input"
-          placeholder="Encargado de Almacén"
-        />
-        <input
-          type="file"
-          name="file"
-          onChange={(e) =>
-            setFormData({ ...formData, file: e.target.files[0] })
-          }
-          className="material-request-file"
-        />
-        <button className="material-request-button" type="submit">
-          Solicitar Material
-        </button>
-      </form>
 
       {formData.type === "Insumo" && (
-        <>
-          <h2 className="material-request-title">Insumos</h2>
-          <InsumoTable />
-        </>
+        <input
+          type="text"
+          name="warehouses_number"
+          value={formData.warehouses_number}
+          onChange={handleChange}
+          placeholder="Número de Almacén"
+          className="material-request-input"
+        />
+      )}
+      
+      <input
+        type="text"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Descripción"
+        required
+        className="material-request-input"
+      />
+
+      {Array.isArray(articles) && articles.length > 0 && (
+        <select
+          value={selectedArticle}
+          onChange={handleArticleSelect}
+          className="material-request-select"
+          required
+        >
+          <option value="">Seleccionar artículo</option>
+          {articles.map((article) => (
+            <option key={article.id} value={article.id}>
+              {article.name}
+            </option>
+          ))}
+        </select>
+      )}
+
+      <input
+        type="number"
+        name="quantity"
+        value={formData.quantity}
+        onChange={handleChange}
+        placeholder="Cantidad"
+        required
+        className="material-request-input"
+        max={availableQuantity !== null ? availableQuantity : ""}
+      />
+      {availableQuantity !== null && (
+        <small className="material-request-quantity-info">
+          Cantidad disponible: {availableQuantity}</small>
       )}
 
       {formData.type === "Bien" && (
-        <>
-          <h2 className="material-request-title">Bienes</h2>
-          <BienTable />
-        </>
-      )}
-
-      {showModal && (
-        <Modal
-          message="Tu documento se ha hecho exitosamente."
-          onClose={handleModalClose} // Usa la función para cerrar el modal
+        <input
+          type="text"
+          name="inventory_number"
+          value={formData.inventory_number}
+          onChange={handleChange}
+          placeholder="Número de Inventario"
+          className="material-request-input"
         />
       )}
-    </div>
+
+      <input
+        type="text"
+        name="warehouseManager"
+        value={warehouseManager.name}
+        readOnly
+        className="material-request-input"
+        placeholder="Encargado de Almacén"
+      />
+      <input
+        type="file"
+        name="file"
+        onChange={(e) =>
+          setFormData({ ...formData, file: e.target.files[0] })
+        }
+        className="material-request-file"
+      />
+      <button className="material-request-button" type="submit">
+        Solicitar Material
+      </button>
+    </form>
+
+    {formData.type === "Insumo" && (
+      <>
+        <h2 className="material-request-title">Insumos</h2>
+        <InsumoTable />
+      </>
+    )}
+
+    {formData.type === "Bien" && (
+      <>
+        <h2 className="material-request-title">Bienes</h2>
+        <BienTable />
+      </>
+    )}
+
+    {showModal && <Modal onClose={handleModalClose} />}
+  </div>
   );
 }
 
