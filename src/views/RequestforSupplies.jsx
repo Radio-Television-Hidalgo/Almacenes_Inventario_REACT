@@ -107,6 +107,8 @@ function RequestforSupplies() {
           ))}
         </tbody>
       </table>
+
+      
       {modalData && (
         <div className="modal">
           <div className="modal-content">
