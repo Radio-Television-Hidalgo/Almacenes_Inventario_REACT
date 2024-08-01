@@ -24,6 +24,7 @@ function MaterialRequest() {
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [availableQuantity, setAvailableQuantity] = useState(null); // Nuevo estado para la cantidad disponible
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -78,13 +79,23 @@ function MaterialRequest() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
 
-    if (name === "warehouses_number" && value) {
-      fetchArticlesByWarehouse(value);
-    }
-    if (name === "inventory_number" && value) {
-      fetchArticlesByInventoryNumber(value);
+    if (name === "quantity") {
+      const requestedQuantity = parseInt(value);
+      if (availableQuantity !== null && requestedQuantity > availableQuantity) {
+        setFormData({ ...formData, quantity: availableQuantity.toString() });
+      } else {
+        setFormData({ ...formData, [name]: value });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+
+      if (name === "warehouses_number" && value) {
+        fetchArticlesByWarehouse(value);
+      }
+      if (name === "inventory_number" && value) {
+        fetchArticlesByInventoryNumber(value);
+      }
     }
   };
 
@@ -157,6 +168,13 @@ function MaterialRequest() {
     const articleId = e.target.value;
     setSelectedArticle(articleId);
     setFormData({ ...formData, article_id: articleId });
+
+    const selectedArticleData = articles.find(
+      (article) => article.id === parseInt(articleId)
+    );
+    if (selectedArticleData) {
+      setAvailableQuantity(selectedArticleData.quantity);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -183,7 +201,7 @@ function MaterialRequest() {
       if (response.ok) {
         const data = await response.json();
         console.log("Solicitud creada:", data);
-        setShowModal(true); // Muestra el modal en lugar de redirigir directamente
+        setShowModal(true);
       } else {
         console.error("Error al crear la solicitud:", response.statusText);
       }
@@ -194,7 +212,6 @@ function MaterialRequest() {
 
   const handleModalClose = () => {
     setShowModal(false);
-    // Aquí puedes agregar cualquier acción adicional al cerrar el modal si es necesario
   };
 
   return (
@@ -217,7 +234,11 @@ function MaterialRequest() {
           placeholder="Cantidad"
           required
           className="material-request-input"
+          max={availableQuantity !== null ? availableQuantity : ""}
         />
+        {availableQuantity !== null && (
+          <small>Cantidad disponible: {availableQuantity}</small>
+        )}
 
         {formData.type === "Insumo" && (
           <input
@@ -266,7 +287,7 @@ function MaterialRequest() {
           <option value="Insumo">Insumo</option>
           <option value="Bien">Bien</option>
         </select>
-      
+
         <input
           type="text"
           name="warehouseManager"
@@ -302,12 +323,7 @@ function MaterialRequest() {
         </>
       )}
 
-      {showModal && (
-        <Modal
-          message="Tu documento se ha hecho exitosamente."
-          onClose={handleModalClose} // Usa la función para cerrar el modal
-        />
-      )}
+      {showModal && <Modal onClose={handleModalClose} />}
     </div>
   );
 }
