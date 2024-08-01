@@ -39,6 +39,7 @@ import PolicyDetail from "./views/articles/PolicyDetail";
 import StockEntry from "./views/werehouse/StockEntry";
 import SeelowWell from "./views/inventory/Seelowwell";
 import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
+import SeeSupplies from "./views/werehouse/seeSupplies";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -76,7 +77,8 @@ const showHeaderRoutes = [
   "/historial/bajas",
   "/polizas/:policyId",
   "verSolicitud/bien",
-  "/articulos/articulo/:inventoryNumber", // Agregar la ruta dinámica para el artículo
+  "/articulos/articulo/:inventoryNumber",
+  "/almacen/insumos"
 ];
 
 const routeTitles = {
@@ -111,7 +113,8 @@ const routeTitles = {
   "/entrada/existencias": "Entrada de Existencias",
   "/historial/bajas": "Historial de Bajas",
   "verSolicitud/bien":"Ver la Solicitud del Bien",
-  "/articulos/articulo/:inventoryNumber": "Detalles del Artículo", // Agregar el título para la ruta dinámica
+  "/articulos/articulo/:inventoryNumber": "Detalles del Artículo",
+  "/almacen/insumos":"Insumos del Almacen"
 };
 
 const App = () => {
@@ -180,7 +183,8 @@ const App = () => {
           <Route path="/entrada/existencias" element={<StockEntry />} />
           <Route path="/historial/bajas" element={<SeelowWell />} />
           <Route path="/verSolicitud/bien" element={<RequestforSuppliesGoods />} />
-          <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> {/* Ruta dinámica para los detalles del artículo */}
+          <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> 
+          <Route path="/almacen/insumos" element={<SeeSupplies />} />
         </Routes>
         </UserProvider>
       </main>
