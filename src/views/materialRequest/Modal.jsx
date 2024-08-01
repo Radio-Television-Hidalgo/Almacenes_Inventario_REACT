@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/Modal.css";
 
-function Modal({ message, onClose }) {
+function Modal({ message = "Tu solicitud fue enviada exitosamente", onClose }) {
+  const navigate = useNavigate();
+
+  const handleAccept = () => {
+    navigate("/inicio");
+    onClose();
+  };
+
   return (
     <div className="modales-overlay">
       <div className="modales-content">
