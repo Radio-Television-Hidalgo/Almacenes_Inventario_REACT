@@ -17,8 +17,7 @@ function WarehouseArticle() {
     location: "",
     status: false,
     serial_number: "",
-    warehouses_number: "",
-    inventory_number: "",
+  
     reason: "",
     custody_type: "",
     article_id: "",
@@ -185,15 +184,6 @@ function WarehouseArticle() {
           <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required className="asset-input" readOnly />
         </div>
 
-        <div className="asset-group">
-          <label htmlFor="warehouses_number" className="asset-label">Número de almacén</label>
-          <input type="text" name="warehouses_number" value={formData.warehouses_number} onChange={handleChange} required className="asset-input" />
-        </div>
-
-        <div className="asset-group">
-          <label htmlFor="inventory_number" className="asset-label">Número de inventario</label>
-          <input type="text" name="inventory_number" value={formData.inventory_number} onChange={handleChange} required className="asset-input" />
-        </div>
 
         <div className="asset-group">
           <label htmlFor="reason" className="asset-label">Motivo</label>
