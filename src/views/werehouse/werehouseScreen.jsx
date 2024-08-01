@@ -60,7 +60,7 @@ export default function WerehouseScreen() {
         </div>
 
         <div className="werehouse-column">
-        <Link to="" className="werehouse-cards">
+        <Link to="/almacen/insumos" className="werehouse-cards">
             <div className="werehouse-content">
               <h1>Ver Insumos</h1>
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">

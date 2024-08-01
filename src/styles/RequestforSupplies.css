@@ -114,7 +114,7 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  font-size: 18px;
+  font-size: 30px;
   cursor: pointer;
 }
 
@@ -164,21 +164,39 @@ box-shadow: 0 0 20px #f0be73;
 }
 
 .brand {
-  background-color: #4CAF50; /* Green */
+  background-color: #1AD598; /* Green */
   border-radius: 100px;
+  object-fit: cover;
+  transition: 0.3s ease, box-shadow 0.3s ease;
 }
+.brand:hover {
+  border: 1px solid #1AD598;
+  box-shadow: 0 0 20px #1AD598;
+  }
 
 .model {
-  background-color: #2196F3; /* Blue */
+  background-color: #217EFD; /* Blue */
   border-radius: 100px;
+  object-fit: cover;
+  transition: 0.3s ease, box-shadow 0.3s ease;
 
 }
+.model:hover {
+  border: 1px solid #217EFD;
+  box-shadow: 0 0 20px #217EFD;
+  }
 
 .series {
-  background-color: #f44336; /* Red */
+  background-color: #EA3A3D; /* Red */
   border-radius: 100px;
+  object-fit: cover;
+  transition: 0.3s ease, box-shadow 0.3s ease;
 
 }
+.series:hover {
+  border: 0px solid #EA3A3D;
+  box-shadow: 0 0 20px #EA3A3D;
+  }
 
 /* Animations */
 @keyframes fadeIn {

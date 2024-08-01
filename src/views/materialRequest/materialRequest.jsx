@@ -12,7 +12,7 @@ function MaterialRequest() {
     quantity: "",
     type: "Insumo",
     status: "En Espera",
-    file: "",
+    file: null,
     approving_user_id: "",
     requesting_user_id: "",
     article_id: "",
@@ -24,7 +24,7 @@ function MaterialRequest() {
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [availableQuantity, setAvailableQuantity] = useState(null); // Nuevo estado para la cantidad disponible
+  const [availableQuantity, setAvailableQuantity] = useState(null);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -179,21 +179,20 @@ function MaterialRequest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formDataToSend = {
       ...formData,
       inventory_number_id: formData.inventory_number_id || null,
       warehouses_number_id: formData.warehouses_number_id || null,
     };
-
+  
     const bodyData = new FormData();
     for (const key in formDataToSend) {
       if (key !== "warehouses_number" && key !== "inventory_number") {
         bodyData.append(key, formDataToSend[key]);
       }
     }
-
-    try {
+      try {
       const response = await fetch("/api/articulos/crearSolicitud", {
         method: "POST",
         body: bodyData,
@@ -209,6 +208,7 @@ function MaterialRequest() {
       console.error("Error al crear la solicitud:", error);
     }
   };
+  
 
   const handleModalClose = () => {
     setShowModal(false);

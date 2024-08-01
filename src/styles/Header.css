@@ -488,7 +488,7 @@ nav a i {
 
 .close {
   position: absolute;
-  top: 10px;
+  top: 0px;
   right: 10px;
   font-size: 24px;
   cursor: pointer;
@@ -510,7 +510,7 @@ nav a i {
   border-radius: 50%;
   border: 3px solid white;
   position: absolute;
-  bottom: -50px; /* Coloca el avatar en el fondo de portada */
+  bottom: 8px; /* Coloca el avatar en el fondo de portada */
 }
 
 .modal-content {
