@@ -159,11 +159,12 @@
 /* Estilos para imágenes del artículo */
 .article-images {
     display: flex;
+    width: 950px;
     overflow-x: auto; /* Habilita el desplazamiento horizontal */
     gap: 20px; /* Espacio entre las imágenes */
     padding: 10px; /* Añade un poco de padding para mejor apariencia */
     scroll-snap-type: x mandatory; /* Opcional: Para un desplazamiento más suave */
-    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
+     
 }
 
 .article-image {

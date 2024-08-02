@@ -26,7 +26,7 @@ function PolicyScreen() {
 
   return (
     <div className="policy-container">
-      <h1 className="policy-title">Polizas</h1>
+      
 
       <input
         type="text"

@@ -43,12 +43,10 @@
 }
 
 .logo-tics {
-  width: 100px;
+  width: 200px;
 }
 
-.logo-empresa {
-  width: 200px; /* Incrementa el tamaño del logo de la empresa */
-}
+
 
 @keyframes slideIn {
   from {
