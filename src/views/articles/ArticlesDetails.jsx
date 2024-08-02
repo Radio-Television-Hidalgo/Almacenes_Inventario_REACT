@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { Collapse } from 'react-collapse';
 
+
 const ArticleDetails = () => {
   const { inventoryNumber } = useParams();
   const [articleData, setArticleData] = useState(null);
@@ -62,14 +63,17 @@ const ArticleDetails = () => {
       alignItems: "center"
     },
     section: {
-      marginBottom: "20px"
+      marginBottom: "20px",
+      
+      
     },
     label: {
       fontWeight: "bold",
       color: "#666"
     },
     value: {
-      marginLeft: "10px"
+      marginLeft: "10px",
+
     },
     fileContainer: {
       marginBottom: "20px"
@@ -77,6 +81,7 @@ const ArticleDetails = () => {
     fileTitle: {
       fontWeight: "bold",
       marginBottom: "10px"
+      
     },
     file: {
       width: "100%",
@@ -95,9 +100,16 @@ const ArticleDetails = () => {
     },
     icon: {
       transition: "transform 0.3s",
+      backgroundColor: "#691B31",
+      color: "white",
+      borderRadius: "100px"
     },
     iconRotated: {
       transform: "rotate(180deg)",
+
+    },
+    opcion:{
+      textAlign: "center",
     }
   };
 
@@ -137,6 +149,7 @@ const ArticleDetails = () => {
       strokeLinecap="round"
       strokeLinejoin="round"
       className="feather feather-chevron-down"
+      backgroundColor="red"
     >
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
@@ -146,6 +159,8 @@ const ArticleDetails = () => {
     <div>
       <br />
     <div style={styles.container}>
+      <h3 style={styles.opcion}>Selecciona una opción</h3>
+      <br />
       <h2 style={styles.heading} onClick={() => toggleSection('general')}>
         Detalles del Artículo {renderIcon('general')}
       </h2>
@@ -161,9 +176,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('internal')}>
+      <h2 style={styles.heading} onClick={() => toggleSection('internal')}>
         Detalles del Artículo Interno {renderIcon('internal')}
-      </h3>
+      </h2>
       <Collapse isOpened={isOpen.internal}>
         <div style={styles.section}>
           <p><span style={styles.label}>Marca:</span><span style={styles.value}> {articleData.articleData.brand}</span></p>
@@ -173,9 +188,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('usefulLife')}>
+      <h2 style={styles.heading} onClick={() => toggleSection('usefulLife')}>
         Vida Útil {renderIcon('usefulLife')}
-      </h3>
+      </h2>
       <Collapse isOpened={isOpen.usefulLife}>
         <div style={styles.section}>
           <p><span style={styles.label}>Cuenta:</span><span style={styles.value}> {articleData.articleData.usefulLive.account}</span></p>
@@ -187,9 +202,9 @@ const ArticleDetails = () => {
         </div>
       </Collapse>
 
-      <h3 style={styles.heading} onClick={() => toggleSection('files')}>
+      <h2 style={styles.heading} onClick={() => toggleSection('files')}>
         Archivos Adjuntos {renderIcon('files')}
-      </h3>
+      </h2>
       <Collapse isOpened={isOpen.files}>
         <div style={styles.fileContainer}>
           {policyFileUrl && (
