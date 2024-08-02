@@ -96,10 +96,11 @@ function StockEntry() {
                                 {editIndex === index ? (
                                     <>
                                         <input
+                                        className="input"
                                             type="number"
                                             value={editQuantity}
                                             onChange={handleQuantityChange}
-                                            placeholder="Cantidad a agregar"
+                                            placeholder="Agrega"
                                         />
                                         <button className="botones" onClick={() => handleSaveClick(item.id, item.quantity)}>Guardar</button>
                                     </>

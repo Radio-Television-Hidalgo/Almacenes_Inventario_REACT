@@ -10,7 +10,6 @@ function WarehouseArticle() {
     description: "",
     type: "",
     entry_date: "",
-    exit_date: "",
     asset_type: "",
     harmonizable_code: "",
     accounting_record: "",
@@ -18,8 +17,7 @@ function WarehouseArticle() {
     location: "",
     status: false,
     serial_number: "",
-    warehouses_number: "",
-    inventory_number: "",
+  
     reason: "",
     custody_type: "",
     article_id: "",
@@ -80,6 +78,7 @@ function WarehouseArticle() {
       [name]: type === "checkbox" ? checked : value
     }));
   };
+  
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -104,6 +103,7 @@ function WarehouseArticle() {
     }
   };
 
+  
 
   return (
   <form onSubmit={handleSubmit} className="asset-container">
@@ -121,17 +121,17 @@ function WarehouseArticle() {
 
         <div className="asset-group">
           <label htmlFor="name" className="asset-label">Nombre</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required className="asset-input" />
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required className="asset-input" readOnly />
         </div>
 
         <div className="asset-group">
           <label htmlFor="description" className="asset-label">Descripción</label>
-          <input type="text" name="description" value={formData.description} onChange={handleChange} required className="asset-input" />
+          <input type="text" name="description" value={formData.description} onChange={handleChange} required className="asset-input" readOnly/>
         </div>
 
         <div className="asset-group">
           <label htmlFor="type" className="asset-label">Tipo</label>
-          <input type="text" name="type" value={formData.type} onChange={handleChange} required className="asset-input" />
+          <input type="text" name="type" value={formData.type} onChange={handleChange} required className="asset-input" readOnly />
         </div>
 
         <div className="asset-group">
@@ -140,9 +140,15 @@ function WarehouseArticle() {
         </div>
 
         <div className="asset-group">
-          <label htmlFor="exit_date" className="asset-label">Fecha de salida</label>
-          <input type="date" name="exit_date" value={formData.exit_date} onChange={handleChange} className="asset-input" />
+          <label htmlFor="custody_type" className="asset-label">Tipo de resguardo</label>
+          <select name="custody_type" value={formData.custody_type} onChange={handleChange} required className="asset-input">
+            <option value="">Selecciona una opción</option>
+            <option value="almacen">Almacén</option>
+            <option value="inventario">Inventario</option>
+          </select>
         </div>
+
+        
 
         <div className="asset-group">
           <label htmlFor="asset_type" className="asset-label">Tipo de activo</label>
@@ -175,52 +181,32 @@ function WarehouseArticle() {
 
         <div className="asset-group">
           <label htmlFor="serial_number" className="asset-label">Número de serie</label>
-          <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required className="asset-input" />
+          <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} required className="asset-input" readOnly />
         </div>
 
-        <div className="asset-group">
-          <label htmlFor="warehouses_number" className="asset-label">Número de almacén</label>
-          <input type="text" name="warehouses_number" value={formData.warehouses_number} onChange={handleChange} required className="asset-input" />
-        </div>
-
-        <div className="asset-group">
-          <label htmlFor="inventory_number" className="asset-label">Número de inventario</label>
-          <input type="text" name="inventory_number" value={formData.inventory_number} onChange={handleChange} required className="asset-input" />
-        </div>
 
         <div className="asset-group">
           <label htmlFor="reason" className="asset-label">Motivo</label>
           <input type="text" name="reason" value={formData.reason} onChange={handleChange} required className="asset-input" />
         </div>
 
-        <div className="asset-group">
-          <label htmlFor="custody_type" className="asset-label">Tipo de resguardo</label>
-          <select name="custody_type" value={formData.custody_type} onChange={handleChange} required className="asset-input">
-            <option value="">Selecciona una opción</option>
-            <option value="almacen">Almacén</option>
-            <option value="inventario">Inventario</option>
-          </select>
-        </div>
+        
 
         <div className="asset-group">
-          <label htmlFor="article_id" className="asset-label">ID del artículo</label>
-          <input type="text" name="article_id" value={formData.article_id} onChange={handleChange} required className="asset-input" />
+          <input type="text" name="article_id" value={formData.article_id} onChange={handleChange} required className="asset-input" hidden/>
         </div>
-
-        <div className="asset-group">
-          <label htmlFor="invoice_id" className="asset-label">ID de la factura</label>
-          <input type="text" name="invoice_id" value={formData.invoice_id} onChange={handleChange} required className="asset-input" />
-        </div>
-
-        <div className="asset-group">
-          <label htmlFor="policy_id" className="asset-label">ID de la póliza</label>
-          <input type="number" name="policy_id" value={formData.policy_id} onChange={handleChange} required className="asset-input" />
-        </div>
-
         <div className="asset-group asset-group-checkbox">
-          <label htmlFor="status" className="asset-label">Estatus</label>
-          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} className="asset-input-checkbox"/>
+          <input type="checkbox" name="status" checked={formData.status} onChange={handleChange} className="asset-input-checkbox" role="switch" hidden/>
+        </div>  
+        <div className="asset-group">
+          <input type="text" name="invoice_id" value={formData.invoice_id} onChange={handleChange} required className="asset-input" hidden />
         </div>
+
+        <div className="asset-group" >
+          <input type="number" name="policy_id" value={formData.policy_id} onChange={handleChange} required className="asset-input" hidden/>
+        </div>
+
+        
 
       </div>
       <button type="submit" className="asset-button">Guardar</button>

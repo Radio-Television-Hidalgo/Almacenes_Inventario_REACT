@@ -10,7 +10,28 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
+.input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .input:focus {
+    border-color: #BC955B;
+    box-shadow: 0 0 10px rgba(188, 149, 91, 0.2);
+    outline: none;
+  }
+  
+  .input:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
 .stock-entry-custom-table {
     width: 100%;
     border-collapse: collapse;
