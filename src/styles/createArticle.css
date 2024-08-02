@@ -9,7 +9,28 @@
   font-weight: 300;
   font-style: normal;
 }
-
+.crear{
+  display: inline-block; /* Para que se comporte como un botón */
+  background-color:#691B31 ; /* Color de fondo */
+  color: white; /* Color de texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centrar el texto */
+  text-decoration: none; /* Quitar subrayado */
+  font-family: 'Poppins', sans-serif; /* Fuente */
+  font-weight: 300; /* Grosor de la fuente */
+  cursor: pointer; /* Cursor de puntero */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones para hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+.crear:hover {
+  background-color: #ae254c; /* Color de fondo al hacer hover */
+  transform: scale(1.05); /* Efecto de agrandamiento al hacer hover */
+}
+.h2e{
+  text-align: center;
+}
 /* Estilos para el formulario */
 .article-form {
   background-color: rgba(255, 255, 255, 0.449);

@@ -10,15 +10,25 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (userType !== null) {
+    // Simular una carga con promesas si es necesario
+    const timer = setTimeout(() => {
       setLoading(false);
+    }, 1000); // Simula una carga de 1 segundo
+
+    // Limpiar el temporizador en desmontaje
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (userType !== null) {
       console.log(`El tipo de usuario ha cambiado a: ${userType}`);
     }
   }, [userType]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
+
   return (
     <div className="home-container">
       <h4>¿Qué deseas hacer hoy?</h4>
@@ -61,7 +71,7 @@ function Home() {
               </Link>
               </div>
           )}
-              <Link to="/usuario/gestionUsuarios" className="home-card">
+              <Link to="/dictamenes" className="home-card">
               {userType !== "almacen" &&(
                 <div className="home-content" style={{ height: "182px" }}>
                   <svg

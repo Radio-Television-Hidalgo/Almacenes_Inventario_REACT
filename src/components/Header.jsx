@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
-import ModalSalir from "../../src/components/ModalSalir";
 import { useContext } from "react";
 import { UserContext } from "./ObtenertipoUsuario";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
+import ModalSalir from '../../src/components/ModalSalir';
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
@@ -73,74 +73,79 @@ const Header = () => {
   const getPageTitle = () => {
     const path = location.pathname;
     switch (path) {
-      case "/inicio":
-        return "Bienvenido";
-      case "/usuario/nuevoUsuario":
-        return "Usuarios";
-      case "/facturas":
-        return "Facturas";
-      case "/crearcrearPoliza":
-        return "crearPolizas";
-      case "/inventario":
-        return "Mi inventario";
-      case "/ControlInventario":
-        return " Centro de Control";
-      case "/usuario/misBienes":
-        return " Mis Bienes";
-      case "/solicitudMaterial":
-        return "Subir material";
-      case "/usuario/gestionUsuarios":
-        return "Usuarios";
-      case "/almacen":
-        return "Almacen";
-      case "/resguardoGeneral":
-        return "Resguardo General";
-      case "/crearFactura":
-        return "Crear Factura";
-      case "/entregaArticulo":
-        return "Entrega de bienes";
-      case "/inventarios/usuario":
-        return "Inventarios de Usuario";
-      case "/articulos/bajaBien":
-        return "Baja de Bienes";
-      case "/documentacion":
-        return "Documentación";
-      case "/solicitudInsumos":
-        return "Solicitud de insumos";
-      case "/articulos/insertarArticulo":
-        return "Insertar articulo";
-      case "/articulos":
-        return "Articulos";
-      case "/usuario/editarUsuario":
-        return "Editar usuario";
-      case "/crearPoliza":
-        return "Crear Poliza";
-      case "/Bajadebien":
-        return "Baja de bienes";
-      case "/polizas":
-        return "Polizas";
-      case "/recepcionSolicitudes":
-        return "Solicitudes";
-      case "/articulos/almacen":
-        return "Articulos en Almacen";
-      case "/entregasPendientes":
-        return "Entregas pendientes";
-      case "/entrada/existencias":
-        return "Entrada de existencias";
-      case "/historial/bajas":
-        return "Datos de Bajas";
-      default:
-        if (matchPath("/facturas/:billNumber", path)) {
-          return "Información de factura";
-        }
-        if (matchPath("/polizas/:policyId", path)) {
-          return "Información de póliza";
-        }
-        if (matchPath("/articulos/articulo/:inventoryNumber", path)) {
-          return "Detalles del articulo";
-        }
-
-        return "";
+      case '/inicio':
+        return 'Bienvenido';
+      case '/usuario/nuevoUsuario':
+        return 'Usuarios';
+      case '/facturas':
+        return 'Facturas';
+      case '/crearcrearPoliza':
+        return 'crearPolizas';
+      case '/inventario':
+        return 'Mi inventario';
+      case '/ControlInventario':
+        return' Centro de Control';
+      case '/usuario/misBienes':
+        return ' Bienes adquiridos';
+      case '/solicitudMaterial':
+        return  'Subir material';  
+      case '/usuario/gestionUsuarios' :
+        return 'Control de usuarios';
+      case '/almacen':
+        return 'Almacen';
+      case '/resguardoGeneral':
+        return 'Resguardo General';
+      case '/crearFactura':
+        return 'Crear Factura';
+      case '/entregaArticulo':
+        return 'Entrega de bienes';
+      case '/inventarios/usuario':
+        return 'Inventarios de Usuario';
+      case '/articulos/bajaBien':
+        return 'Baja de Bienes';
+      case '/documentacion':
+        return 'Documentación';
+      case '/solicitudInsumos':
+        return 'Solicitud de insumos';
+      case '/articulos/insertarArticulo':
+        return 'Insertar articulo';
+        case '/articulos':
+          return 'Articulos';
+      case '/usuario/editarUsuario':
+        return 'Editar usuario';
+      case '/crearPoliza':
+        return 'Crear Poliza';
+      case '/Bajadebien':
+        return 'Baja de bienes';
+      case '/polizas':
+        return 'Polizas';
+      case '/recepcionSolicitudes':
+        return 'Solicitudes';
+      case '/articulos/almacen':
+        return 'Articulos en Almacen';
+      case '/entregasPendientes':
+        return 'Entregas pendientes';
+      case '/entrada/existencias':
+        return 'Entrada de existencias';
+      case '/historial/bajas':
+        return 'Datos de Bajas';
+      case '/verSolicitud/bien':
+        return'Solicitudes de bienes';
+      case '/dictamenes':
+        return 'Dictamenes';
+      default: 
+        if (matchPath('/facturas/:billNumber', path)) {
+        return 'Información de factura';
+      }
+      if (matchPath('/polizas/:policyId', path)) {
+        return 'Información de póliza';
+      }
+      if (matchPath('/articulos/articulo/:inventoryNumber', path)) {
+        return 'Detalles del articulo';
+      }
+      
+      return '';
+      
     }
   };
 
@@ -281,62 +286,36 @@ const Header = () => {
                     </Link>
                   </div>
                 </div>
-                )}
-
-                {userType !== "comun" && (
-                  <div className="dropdown">
-                    <Link to="/documentacion" className="dropdown-toggle">
-                      Documentacion
-                    </Link>
-                    <div className="dropdown-menu">
-                      <Link to="/crearFactura" className="dropdown-item">
-                        Crear Facturas
-                      </Link>
-                      <Link to="/facturas" className="dropdown-item">
-                        Ver Facturas{" "}
-                      </Link>
-                      <Link to="/crearPoliza" className="dropdown-item">
-                        Crear Polizas{" "}
-                      </Link>
-                      <Link to="/polizas" className="dropdown-item">
-                        Ver Polizas{" "}
-                      </Link>
-                    </div>
+             
+              {userType !== 'comun' &&(
+                <div className="dropdown">
+                  <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
+                  <div className="dropdown-menu">
+                    <Link to="/crearFactura" className="dropdown-item">Crear Facturas</Link>
+                    <Link to="/facturas" className="dropdown-item">Ver Facturas </Link>
+                    <Link to="/crearPoliza" className="dropdown-item">Crear Polizas </Link>
+                    <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
                   </div>
-                )}
-
-                {/*                <Link to="/assignations">Asignaciones</Link>        */}
-                {userType !== "comun" && (
-                  <div className="dropdown">
-                    <Link to="/inventario" className="dropdown-toggle">
-                      Inventario
-                    </Link>
-                    <div className="dropdown-menu">
-                      {/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
-                      <Link to="/entregaArticulo" className="dropdown-item">
-                        Entrega de bien a usuario
-                      </Link>
-                      <Link to="/articulos/bajaBien" className="dropdown-item">
-                        Baja de Bienes
-                      </Link>
-                      <Link to="/resguardoGeneral" className="dropdown-item">
-                        Resguardo General
-                      </Link>
-                      <Link
-                        to="/articulos/insertarArticulo"
-                        className="dropdown-item"
-                      >
-                        Alta de Bienes
-                      </Link>
-                      <Link to="/inventarios/usuario" className="dropdown-item">
-                        inventarios de Usuario
-                      </Link>
-                      <Link to="#" className="dropdown-item">
-                        Historial de Bajas
-                      </Link>
-                    </div>
+                </div>
+              )}
+             
+            
+{/*                <Link to="/assignations">Asignaciones</Link>        */}
+                {userType !== 'comun' &&(
+                <div className="dropdown">
+                  <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
+                  <div className="dropdown-menu">
+{/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
+                    <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
+                    <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
+                    <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
+                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
+                    <Link to="" className="dropdown-item">Solicitud de bienes</Link>
+                    <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
+                    <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
-                )}
+                </div>
+                    )}
               </>
             ) : (
               <>
@@ -405,8 +384,8 @@ const Header = () => {
   );
 };
 
-Header.propTypes = {
-  userType: propTypes.string.isRequired,
-};
+Header.PropTypes={
+  userType: PropTypes.string.isRequired,
+}
 
 export default Header;
