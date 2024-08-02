@@ -79,7 +79,7 @@ const showHeaderRoutes = [
   "/polizas/:policyId",
   "verSolicitud/bien",
   "/articulos/articulo/:inventoryNumber",
-  "/almacen/insumos"
+  "/almacen/insumos",
   "/dictamenes",
   "/dictamenes/dajabien" 
 ];
@@ -117,7 +117,7 @@ const routeTitles = {
   "/historial/bajas": "Historial de Bajas",
   "verSolicitud/bien":"Ver la Solicitud del Bien",
   "/articulos/articulo/:inventoryNumber": "Detalles del Artículo",
-  "/almacen/insumos":"Insumos del Almacen"
+  "/almacen/insumos":"Insumos del Almacen",
   "/dictamenes": "Dictamenes",
   "/dictamenes/dajabien" : "Dictamen de Baja de Bien"
 };
