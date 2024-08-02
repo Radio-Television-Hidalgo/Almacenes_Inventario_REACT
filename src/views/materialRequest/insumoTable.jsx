@@ -26,6 +26,7 @@ function InsumoTable() {
     <table className="style-table">
       <thead>
         <tr>
+          <th>Nombre</th>
           <th className="th-descripcion">Descripción</th>
           <th>Cantidad</th>
           <th>Número de Almacén</th>
@@ -35,6 +36,7 @@ function InsumoTable() {
       <tbody>
         {insumos.map((insumo) => (
           <tr key={insumo.id}>
+            <td>{insumo.name}</td>
             <td>{insumo.description}</td>
             <td>
               {insumo.articleWarehouses && insumo.articleWarehouses.length > 0

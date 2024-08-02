@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./ObtenertipoUsuario";
+import PropTypes from "prop-types";
+import ModalSalir from '../../src/components/ModalSalir';
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
+  const { userType}= useContext(UserContext);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
-  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal de perfil
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768); // Estado para controlar el tamaño de pantalla
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // Estado para controlar el modal de confirmación de logout
   const navigate = useNavigate();
   const location = useLocation(); // Hook para obtener la ubicación actual
 
@@ -42,8 +48,7 @@ const Header = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleLogout = async (event) => {
-    event.preventDefault(); // Previene el comportamiento predeterminado del enlace
+  const handleLogout = async () => {
     setIsLoggingOut(true);
     try {
       const response = await fetch('/api/usuario/cerrarSesion', {
@@ -61,6 +66,7 @@ const Header = () => {
       console.error('Error al cerrar sesión', error);
     } finally {
       setIsLoggingOut(false);
+      setIsLogoutModalOpen(false);
     }
   };
 
@@ -73,10 +79,6 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
- {/*     case '/stateOfThegoods':
-        return 'Estado de los productos';
-      case '/assignations':
-        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -134,6 +136,10 @@ const Header = () => {
       if (matchPath('/polizas/:policyId', path)) {
         return 'Información de póliza';
       }
+      if (matchPath('/articulos/articulo/:inventoryNumber', path)) {
+        return 'Detalles del articulo';
+      }
+      
       return '';
       
     }
@@ -145,6 +151,15 @@ const Header = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openLogoutModal = (event) => {
+    event.preventDefault(); // Previene el comportamiento predeterminado del enlace
+    setIsLogoutModalOpen(true);
+  };
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false);
   };
 
   return (
@@ -229,14 +244,15 @@ const Header = () => {
                   <div className="dropdown-menu">
                     <Link to="/documentacion" className="dropdown-item">Documentacion </Link>
                     <Link to="/entrada/existencias" className="dropdown-item"> Entrada de existencias</Link>
-                    <Link to="" className="dropdown-item">Historial de Insumos </Link>
-                    <Link to="" className="dropdown-item">Entregar insumos </Link>
+                    <Link to="" className="dropdown-item">Ver insumos </Link>
+                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Agregar nuevo articulo </Link>
                     <Link to="" className="dropdown-item">Historial de salida de bienes </Link>
                     <Link to="" className="dropdown-item">Salida de existencias </Link>
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
-
+             
+              {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
                   <div className="dropdown-menu">
@@ -246,8 +262,11 @@ const Header = () => {
                     <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
                   </div>
                 </div>
+              )}
+             
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
+                {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
@@ -260,6 +279,7 @@ const Header = () => {
                     <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
                 </div>
+                    )}
               </>
             ) : (
               <>
@@ -271,7 +291,7 @@ const Header = () => {
                 <Link to="/inventario">Inventario</Link>
               </>
             )}
-            <a href="#" onClick={handleLogout} disabled={isLoggingOut}>
+            <a href="#" onClick={openLogoutModal} disabled={isLoggingOut}>
               {isLoggingOut ? 'Saliendo...' : 'Salir'}
             </a>
           </div>
@@ -317,8 +337,17 @@ const Header = () => {
   </div>
 )}
 
+      <ModalSalir
+        show={isLogoutModalOpen}
+        handleClose={closeLogoutModal}
+        handleConfirm={handleLogout}
+      />
     </div>
   );
 };
+
+Header.PropTypes={
+  userType: PropTypes.string.isRequired,
+}
 
 export default Header;

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
 import "../../styles/downArticle.css";
 
+Modal.setAppElement('#root'); // Establece el elemento raíz para accesibilidad
 
 export default function DownArticle() {
     const [removalType, setRemovalType] = useState('');
@@ -15,11 +17,14 @@ export default function DownArticle() {
     const [inventoryId, setInventoryId] = useState(''); // ID del inventario visible
     const [hiddenInventoryId, setHiddenInventoryId] = useState(''); // ID del inventario para enviar
     const [articleName, setArticleName] = useState('');
+    const [articleImages, setArticleImages] = useState([]); // Estado para las URLs de las imágenes
     const [userName, setUserName] = useState('');
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
+    const [selectedImage, setSelectedImage] = useState(''); // URL de la imagen seleccionada
 
     const navigate = useNavigate();
 
@@ -58,21 +63,29 @@ export default function DownArticle() {
                     setArticleName(response.data.articleDetails.name); // Establecer el nombre del artículo
                     setArticlesId(response.data.articleDetails.id); // Establecer el ID del artículo
                     setHiddenInventoryId(response.data.inventoryId); // Establecer el ID del inventario para enviar
+
+                    // Obtener las imágenes del artículo
+                    const photoEntries = response.data.articleDetails.photos_entry.split(',');
+                    const imageUrls = photoEntries.map(photoEntry => `/api/${photoEntry.trim()}`);
+                    setArticleImages(imageUrls); // Establecer las URLs de las imágenes
                 } else {
                     setArticleName(''); // Limpiar el nombre del artículo si no se encuentra
                     setArticlesId(''); // Limpiar el ID del artículo si no se encuentra
                     setHiddenInventoryId(''); // Limpiar el ID del inventario en caso de no encontrar datos
+                    setArticleImages([]); // Limpiar las imágenes si no se encuentra
                 }
             } catch (error) {
                 console.error('Error fetching article details:', error);
                 setArticleName(''); // Limpiar el nombre del artículo en caso de error
                 setArticlesId(''); // Limpiar el ID del artículo en caso de error
                 setHiddenInventoryId(''); // Limpiar el ID del inventario en caso de error
+                setArticleImages([]); // Limpiar las imágenes en caso de error
             }
         } else {
             setArticleName(''); // Limpiar el nombre del artículo si el campo de inventario está vacío
             setArticlesId(''); // Limpiar el ID del artículo si el campo de inventario está vacío
             setHiddenInventoryId(''); // Limpiar el ID del inventario si el campo está vacío
+            setArticleImages([]); // Limpiar las imágenes si el campo está vacío
         }
     };
 
@@ -102,6 +115,16 @@ export default function DownArticle() {
         } finally {
             setIsLoading(false); // Detener el estado de carga
         }
+    };
+
+    const openModal = (imageUrl) => {
+        setSelectedImage(imageUrl);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setSelectedImage('');
     };
 
     return (
@@ -176,13 +199,30 @@ export default function DownArticle() {
                     />
                 </div>
                 <div className="custom-form-group">
-                    <label>Id del Artículo</label>
+                    <label>Nombre del Artículo</label>
                     <input 
                         type="text" 
                         value={articleName} // Mostrar el nombre del artículo
                         readOnly 
                     />
                 </div>
+                {articleImages.length > 0 && (
+    <div className="custom-form-group">
+        <label>Imágenes del Artículo</label>
+        <div className="article-images">
+            {articleImages.map((imageUrl, index) => (
+                <img 
+                    key={index} 
+                    src={imageUrl} 
+                    alt={`Imagen ${index + 1}`} 
+                    className="article-image" 
+                    onClick={() => openModal(imageUrl)} 
+                />
+            ))}
+        </div>
+    </div>
+)}
+
                 {error && (
                     <div className="custom-error-message">
                         {error}
@@ -201,7 +241,20 @@ export default function DownArticle() {
             >
                 {isLoading ? 'Cargando...' : 'Registrar Baja'}
             </button>
+
+            {/* Modal para mostrar la imagen seleccionada */}
+            <Modal 
+                isOpen={modalIsOpen} 
+                onRequestClose={closeModal}
+                contentLabel="Imagen del Artículo"
+                className="custom-modal"
+                overlayClassName="custom-overlay"
+            >
+                <button className="close-modal-button" onClick={closeModal}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+</svg></button>
+                {selectedImage && <img src={selectedImage} alt="Imagen del Artículo" className="modal-image" />}
+            </Modal>
         </div>
     );
 }
-
