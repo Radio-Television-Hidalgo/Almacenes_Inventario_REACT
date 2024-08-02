@@ -1,86 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
-
 h1 {
-  font-size: 4rem; /* Tamaño de fuente para el h3 */
-  margin: 0px 0; /* Margen superior e inferior de 20px, sin margen a los lados */
+  font-size: 4rem;
+  margin: 0;
   font-family: "Bebas Neue", sans-serif;
   color: #253238;
   text-align: center;
 }
 
-/* Contenedor principal para la tabla */
 .goods-table {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   margin: 20px 0;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  border: 1px solid #ddd; /* Borde alrededor de toda la tabla */
+  border: 1px solid #ddd;
   border-collapse: collapse;
 }
 
-/* Fila de encabezado */
-.goods-header {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12 columnas para coincidir con las celdas */
+.goods-table th, .goods-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.goods-table th {
   background-color: #691B31;
   color: white;
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  border-bottom: 1px solid #ddd; /* Línea de separación en la parte inferior del encabezado */
 }
 
-/* Celda del encabezado */
-.goods-header > div {
-  text-align: center; /* Centrar el texto en el encabezado */
-  padding: 12px;
-  border-left: 1px solid #ddd; /* Línea de separación entre celdas del encabezado */
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.goods-header > div:first-child {
-  border-left: none; /* Eliminar la línea del borde izquierdo de la primera celda */
-}
-
-/* Fila de datos */
-.goods-row {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12 columnas para coincidir con las celdas */
-  padding: 12px 0;
-  border-bottom: 1px solid #ddd;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.goods-row:nth-of-type(even) {
+.goods-table tbody tr:nth-of-type(even) {
   background-color: rgba(245, 245, 245, 0.8);
 }
 
-
-/* Estilo de las celdas */
-.goods-row > div {
-  padding: 12px;
-  border-left: 1px solid #ddd; /* Borde alrededor de cada celda */
-  text-align: center; /* Centrar el texto en las celdas */
-}
-
-.goods-row > div:first-child {
-  border-left: none; /* Eliminar la línea del borde izquierdo de la primera celda */
-}
-
-/* Estilo para imágenes */
-.goods-row img {
+.goods-table img {
   width: 80px;
   height: 80px;
   object-fit: cover;
@@ -88,17 +42,60 @@ h1 {
   transition: transform 0.3s ease;
 }
 
-.goods-row img:hover {
+.goods-table img:hover {
   transform: scale(1.05);
 }
 
-/* Estilo para QR code */
-.goods-row .qr-code {
+.qr-code {
   width: 50px;
   height: 50px;
   transition: transform 0.3s ease;
 }
 
-.goods-row .qr-code:hover {
+.qr-code:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .goods-table {
+    font-size: 14px;
+  }
+
+  .goods-table th, .goods-table td {
+    padding: 8px;
+  }
+
+  .goods-table img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .qr-code {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .goods-table {
+    font-size: 12px;
+  }
+
+  .goods-table th, .goods-table td {
+    padding: 6px;
+  }
+
+  .goods-table img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .qr-code {
+    width: 30px;
+    height: 30px;
+  }
 }

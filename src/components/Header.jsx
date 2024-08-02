@@ -86,11 +86,11 @@ const Header = () => {
       case '/ControlInventario':
         return' Centro de Control';
       case '/usuario/misBienes':
-        return ' Mis Bienes';
+        return ' Bienes adquiridos';
       case '/solicitudMaterial':
         return  'Subir material';  
       case '/usuario/gestionUsuarios' :
-        return 'Usuarios';
+        return 'Control de usuarios';
       case '/almacen':
         return 'Almacen';
       case '/resguardoGeneral':
@@ -131,6 +131,8 @@ const Header = () => {
         return 'Datos de Bajas';
       case '/verSolicitud/bien':
         return'Solicitudes de bienes';
+      case '/dictamenes':
+        return 'Dictamenes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
