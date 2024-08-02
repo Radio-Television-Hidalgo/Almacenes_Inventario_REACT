@@ -58,7 +58,7 @@ function Home() {
                   <h1>Control de Usuarios</h1>
                 </div>
               </Link>
-              <Link to="/usuario/gestionUsuarios" className="home-card">
+              <Link to="/dictamenes" className="home-card">
                 <div className="home-content" style={{ height: "182px" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
