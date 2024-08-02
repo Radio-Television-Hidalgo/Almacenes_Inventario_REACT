@@ -32,9 +32,11 @@
     margin-top: 20px;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
+    background-color: #691b31;
+    color: aliceblue;
 }
 
 .modales-button:hover {
