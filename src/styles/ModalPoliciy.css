@@ -1,0 +1,44 @@
+.modalPolicy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modalPolicy-content {
+    background-color: rgba(255, 255, 255, 0.986);
+    padding: 50px;
+    border-radius: 35px;
+    text-align: center;
+  }
+  .modalPolicy-content h2 {
+    margin-bottom: 20px;
+  }
+  .modalPolicy-close-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .modalPolicy-content button {
+    margin: 10px;
+    padding: 11px 38px;
+    border: none;
+    background-color: #691b31;
+    color: white;
+    border-radius: 19px;
+    cursor: pointer;
+  }
+  
+  .modalPolicy-content button:hover {
+    background-color: rgb(224, 192, 7);
+  }
