@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./ObtenertipoUsuario";
+import PropTypes from "prop-types";
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
+  const { userType}= useContext(UserContext);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal
@@ -73,10 +77,6 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
- {/*     case '/stateOfThegoods':
-        return 'Estado de los productos';
-      case '/assignations':
-        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -236,7 +236,8 @@ const Header = () => {
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
-
+             
+              {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
                   <div className="dropdown-menu">
@@ -246,8 +247,11 @@ const Header = () => {
                     <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
                   </div>
                 </div>
+              )}
+             
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
+                {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
@@ -260,6 +264,7 @@ const Header = () => {
                     <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
                 </div>
+                    )}
               </>
             ) : (
               <>
@@ -320,5 +325,9 @@ const Header = () => {
     </div>
   );
 };
+
+Header.PropTypes={
+  userType: PropTypes.string.isRequired,
+}
 
 export default Header;
