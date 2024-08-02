@@ -133,7 +133,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="main-container2">
-      <h2>Crear nuevo articulo</h2>
+      <h2 className="h2e">Crear nuevo articulo</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           {/* Form fields as before */}
@@ -306,7 +306,7 @@ const handleSubmit = async (e) => {
             </div>
           </div>
         </div>
-        <button type="submit">Crear artículo</button>
+        <button className="crear" type="submit">Crear artículo</button>
       </form>
       {/* Mostrar el código QR solo después de que el artículo ha sido creado */}
       {qrValue && (
