@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./ObtenertipoUsuario";
 import PropTypes from "prop-types";
-import ModalSalir from '../../src/components/ModalSalir';
+import ModalSalir from '../components/ModalSalir';
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
@@ -86,11 +86,11 @@ const Header = () => {
       case '/ControlInventario':
         return' Centro de Control';
       case '/usuario/misBienes':
-        return ' Bienes adquiridos';
+        return ' Mis Bienes';
       case '/solicitudMaterial':
         return  'Subir material';  
       case '/usuario/gestionUsuarios' :
-        return 'Control de usuarios';
+        return 'Usuarios';
       case '/almacen':
         return 'Almacen';
       case '/resguardoGeneral':
@@ -129,10 +129,6 @@ const Header = () => {
         return 'Entrada de existencias';
       case '/historial/bajas':
         return 'Datos de Bajas';
-      case '/verSolicitud/bien':
-        return'Solicitudes de bienes';
-      case '/dictamenes':
-        return 'Dictamenes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
@@ -286,6 +282,7 @@ const Header = () => {
                     </Link>
                   </div>
                 </div>
+                )}
              
               {userType !== 'comun' &&(
                 <div className="dropdown">
@@ -310,7 +307,6 @@ const Header = () => {
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
                     <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
-                    <Link to="" className="dropdown-item">Solicitud de bienes</Link>
                     <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
                     <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
