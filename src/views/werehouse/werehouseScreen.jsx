@@ -30,7 +30,7 @@ export default function WerehouseScreen() {
           </Link>
           
           
-          <Link to="/articulos/insertarArticulo" className="werehouse-cardss">
+          <Link to="/articulos/insertarArticulo" className="werehouse-card">
             <div className="werehouse-content">
               <h1 className="H1-Insumos">Agregar nuevo articulo</h1>
               <svg
