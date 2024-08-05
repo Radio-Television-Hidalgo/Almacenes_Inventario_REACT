@@ -63,6 +63,7 @@ export default function Dictum() {
       console.error('Error en la solicitud:', error);
     }
     console.log("form data", formData);
+    location.reload();location.reload();
   };
   
 
