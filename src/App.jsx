@@ -40,6 +40,7 @@ import StockEntry from "./views/werehouse/StockEntry";
 import SeelowWell from "./views/inventory/Seelowwell";
 import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
 import SeeSupplies from "./views/werehouse/seeSupplies";
+import RequestHistory from "./views/requests/requestHistory";
 
 const showHeaderRoutes = [
   "/inicio",
@@ -78,7 +79,8 @@ const showHeaderRoutes = [
   "/polizas/:policyId",
   "verSolicitud/bien",
   "/articulos/articulo/:inventoryNumber",
-  "/almacen/insumos"
+  "/almacen/insumos",
+  "/almacen/hitorialSolicitudes"
 ];
 
 const routeTitles = {
@@ -114,7 +116,8 @@ const routeTitles = {
   "/historial/bajas": "Historial de Bajas",
   "verSolicitud/bien":"Ver la Solicitud del Bien",
   "/articulos/articulo/:inventoryNumber": "Detalles del Artículo",
-  "/almacen/insumos":"Insumos del Almacen"
+  "/almacen/insumos":"Insumos del Almacen",
+  "/almacen/hitorialSolicitudes": "Historial Solicitudes"
 };
 
 const App = () => {
@@ -185,6 +188,7 @@ const App = () => {
           <Route path="/verSolicitud/bien" element={<RequestforSuppliesGoods />} />
           <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> 
           <Route path="/almacen/insumos" element={<SeeSupplies />} />
+          <Route path="/almacen/hitorialSolicitudes" element={<RequestHistory />} />
         </Routes>
         </UserProvider>
       </main>

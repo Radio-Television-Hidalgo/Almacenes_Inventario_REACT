@@ -68,7 +68,7 @@ export default function WerehouseScreen() {
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/></svg>
             </div>
           </Link>
-          <Link to="" className="werehouse-cards">
+          <Link to="/almacen/hitorialSolicitudes" className="werehouse-cards">
             <div className="werehouse-content">
               <h1>Historial de salida de bienes</h1>
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
