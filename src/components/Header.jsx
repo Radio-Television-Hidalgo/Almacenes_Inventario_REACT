@@ -199,9 +199,9 @@ const Header = () => {
 
         <div className="header-top2">
           <h1 className="invent">{getPageTitle()}</h1>
-          <p className="header-paragraph">
-            Sistema inventario y Almacen de Radio y Televisión de Hidalgo
-          </p>
+
+          <p className="header-paragraph">Sistema Integral de Gestión de Inventario, Compras y Almacén para Radio y Televisión de Hidalgo</p>
+
         </div>
 
         <div className="header-bottom">
