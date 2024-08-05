@@ -187,6 +187,7 @@
 .item-info-details {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 5px;
 }
 
