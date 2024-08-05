@@ -183,5 +183,4 @@ function Policy() {
     </div>
   );
 }
-
 export default Policy;
