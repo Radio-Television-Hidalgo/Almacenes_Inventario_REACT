@@ -1,0 +1,69 @@
+/* dictamen.css */
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.449); /* Fondo blanco con opacidad del 50% */
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 95%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  border: 1px solid rgba(221, 221, 221, 0.5); /* Borde con opacidad */
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  animation: fadeIn 1s ease-in; /* Animación de aparición */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 00;
+  font-style: normal;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-group input[type="file"],
+  .form-group input[type="text"],
+  .form-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .form-group input[type="file"]:focus,
+  .form-groupinput[type="text"]:focus,
+  .form-group input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .bills-show-more {
+    display: inline-block; /* Para que se comporte como un botón */
+    background-color:#691B31 ; /* Color de fondo */
+    color: white; /* Color de texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centrar el texto */
+    text-decoration: none; /* Quitar subrayado */
+    font-family: 'Poppins', sans-serif; /* Fuente */
+    font-weight: 300; /* Grosor de la fuente */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones para hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  }
+  
+  .bills-show-more:hover {
+    background-color: #ae254c; /* Color de fondo al hacer hover */
+    transform: scale(1.05); /* Efecto de agrandamiento al hacer hover */
+  }
+  

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/dictamen.css';
 
 export default function Dictum() {
   const [file, setFile] = useState(null);
@@ -65,13 +66,14 @@ export default function Dictum() {
     console.log("form data", formData);
     location.reload();location.reload();
   };
-  
 
   return (
     <div>
-        <br />
+      <br />
+       <div className="form-container">
+      
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="file">Archivo:</label>
           <input
             type="file"
@@ -80,18 +82,18 @@ export default function Dictum() {
             required
           />
         </div>
-        <div>
+        <div className="form-group"style={{ display: 'none' }}>
           <label htmlFor="status">Estado:</label>
-            <input
-                type="text"
-                id="status"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-                required
-                readOnly // El campo es de solo lectura porque el estado se establece automáticamente
-            />
+          <input
+            type="text"
+            id="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            required
+            readOnly // El campo es de solo lectura porque el estado se establece automáticamente
+          />
         </div>
-        <div>
+        <div className="form-group"style={{ display: 'none' }}>
           <label htmlFor="user_id">ID de Usuario:</label>
           <input
             type="number"
@@ -102,8 +104,13 @@ export default function Dictum() {
             readOnly // El campo es de solo lectura porque el userId se establece automáticamente
           />
         </div>
-        <button type="submit">Enviar</button>
+        <div className="button-container">
+          <button className="bills-show-more" type="submit">Enviar</button>
+        </div>
       </form>
     </div>
+<br />
+    </div>
+   
   );
 }

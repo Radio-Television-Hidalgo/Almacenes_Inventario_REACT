@@ -212,6 +212,27 @@ h2{
 
 }
 
+
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 30px;
+  color: #891B31;
+}
+
+
+
+
+
+
 /* Responsividad */
 @media (max-width: 768px) {
   .home-container {

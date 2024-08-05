@@ -59,11 +59,18 @@ function UserInventory() {
         setItemModalData(null);
     };
 
+    const filteredGroupedData = Object.values(groupedData).filter(({ user }) => {
+        const userName = user.name ? user.name.toLowerCase() : "";
+        const workerNumber = user.worker_nomber ? String(user.worker_nomber).toLowerCase() : "";
+        return userName.includes(searchTerm.toLowerCase()) || workerNumber.includes(searchTerm.toLowerCase());
+    });
+
     const filteredModalData = modalData
-        ? modalData.filter(item =>
-            item.articles.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.deliveryWarehouse.inventory_number.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        ? modalData.filter(item => {
+            const itemName = item.articles.name ? item.articles.name.toLowerCase() : "";
+            const inventoryNumber = item.deliveryWarehouse.inventory_number ? String(item.deliveryWarehouse.inventory_number).toLowerCase() : "";
+            return itemName.includes(searchTerm.toLowerCase()) || inventoryNumber.includes(searchTerm.toLowerCase());
+        })
         : [];
 
     if (loading) return <p>Cargando...</p>;
@@ -71,7 +78,14 @@ function UserInventory() {
 
     return (
         <div className="container-u">
-            {Object.values(groupedData).map(({ user, items }) => (
+            <input
+                type="text"
+                placeholder="Buscar por nombre o número de trabajador"
+                className="searchInput-u"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {filteredGroupedData.map(({ user, items }) => (
                 <UserCard key={user.worker_nomber} user={user} items={items} handleViewMore={handleViewMore} />
             ))}
             {modalData && (
@@ -157,7 +171,7 @@ const ItemTable = ({ items, handleViewItemMore }) => (
 
 const ItemDetails = ({ item }) => (
     <div className="item-modal">
-        
+      
         <div className="itemDetails-u">
             <div className="item-image-details">
                 <img
@@ -168,12 +182,16 @@ const ItemDetails = ({ item }) => (
                 <h3>{item.articles.name}</h3>
                 <p>Número de inventario: <strong>{item.deliveryWarehouse.inventory_number}</strong></p>
             </div>
+            
             <div className="item-info-details">
+                
                 <p><strong>Fecha de Resguardo:</strong> {new Date(item.delivery_date).toLocaleDateString()}</p>
                 <p><strong>Número de serie:</strong> {item.articles.number_series}</p>
                 <p><strong>Observaciones:</strong> {item.observations}</p>
                 <p><strong>Descripción:</strong> {item.articles.description}</p>
+                <hr />
                 <div className="item-icons">
+                    
                     <div className="item-icon item-icon-blue">
                         <span className="item-icon-text">Marca</span>
                         <span className="item-icon-value">{item.articles.brand}</span>
@@ -186,6 +204,7 @@ const ItemDetails = ({ item }) => (
                         <span className="item-icon-text">Total</span>
                         <span className="item-icon-value">{item.articles.articleBill.total}</span>
                     </div>
+                    
                 </div>
             </div>
         </div>
