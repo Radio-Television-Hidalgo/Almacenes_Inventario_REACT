@@ -4,6 +4,7 @@ import "/src/styles/Home.css";
 import { UserContext } from "../../components/ObtenertipoUsuario";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
+import { HashLoader } from "react-spinners";
 
 function Home() {
   const { userType } = useContext(UserContext);
@@ -26,9 +27,13 @@ function Home() {
   }, [userType]);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return (
+      <div className="loading-container">
+        <HashLoader color={"#891B31"} loading={loading} size={100} />
+        <p>Cargando...</p>
+      </div>
+    );
   }
-
   return (
     <div className="home-container">
       <h4>¿Qué deseas hacer hoy?</h4>

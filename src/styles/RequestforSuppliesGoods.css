@@ -1,0 +1,186 @@
+/* RequestforSupplies.css */
+
+.request-for-supplies-container-go {
+    padding: 20px;
+  }
+  
+  .request-for-supplies-title-go {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .request-for-supplies-table-go {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .request-for-supplies-header-go {
+    background-color: #691b31;
+    color: white;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .request-for-supplies-row-go {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .request-for-supplies-cell-go {
+    padding: 10px;
+    background-color: #f8f8f8;
+  }
+  
+  .request-for-supplies-button-go {
+    padding: 10px 20px;
+    margin: 4px 0;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .request-for-supplies-button-go:hover {
+    background-color: #ddd;
+    color: #691b31;
+  }
+  
+  .request-for-supplies-accept-button-go {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  .request-for-supplies-accept-button-go:hover {
+    background-color: #45a049;
+  }
+  
+  .request-for-supplies-reject-button-go {
+    background-color: #f44336; /* Red */
+  }
+  
+  .request-for-supplies-reject-button-go:hover {
+    background-color: #e53935;
+  }
+  
+  .request-for-supplies-view-button-go {
+    background-color: #691b31; /* Dark Red */
+    color: white;
+  }
+  
+  .request-for-supplies-view-button-go:hover {
+    background-color: #bc955b; /* Lighter Dark Red */
+  }
+  
+  .request-for-supplies-button-container-go {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+.glass-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .glass-modal {
+    background: rgba(255, 255, 255, 0.839);
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .glass-modal-content {
+    text-align: center;
+  }
+  
+  .glass-modal-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .glass-modal-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .glass-modal-item-Serie {
+    flex: 1;
+    padding: 10px;
+    border-radius: 100px;
+    text-align: center;
+    background-color: #EA3A3D; /* Red */
+    border-radius: 100px;
+    object-fit: cover;
+    transition: 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-modal-item-Serie:hover {
+    border: 0px solid #EA3A3D;
+    box-shadow: 0 0 20px #EA3A3D;
+    }
+  
+  .glass-modal-item-Brand {
+    flex: 1;
+    padding: 10px;
+    border-radius: 100px;
+    text-align: center;
+    background-color: #1AD598; /* Green */
+    border-radius: 100px;
+    object-fit: cover;
+    transition: 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-modal-item-Brand:hover {
+    border: 1px solid #1AD598;
+    box-shadow: 0 0 20px #1AD598;
+    }
+  .glass-modal-item-Model {
+    flex: 1;
+    padding: 10px;
+    border-radius: 100px;
+    text-align: center;
+    background-color: #217EFD; /* Blue */
+    border-radius: 100px;
+    object-fit: cover;
+    transition: 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-modal-item-Model:hover {
+    border: 1px solid #217EFD;
+    box-shadow: 0 0 20px #217EFD;
+    }
+  
+  
+  .glass-modal-item-Serie p {
+    margin: 0;
+    color: white;
+  }
+  .glass-modal-item-Model p {
+    margin: 0;
+    color: white;
+  } 
+  .glass-modal-item-Brand  p {
+    margin: 0;
+    color: white;
+  }
