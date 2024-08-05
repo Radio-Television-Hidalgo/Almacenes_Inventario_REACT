@@ -39,6 +39,7 @@ export default function Lowgoods() {
     })
     .catch((error) => console.error("Error updating data:", error));
   };
+  const urlbase= '/api/uploads/';
 
   return (
     <div>
@@ -57,8 +58,11 @@ export default function Lowgoods() {
           {formData.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.file}</td>
-              <td>{item.status}</td>
+              <td>
+                <a href={`${urlbase}${item.file}`} target="_blank" rel="noopener noreferrer">
+                  Ver PDF
+                </a>
+              </td>              <td>{item.status}</td>
               <td>{item.user_id}</td>
               <td>
                 <button onClick={() => handleAccept(item.id)}>Aceptar</button>
