@@ -5,6 +5,7 @@ const SeelowWell = () => {
   const [casualtys, setCasualtys] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
     const fetchCasualtys = async () => {
@@ -28,10 +29,25 @@ const SeelowWell = () => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredArticles = casualtys.filter(casualty =>
+    casualty.type.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="datos-bajas-container">
+      <input
+        type="text"
+        placeholder="Buscar por tipo"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-input"
+      />
       <br />
-      <table  className="datos-bajas-table">
+      <table className="datos-bajas-table">
         <thead>
           <tr>
             <th>Tipo</th>
@@ -46,7 +62,7 @@ const SeelowWell = () => {
           </tr>
         </thead>
         <tbody>
-          {casualtys.map(casualty => (
+          {filteredArticles.map(casualty => (
             <tr key={casualty.id}>
               <td>{casualty.type}</td>
               <td>{new Date(casualty.date).toLocaleDateString()}</td>

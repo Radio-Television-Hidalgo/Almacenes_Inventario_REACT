@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Lowgoods() {
   const [formData, setFormData] = useState([]);
-  const navigate = useNavigate(); // Hook para redireccionar
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/api/bajas/casualtys")
@@ -12,15 +12,15 @@ export default function Lowgoods() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const handleAccept = () => {
-    // Redirige a /articulos/bajaBien
-    navigate('/articulos/bajaBien');
+  const handleAccept = (id) => {
+    // Redirige a /articulos/bajaBien y pasa el ID como JSON en el estado
+    navigate('/articulos/bajaBien', { state: { id: id } });
   };
 
   const handleReject = (id) => {
     // Actualizar el estado del registro con el ID especificado a "Rechazada"
     fetch(`/api/bajas/casualtys/${id}`, {
-      method: 'PUT', // O 'PUT' dependiendo de cómo manejes las actualizaciones en tu API
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -39,7 +39,6 @@ export default function Lowgoods() {
     })
     .catch((error) => console.error("Error updating data:", error));
   };
-  
 
   return (
     <div>
@@ -49,7 +48,7 @@ export default function Lowgoods() {
           <tr>
             <th>Id</th>
             <th>Archivo</th>
-            <th>Dictamen</th>
+            <th>Estatus</th>
             <th>Usuario</th>
             <th>Acciones</th>
           </tr>
@@ -62,7 +61,7 @@ export default function Lowgoods() {
               <td>{item.status}</td>
               <td>{item.user_id}</td>
               <td>
-                <button onClick={handleAccept}>Aceptar</button>
+                <button onClick={() => handleAccept(item.id)}>Aceptar</button>
                 <button onClick={() => handleReject(item.id)}>Rechazar</button>
               </td>
             </tr>
@@ -72,4 +71,3 @@ export default function Lowgoods() {
     </div>
   );
 }
-

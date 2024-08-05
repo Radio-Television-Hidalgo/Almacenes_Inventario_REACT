@@ -10,6 +10,7 @@ function GeneralReceipt() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
 
   // Realiza la petición para obtener los artículos
   useEffect(() => {
@@ -45,9 +46,23 @@ function GeneralReceipt() {
     console.log(`Sorting by ${column}`);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  const filteredArticles = articles.filter(article =>
+    article.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="table-container">
       <h1>Lista de Artículos</h1>
+      <input
+        type="text"
+        placeholder="Buscar por nombre"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-input"
+      />
       <table className="article-table">
         <thead>
           <tr>
@@ -70,7 +85,7 @@ function GeneralReceipt() {
           </tr>
         </thead>
         <tbody>
-          {articles.map((article, index) => (
+          {filteredArticles.map((article, index) => (
             <tr key={index}>
               <td>{article.name}</td>
               <td>{article.brand}</td>
@@ -85,7 +100,7 @@ function GeneralReceipt() {
                 <img src={article.QR} alt="Código QR" className="qr-image" />
               </td>
               <td className="button-container">
-                <button  className="ver-mas-button" onClick={() => openModal(article)}>Ver más</button>
+                <button className="ver-mas-button" onClick={() => openModal(article)}>Ver más</button>
               </td>
             </tr>
           ))}

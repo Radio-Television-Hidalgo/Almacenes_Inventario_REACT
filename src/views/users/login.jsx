@@ -22,7 +22,7 @@ function Login() {
       </div>
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Radio y Television de Hidalgo</h2>
-        <p>Sistema Inventario y almacen de radio y Television de Hidalgo</p>
+        <p>Sistema Integral de Gestión de Inventario, Compras y Almacén para Radio y Televisión de Hidalgo</p>
         <label htmlFor="correo">Usuario o Email</label>
         <input
           type="email"
