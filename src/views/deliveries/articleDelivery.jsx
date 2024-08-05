@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../../styles/articleDelivety.css";
+import BienTable from '../materialRequest/bienTable';
 
 function ArticleDelivery() {
     const [datos, setDatos] = useState([]);
@@ -124,6 +125,7 @@ function ArticleDelivery() {
                 <input type="submit" className="entrega-bien-button" value={"Guardar entrega"} />
             </div>
         </form>
+        <BienTable/>
     </div>
     )
 }
