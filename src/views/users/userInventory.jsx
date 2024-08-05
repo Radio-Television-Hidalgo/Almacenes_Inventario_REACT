@@ -171,7 +171,7 @@ const ItemTable = ({ items, handleViewItemMore }) => (
 
 const ItemDetails = ({ item }) => (
     <div className="item-modal">
-        
+      
         <div className="itemDetails-u">
             <div className="item-image-details">
                 <img
@@ -182,12 +182,16 @@ const ItemDetails = ({ item }) => (
                 <h3>{item.articles.name}</h3>
                 <p>Número de inventario: <strong>{item.deliveryWarehouse.inventory_number}</strong></p>
             </div>
+            
             <div className="item-info-details">
+                
                 <p><strong>Fecha de Resguardo:</strong> {new Date(item.delivery_date).toLocaleDateString()}</p>
                 <p><strong>Número de serie:</strong> {item.articles.number_series}</p>
                 <p><strong>Observaciones:</strong> {item.observations}</p>
                 <p><strong>Descripción:</strong> {item.articles.description}</p>
+                <hr />
                 <div className="item-icons">
+                    
                     <div className="item-icon item-icon-blue">
                         <span className="item-icon-text">Marca</span>
                         <span className="item-icon-value">{item.articles.brand}</span>
@@ -200,6 +204,7 @@ const ItemDetails = ({ item }) => (
                         <span className="item-icon-text">Total</span>
                         <span className="item-icon-value">{item.articles.articleBill.total}</span>
                     </div>
+                    
                 </div>
             </div>
         </div>
