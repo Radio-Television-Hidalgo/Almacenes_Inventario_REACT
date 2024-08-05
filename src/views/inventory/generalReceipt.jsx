@@ -49,7 +49,6 @@ function GeneralReceipt() {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
   const filteredArticles = articles.filter(article =>
     article.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
