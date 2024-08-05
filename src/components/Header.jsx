@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./ObtenertipoUsuario";
+import PropTypes from "prop-types";
 import ModalSalir from '../../src/components/ModalSalir';
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
+  const { userType}= useContext(UserContext);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal de perfil
@@ -75,10 +79,6 @@ const Header = () => {
         return 'Usuarios';
       case '/facturas':
         return 'Facturas';
- {/*     case '/stateOfThegoods':
-        return 'Estado de los productos';
-      case '/assignations':
-        return 'Asignaciones';      */}
       case '/crearcrearPoliza':
         return 'crearPolizas';
       case '/inventario':
@@ -86,11 +86,11 @@ const Header = () => {
       case '/ControlInventario':
         return' Centro de Control';
       case '/usuario/misBienes':
-        return ' Mis Bienes';
+        return ' Bienes adquiridos';
       case '/solicitudMaterial':
         return  'Subir material';  
       case '/usuario/gestionUsuarios' :
-        return 'Usuarios';
+        return 'Control de usuarios';
       case '/almacen':
         return 'Almacen';
       case '/resguardoGeneral':
@@ -129,6 +129,12 @@ const Header = () => {
         return 'Entrada de existencias';
       case '/historial/bajas':
         return 'Datos de Bajas';
+      case '/verSolicitud/bien':
+        return'Solicitudes de bienes';
+      case '/dictamenes':
+        return 'Dictamenes';
+      case '/dictamenes/dajabien':
+        return 'Control de dictamenes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
@@ -251,7 +257,8 @@ const Header = () => {
                     <Link to="" className="dropdown-item">Solicitudes de insumos </Link>
                   </div>
                 </div>
-
+             
+              {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
                   <div className="dropdown-menu">
@@ -261,8 +268,11 @@ const Header = () => {
                     <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
                   </div>
                 </div>
+              )}
+             
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
+                {userType !== 'comun' &&(
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
@@ -271,10 +281,12 @@ const Header = () => {
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
                     <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
+                    <Link to="" className="dropdown-item">Solicitud de bienes</Link>
                     <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
                     <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
                 </div>
+                    )}
               </>
             ) : (
               <>
@@ -340,5 +352,9 @@ const Header = () => {
     </div>
   );
 };
+
+Header.PropTypes={
+  userType: PropTypes.string.isRequired,
+}
 
 export default Header;
