@@ -238,7 +238,6 @@ function Invoice() {
             />
            <a href="https://verificacfdi.facturaelectronica.sat.gob.mx" target="_blank" rel="noopener noreferrer">verifica tu factura</a>
 
-
           </div>
 
         </div>

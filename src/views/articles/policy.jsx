@@ -54,7 +54,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Cobertura:</label>
         <input
@@ -65,7 +64,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Tipo:</label>
         <select
@@ -82,7 +80,6 @@ function Policy() {
             <option value="ingresos">Ingresos</option>
         </select>
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Prima:</label>
         <input
@@ -94,7 +91,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Deducible:</label>
         <input
@@ -106,7 +102,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Límites de indemnización:</label>
         <input
@@ -117,7 +112,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Periodo de vigencia:</label>
         <input
@@ -128,7 +122,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Cláusulas de exclusión:</label>
         <input
@@ -139,7 +132,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Fecha:</label>
         <input
@@ -150,7 +142,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Cantidad:</label>
         <input
@@ -161,7 +152,6 @@ function Policy() {
             onChange={handleChange}
         />
         </div>
-
         <div  className="poliza-form-group">
         <label  className="poliza-label">Archivo:</label>
         <input
@@ -170,14 +160,10 @@ function Policy() {
             className="poliza-input"
             onChange={handleFileChange}
         />
-        </div>
-        
+        </div> 
     </div>
-
     <button type="submit"  className="poliza-button">Crear póliza</button>
     </form>
-
   );
 }
-
 export default Policy;
