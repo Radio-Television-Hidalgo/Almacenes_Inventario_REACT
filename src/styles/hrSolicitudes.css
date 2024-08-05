@@ -1,0 +1,74 @@
+/* Contenedor principal para centrar los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .btna {
+    margin: 10px;
+    display: inline-block; /* Para que se comporte como un botón */
+    background-color: #691B31; /* Color de fondo */
+    color: white; /* Color de texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centrar el texto */
+    text-decoration: none; /* Quitar subrayado */
+    font-family: 'Poppins', sans-serif; /* Fuente */
+    font-weight: 300; /* Grosor de la fuente */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones para hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  }
+  
+  .btna:hover {
+    background-color: #ae254c; /* Color de fondo al hacer hover */
+    transform: scale(1.05); /* Efecto de agrandamiento al hacer hover */
+  }
+  
+  .text {
+    text-align: center;
+    margin: 20px 0; /* Espaciado para separar del contenido */
+  }
+  
+  /* Modal overlay */
+  .glass-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .glass-modal {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 80%;
+    width: 500px; /* Ajusta el ancho según sea necesario */
+    position: relative;
+  }
+  
+  .glass-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .glass-modal-content {
+    text-align: center;
+  }
+  
+  .glass-modal-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
