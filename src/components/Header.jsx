@@ -92,7 +92,7 @@ const Header = () => {
       case '/usuario/gestionUsuarios' :
         return 'Control de usuarios';
       case '/almacen':
-        return 'Almacen';
+        return 'Almacén';
       case '/resguardoGeneral':
         return 'Resguardo General';
       case '/crearFactura':
