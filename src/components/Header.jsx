@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./ObtenertipoUsuario";
-import PropTypes from "prop-types";
 import ModalSalir from '../components/ModalSalir';
+import propTypes from "prop-types";
 import "../styles/Header.css"; // Importa los estilos CSS
 
 const Header = () => {
@@ -255,7 +255,7 @@ const Header = () => {
                 </Link>
 
                 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
-                {userType!== 'comun' && (
+                {userType!== 'comun' && userType !== 'rh' && (
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">
                     Almacen
@@ -290,7 +290,7 @@ const Header = () => {
                 </div>
                 )}
              
-              {userType !== 'comun' &&(
+              {userType !== 'comun' && userType !== 'rh' &&(
                 <div className="dropdown">
                   <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
                   <div className="dropdown-menu">
@@ -304,7 +304,7 @@ const Header = () => {
              
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
-                {userType !== 'comun' &&(
+                {userType !== 'comun' && userType !== 'rh' &&(
                 <div className="dropdown">
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
@@ -387,7 +387,7 @@ const Header = () => {
 };
 
 Header.PropTypes={
-  userType: PropTypes.string.isRequired,
+  userType: propTypes.string.isRequired,
 }
 
 export default Header;

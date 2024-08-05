@@ -35,10 +35,11 @@ function Home() {
       <h2>Selecciona una Opción</h2>
       <div className="home-columns">
         <div className="home-column home-column-left">
-          
+    
           {userType !== "comun" && userType !=="almacen" &&(
             <div className="home-column home-column-left">
               <Link to="/inventario" className="home-card">
+              {userType !== "rh" && (
                 <div className="home-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +54,10 @@ function Home() {
 
                   <h1>Inventario</h1>
                 </div>
+              )}
               </Link>
               <Link to="/usuario/gestionUsuarios" className="home-card">
+              
                 <div className="home-content">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +74,7 @@ function Home() {
               </Link>
               </div>
           )}
+              {userType !== "rh" && (
               <Link to="/dictamenes" className="home-card">
               {userType !== "almacen" &&(
                 <div className="home-content" style={{ height: "182px" }}>
@@ -86,12 +90,16 @@ function Home() {
                   </svg>
                   <h1>Subir Dictamenes</h1>
                 </div>
+              
                 )}
+                
               </Link>
+              )}
         </div>
         <div className="home-column home-column-right">
           {userType !== "comun" && (
           <Link to="/almacen" className="home-card">
+           {userType !== "rh" && (
             <div className="home-content">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +113,7 @@ function Home() {
               </svg>
               <h1>Almacen</h1>
             </div>
+           )}
           </Link>
           )}
 
@@ -125,6 +134,7 @@ function Home() {
             </div>
             )}
           </Link>
+          {userType !== "rh" && (
           <Link to="/solicitudMaterial" className="home-card">
           {userType !== "almacen" &&(
             <div className="home-content">
@@ -142,6 +152,7 @@ function Home() {
             </div>
             )}
           </Link>
+          )}
         </div>
       </div>
     </div>
