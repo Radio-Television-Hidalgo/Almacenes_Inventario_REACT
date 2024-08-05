@@ -30,7 +30,7 @@ function Home() {
     return (
       <div className="loading-container">
         <HashLoader color={"#891B31"} loading={loading} size={100} />
-        <p>Estamos en ello, no debería tardar mucho... :)</p>
+        <p> Un momento...</p>
       </div>
     );
   }
