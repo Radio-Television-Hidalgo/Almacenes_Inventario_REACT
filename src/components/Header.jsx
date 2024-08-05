@@ -133,6 +133,8 @@ const Header = () => {
         return'Solicitudes de bienes';
       case '/dictamenes':
         return 'Dictamenes';
+      case '/dictamenes/dajabien':
+        return 'Control de dictamenes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
