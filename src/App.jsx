@@ -42,6 +42,8 @@ import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
 import SeeSupplies from "./views/werehouse/seeSupplies";
 import Dictum from "./views/articles/Dictum";
 import Lowgoods from "./views/articles/lowgoods";
+import RequestHistory from "./views/requests/requestHistory";
+
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
@@ -80,6 +82,7 @@ const showHeaderRoutes = [
   "verSolicitud/bien",
   "/articulos/articulo/:inventoryNumber",
   "/almacen/insumos",
+  "/almacen/hitorialSolicitudes",
   "/dictamenes",
   "/dictamenes/dajabien" 
 ];
@@ -118,6 +121,7 @@ const routeTitles = {
   "verSolicitud/bien":"Ver la Solicitud del Bien",
   "/articulos/articulo/:inventoryNumber": "Detalles del Artículo",
   "/almacen/insumos":"Insumos del Almacen",
+  "/almacen/hitorialSolicitudes": "Historial Solicitudes",
   "/dictamenes": "Dictamenes",
   "/dictamenes/dajabien" : "Dictamen de Baja de Bien"
 };
@@ -190,6 +194,7 @@ const App = () => {
           <Route path="/verSolicitud/bien" element={<RequestforSuppliesGoods />} />
           <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> 
           <Route path="/almacen/insumos" element={<SeeSupplies />} />
+          <Route path="/almacen/hitorialSolicitudes" element={<RequestHistory />} />
           <Route path="/dictamenes" element={<Dictum />} />
           <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
         </Routes>

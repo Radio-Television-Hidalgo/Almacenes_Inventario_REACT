@@ -1,12 +1,21 @@
 /* dictamen.css */
+
 .form-container {
-    background-color: rgba(255, 255, 255, 0.8); /* Blanco difuminado */
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.449); /* Fondo blanco con opacidad del 50% */
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 95%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  border: 1px solid rgba(221, 221, 221, 0.5); /* Borde con opacidad */
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  animation: fadeIn 1s ease-in; /* Animación de aparición */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 00;
+  font-style: normal;
   }
   
   .form-group {
@@ -31,7 +40,7 @@
   }
   
   .form-group input[type="file"]:focus,
-  .form-group input[type="text"]:focus,
+  .form-groupinput[type="text"]:focus,
   .form-group input[type="number"]:focus {
     border-color: #007bff;
     outline: none;

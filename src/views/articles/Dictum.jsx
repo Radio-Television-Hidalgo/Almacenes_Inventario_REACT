@@ -64,6 +64,7 @@ export default function Dictum() {
       console.error('Error en la solicitud:', error);
     }
     console.log("form data", formData);
+    location.reload();location.reload();
   };
 
   return (
@@ -81,7 +82,7 @@ export default function Dictum() {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group"style={{ display: 'none' }}>
           <label htmlFor="status">Estado:</label>
           <input
             type="text"
@@ -92,7 +93,7 @@ export default function Dictum() {
             readOnly // El campo es de solo lectura porque el estado se establece automáticamente
           />
         </div>
-        <div className="form-group">
+        <div className="form-group"style={{ display: 'none' }}>
           <label htmlFor="user_id">ID de Usuario:</label>
           <input
             type="number"
