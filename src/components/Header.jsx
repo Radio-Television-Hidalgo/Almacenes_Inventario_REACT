@@ -135,6 +135,10 @@ const Header = () => {
         return 'Dictamenes';
       case '/dictamenes/dajabien':
         return 'Control de dictamenes';
+      case '/almacen/insumos':
+        return 'Insumos';
+      case '/almacen/hitorialSolicitudes':
+        return 'Historial de solicitudes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
