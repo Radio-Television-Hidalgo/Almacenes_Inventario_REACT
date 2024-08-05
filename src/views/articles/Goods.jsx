@@ -35,7 +35,7 @@ function Goods() {
 
   return (
     <div>
-      <h1>Bienes Adquiridos</h1>
+      
       <table className="goods-table">
         <thead>
           <tr>

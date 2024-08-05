@@ -68,7 +68,7 @@ export default function Dictum() {
 
   return (
     <div>
-      <h1>Dictamen</h1>
+        <br />
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="file">Archivo:</label>

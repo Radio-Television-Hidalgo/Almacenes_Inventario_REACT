@@ -73,7 +73,7 @@ function SeeUser() {
 
     return (
         <div>
-            <h1>Información de Usuarios</h1>
+            <br />
             <input
                 className="search"
                 type="text"

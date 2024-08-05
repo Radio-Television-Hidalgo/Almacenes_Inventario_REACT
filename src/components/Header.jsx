@@ -86,11 +86,11 @@ const Header = () => {
       case '/ControlInventario':
         return' Centro de Control';
       case '/usuario/misBienes':
-        return ' Mis Bienes';
+        return ' Bienes adquiridos';
       case '/solicitudMaterial':
         return  'Subir material';  
       case '/usuario/gestionUsuarios' :
-        return 'Usuarios';
+        return 'Control de usuarios';
       case '/almacen':
         return 'Almacen';
       case '/resguardoGeneral':
@@ -129,6 +129,10 @@ const Header = () => {
         return 'Entrada de existencias';
       case '/historial/bajas':
         return 'Datos de Bajas';
+      case '/verSolicitud/bien':
+        return'Solicitudes de bienes';
+      case '/dictamenes':
+        return 'Dictamenes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
@@ -275,6 +279,7 @@ const Header = () => {
                     <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
                     <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
                     <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
+                    <Link to="" className="dropdown-item">Solicitud de bienes</Link>
                     <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
                     <Link to="#" className="dropdown-item">Historial de Bajas</Link>
                   </div>
