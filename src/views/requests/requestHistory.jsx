@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import React from 'react'
+import React from 'react';
+import "../../styles/hrSolicitudes.css";
 
 function RequestHistory() {
   const [datosA, setDatosA] = useState([]);
@@ -16,7 +17,6 @@ function RequestHistory() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setDatosA(data);
       })
       .catch((error) => {
@@ -33,7 +33,6 @@ function RequestHistory() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setDatosR(data);
       })
       .catch((error) => {
@@ -64,14 +63,15 @@ function RequestHistory() {
 
   return (
     <div>
-      <h1>Historial de Solicitudes</h1>
-      <button onClick={() => viewAcepted()}>Aceptadas</button>
-      <button onClick={() => viewRejected()}>Rechazadas</button>
+      <div className="button-container">
+        <button className="btna" onClick={viewAcepted}>Aceptadas</button>
+        <button className="btna" onClick={viewRejected}>Rechazadas</button>
+      </div>
       {showAcepted && (
-        <h2>Solicitudes Aceptadas</h2>
+        <h2 className="text">Solicitudes Aceptadas</h2>
       )}
       {!showAcepted && (
-        <h2>Solicitudes Rechazadas</h2>
+        <h2 className="text">Solicitudes Rechazadas</h2>
       )}
       <table>
         <thead>
@@ -93,7 +93,9 @@ function RequestHistory() {
                <td className="request-for-supplies-cell"> {dato.quantity} </td>
                <td className="request-for-supplies-cell"> {dato.description} </td>
                <td className="request-for-supplies-cell"> {dato.status} </td>
-               <td className="request-for-supplies-cell"> <button onClick={() => handleViewMore(dato)}   className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
+               <td className="request-for-supplies-cell"> 
+                 <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button>
+               </td>
               </tr>
             ))}
           </tbody>
@@ -107,7 +109,9 @@ function RequestHistory() {
                 <td className="request-for-supplies-cell"> {dato.quantity} </td>
                 <td className="request-for-supplies-cell"> {dato.description} </td>
                 <td className="request-for-supplies-cell"> {dato.status} </td>
-                <td className="request-for-supplies-cell"> <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
+                <td className="request-for-supplies-cell"> 
+                  <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -118,13 +122,10 @@ function RequestHistory() {
           <div className="glass-modal">
             <span className="glass-close-button" onClick={closeModal}>&times;</span>
             <div className="glass-modal-content">
-            <h2>Detalle de la Solicitud</h2>
+              <h2>Detalle de la Solicitud</h2>
               <img src={`${modalData.requestingUser.img}`} alt="" className="glass-modal-image" />
-              
               <p><strong>Solicita:</strong> {modalData.requestingUser.name}</p> 
               <p><strong>Número de trabajador:</strong> {modalData.requestingUser.worker_nomber}</p>
-    
-              
               <p><strong>Artículo:</strong> {modalData.requestArticle.name}</p>
               <p><strong>Descripción:</strong> {modalData.requestArticle.description}</p>
               <p><strong>QR:</strong> {modalData.requestArticle.QR}</p>
@@ -134,13 +135,12 @@ function RequestHistory() {
                 <div className="glass-modal-detail model"><strong>Modelo:</strong> {modalData.requestArticle.model}</div>
                 <div className="glass-modal-detail series"><strong>Número de serie:</strong> {modalData.requestArticle.number_series}</div>
               </div>
-             
             </div>
           </div>
         </div>
       )}  
     </div>
-  )
+  );
 }
 
-export default RequestHistory
+export default RequestHistory;

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation  } from 'react-router-dom';
 import Modal from 'react-modal';
 import "../../styles/downArticle.css";
 
 Modal.setAppElement('#root'); // Establece el elemento raíz para accesibilidad
 
 export default function DownArticle() {
+    const location = useLocation();
+    const { id } = location.state;
     const [removalType, setRemovalType] = useState('');
     const [removalDate, setRemovalDate] = useState('');
     const [removalReason, setRemovalReason] = useState('');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('Aceptada');
     const [confirmationId, setConfirmationId] = useState('');
     const [requestWithdrawId, setRequestWithdrawId] = useState('');
     const [articlesId, setArticlesId] = useState('');
@@ -88,8 +90,14 @@ export default function DownArticle() {
             setArticleImages([]); // Limpiar las imágenes si el campo está vacío
         }
     };
-
-    const handleSubmit = async () => {
+    function BajaBien() {
+        const location = useLocation();
+        const { id } = location.state;
+      
+        console.log("id", id);
+      }
+      BajaBien();
+      const handleSubmit = async () => {
         const payload = {
             type: removalType,
             date: removalDate,
@@ -100,13 +108,25 @@ export default function DownArticle() {
             articles_id: parseInt(articlesId, 10),
             inventori_id: parseInt(hiddenInventoryId, 10), // Usar el ID del inventario para enviar
         };
-
+    
         console.log('Payload being sent:', payload);
-
+    
         try {
             setIsLoading(true); // Iniciar el estado de carga
-            const response = await axios.post('/api/bajas/casualtys', payload);
-            console.log('Casualty created:', response.data);
+            const response = await fetch(`/api/bajas/casualtys/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log('Casualty created:', data);
             setSuccess('Baja registrada exitosamente.'); // Mensaje de éxito
             navigate('/inicio'); // Redirige a la página de inicio
         } catch (error) {
@@ -116,6 +136,7 @@ export default function DownArticle() {
             setIsLoading(false); // Detener el estado de carga
         }
     };
+    
 
     const openModal = (imageUrl) => {
         setSelectedImage(imageUrl);
@@ -159,17 +180,16 @@ export default function DownArticle() {
                     />
                 </div>
                 <div className="custom-form-group">
-                    <label>Estatus</label>
-                    <select 
-                        value={status} 
-                        onChange={e => setStatus(e.target.value)} 
-                    >
-                        <option value="">Seleccione una opción</option>
-                        <option value="Revisión">Revisión</option>
-                        <option value="Aceptada">Aceptada</option>
-                        <option value="Rechazada">Rechazada</option>
-                    </select>
-                </div>
+    <label>Estatus</label>
+    <select 
+        value={status} 
+        onChange={e => setStatus(e.target.value)} 
+        disabled // Esto deshabilita el campo de selección
+    >
+        <option value="Aceptada">Aceptada</option>
+    </select>
+</div>
+
                 <div className="custom-form-group">
                     <label>Id de Confirmación</label>
                     <input 

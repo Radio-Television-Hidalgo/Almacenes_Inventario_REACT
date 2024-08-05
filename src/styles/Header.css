@@ -462,6 +462,10 @@ nav a i {
 .btn:hover{
   color: #BC955B;
 }
+
+
+/* Estilo del overlay del modal */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -473,7 +477,20 @@ nav a i {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  opacity: 0;
+  animation: fadeInOverlay 0.5s ease-in-out forwards;
 }
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 
 .modal {
   background: white;
