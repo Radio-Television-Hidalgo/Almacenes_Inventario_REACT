@@ -59,11 +59,18 @@ function UserInventory() {
         setItemModalData(null);
     };
 
+    const filteredGroupedData = Object.values(groupedData).filter(({ user }) => {
+        const userName = user.name ? user.name.toLowerCase() : "";
+        const workerNumber = user.worker_nomber ? String(user.worker_nomber).toLowerCase() : "";
+        return userName.includes(searchTerm.toLowerCase()) || workerNumber.includes(searchTerm.toLowerCase());
+    });
+
     const filteredModalData = modalData
-        ? modalData.filter(item =>
-            item.articles.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.deliveryWarehouse.inventory_number.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        ? modalData.filter(item => {
+            const itemName = item.articles.name ? item.articles.name.toLowerCase() : "";
+            const inventoryNumber = item.deliveryWarehouse.inventory_number ? String(item.deliveryWarehouse.inventory_number).toLowerCase() : "";
+            return itemName.includes(searchTerm.toLowerCase()) || inventoryNumber.includes(searchTerm.toLowerCase());
+        })
         : [];
 
     if (loading) return <p>Cargando...</p>;
@@ -71,7 +78,14 @@ function UserInventory() {
 
     return (
         <div className="container-u">
-            {Object.values(groupedData).map(({ user, items }) => (
+            <input
+                type="text"
+                placeholder="Buscar por nombre o número de trabajador"
+                className="searchInput-u"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {filteredGroupedData.map(({ user, items }) => (
                 <UserCard key={user.worker_nomber} user={user} items={items} handleViewMore={handleViewMore} />
             ))}
             {modalData && (
