@@ -135,6 +135,10 @@ const Header = () => {
         return 'Dictamenes';
       case '/dictamenes/dajabien':
         return 'Control de dictamenes';
+      case '/almacen/insumos':
+        return 'Insumos';
+      case '/almacen/hitorialSolicitudes':
+        return 'Historial de solicitudes';
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';
@@ -356,6 +360,7 @@ const Header = () => {
                 <h3>Adscripción: {userInfo.ascription}</h3>
                 <h3>Correo Electrónico: {userInfo.email}</h3>
                 <h3>Departamento: {userInfo.userDepartment.name}</h3>
+                <Link to="/usuario/nuevoUsuario"><button className="profile-button" onClick={closeModal}>Nuevo usuario</button></Link>
               </div>
               <hr />
               <div className="info-grid">

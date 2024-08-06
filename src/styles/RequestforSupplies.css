@@ -198,6 +198,17 @@ box-shadow: 0 0 20px #f0be73;
   box-shadow: 0 0 20px #EA3A3D;
   }
 
+  .request-for-supplies-button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .request-for-supplies-accept-button,
+  .request-for-supplies-reject-button {
+    margin: 0 5px;
+  }
+   
+
 /* Animations */
 @keyframes fadeIn {
   from {

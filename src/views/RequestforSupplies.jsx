@@ -5,6 +5,8 @@ import "../styles/RequestforSupplies.css";
 function RequestforSupplies() {
   const [datos, setDatos] = useState([]);
   const [modalData, setModalData] = useState(null);
+  const [successModal, setSuccessModal] = useState(false);
+  const [rejectModal, setRejectModal] = useState({ show: false, id: null });
 
   const fetchDatos = () => {
     fetch("/api/solicitud/solicitudesInsumos")
@@ -37,6 +39,7 @@ function RequestforSupplies() {
         },
       });
       if (response.ok) {
+        setSuccessModal(true);
         fetchDatos();
       } else {
         console.error("Error al aceptar la solicitud");
@@ -56,6 +59,26 @@ function RequestforSupplies() {
         },
       });
       if (response.ok) {
+        setRejectModal({ show: true, id: id });
+        fetchDatos();
+      } else {
+        console.error("Error al rechazar la solicitud");
+      }
+    } catch (error) {
+      console.error("Error al rechazar la solicitud", error);
+    } 
+  };
+
+  const handleConfirmReject = async () => {
+    try {
+      const response = await fetch(`/api/solicitud/rechazarSolicitud/${rejectModal.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.ok) {
+        setRejectModal({ show: false, id: null });
         fetchDatos();
       } else {
         console.error("Error al rechazar la solicitud");
@@ -79,12 +102,12 @@ function RequestforSupplies() {
         <thead>
           <tr>
             <th className="request-for-supplies-header">Solicita</th>
-            <th className="request-for-supplies-header">Articulo</th>
+            <th className="request-for-supplies-header">Artículo</th>
             <th className="request-for-supplies-header">Cantidad</th>
-            <th className="request-for-supplies-header">Descripcion de solicitud</th>
+            <th className="request-for-supplies-header">Descripción de solicitud</th>
             <th className="request-for-supplies-header">Estatus de solicitud</th>
             <th className="request-for-supplies-header">Solicitud Completa</th>
-            <th className="request-for-supplies-header">Opciones de continuacion</th>
+            <th className="request-for-supplies-header">Opciones de continuación</th>
           </tr>
         </thead>
         <tbody>
@@ -112,7 +135,7 @@ function RequestforSupplies() {
           <div className="glass-modal">
             <span className="glass-close-button" onClick={closeModal}>&times;</span>
             <div className="glass-modal-content">
-            <h2>Detalle de la Solicitud</h2>
+              <h2>Detalle de la Solicitud</h2>
               <img src={`${modalData.requestingUser.img}`} alt="" className="glass-modal-image" />
               
               <p><strong>Solicita:</strong> {modalData.requestingUser.name}</p> 
@@ -132,7 +155,38 @@ function RequestforSupplies() {
             </div>
           </div>
         </div>
-      )}  
+      )}
+
+      {successModal && (
+        <div className="glass-modal-overlay">
+          <div className="glass-modal">
+            <span className="glass-close-button" onClick={() => setSuccessModal(false)}>&times;</span>
+            <div className="glass-modal-content">
+              <h2><strong>¡Felicidades!</strong></h2>
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#891B31" className="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/>
+              </svg>
+              <p>Acción completada con éxito.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+{rejectModal.show && (
+        <div className="glass-modal-overlay">
+          <div className="glass-modal">
+            <span className="glass-close-button" onClick={() => setRejectModal({ show: false, id: null })}>&times;</span>
+            <div className="glass-modal-content">
+              <h2><strong>Confirmación</strong></h2>
+              <p>¿Deseas rechazar esta solicitud?</p>
+              <div className="request-for-supplies-button-container">
+                <button onClick={handleConfirmReject} className="request-for-supplies-button request-for-supplies-accept-button">Sí</button>
+                <button onClick={() => setRejectModal({ show: false, id: null })} className="request-for-supplies-button request-for-supplies-reject-button">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

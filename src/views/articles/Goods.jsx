@@ -62,7 +62,7 @@ function Goods() {
               <td>
                 <img
                   src={dato.photos_entry ? dato.photos_entry.split(",")[0] : ""}
-                  alt={`Foto de ${dato.name}`}
+                  alt={`Foto de ${dato.articleName}`}
                   width="100"
                 />
               </td>
