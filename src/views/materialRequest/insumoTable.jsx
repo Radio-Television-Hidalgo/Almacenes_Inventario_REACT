@@ -52,7 +52,7 @@ function InsumoTable() {
                 insumo.photos_entry.split(",").map((photo, index) => (
                   <img
                     key={index}
-                    src={`/api/${photo}`}
+                    src={`/api/uploads/${photo}`}
                     alt="Foto del insumo"
                     style={{
                       width: "50px",
