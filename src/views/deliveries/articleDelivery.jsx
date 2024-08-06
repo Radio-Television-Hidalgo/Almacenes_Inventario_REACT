@@ -74,7 +74,7 @@ function ArticleDelivery() {
 
     return (
         <div className="entrega-bien-main-container">
-        <h1 className="entrega-bien-titulo">Entrega de bien</h1>
+        
         <form className="entrega-bien-form" onSubmit={handleSave}>
             <div className="entrega-bien-form-grid">
                 <div className="entrega-bien-form-group">

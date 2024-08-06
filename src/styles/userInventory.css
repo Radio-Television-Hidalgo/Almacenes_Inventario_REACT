@@ -118,13 +118,16 @@
 }
 
 .searchInput-u {
-    width: 100%;
+    width: 300px;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #691B31;
     border-radius: 40px;
-}
-
+    display: block; /* Asegúrate de que el elemento es un bloque */
+    margin-left: auto; /* Centrado horizontal */
+    margin-right: auto; /* Centrado horizontal */
+  }
+  
 .table-u {
     width: 100%;
     border-collapse: collapse;
