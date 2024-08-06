@@ -57,7 +57,7 @@ function GeneralReceipt() {
 
   return (
     <div className="table-container">
-      <h1>Lista de Artículos</h1>
+      
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -65,6 +65,8 @@ function GeneralReceipt() {
         onChange={handleSearchChange}
         className="search-input"
       />
+      <br />
+      <br />
       <table className="article-table">
         <thead>
           <tr>
