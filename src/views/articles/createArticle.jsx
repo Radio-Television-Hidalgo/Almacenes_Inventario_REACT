@@ -133,7 +133,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="main-container2">
-      <h2 className="h2e">Crear nuevo articulo</h2>
+      
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           {/* Form fields as before */}
