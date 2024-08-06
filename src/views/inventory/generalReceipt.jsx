@@ -84,7 +84,7 @@ function GeneralReceipt() {
               <td>{article.brand}</td>
               <td>{article.model}</td>
               <td>
-                <QRCode className="qr-code" value={article.QR} />
+                <QRCode className="qr-codes" value={article.QR} />
               </td>
               <td className="button-container">
                 <button

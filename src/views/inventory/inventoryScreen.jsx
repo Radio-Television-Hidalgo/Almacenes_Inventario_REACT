@@ -6,7 +6,7 @@ function InventoryScreen() {
   return (
     <div className="home-container-i">
         <h4>¿Qué deseas hacer hoy?</h4>
-        <h2>Selecciona una Opción</h2>
+        <h2>Selecciona una opción</h2>
         
       <div className="home-columns-i ">
         <div className="home-column-i home-column-left-i">
@@ -114,7 +114,7 @@ function InventoryScreen() {
               >
                 <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z" />
               </svg>
-              <h1>Resguardo General</h1>
+              <h1>Resguardo general</h1>
             </div>
           </Link>
           
@@ -131,7 +131,7 @@ function InventoryScreen() {
               >
                 <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5" />
               </svg>
-              <h1>inventarios de Usuario</h1>
+              <h1>inventarios de usuario</h1>
             </div>
           </Link>
           <Link to="/historial/bajas" className="home-card-i">
@@ -148,7 +148,7 @@ function InventoryScreen() {
                 <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" />
                 <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" />
               </svg>
-              <h1> Historial de Bajas de Bienes</h1>
+              <h1> Historial de bajas de bienes</h1>
             </div>
           </Link>
           <Link to="/dictamenes/dajabien" className="home-card-i">

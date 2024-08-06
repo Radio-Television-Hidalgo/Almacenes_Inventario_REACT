@@ -20,7 +20,7 @@ function StateofThegoods() {
             <Helmet>
                 <title>Estado de los bienes</title>
             </Helmet>
-            <h1>Sistema de inventario y Almacen de Radio y Television de Hidalgo</h1>
+            <h1>Sistema de inventario y Almacén de Radio y Televisión de Hidalgo</h1>
 
             <form>
                 {/* PARA FRONTEND: en jsx los label no pueden ser referenciados mediante
@@ -34,7 +34,7 @@ function StateofThegoods() {
                 <label htmlFor="Model">Modelo</label>
                 <input type="text" id="Model" placeholder=""/>
                 
-                <label htmlFor="Description">Descripcion</label>
+                <label htmlFor="Description">Descripción</label>
                 <input type="text" id="Description" placeholder=""/>
                 
                 <label htmlFor="NI">NI</label>
@@ -47,17 +47,17 @@ function StateofThegoods() {
                 <input type={billInputType} id="Bill" placeholder=""/>
                 <button type="button" onClick={toggleBillVisibility}>{billInputType === 'text' ? 'Ocultar' : 'Mostrar'}</button>
                 
-                <label htmlFor="Policy">Poliza</label>
+                <label htmlFor="Policy">Póliza</label>
                 <input type={policyInputType} id="Policy" placeholder=""/>
                 <button type="button" onClick={togglePolicyVisibility}>{policyInputType === 'text' ? 'Ocultar' : 'Mostrar'}</button>
                 
                 <label htmlFor="Status">Estado</label>
                 <input type="text" id="Status" placeholder=""/>
                 
-                <label htmlFor="Ubi">Ubicacion del bien</label>
+                <label htmlFor="Ubi">Ubicación del bien</label>
                 <input type="text" id="Ubi" placeholder=""/>
                 
-                <label htmlFor="Depresiation">Depreciacion Acumulada</label>
+                <label htmlFor="Depresiation">Depreciación Acumulada</label>
                 <input type="text" id="Depresiation" placeholder=""/>
                 
                 <label htmlFor="Cost">Valor</label>

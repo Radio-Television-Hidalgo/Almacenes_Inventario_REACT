@@ -147,27 +147,27 @@ export function InventoryForm() {
             <form onSubmit={handleSubmit} style={styles.inventoryForm}>
                 <div style={styles.column}>
                     <label style={styles.label}>
-                        Name:
+                        Nombre:
                         <input type="text" name="name" value={formData.name} onChange={handleChange} required style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Description:
+                        Descripción:
                         <textarea name="description" value={formData.description} onChange={handleChange} style={styles.textarea}></textarea>
                     </label>
                     <label style={styles.label}>
-                        Category:
+                        Categoría:
                         <input type="text" name="category" value={formData.category} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Entry Date:
+                        Fecha de entrada:
                         <input type="date" name="entry_date" value={formData.entry_date} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Exit Date:
+                        Fecha de salida:
                         <input type="date" name="exit_date" value={formData.exit_date} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Location:
+                        Ubicación:
                         <input type="text" name="location" value={formData.location} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
@@ -177,32 +177,32 @@ export function InventoryForm() {
                         </select>
                     </label>
                     <label style={styles.label}>
-                        Safeguard Date:
+                        Fecha de resguardo:
                         <input type="date" name="safeguard_date" value={formData.safeguard_date} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Reason Not Assigned:
+                        Razón de no asignación:
                         <textarea name="reason_not_assigned" value={formData.reason_not_assigned} onChange={handleChange} style={styles.textarea}></textarea>
                     </label>
                 </div>
                 <div style={styles.column}>
                     <label style={styles.label}>
-                        Comment:
+                        Comentario:
                         <textarea name="comment" value={formData.comment} onChange={handleChange} style={styles.textarea}></textarea>
                     </label>
                     <label style={styles.label}>
-                        Serial Number:
+                        Numero de serie:
                         <input type="text" name="serial_number" value={formData.serial_number} onChange={handleChange} style={styles.input} />
                     </label>
                     <label style={styles.label}>
-                        Inventory Number:
+                        Número de inventario:
                         <input type="text" name="inventory_number" value={formData.inventory_number} onChange={handleChange} required style={styles.input} />
                     </label>
 
                     <label style={styles.label}>
-                        Policy ID:
+                       Id póliza:
                         <select name="policy_id" value={formData.policy_id} onChange={handleChange} required style={styles.select}>
-                            <option value="">Select Policy</option>
+                            <option value="">Seleccione póliza</option>
                             {policies.map((policy) => (
                                 <option key={policy.id} value={policy.id}>
                                     {policy.description}
@@ -214,7 +214,7 @@ export function InventoryForm() {
                     <label style={styles.label}>
                         Article:
                         <select name="article_id" value={formData.article_id} onChange={handleChange} required style={styles.select}>
-                            <option value="">Select an article</option>
+                            <option value="">Seleccione artículo</option>
                             {articles.map(article => (
                                 <option key={article.id} value={article.id}>
                                     {article.name}
@@ -225,7 +225,7 @@ export function InventoryForm() {
                     <label style={styles.label}>
                         Warehouse:
                         <select name="warehouse_id" value={formData.warehouse_id} onChange={handleChange} required style={styles.select}>
-                            <option value="">Select a warehouse</option>
+                            <option value="">Seleccione almacén</option>
                             {warehouses.map(warehouse => (
                                 <option key={warehouse.id} value={warehouse.id}>
                                     {warehouse.acquisition_type} {/* Cambiado de warehouse.name a warehouse.acquisition_type */}
@@ -236,7 +236,7 @@ export function InventoryForm() {
                     <label style={styles.label}>
                         User:
                         <select name="user_id" value={formData.user_id} onChange={handleChange} required style={styles.select}>
-                            <option value="">Select a user</option>
+                            <option value="">Seleccione usuario</option>
                             {Array.isArray(users) && users.map(user => (
                                 <option key={user.id} value={user.id}>
                                     {user.name}
@@ -245,7 +245,7 @@ export function InventoryForm() {
                         </select>
                     </label>
                 </div>
-                <button type="submit" style={styles.button}>Create Inventory</button>
+                <button type="submit" style={styles.button}>Crear inventario</button>
             </form>
         </div>
     );

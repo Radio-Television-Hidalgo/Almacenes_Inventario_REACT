@@ -52,17 +52,17 @@ function StockOut() {
         </tbody>
       </table>
 
-      <h3 style={{ textAlign: "center" }}>Tabla de articulos existentes</h3>
+      <h3 style={{ textAlign: "center" }}>Tabla de artículos existentes</h3>
       <table>
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Marca</th>
             <th>Modelo</th>
-            <th>Fecha de adquisicion</th>
-            <th>Numero de serie</th>
+            <th>Fecha de adquisición</th>
+            <th>Número de serie</th>
             <th>Status</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Color</th>
             <th>Tipo</th> 
             <th>QR</th>

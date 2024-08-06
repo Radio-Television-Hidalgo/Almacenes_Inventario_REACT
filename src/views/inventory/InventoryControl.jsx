@@ -6,7 +6,7 @@ function InventoryControl() {
   return (
     <div className="inventario-contenedor">
         <h4>¿Qué deseas hacer hoy?</h4>
-        <h2>Selecciona una Opción</h2>
+        <h2>Selecciona una opción</h2>
         <br />
       <div className="inventario-columnas">
         <div className="inventario-columna">
