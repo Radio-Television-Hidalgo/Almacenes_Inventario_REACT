@@ -45,6 +45,7 @@ function BienTable() {
       <table className="style-table">
         <thead>
           <tr>
+            <th>Nombre</th>
             <th>Descripción</th>
             <th>Cantidad</th>
             <th>Número de Inventario</th>
@@ -54,6 +55,7 @@ function BienTable() {
         <tbody>
           {filteredBienes.map((bien) => (
             <tr key={bien.id}>
+              <td>{bien.name}</td>
               <td>{bien.description}</td>
               <td>
                 {bien.articleWarehouses && bien.articleWarehouses.length > 0
