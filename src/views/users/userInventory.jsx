@@ -77,7 +77,8 @@ function UserInventory() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div className="container-u">
+        <div>
+            <br />
             <input
                 type="text"
                 placeholder="Buscar por nombre o número de trabajador"
@@ -85,6 +86,9 @@ function UserInventory() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
+
+        <div className="container-u">
+            
             {filteredGroupedData.map(({ user, items }) => (
                 <UserCard key={user.worker_nomber} user={user} items={items} handleViewMore={handleViewMore} />
             ))}
@@ -105,6 +109,7 @@ function UserInventory() {
                     <ItemDetails item={itemModalData} />
                 </Modal>
             )}
+        </div>
         </div>
     );
 }
