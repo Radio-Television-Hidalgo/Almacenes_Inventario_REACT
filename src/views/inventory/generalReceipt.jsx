@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import QRCode from "react-qr-code";
 import "../../styles/GeneralReceipt.css";
@@ -56,7 +57,7 @@ function GeneralReceipt() {
 
   return (
     <div className="table-container">
-      <h1>Lista de Artículos</h1>
+      
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -64,6 +65,8 @@ function GeneralReceipt() {
         onChange={handleSearchChange}
         className="search-input"
       />
+      <br />
+      <br />
       <table className="article-table">
         <thead>
           <tr>
