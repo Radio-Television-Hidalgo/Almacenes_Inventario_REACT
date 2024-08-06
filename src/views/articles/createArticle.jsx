@@ -133,7 +133,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="main-container2">
-      
+      <h2 className="h2e">Crear nuevo artículo</h2>
       <form onSubmit={handleSubmit} className="article-form">
         <div className="form-grid2">
           {/* Form fields as before */}
@@ -194,7 +194,7 @@ const handleSubmit = async (e) => {
               required
             >
               <option value="">Seleccionar estado</option>
-              <option value="reparacion">Reparacion</option>
+              <option value="reparacion">Reparación</option>
               <option value="en uso">En Uso</option>
               <option value="baja">Baja</option>
               <option value="descompuesto">Descompuesto</option>
@@ -210,7 +210,7 @@ const handleSubmit = async (e) => {
             ></textarea>
           </div>
           <div className="form-group2">
-            <label>Caracteristicas:</label>
+            <label>Características:</label>
             <textarea
               name="caracteristics"
               value={formData.caracteristics}

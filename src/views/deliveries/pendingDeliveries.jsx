@@ -34,10 +34,10 @@ function PendingDeliveries() {
                         <th>Articulo</th>
                         <th>Cantidad</th>
                         <th>Fecha de entrega</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Fotos</th>
                         <th>Usuario que entrego</th>
-                        <th>Usuario que recibio</th>
+                        <th>Usuario que recibió</th>
                         <th>Estatus de entrega</th>
                         <th>Finalizar</th>
                         <th>Cancelar</th>

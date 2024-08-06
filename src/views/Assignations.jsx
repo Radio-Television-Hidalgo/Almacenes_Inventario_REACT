@@ -45,7 +45,7 @@ function Assignations() {
 
   return (
     <form>
-      <label htmlFor="InventoryNumber">Numero de inventario</label>
+      <label htmlFor="InventoryNumber">Número de inventario</label>
       <input
         type="text"
         id="InventoryNumber"
@@ -79,7 +79,7 @@ function Assignations() {
         ))}
       </select>
 
-      <label htmlFor="presupuestalArea">Area presupuestal</label>
+      <label htmlFor="presupuestalArea">Área presupuestal</label>
       <input
         type="text"
         id="presupuestalArea"
@@ -96,7 +96,7 @@ function Assignations() {
         ))}
       </select>
 
-      <label htmlFor="Photo">Foto del bien cuando se recibio</label>
+      <label htmlFor="Photo">Foto del bien cuando se recibió</label>
       <input type="file" id="Photo" name="Photo" required />
 
       <label htmlFor="Rfc">RFC</label>
@@ -105,7 +105,7 @@ function Assignations() {
       <label htmlFor="Date">Fecha de resguardo</label>
       <input type="date" id="Date" name="Date" required />
 
-      <label htmlFor="Description">Descripcion</label>
+      <label htmlFor="Description">Descripción</label>
       <input type="text" id="Description" name="Description" required />
 
       <label htmlFor="Brand">Marca</label>
@@ -114,7 +114,7 @@ function Assignations() {
       <label htmlFor="Model">Modelo</label>
       <input type="text" id="Model" name="Model" required />
 
-      <label htmlFor="SerialNumber">Numero de serie</label>
+      <label htmlFor="SerialNumber">Número de serie</label>
       <input type="text" id="SerialNumber" name="SerialNumber" required />
 
       <button type="submit">Asignar</button>

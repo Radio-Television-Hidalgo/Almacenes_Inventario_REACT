@@ -21,7 +21,7 @@ function DeregistrationofMaterial() {
         <title>Baja de bien</title>
     </Helmet>
     <form>
-      <label htmlFor="inventoryNumber">Numero de inventario</label>
+      <label htmlFor="inventoryNumber">Número de inventario</label>
       <input type="text" id="inventoryNumber" name="inventoryNumber" required />
       <button type="submit" onClick={handleSearchClick}>Buscar</button>
 
@@ -53,7 +53,7 @@ function DeregistrationofMaterial() {
             <option value="Extravio">Extravio</option>
             <option value="Deterioro">Deterioro</option>
             <option value="Obsolecencia">Obsolecencia</option>
-            <option value="Donacion">Donacion</option>
+            <option value="Donacion">Donación</option>
         </select>
 
         <label htmlFor="Document">Documento que ampara la baja</label>
