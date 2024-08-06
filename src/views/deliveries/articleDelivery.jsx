@@ -7,6 +7,7 @@ import BienTable from '../materialRequest/bienTable';
 function ArticleDelivery() {
     const [datos, setDatos] = useState([]);
     const navigate = useNavigate();
+    const [departments, setDepartments] = useState([]);
     const [artDelData, setArtDelData] = useState({
         delivery_date: '',
         description: "",
@@ -48,7 +49,9 @@ function ArticleDelivery() {
         }
     }
 
-    const fetchDatos = () => {
+    const fetchDatos = async () => {
+        const departmentsResponse = await axios.get('http://localhost:3000/depertments/depertments');
+        setDepartments(departmentsResponse.data.data);
         fetch("/api/solicitud/solicitudesBienes")
           .then((response) => {
             if (!response.ok) {
@@ -98,9 +101,11 @@ function ArticleDelivery() {
                     <label htmlFor="" className="entrega-bien-label">Ubicación</label>
                     <select  name="ubication" id="" className="entrega-bien-select" onChange={handleInputChange}>
                         <option value="#" selected disabled>Selecciona una ubicación</option>
-                        <option value='Ub1'>Ubicación 1</option>
-                        <option value='Ub2'>Ubicación 2</option>
-                        <option value='Ub3'>Ubicación 3</option>
+                        {departments.map(department => (
+                            <option key={department.id} value={department.name}>
+                                {department.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <div className="entrega-bien-form-group">
@@ -111,7 +116,7 @@ function ArticleDelivery() {
                     <label htmlFor="" className="entrega-bien-label">Recibe: </label>
                     <select name="user_id_receives" className="entrega-bien-input" id="" onChange={handleInputChange}>
                         <option value="#" selected disabled>Selecciona un usuario</option>
-                        {datos.map((dato) => (
+                        {datos.map(dato => (
                             <option value={dato.requestingUser.id}>{dato.requestingUser.name}</option>
                         ))}
                     </select>
