@@ -18,7 +18,7 @@ const CreateUserForm = ({ userId }) => {
     RFC: '',
     CURP: '',
     status: true,
-    area_budget: 'RADIO Y TELEVISION',
+    area_budget: 'RADIO Y TELEVISIÓN DE HIDALGO',
     superior_organ: 'ORGANISMOS DESCENTRALIZADO',
     department_id: '',
     charge_id: ''

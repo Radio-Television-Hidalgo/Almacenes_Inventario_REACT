@@ -77,9 +77,9 @@ function RequestHistory() {
         <thead>
           <tr>
             <th>Solicita</th>
-            <th>Articulo</th>
+            <th>Artículo</th>
             <th>Cantidad</th>
-            <th>Descripcion de solicitud</th>
+            <th>Descripción de solicitud</th>
             <th>Estatus de solicitud</th>
             <th>Solicitud Completa</th>
           </tr>

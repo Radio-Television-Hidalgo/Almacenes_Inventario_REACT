@@ -82,12 +82,12 @@ function RequestforSuppliesGoods() {
         <thead>
           <tr>
             <th className="request-for-supplies-header-go">Solicita</th>
-            <th className="request-for-supplies-header-go">Articulo</th>
+            <th className="request-for-supplies-header-go">Artículo</th>
             <th className="request-for-supplies-header-go">Cantidad</th>
-            <th className="request-for-supplies-header-go">Descripcion de solicitud</th>
+            <th className="request-for-supplies-header-go">Descripción de solicitud</th>
             <th className="request-for-supplies-header-go">Estatus de solicitud</th>
             <th className="request-for-supplies-header-go">Solicitud Completa</th>
-            <th className="request-for-supplies-header-go">Opciones de continuacion</th>
+            <th className="request-for-supplies-header-go">Opciones de continuación</th>
           </tr>
         </thead>
         <tbody>
@@ -120,7 +120,7 @@ function RequestforSuppliesGoods() {
                 <h2>Solicita:</h2>
                 <img src={`${modalData.requestingUser.img}`} alt="" className="glass-modal-image" />
                 <p><strong>{modalData.requestingUser.name}</strong></p>
-                <p><strong>Numero de trabajador:</strong> {modalData.requestingUser.worker_nomber}</p>
+                <p><strong>Número de trabajador:</strong> {modalData.requestingUser.worker_nomber}</p>
               </div>
               <div>
                 <h2>Artículo: </h2>
@@ -138,7 +138,7 @@ function RequestforSuppliesGoods() {
                     <p><strong>Modelo: </strong> {modalData.requestArticle.model}</p>
                   </div>
                   <div className="glass-modal-item-Serie">
-                    <p><strong>Numero de serie: </strong> {modalData.requestArticle.number_series}</p>
+                    <p><strong>Número de serie: </strong> {modalData.requestArticle.number_series}</p>
                   </div>
                
             </div>

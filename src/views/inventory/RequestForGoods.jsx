@@ -7,9 +7,9 @@ function RequestForGoods() {
         <tr>
           <th>Usuario solicitante</th>
           <th>Cantidad</th>
-          <th>Articulo</th>
-          <th>Descripcion</th>
-          <th>Fecha en la que llego</th>
+          <th>Artículo</th>
+          <th>Descripción</th>
+          <th>Fecha en la que llegó</th>
         </tr>
       </thead>
       <tbody>

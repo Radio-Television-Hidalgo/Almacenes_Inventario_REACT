@@ -171,7 +171,7 @@ const ArticleDetails = () => {
           <p><span style={styles.label}>Tipo:</span><span style={styles.value}> {articleData.type}</span></p>
           <p><span style={styles.label}>Fecha de Entrada:</span><span style={styles.value}> {new Date(articleData.entry_date).toLocaleDateString()}</span></p>
           <p><span style={styles.label}>Ubicación:</span><span style={styles.value}> {articleData.location}</span></p>
-          <p><span style={styles.label}>Serial Number:</span><span style={styles.value}> {articleData.serial_number}</span></p>
+          <p><span style={styles.label}>Número de Serie:</span><span style={styles.value}> {articleData.serial_number}</span></p>
           <p><span style={styles.label}>Razón:</span><span style={styles.value}> {articleData.reason}</span></p>
         </div>
       </Collapse>
