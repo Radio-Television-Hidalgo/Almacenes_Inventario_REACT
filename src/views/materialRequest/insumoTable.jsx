@@ -9,7 +9,6 @@ function InsumoTable() {
     fetch("/api/articulos?type=Insumos")
       .then((response) => response.json())
       .then((data) => {
-        // Filtra los insumos que tienen datos válidos en articleWarehouses
         const filteredData = data.filter(
           (insumo) =>
             insumo.articleWarehouses &&

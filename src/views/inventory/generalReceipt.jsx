@@ -1,9 +1,11 @@
-import{ useState, useEffect } from "react";
-import Modal from 'react-modal';
+
+import { useState, useEffect } from "react";
+import Modal from "react-modal";
+import QRCode from "react-qr-code";
 import "../../styles/GeneralReceipt.css";
 
 // Asegúrate de que el modal esté asociado al elemento raíz
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 function GeneralReceipt() {
   const [articles, setArticles] = useState([]);
@@ -49,7 +51,7 @@ function GeneralReceipt() {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  const filteredArticles = articles.filter(article =>
+  const filteredArticles = articles.filter((article) =>
     article.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -69,19 +71,8 @@ function GeneralReceipt() {
             <th onClick={() => sortTable("name")}>Nombre</th>
             <th onClick={() => sortTable("brand")}>Marca</th>
             <th onClick={() => sortTable("model")}>Modelo</th>
-            {/* Descomenta las columnas que necesites */}
-            {/* <th onClick={() => sortTable("acquisition_date")}>Fecha de Adquisición</th>
-            <th onClick={() => sortTable("number_series")}>Número de Serie</th>
-            <th onClick={() => sortTable("status")}>Estado</th>
-            <th onClick={() => sortTable("description")}>Descripción</th>
-            <th onClick={() => sortTable("caracteristics")}>Características</th>
-            <th onClick={() => sortTable("type")}>Tipo</th> */}
             <th>QR</th>
             <th>Ver más</th>
-            {/* <th onClick={() => sortTable("photos_entry")}>Fotos</th>
-            <th onClick={() => sortTable("userful_live_id")}>Vida Útil</th>
-            <th onClick={() => sortTable("policy_id")}>Póliza</th>
-            <th onClick={() => sortTable("bill_id")}>Factura</th> */}
           </tr>
         </thead>
         <tbody>
@@ -90,24 +81,22 @@ function GeneralReceipt() {
               <td>{article.name}</td>
               <td>{article.brand}</td>
               <td>{article.model}</td>
-              {/* <td>{article.acquisition_date}</td>
-              <td>{article.number_series}</td>
-              <td>{article.status}</td>
-              <td>{article.description}</td>
-              <td>{article.caracteristics}</td>
-              <td>{article.type}</td> */}
               <td>
-                <img src={article.QR} alt="Código QR" className="qr-image" />
+                <QRCode className="qr-code" value={article.QR} />
               </td>
               <td className="button-container">
-                <button className="ver-mas-button" onClick={() => openModal(article)}>Ver más</button>
+                <button
+                  className="ver-mas-button"
+                  onClick={() => openModal(article)}
+                >
+                  Ver más
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Modal */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -115,37 +104,68 @@ function GeneralReceipt() {
         className="modal"
         overlayClassName="overlay"
       >
-        <button onClick={closeModal} className="close-button">×</button>
+        <button onClick={closeModal} className="close-button">
+          ×
+        </button>
         {selectedArticle && (
           <div className="modal-content">
             <div className="modal-header">
-              <img src={selectedArticle.QR} alt="Código QR" className="qr-image" />
+              <QRCode className="qr-code" value={selectedArticle.QR} />
             </div>
             <div className="modal-body">
               <h2>{selectedArticle.name}</h2>
-              <p><strong>Marca:</strong> {selectedArticle.brand}</p>
-              <p><strong>Fecha de Adquisición:</strong> {selectedArticle.acquisition_date}</p>
-              <p><strong>Número de Serie:</strong> {selectedArticle.number_series}</p>
-              <p><strong>Estado:</strong> {selectedArticle.status}</p>
-              <p><strong>Descripción:</strong> {selectedArticle.description}</p>
-              <p><strong>Características:</strong> {selectedArticle.caracteristics}</p>
-              <p><strong>Tipo:</strong> {selectedArticle.type}</p>
+              <p>
+                <strong>Marca:</strong> {selectedArticle.brand}
+              </p>
+              <p>
+                <strong>Fecha de Adquisición:</strong>{" "}
+                {selectedArticle.acquisition_date}
+              </p>
+              <p>
+                <strong>Número de Serie:</strong>{" "}
+                {selectedArticle.number_series}
+              </p>
+              <p>
+                <strong>Estado:</strong> {selectedArticle.status}
+              </p>
+              <p>
+                <strong>Descripción:</strong> {selectedArticle.description}
+              </p>
+              <p>
+                <strong>Características:</strong>{" "}
+                {selectedArticle.caracteristics}
+              </p>
+              <p>
+                <strong>Tipo:</strong> {selectedArticle.type}
+              </p>
               <div className="carousel-container">
                 {selectedArticle.photos_entry && (
                   <div className="carousel">
-                    {selectedArticle.photos_entry.split(",").map((photo, index) => (
-                      <div key={index} className="carousel-slide" style={{ display: currentSlide === index ? 'block' : 'none' }}>
-                        <img
-                          src={`/api/${photo}`}
-                          alt={`Foto ${index + 1}`}
-                          className="carousel-photo"
-                        />
-                      </div>
-                    ))}
+                    {selectedArticle.photos_entry
+                      .split(",")
+                      .map((photo, index) => (
+                        <div
+                          key={index}
+                          className="carousel-slide"
+                          style={{
+                            display: currentSlide === index ? "block" : "none",
+                          }}
+                        >
+                          <img
+                            src={`/api/uploads/${photo}`}
+                            alt={`Foto ${index + 1}`}
+                            className="carousel-photo"
+                          />
+                        </div>
+                      ))}
                   </div>
                 )}
-                <button className="carousel-prev" onClick={() => moveSlide(-1)}>‹</button>
-                <button className="carousel-next" onClick={() => moveSlide(1)}>›</button>
+                <button className="carousel-prev" onClick={() => moveSlide(-1)}>
+                  ‹
+                </button>
+                <button className="carousel-next" onClick={() => moveSlide(1)}>
+                  ›
+                </button>
               </div>
             </div>
           </div>
