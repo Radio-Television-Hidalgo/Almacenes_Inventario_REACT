@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "/src/styles/BienTable.css";
 
 function BienTable() {
   const [bienes, setBienes] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/api/articulos?type=Bien")
       .then((response) => response.json())
       .then((data) => {
-          const filteredData = data.filter(
+        const filteredData = data.filter(
           (bien) =>
             bien.articleWarehouses &&
             bien.articleWarehouses.length > 0 &&
@@ -21,38 +22,57 @@ function BienTable() {
       });
   }, []);
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filteredBienes = bienes.filter(
+    (bien) =>
+      !search ||
+      (bien.description &&
+        bien.description.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
-    <table className="style-table">
-      <thead>
-        <tr>
-          <th>Descripción</th>
-          <th>Cantidad</th>
-          <th>Número de Inventario</th>
-          <th>Fotos</th>
-        </tr>
-      </thead>
-      <tbody>
-        {bienes.map((bien) => (
-          <tr key={bien.id}>
-            <td>{bien.description}</td>
-            <td>
-              {bien.articleWarehouses && bien.articleWarehouses.length > 0
-                ? bien.articleWarehouses[0].quantity
-                : "N/A"}
-            </td>
-            <td>
-              {bien.articleWarehouses && bien.articleWarehouses.length > 0
-                ? bien.articleWarehouses[0].inventory_number
-                : "N/A"}
-            </td>
-            <td>
-              {bien.photos_entry &&
-                bien.photos_entry
-                  .split(",")
-                  .map((photo, index) => (
+    <div>
+      <input
+        type="text"
+        placeholder="Buscar por descripcion"
+        value={search}
+        onChange={handleSearch}
+        className="search-input"
+      />
+      <table className="style-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Número de Inventario</th>
+            <th>Fotos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredBienes.map((bien) => (
+            <tr key={bien.id}>
+              <td>{bien.name}</td>
+              <td>{bien.description}</td>
+              <td>
+                {bien.articleWarehouses && bien.articleWarehouses.length > 0
+                  ? bien.articleWarehouses[0].quantity
+                  : "N/A"}
+              </td>
+              <td>
+                {bien.articleWarehouses && bien.articleWarehouses.length > 0
+                  ? bien.articleWarehouses[0].inventory_number
+                  : "N/A"}
+              </td>
+              <td>
+                {bien.photos_entry &&
+                  bien.photos_entry.split(",").map((photo, index) => (
                     <img
                       key={index}
-                      src={`/api/${photo}`}
+                      src={`/api/uploads/${photo}`}
                       alt="Foto del bien"
                       className="photo"
                       style={{
@@ -62,11 +82,12 @@ function BienTable() {
                       }}
                     />
                   ))}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

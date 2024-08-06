@@ -90,13 +90,7 @@ export default function DownArticle() {
             setArticleImages([]); // Limpiar las imágenes si el campo está vacío
         }
     };
-    function BajaBien() {
-        const location = useLocation();
-        const { id } = location.state;
-      
-        console.log("id", id);
-      }
-      BajaBien();
+
       const handleSubmit = async () => {
         const payload = {
             type: removalType,

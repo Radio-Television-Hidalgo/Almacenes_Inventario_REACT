@@ -108,7 +108,7 @@ const Header = () => {
       case '/solicitudInsumos':
         return 'Solicitud de insumos';
       case '/articulos/insertarArticulo':
-        return 'Insertar articulo';
+        return 'Crear nuevo articulo';
         case '/articulos':
           return 'Articulos';
       case '/usuario/editarUsuario':
@@ -360,6 +360,7 @@ const Header = () => {
                 <h3>Adscripción: {userInfo.ascription}</h3>
                 <h3>Correo Electrónico: {userInfo.email}</h3>
                 <h3>Departamento: {userInfo.userDepartment.name}</h3>
+                <Link to="/usuario/nuevoUsuario"><button className="profile-button" onClick={closeModal}>Nuevo usuario</button></Link>
               </div>
               <hr />
               <div className="info-grid">
