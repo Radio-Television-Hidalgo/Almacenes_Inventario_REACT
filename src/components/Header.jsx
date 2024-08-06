@@ -360,7 +360,9 @@ const Header = () => {
                 <h3>Adscripción: {userInfo.ascription}</h3>
                 <h3>Correo Electrónico: {userInfo.email}</h3>
                 <h3>Departamento: {userInfo.userDepartment.name}</h3>
+                {userType !== 'comun' && userType !== 'almacen' && userType !== 'admin' &&(
                 <Link to="/usuario/nuevoUsuario"><button className="profile-button" onClick={closeModal}>Nuevo usuario</button></Link>
+              )}
               </div>
               <hr />
               <div className="info-grid">

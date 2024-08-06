@@ -29,15 +29,15 @@ function BienTable() {
   const filteredBienes = bienes.filter(
     (bien) =>
       !search ||
-      (bien.description &&
-        bien.description.toLowerCase().includes(search.toLowerCase()))
+      (bien.name &&
+        bien.name.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Buscar por descripcion"
+        placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
         className="search-input"
