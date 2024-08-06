@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
 .table-container {
     width: 100%;
@@ -9,13 +9,13 @@
 }
 
 .style-table {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-    table-layout: fixed; /* Esto ayuda a que las columnas tengan un ancho fijo */
-    margin: 20px auto; /* Centrar la tabla */
+    margin: 20px auto;
+    table-layout: fixed; /* Use fixed layout */
 }
 
 .style-table thead {
@@ -28,23 +28,42 @@
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    word-wrap: break-word; /* Esto ayuda a que el contenido se ajuste dentro de la celda */
+    word-wrap: break-word; /* Ensure words break correctly */
+    word-break: break-word; /* Break words when necessary */
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
-}
-
-.style-table td {
-    width: 280px;
-}
-
-.style-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hide overflowing content */
+    height: auto; /* Ensure height is auto */
 }
 
 .style-table th {
     background-color: #691B31;
     color: white;
+}
+
+.style-table th:nth-child(1),
+.style-table td:nth-child(1),
+.style-table th:nth-child(2),
+.style-table td:nth-child(2) {
+    width: 20%; /* Set width for name and description columns */
+}
+
+.style-table th:nth-child(3),
+.style-table td:nth-child(3),
+.style-table th:nth-child(4),
+.style-table td:nth-child(4) {
+    width: 15%; /* Set width for quantity and inventory number columns */
+}
+
+.style-table th:nth-child(5),
+.style-table td:nth-child(5) {
+    width: 20%; /* Set width for photos column */
+}
+
+.style-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
 .photo {
@@ -57,42 +76,13 @@
     background-color: #ddd;
 }
 
-@media (min-width: 537px) and (max-width: 768px) {
-    .style-table td {
-        width: 20px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 537px) {
-    .style-table td {
-        width: 20px;
-    }
-}
-
-@media (min-width: 430px) and (max-width: 932px) {
-    .style-table td {
-        width: 140px;
-    }
-}
-
-@media (min-width: 357px) and (max-width: 667px) {
-    .style-table td {
-        width: 75px;
+@media (max-width: 768px) {
+    .style-table {
+        width: 100%;
     }
 
-    .style-table th {
-        width: 67px;
-    }
-}
-
-@media (min-width: 826px) and (max-width: 1440px) {
+    .style-table th,
     .style-table td {
-        width: 281px;
-    }
-}
-
-@media (min-width: 716px) and (max-width: 1024px) {
-    .style-table td {
-        width: 199px;
+        font-size: 12px;
     }
 }
