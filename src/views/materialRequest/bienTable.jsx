@@ -29,15 +29,15 @@ function BienTable() {
   const filteredBienes = bienes.filter(
     (bien) =>
       !search ||
-      (bien.description &&
-        bien.description.toLowerCase().includes(search.toLowerCase()))
+      (bien.name &&
+        bien.name.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Buscar por descripcion"
+        placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
         className="search-input"
@@ -56,7 +56,7 @@ function BienTable() {
           {filteredBienes.map((bien) => (
             <tr key={bien.id}>
               <td>{bien.name}</td>
-              <td className="descripcion">{bien.description}</td>
+              <td>{bien.description}</td>
               <td>
                 {bien.articleWarehouses && bien.articleWarehouses.length > 0
                   ? bien.articleWarehouses[0].quantity
@@ -75,6 +75,11 @@ function BienTable() {
                       src={`/api/uploads/${photo}`}
                       alt="Foto del bien"
                       className="photo"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        marginRight: "5px",
+                      }}
                     />
                   ))}
               </td>
