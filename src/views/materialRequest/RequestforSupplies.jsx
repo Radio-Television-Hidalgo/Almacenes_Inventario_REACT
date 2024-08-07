@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from 'react';
-import "../styles/RequestforSupplies.css";
+import "../../styles/RequestforSupplies.css";
 
 function RequestforSupplies() {
   const [datos, setDatos] = useState([]);
