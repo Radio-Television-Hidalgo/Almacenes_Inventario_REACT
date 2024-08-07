@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import QRCode from "react-qr-code";
@@ -13,6 +12,7 @@ function GeneralReceipt() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+  const [fullscreenSrc, setFullscreenSrc] = useState(null);
 
   // Realiza la petición para obtener los artículos
   useEffect(() => {
@@ -43,6 +43,14 @@ function GeneralReceipt() {
     }
   };
 
+  const openFullscreen = (src) => {
+    setFullscreenSrc(src);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenSrc(null);
+  };
+
   const sortTable = (column) => {
     // Aquí puedes implementar la lógica de ordenamiento
     console.log(`Sorting by ${column}`);
@@ -57,7 +65,6 @@ function GeneralReceipt() {
 
   return (
     <div className="table-container">
-      
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -84,7 +91,11 @@ function GeneralReceipt() {
               <td>{article.brand}</td>
               <td>{article.model}</td>
               <td>
-                <QRCode className="qr-codes" value={article.QR} />
+                <QRCode
+                  className="qr-codes"
+                  value={article.QR}
+                  size={64} // Ajusta el tamaño del QR
+                />
               </td>
               <td className="button-container">
                 <button
@@ -103,18 +114,46 @@ function GeneralReceipt() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Detalles del Artículo"
-        className="modal"
-        overlayClassName="overlay"
+        className="modal-gr"
+        overlayClassName="overlay-gr"
       >
-        <button onClick={closeModal} className="close-button">
+        <button onClick={closeModal} className="close-button-gr">
           ×
         </button>
         {selectedArticle && (
-          <div className="modal-content">
-            <div className="modal-header">
-              <QRCode className="qr-code" value={selectedArticle.QR} />
-            </div>
-            <div className="modal-body">
+          <div className="modal-content-gr">
+            <div className="modal-body-gr">
+            <div className="carousel-container-gr">
+                {selectedArticle.photos_entry && (
+                  <div className="carousel-gr">
+                    {selectedArticle.photos_entry
+                      .split(",")
+                      .map((photo, index) => (
+                        <div
+                          key={index}
+                          className="carousel-slide-gr"
+                          style={{
+                            display: currentSlide === index ? "block" : "none",
+                          }}
+                        >
+                          <img
+                            src={`/api/uploads/${photo}`}
+                            alt={`Foto ${index + 1}`}
+                            className="carousel-photo-gr"
+                            onClick={() => openFullscreen(`/api/uploads/${photo}`)}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                )}
+                <button className="carousel-prev-gr" onClick={() => moveSlide(-1)}>
+                  ‹
+                </button>
+                <button className="carousel-next-gr" onClick={() => moveSlide(1)}>
+                  ›
+                </button>
+                
+              </div>
               <h2>{selectedArticle.name}</h2>
               <p>
                 <strong>Marca:</strong> {selectedArticle.brand}
@@ -140,39 +179,23 @@ function GeneralReceipt() {
               <p>
                 <strong>Tipo:</strong> {selectedArticle.type}
               </p>
-              <div className="carousel-container">
-                {selectedArticle.photos_entry && (
-                  <div className="carousel">
-                    {selectedArticle.photos_entry
-                      .split(",")
-                      .map((photo, index) => (
-                        <div
-                          key={index}
-                          className="carousel-slide"
-                          style={{
-                            display: currentSlide === index ? "block" : "none",
-                          }}
-                        >
-                          <img
-                            src={`/api/uploads/${photo}`}
-                            alt={`Foto ${index + 1}`}
-                            className="carousel-photo"
-                          />
-                        </div>
-                      ))}
-                  </div>
-                )}
-                <button className="carousel-prev" onClick={() => moveSlide(-1)}>
-                  ‹
-                </button>
-                <button className="carousel-next" onClick={() => moveSlide(1)}>
-                  ›
-                </button>
-              </div>
+              
+              <div className="modal-header-gr">
+              <QRCode
+                className="qr-code"
+                value={selectedArticle.QR}
+                size={128} // Ajusta el tamaño del QR en el modal
+              />
+            </div>
             </div>
           </div>
         )}
       </Modal>
+      {fullscreenSrc && (
+        <div className="fullscreen-overlay" onClick={closeFullscreen}>
+          <img src={fullscreenSrc} className="fullscreen-image" alt="Fullscreen" />
+        </div>
+      )}
     </div>
   );
 }

@@ -44,6 +44,7 @@ import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import ShoppingScreen from "./views/shopping/shoppingScreen";
 import Shopping from "./views/shopping/shopping";
 import FinanceView from "./views/shopping/financeView";
+import ShoppingForm from "./views/shopping/shoppingForm";
 
 
 const showHeaderRoutes = [
@@ -70,7 +71,7 @@ const showHeaderRoutes = [
   "/recepcionSolicitudes",
   "/SalidadeExistencia",
   "/articulos/almacen",
-  "/solicitudInsumos",
+  "/planeacion",
   "/documentacion",
   "/articulos/insertararticulo",
   "/entregasPendientes",
@@ -126,7 +127,8 @@ const routeTitles = {
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
   "/controlCompras": "Control de Compras",
   "/controlCompras/compras": "Compras",
-  "vista/finanzas":"Ver finanzas"
+  "vista/finanzas":"Ver finanzas",
+  "/planeacion": "Planeacion"
 };
 
 const App = () => {
@@ -184,7 +186,7 @@ const App = () => {
               element={<ReceptionRequests />}
             />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
-            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+            <Route path="/planeacion" element={<RequestforSupplies />} />
             <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/insertarArticulo"
@@ -214,8 +216,8 @@ const App = () => {
             <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
             <Route path="/controlCompras" element={<ShoppingScreen />} />
             <Route path="/controlCompras/compras" element={<Shopping />} />
-            <Route path="/controlCompras/compras/" element={<Shopping />} />
-            <Route path="vista/finanzas" element={<FinanceView/>}/>
+            <Route path="/controlCompras/compras/" element={<ShoppingForm />} />
+            <Route path="/vista/finanzas" element={<FinanceView/>}/>
           </Routes>
         </UserProvider>
       </main>
