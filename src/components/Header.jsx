@@ -255,7 +255,7 @@ const Header = () => {
             {isLargeScreen ? (
               <>
                 <Link to="/inicio" className="dropdown-toggle">
-                  Inicioss
+                  Inicio
                 </Link>
 
                 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
