@@ -22,11 +22,14 @@ function InsumoTable() {
       });
   }, []);
 
-  const handlesearch = (e) => {
+  const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  const filteredinsumos = insumos.filter((insumo) =>
-    insumo.name.toLowerCase().includes(search.toLowerCase())
+
+  const filteredInsumos = insumos.filter(
+    (insumo) =>
+      insumo.name && 
+      insumo.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -35,9 +38,9 @@ function InsumoTable() {
         type="text"
         placeholder="Buscar por nombre"
         value={search}
-        onChange={handlesearch}
+        onChange={handleSearch}
         className="search-input"
-      ></input>
+      />
       <table className="style-table">
         <thead>
           <tr>
@@ -49,7 +52,7 @@ function InsumoTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredinsumos.map((insumo) => (
+          {filteredInsumos.map((insumo) => (
             <tr key={insumo.id}>
               <td>{insumo.name}</td>
               <td>{insumo.description}</td>
