@@ -21,7 +21,7 @@ function Login() {
         <img src="SIA.webp" alt="Logotipo de la empresa" />
       </div>
       <form className="login-form" onSubmit={handleLogin}>
-        <h2>Radio y Television de Hidalgo</h2>
+        <h2>Radio y Televisión de Hidalgo</h2>
         <p>Sistema Integral de Gestión de Inventario, Compras y Almacén para Radio y Televisión de Hidalgo</p>
         <label htmlFor="correo">Usuario o Email</label>
         <input

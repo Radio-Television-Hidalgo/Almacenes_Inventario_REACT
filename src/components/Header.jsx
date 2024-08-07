@@ -108,7 +108,7 @@ const Header = () => {
       case '/solicitudInsumos':
         return 'Solicitud de insumos';
       case '/articulos/insertarArticulo':
-        return 'Insertar articulo';
+        return 'Crear nuevo articulo';
         case '/articulos':
           return 'Articulos';
       case '/usuario/editarUsuario':
@@ -262,11 +262,11 @@ const Header = () => {
                 {userType!== 'comun' && userType !== 'rh' && (
                 <div className="dropdown">
                   <Link to="/almacen" className="dropdown-toggle">
-                    Almacen
+                    Almacén
                   </Link>
                   <div className="dropdown-menu">
                     <Link to="/documentacion" className="dropdown-item">
-                      Documentacion{" "}
+                      Documentación{" "}
                     </Link>
                     <Link to="/entrada/existencias" className="dropdown-item">
                       {" "}
@@ -279,7 +279,7 @@ const Header = () => {
                       to="/articulos/insertarArticulo"
                       className="dropdown-item"
                     >
-                      Agregar nuevo articulo{" "}
+                      Agregar nuevo artículo{" "}
                     </Link>
                     <Link to="" className="dropdown-item">
                       Historial de salida de bienes{" "}
@@ -296,12 +296,12 @@ const Header = () => {
              
               {userType !== 'comun' && userType !== 'rh' &&(
                 <div className="dropdown">
-                  <Link to="/documentacion" className="dropdown-toggle">Documentacion</Link>
+                  <Link to="/documentacion" className="dropdown-toggle">Documentación</Link>
                   <div className="dropdown-menu">
-                    <Link to="/crearFactura" className="dropdown-item">Crear Facturas</Link>
-                    <Link to="/facturas" className="dropdown-item">Ver Facturas </Link>
-                    <Link to="/crearPoliza" className="dropdown-item">Crear Polizas </Link>
-                    <Link to="/polizas" className="dropdown-item">Ver Polizas </Link>
+                    <Link to="/crearFactura" className="dropdown-item">Crear facturas</Link>
+                    <Link to="/facturas" className="dropdown-item">Ver facturas </Link>
+                    <Link to="/crearPoliza" className="dropdown-item">Crear pólizas </Link>
+                    <Link to="/polizas" className="dropdown-item">Ver pólizas </Link>
                   </div>
                 </div>
               )}
@@ -314,11 +314,11 @@ const Header = () => {
                   <div className="dropdown-menu">
 {/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
                     <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
-                    <Link to="/articulos/bajaBien" className="dropdown-item">Baja de Bienes</Link>
-                    <Link to="/resguardoGeneral" className="dropdown-item">Resguardo General</Link>
-                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de Bienes</Link>
-                    <Link to="/inventarios/usuario" className="dropdown-item">inventarios de Usuario</Link>
-                    <Link to="#" className="dropdown-item">Historial de Bajas</Link>
+                    <Link to="/articulos/bajaBien" className="dropdown-item">Baja de bienes</Link>
+                    <Link to="/resguardoGeneral" className="dropdown-item">Resguardo general</Link>
+                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de bienes</Link>
+                    <Link to="/inventarios/usuario" className="dropdown-item">Inventarios de usuario</Link>
+                    <Link to="#" className="dropdown-item">Historial de bajas</Link>
                   </div>
                 </div>
                     )}
@@ -327,8 +327,8 @@ const Header = () => {
               <>
                 <Link to="/inicio">Inicio</Link>
                 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>      */}
-                <Link to="/almacen">Almacen</Link>
-                <Link to="/documentacion">Documentacion</Link>
+                <Link to="/almacen">Almacén</Link>
+                <Link to="/documentacion">Documentación</Link>
                 {/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
               </>
@@ -360,7 +360,9 @@ const Header = () => {
                 <h3>Adscripción: {userInfo.ascription}</h3>
                 <h3>Correo Electrónico: {userInfo.email}</h3>
                 <h3>Departamento: {userInfo.userDepartment.name}</h3>
+                {userType !== 'comun' && userType !== 'almacen' && userType !== 'admin' &&(
                 <Link to="/usuario/nuevoUsuario"><button className="profile-button" onClick={closeModal}>Nuevo usuario</button></Link>
+              )}
               </div>
               <hr />
               <div className="info-grid">
@@ -373,7 +375,7 @@ const Header = () => {
                   <p>{userInfo.userCharge.name}</p>
                 </div>
                 <div>
-                  <span>NUMERO</span>
+                  <span>NÚMERO</span>
                   <p>{userInfo.worker_nomber}</p>
                 </div>
               </div>
