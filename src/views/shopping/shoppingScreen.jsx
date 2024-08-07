@@ -24,7 +24,7 @@ function ShoppingScreen() {
         </Link>
       </div>
       <div className="shopping-row">
-        <Link to="/planeacion" className="shopping-card">
+        <Link to="/planeacion" className="shopping-cards">
           <div className="card-content">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-file-bar-graph" viewBox="0 0 16 16">
               <path d="M4.5 12a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5zm3 0a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5zm3 0a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5z"/>
