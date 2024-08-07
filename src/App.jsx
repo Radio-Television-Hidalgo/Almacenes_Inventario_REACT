@@ -12,16 +12,15 @@ import DownArticle from "./views/articles/downArticle";
 import Goods from "./views/articles/Goods";
 import Invoice from "./views/articles/invoice";
 import Lowgoods from "./views/articles/lowgoods";
-import Assignations from "./views/Assignations";
 import ArticleDelivery from "./views/deliveries/articleDelivery";
 import PendingDeliveries from "./views/deliveries/pendingDeliveries";
 import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import BillDetails from "./views/documentacion/BillDetails";
 import Bills from "./views/documentacion/Bills";
 import Documentacion from "./views/documentacion/documentacion";
-import Policy from "./views/documentacion/policy";
+import Policy from "./views/shopping/policy";
 import PolicyDetail from "./views/documentacion/PolicyDetail";
-import PolicyScreen from "./views/documentacion/policyScreen";
+import PolicyScreen from "./views/shopping/policyScreen";
 import Home from "./views/home/home";
 import GeneralReceipt from "./views/inventory/generalReceipt";
 import InventoryControl from "./views/inventory/InventoryControl";
@@ -29,8 +28,8 @@ import InventoryScreen from "./views/inventory/inventoryScreen";
 import SeelowWell from "./views/inventory/Seelowwell";
 import MaterialRequest from "./views/materialRequest/materialRequest";
 import ReceptionRequests from "./views/materialRequest/receptionRequests";
-import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
-import RequestforSupplies from "./views/RequestforSupplies";
+import RequestforSuppliesGoods from "./views/materialRequest/RequestforSuppliersGoods";
+import RequestforSupplies from "./views/materialRequest/RequestforSupplies";
 import RequestHistory from "./views/materialRequest/requestHistory";
 import StockOut from "./views/stockOut";
 import EditUser from "./views/users/editUser";
@@ -43,6 +42,8 @@ import StockEntry from "./views/werehouse/StockEntry";
 import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import ShoppingScreen from "./views/shopping/shoppingScreen";
+import Shopping from "./views/shopping/shopping";
+import FinanceView from "./views/shopping/financeView";
 
 
 const showHeaderRoutes = [
@@ -52,7 +53,6 @@ const showHeaderRoutes = [
   "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
-  "/Assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
   "/articulos/insertarArticulo",
@@ -65,7 +65,6 @@ const showHeaderRoutes = [
   "/inventarios/usuario",
   "/Bajadebien",
   "/articulos",
-  "/assignations",
   "/polizas",
   "/resguardoGeneral",
   "/recepcionSolicitudes",
@@ -85,7 +84,9 @@ const showHeaderRoutes = [
   "/almacen/hitorialSolicitudes",
   "/dictamenes",
   "/dictamenes/dajabien",
-  "/compras",
+  "/controlCompras",
+  "/controlCompras/compras",
+  "vista/finanzas"
 ];
 
 const routeTitles = {
@@ -100,7 +101,6 @@ const routeTitles = {
   "/solicitudMaterial": "Solicitar Material",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
-  "/Assignations": "Asignaciones",
   "/usuario/misBienes": "Bienes",
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
   "/articulos/:inventoryNumber": "Detalles del Artículo",
@@ -124,7 +124,9 @@ const routeTitles = {
   "/almacen/hitorialSolicitudes": "Historial Solicitudes",
   "/dictamenes": "Dictamenes",
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
-  "/compras": "Control de Compras",
+  "/controlCompras": "Control de Compras",
+  "/controlCompras/compras": "Compras",
+  "vista/finanzas":"Ver finanzas"
 };
 
 const App = () => {
@@ -165,7 +167,6 @@ const App = () => {
             <Route path="/solicitudMaterial" element={<MaterialRequest />} />
             <Route path="/usuario/nuevoUsuario" element={<User />} />
             <Route path="/facturas" element={<Bills />} />
-            <Route path="/assignations" element={<Assignations />} />
             <Route path="/usuario/misBienes" element={<Goods />} />
             <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
             <Route path="/usuario/editarUsuario" element={<EditUser />} />
@@ -211,7 +212,10 @@ const App = () => {
             />
             <Route path="/dictamenes" element={<Dictum />} />
             <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
-            <Route path="/compras" element={<ShoppingScreen />} />
+            <Route path="/controlCompras" element={<ShoppingScreen />} />
+            <Route path="/controlCompras/compras" element={<Shopping />} />
+            <Route path="/controlCompras/compras/" element={<Shopping />} />
+            <Route path="vista/finanzas" element={<FinanceView/>}/>
           </Routes>
         </UserProvider>
       </main>
