@@ -1,48 +1,49 @@
-import { useEffect, useContext } from "react";
-import { Routes, Route, useLocation, matchPath } from "react-router-dom";
-import { UserContext } from "./components/ObtenertipoUsuario";
+import { useContext, useEffect } from "react";
+import { matchPath, Route, Routes, useLocation } from "react-router-dom";
 import { UserProvider } from "./components/ContextUser";
-import Login from "./views/users/login";
-import Home from "./views/home/home";
-import InventoryControl from "./views/inventory/InventoryControl";
-import ArticleDetails from "./views/articles/ArticlesDetails"; // Importación correcta
-import Policy from "./views/articles/policy";
-import Invoice from "./views/articles/invoice";
-import User from "./views/users/formUser";
-import Header from "./components/Header";
-import Bills from "./views/articles/Bills";
-import StateofThegoods from "./views/StateofThegoods";
-import Assignations from "./views/Assignations";
-import Goods from "./views/articles/Goods";
-import SeeUser from "./views/users/seeUsers";
-import CreateArticle from "./views/articles/createArticle";
-import EditUser from "./views/users/editUser";
-import WerehouseScreen from "./views/werehouse/werehouseScreen";
-import InventoryScreen from "./views/inventory/inventoryScreen";
-import MaterialRequest from "./views/materialRequest/materialRequest";
-import DownArticle from "./views/articles/downArticle";
-import ArticleDelivery from "./views/deliveries/articleDelivery";
-import UserInventory from "./views/users/userInventory";
-import DeregistrationofMaterial from "./views/deregistrationofMaterial";
-import Articles from "./views/articles/Articles";
-import PolicyScreen from "./views/articles/policyScreen";
 import Footer from "./components/Footer";
-import Documentacion from "./views/documentacion/documentacion";
-import GeneralReceipt from "./views/inventory/generalReceipt";
-import WarehouseArticle from "./views/werehouse/warehouseArticle";
-import BillDetails from "./views/articles/BillDetails";
-import ReceptionRequests from "./views/materialRequest/receptionRequests";
-import StockOut from "./views/stockOut";
-import RequestforSupplies from "./views/RequestforSupplies";
-import PendingDeliveries from "./views/deliveries/pendingDeliveries";
-import PolicyDetail from "./views/articles/PolicyDetail";
-import StockEntry from "./views/werehouse/StockEntry";
-import SeelowWell from "./views/inventory/Seelowwell";
-import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
-import SeeSupplies from "./views/werehouse/seeSupplies";
+import Header from "./components/Header";
+import { UserContext } from "./components/ObtenertipoUsuario";
+import Articles from "./views/articles/Articles";
+import ArticleDetails from "./views/articles/ArticlesDetails";
+import CreateArticle from "./views/articles/createArticle";
 import Dictum from "./views/articles/Dictum";
+import DownArticle from "./views/articles/downArticle";
+import Goods from "./views/articles/Goods";
+import Invoice from "./views/articles/invoice";
 import Lowgoods from "./views/articles/lowgoods";
-import RequestHistory from "./views/requests/requestHistory";
+import Assignations from "./views/Assignations";
+import ArticleDelivery from "./views/deliveries/articleDelivery";
+import PendingDeliveries from "./views/deliveries/pendingDeliveries";
+import DeregistrationofMaterial from "./views/deregistrationofMaterial";
+import BillDetails from "./views/documentacion/BillDetails";
+import Bills from "./views/documentacion/Bills";
+import Documentacion from "./views/documentacion/documentacion";
+import Policy from "./views/documentacion/policy";
+import PolicyDetail from "./views/documentacion/PolicyDetail";
+import PolicyScreen from "./views/documentacion/policyScreen";
+import Home from "./views/home/home";
+import GeneralReceipt from "./views/inventory/generalReceipt";
+import InventoryControl from "./views/inventory/InventoryControl";
+import InventoryScreen from "./views/inventory/inventoryScreen";
+import SeelowWell from "./views/inventory/Seelowwell";
+import MaterialRequest from "./views/materialRequest/materialRequest";
+import ReceptionRequests from "./views/materialRequest/receptionRequests";
+import RequestforSuppliesGoods from "./views/RequestforSuppliersGoods";
+import RequestforSupplies from "./views/RequestforSupplies";
+import RequestHistory from "./views/materialRequest/requestHistory";
+import StockOut from "./views/stockOut";
+import EditUser from "./views/users/editUser";
+import User from "./views/users/formUser";
+import Login from "./views/users/login";
+import SeeUser from "./views/users/seeUsers";
+import UserInventory from "./views/users/userInventory";
+import SeeSupplies from "./views/werehouse/seeSupplies";
+import StockEntry from "./views/werehouse/StockEntry";
+import WarehouseArticle from "./views/werehouse/warehouseArticle";
+import WerehouseScreen from "./views/werehouse/werehouseScreen";
+import ShoppingScreen from "./views/shopping/shoppingScreen";
+
 
 const showHeaderRoutes = [
   "/inicio",
@@ -51,7 +52,6 @@ const showHeaderRoutes = [
   "/solicitudMaterial",
   "/usuario/nuevoUsuario",
   "/facturas",
-  "/stateOfThegoods",
   "/Assignations",
   "/usuario/misBienes",
   "/usuario/gestionUsuarios",
@@ -84,7 +84,8 @@ const showHeaderRoutes = [
   "/almacen/insumos",
   "/almacen/hitorialSolicitudes",
   "/dictamenes",
-  "/dictamenes/dajabien" 
+  "/dictamenes/dajabien",
+  "/compras",
 ];
 
 const routeTitles = {
@@ -99,7 +100,6 @@ const routeTitles = {
   "/solicitudMaterial": "Solicitar Material",
   "/usuario/nuevoUsuario": "Nuevo Usuario",
   "/facturas": "Facturas",
-  "/stateOfThegoods": "Estado de los Bienes",
   "/Assignations": "Asignaciones",
   "/usuario/misBienes": "Bienes",
   "/usuario/gestionUsuarios": "Gestión de Usuarios",
@@ -118,12 +118,13 @@ const routeTitles = {
   "/entregasPendientes": "Entregas Pendientes",
   "/entrada/existencias": "Entrada de Existencias",
   "/historial/bajas": "Historial de Bajas",
-  "verSolicitud/bien":"Ver la Solicitud del Bien",
+  "verSolicitud/bien": "Ver la Solicitud del Bien",
   "/articulos/articulo/:inventoryNumber": "Detalles del Artículo",
-  "/almacen/insumos":"Insumos del Almacen",
+  "/almacen/insumos": "Insumos del Almacen",
   "/almacen/hitorialSolicitudes": "Historial Solicitudes",
   "/dictamenes": "Dictamenes",
-  "/dictamenes/dajabien" : "Dictamen de Baja de Bien"
+  "/dictamenes/dajabien": "Dictamen de Baja de Bien",
+  "/compras": "Control de Compras",
 };
 
 const App = () => {
@@ -132,7 +133,6 @@ const App = () => {
 
   useEffect(() => {
     const currentRoute = location.pathname;
-    // Verifica rutas dinámicas para facturas
     const dynamicRoutes = [
       { path: "/facturas/:billNumber", title: "Detalles de Factura" },
       { path: "/articulos/:inventoryNumber", title: "Detalles del Artículo" },
@@ -157,47 +157,62 @@ const App = () => {
       {showHeader && <Header />}
       <main>
         <UserProvider>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={<Home userType={userType} />} />
-          <Route path="/almacen" element={<WerehouseScreen />} />
-          <Route path="/inventario" element={<InventoryScreen />} />
-          <Route path="/solicitudMaterial" element={<MaterialRequest />} />
-          <Route path="/usuario/nuevoUsuario" element={<User />} />
-          <Route path="/facturas" element={<Bills />} />
-          <Route path="/stateOfThegoods" element={<StateofThegoods />} />
-          <Route path="/assignations" element={<Assignations />} />
-          <Route path="/usuario/misBienes" element={<Goods />} />
-          <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
-          <Route path="/usuario/editarUsuario" element={<EditUser />} />
-          <Route path="/ControlInventario" element={<InventoryControl />} />
-          <Route path="/crearFactura" element={<Invoice />} />
-          <Route path="/crearPoliza" element={<Policy />} />
-          <Route path="/polizas" element={<PolicyScreen />} />
-          <Route path="/entregaArticulo" element={<ArticleDelivery />} />
-          <Route path="/inventarios/usuario" element={<UserInventory />} />
-          <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
-          <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
-          <Route path="/documentacion" element={<Documentacion />} />
-          <Route path="/recepcionSolicitudes" element={<ReceptionRequests />} />
-          <Route path="/SalidadeExistencia" element={<StockOut />} />
-          <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
-          <Route path="/entregasPendientes" element={<PendingDeliveries />} />
-          <Route path="/articulos/insertarArticulo" element={<CreateArticle />} />
-          <Route path="/articulos/bajaBien" element={<DownArticle />} />
-          <Route path="/articulos" element={<Articles />} />
-          <Route path="/articulos/almacen" element={<WarehouseArticle />} />
-          <Route path="/facturas/:billNumber" element={<BillDetails />} />
-          <Route path="/polizas/:policyId" element={<PolicyDetail />} />
-          <Route path="/entrada/existencias" element={<StockEntry />} />
-          <Route path="/historial/bajas" element={<SeelowWell />} />
-          <Route path="/verSolicitud/bien" element={<RequestforSuppliesGoods />} />
-          <Route path="/articulos/articulo/:inventoryNumber" element={<ArticleDetails />} /> 
-          <Route path="/almacen/insumos" element={<SeeSupplies />} />
-          <Route path="/almacen/hitorialSolicitudes" element={<RequestHistory />} />
-          <Route path="/dictamenes" element={<Dictum />} />
-          <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/inicio" element={<Home userType={userType} />} />
+            <Route path="/almacen" element={<WerehouseScreen />} />
+            <Route path="/inventario" element={<InventoryScreen />} />
+            <Route path="/solicitudMaterial" element={<MaterialRequest />} />
+            <Route path="/usuario/nuevoUsuario" element={<User />} />
+            <Route path="/facturas" element={<Bills />} />
+            <Route path="/assignations" element={<Assignations />} />
+            <Route path="/usuario/misBienes" element={<Goods />} />
+            <Route path="/usuario/gestionUsuarios" element={<SeeUser />} />
+            <Route path="/usuario/editarUsuario" element={<EditUser />} />
+            <Route path="/ControlInventario" element={<InventoryControl />} />
+            <Route path="/crearFactura" element={<Invoice />} />
+            <Route path="/crearPoliza" element={<Policy />} />
+            <Route path="/polizas" element={<PolicyScreen />} />
+            <Route path="/entregaArticulo" element={<ArticleDelivery />} />
+            <Route path="/inventarios/usuario" element={<UserInventory />} />
+            <Route path="/Bajadebien" element={<DeregistrationofMaterial />} />
+            <Route path="/resguardoGeneral" element={<GeneralReceipt />} />
+            <Route path="/documentacion" element={<Documentacion />} />
+            <Route
+              path="/recepcionSolicitudes"
+              element={<ReceptionRequests />}
+            />
+            <Route path="/SalidadeExistencia" element={<StockOut />} />
+            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+            <Route path="/entregasPendientes" element={<PendingDeliveries />} />
+            <Route
+              path="/articulos/insertarArticulo"
+              element={<CreateArticle />}
+            />
+            <Route path="/articulos/bajaBien" element={<DownArticle />} />
+            <Route path="/articulos" element={<Articles />} />
+            <Route path="/articulos/almacen" element={<WarehouseArticle />} />
+            <Route path="/facturas/:billNumber" element={<BillDetails />} />
+            <Route path="/polizas/:policyId" element={<PolicyDetail />} />
+            <Route path="/entrada/existencias" element={<StockEntry />} />
+            <Route path="/historial/bajas" element={<SeelowWell />} />
+            <Route
+              path="/verSolicitud/bien"
+              element={<RequestforSuppliesGoods />}
+            />
+            <Route
+              path="/articulos/articulo/:inventoryNumber"
+              element={<ArticleDetails />}
+            />
+            <Route path="/almacen/insumos" element={<SeeSupplies />} />
+            <Route
+              path="/almacen/hitorialSolicitudes"
+              element={<RequestHistory />}
+            />
+            <Route path="/dictamenes" element={<Dictum />} />
+            <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
+            <Route path="/compras" element={<ShoppingScreen />} />
+          </Routes>
         </UserProvider>
       </main>
       <Footer />

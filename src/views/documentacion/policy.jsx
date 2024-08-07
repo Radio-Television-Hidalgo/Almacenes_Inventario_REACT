@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Modal from "../articles/ModalPolicy";
+import React, { useState } from "react";
 import "../../styles/policy.css";
+import Modal from "../articles/ModalPolicy";
 
 function Policy() {
   const [formData, setFormData] = useState({
