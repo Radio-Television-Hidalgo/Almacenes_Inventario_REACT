@@ -93,7 +93,7 @@ function GeneralReceipt() {
               <td>
                 <QRCode
                   className="qr-codes"
-                  value={article.QR}
+                  value={article.name}
                   size={64} // Ajusta el tamaño del QR
                 />
               </td>
@@ -183,7 +183,7 @@ function GeneralReceipt() {
               <div className="modal-header-gr">
               <QRCode
                 className="qr-code"
-                value={selectedArticle.QR}
+                value={selectedArticle.name}
                 size={128} // Ajusta el tamaño del QR en el modal
               />
             </div>
