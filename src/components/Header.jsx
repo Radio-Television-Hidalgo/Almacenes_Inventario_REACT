@@ -300,7 +300,6 @@ const Header = () => {
                   <div className="dropdown-menu">
                     <Link to="/crearFactura" className="dropdown-item">Crear facturas</Link>
                     <Link to="/facturas" className="dropdown-item">Ver facturas </Link>
-                    <Link to="/crearPoliza" className="dropdown-item">Crear pólizas </Link>
                     <Link to="/polizas" className="dropdown-item">Ver pólizas </Link>
                   </div>
                 </div>
