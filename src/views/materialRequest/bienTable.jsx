@@ -40,7 +40,7 @@ function BienTable() {
         placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
-        className="search-input"
+        className="search-inputs"
       />
       <table className="style-table">
         <thead>
