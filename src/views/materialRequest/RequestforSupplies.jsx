@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import QRCode from "react-qr-code";
 import React from 'react';
 import "../../styles/RequestforSupplies.css";
 
 function RequestforSupplies() {
-  const [datos, setDatos] = useState([]);
+  const [datosI, setDatosI] = useState([]);
+  const [datosB, setDatosB] = useState([]);
+  const [insumosData, setInsumosData] = useState(true);
   const [modalData, setModalData] = useState(null);
   const [successModal, setSuccessModal] = useState(false);
   const [rejectModal, setRejectModal] = useState({ show: false, id: null });
 
-  const fetchDatos = () => {
+  const fetchDatosI = () => {
     fetch("/api/solicitud/solicitudesInsumos")
       .then((response) => {
         if (!response.ok) {
@@ -18,7 +21,24 @@ function RequestforSupplies() {
       })
       .then((data) => {
         console.log(data);
-        setDatos(data);
+        setDatosI(data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar los datos", error);
+      });
+  };
+
+  const fetchDatosB = () => {
+    fetch("/api/solicitud/solicitudesBienes")
+      .then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al cargar los datos: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setDatosB(data);
       })
       .catch((error) => {
         console.error("Error al cargar los datos", error);
@@ -26,7 +46,8 @@ function RequestforSupplies() {
   };
 
   useEffect(() => {
-    fetchDatos();
+    fetchDatosI();
+    fetchDatosB();
   }, []);
 
   const handleAcept = async (event, id) => {
@@ -96,8 +117,26 @@ function RequestforSupplies() {
     setModalData(null);
   };
 
+  const showInsumos = () =>{
+    setInsumosData(true);
+  }
+
+  const showBienes = () =>{
+    setInsumosData(false);
+  }
+
   return (
     <div className="request-for-supplies-container">
+      <h1>Planeación</h1>
+      <button onClick={showInsumos}>Solicitudes de Insumos</button>
+      <button onClick={showBienes}>Solicitudes de Bienes</button>
+      {insumosData && (
+      <h2>Solicitudes de Insumos</h2>
+      )}
+      {!insumosData && (
+      <h2>Solicitudes de Bienes</h2>
+      )}
+      {insumosData &&(
       <table className="request-for-supplies-table">
         <thead>
           <tr>
@@ -111,7 +150,7 @@ function RequestforSupplies() {
           </tr>
         </thead>
         <tbody>
-          {datos.map((dato) => (
+          {datosI.map((dato) => (
             <tr key={dato.id} className="request-for-supplies-row">
               <td className="request-for-supplies-cell"> {dato.requestingUser.name} </td>
               <td className="request-for-supplies-cell"> {dato.requestArticle.name} </td>
@@ -129,6 +168,41 @@ function RequestforSupplies() {
           ))}
         </tbody>
       </table>
+      )}
+
+      {!insumosData && (
+        <table className="request-for-supplies-table">
+        <thead>
+          <tr>
+            <th className="request-for-supplies-header">Solicita</th>
+            <th className="request-for-supplies-header">Artículo</th>
+            <th className="request-for-supplies-header">Cantidad</th>
+            <th className="request-for-supplies-header">Descripción de solicitud</th>
+            <th className="request-for-supplies-header">Estatus de solicitud</th>
+            <th className="request-for-supplies-header">Solicitud Completa</th>
+            <th className="request-for-supplies-header">Opciones de continuación</th>
+          </tr>
+        </thead>
+        <tbody>
+          {datosB.map((dato) => (
+            <tr key={dato.id} className="request-for-supplies-row">
+              <td className="request-for-supplies-cell"> {dato.requestingUser.name} </td>
+              <td className="request-for-supplies-cell"> {dato.requestArticle.name} </td>
+              <td className="request-for-supplies-cell"> {dato.quantity} </td>
+              <td className="request-for-supplies-cell"> {dato.description} </td>
+              <td className="request-for-supplies-cell"> {dato.status} </td>
+              <td className="request-for-supplies-cell"> <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
+              <td className="request-for-supplies-cell">
+                <div className="request-for-supplies-button-container">
+                  <button onClick={(event) => handleAcept(event, dato.id)} className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
+                  <button onClick={(event) => handleReject(event, dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      )}
 
       {modalData && (
         <div className="glass-modal-overlay">
@@ -144,7 +218,7 @@ function RequestforSupplies() {
               
               <p><strong>Artículo:</strong> {modalData.requestArticle.name}</p>
               <p><strong>Descripción:</strong> {modalData.requestArticle.description}</p>
-              <p><strong>QR:</strong> {modalData.requestArticle.QR}</p>
+              <p><strong>QR:</strong> <QRCode className="qr-code" value={modalData.requestArticle.QR} /> </p>
               <hr />
               <div className="glass-modal-details">
                 <div className="glass-modal-detail brand"><strong>Marca:</strong> {modalData.requestArticle.brand}</div>
