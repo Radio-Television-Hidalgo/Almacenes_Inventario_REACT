@@ -61,7 +61,7 @@ function Goods() {
               <td>{dato.inventoryNumber}</td>
               <td>
                 <img
-                  src={`/api/uploads/${dato.photos_entry}` ? `/api/uploads/${dato.photos_entry}`.split(",")[0] : ""}
+                  src={`  /api/uploads/${dato.photos_entry}` ? `/api/uploads/${dato.photos_entry}`.split(",")[0] : ""}
                   alt={`Foto de ${dato.articleName}`}
                   width="100"
                 />
