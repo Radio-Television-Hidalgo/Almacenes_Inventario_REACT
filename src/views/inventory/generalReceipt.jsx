@@ -11,12 +11,11 @@ function GeneralReceipt() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
   const [fullscreenSrc, setFullscreenSrc] = useState(null);
 
-  // Realiza la petición para obtener los artículos
   useEffect(() => {
-    fetch("/api/articulos/articulos") // Asegúrate que esta URL es correcta
+    fetch("/api/articulos/articulos")
       .then((response) => response.json())
       .then((data) => setArticles(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -25,7 +24,7 @@ function GeneralReceipt() {
   const openModal = (article) => {
     setSelectedArticle(article);
     setModalIsOpen(true);
-    setCurrentSlide(0); // Reset the slide index when opening the modal
+    setCurrentSlide(0);
   };
 
   const closeModal = () => {
@@ -52,13 +51,13 @@ function GeneralReceipt() {
   };
 
   const sortTable = (column) => {
-    // Aquí puedes implementar la lógica de ordenamiento
     console.log(`Sorting by ${column}`);
   };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
   const filteredArticles = articles.filter((article) =>
     article.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -93,8 +92,10 @@ function GeneralReceipt() {
               <td>
                 <QRCode
                   className="qr-codes"
-                  value={article.name}
-                  size={64} // Ajusta el tamaño del QR
+
+                  value={article.QR}
+                  size={64}
+
                 />
               </td>
               <td className="button-container">
@@ -111,89 +112,106 @@ function GeneralReceipt() {
       </table>
 
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Detalles del Artículo"
-        className="modal-gr"
-        overlayClassName="overlay-gr"
-      >
-        <button onClick={closeModal} className="close-button-gr">
-          ×
-        </button>
-        {selectedArticle && (
-          <div className="modal-content-gr">
-            <div className="modal-body-gr">
-            <div className="carousel-container-gr">
-                {selectedArticle.photos_entry && (
-                  <div className="carousel-gr">
-                    {selectedArticle.photos_entry
-                      .split(",")
-                      .map((photo, index) => (
-                        <div
-                          key={index}
-                          className="carousel-slide-gr"
-                          style={{
-                            display: currentSlide === index ? "block" : "none",
-                          }}
-                        >
-                          <img
-                            src={`/api/uploads/${photo}`}
-                            alt={`Foto ${index + 1}`}
-                            className="carousel-photo-gr"
-                            onClick={() => openFullscreen(`/api/uploads/${photo}`)}
-                          />
-                        </div>
-                      ))}
-                  </div>
-                )}
-                <button className="carousel-prev-gr" onClick={() => moveSlide(-1)}>
-                  ‹
-                </button>
-                <button className="carousel-next-gr" onClick={() => moveSlide(1)}>
-                  ›
-                </button>
-                
+  isOpen={modalIsOpen}
+  onRequestClose={closeModal}
+  contentLabel="Detalles del Artículo"
+  className="modal-gr"
+  overlayClassName="overlay-gr"
+>
+  <button onClick={closeModal} className="close-button-gr">
+    &times;
+  </button>
+  {selectedArticle && (
+    <div className="modal-content-gr">
+      {selectedArticle.photos_entry && (
+        <div className="carousel-container-gr">
+          <div
+            className="carousel-gr"
+            style={{
+              transform: `translateX(-${currentSlide * 100}%)`,
+            }}
+          >
+            {selectedArticle.photos_entry.split(",").map((photo, index) => (
+              <div key={index} className="carousel-slide-gr">
+                <div className="carousel-image-container">
+                  <img
+                    src={`/api/uploads/${photo}`}
+                    alt={`Slide ${index}`}
+                    className="carousel-photo-gr"
+                    onClick={() => openFullscreen(`/api/uploads/${photo}`)}
+                  />
+                </div>
               </div>
-              <h2>{selectedArticle.name}</h2>
-              <p>
-                <strong>Marca:</strong> {selectedArticle.brand}
-              </p>
-              <p>
-                <strong>Fecha de Adquisición:</strong>{" "}
-                {selectedArticle.acquisition_date}
-              </p>
-              <p>
-                <strong>Número de Serie:</strong>{" "}
-                {selectedArticle.number_series}
-              </p>
-              <p>
-                <strong>Estado:</strong> {selectedArticle.status}
-              </p>
-              <p>
-                <strong>Descripción:</strong> {selectedArticle.description}
-              </p>
-              <p>
-                <strong>Características:</strong>{" "}
-                {selectedArticle.caracteristics}
-              </p>
-              <p>
-                <strong>Tipo:</strong> {selectedArticle.type}
-              </p>
-              
-              <div className="modal-header-gr">
-              <QRCode
-                className="qr-code"
-                value={selectedArticle.name}
-                size={128} // Ajusta el tamaño del QR en el modal
-              />
-            </div>
-            </div>
+
+            ))}
           </div>
-        )}
-      </Modal>
+          <button
+            className="carousel-prev-gr"
+            onClick={() => moveSlide(-1)}
+          >
+            &#10094;
+          </button>
+          <button
+            className="carousel-next-gr"
+            onClick={() => moveSlide(1)}
+          >
+            &#10095;
+          </button>
+        </div>
+      )}
+      
+      <div className="modal-body-gr">
+        <div className="text-container">
+          <div className="text-item name">
+            <strong>Nombre:</strong> {selectedArticle.name}
+          </div>
+          <div className="text-item brand">
+            <strong>Marca:</strong> {selectedArticle.brand}
+          </div>
+          <div className="text-item series">
+            <strong>Serie:</strong> {selectedArticle.number_series}
+          </div>
+          <div className="text-item model">
+            <strong>Modelo:</strong> {selectedArticle.model}
+
+          </div>
+          <div className="text-item">
+            <strong>Fecha de Adquisición:</strong>{" "}
+            {selectedArticle.acquisition_date}
+          </div>
+          <div className="text-item">
+            <strong>Estado:</strong> {selectedArticle.status}
+          </div>
+          <div className="text-item">
+            <strong>Descripción:</strong> {selectedArticle.description}
+          </div>
+          <div className="text-item">
+            <strong>Características:</strong>{" "}
+            {selectedArticle.caracteristics}
+          </div>
+          <div className="text-item">
+            <strong>Tipo:</strong> {selectedArticle.type}
+          </div>
+        </div>
+      </div>
+      <div className="qr-container">
+        <QRCode
+          className="qr-code"
+          value={selectedArticle.QR}
+          size={100}
+        />
+      </div>
+    </div>
+  )}
+</Modal>
+
       {fullscreenSrc && (
         <div className="fullscreen-overlay" onClick={closeFullscreen}>
-          <img src={fullscreenSrc} className="fullscreen-image" alt="Fullscreen" />
+          <img
+            src={fullscreenSrc}
+            alt="Fullscreen"
+            className="fullscreen-image"
+          />
         </div>
       )}
     </div>
