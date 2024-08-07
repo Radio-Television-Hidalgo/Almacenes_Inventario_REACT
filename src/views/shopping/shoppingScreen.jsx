@@ -5,7 +5,7 @@ function ShoppingScreen() {
   return (
     <div>
       <div>
-        <Link to="/solicitudMaterial">
+        <Link to="/controlCompras/compras">
           <h1>Compras</h1>
         </Link>
       </div>

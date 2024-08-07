@@ -43,6 +43,7 @@ import StockEntry from "./views/werehouse/StockEntry";
 import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import ShoppingScreen from "./views/shopping/shoppingScreen";
+import Shopping from "./views/shopping/shopping";
 
 
 const showHeaderRoutes = [
@@ -85,7 +86,8 @@ const showHeaderRoutes = [
   "/almacen/hitorialSolicitudes",
   "/dictamenes",
   "/dictamenes/dajabien",
-  "/compras",
+  "/controlCompras",
+  "/controlCompras/compras",
 ];
 
 const routeTitles = {
@@ -124,7 +126,8 @@ const routeTitles = {
   "/almacen/hitorialSolicitudes": "Historial Solicitudes",
   "/dictamenes": "Dictamenes",
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
-  "/compras": "Control de Compras",
+  "/controlCompras": "Control de Compras",
+  "/controlCompras/compras": "Compras",
 };
 
 const App = () => {
@@ -211,7 +214,9 @@ const App = () => {
             />
             <Route path="/dictamenes" element={<Dictum />} />
             <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
-            <Route path="/compras" element={<ShoppingScreen />} />
+            <Route path="/controlCompras" element={<ShoppingScreen />} />
+            <Route path="/controlCompras/compras" element={<Shopping />} />
+            <Route path="/controlCompras/compras/" element={<Shopping />} />
           </Routes>
         </UserProvider>
       </main>

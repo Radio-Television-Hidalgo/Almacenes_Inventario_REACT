@@ -155,7 +155,7 @@ function Home() {
             </Link>
           )}
           {userType !== "compras" && (
-            <Link to="/compras" className="home-card">
+            <Link to="/controlCompras" className="home-card">
               {userType !== "almacen" && (
                 <div className="home-content">
                   <svg
