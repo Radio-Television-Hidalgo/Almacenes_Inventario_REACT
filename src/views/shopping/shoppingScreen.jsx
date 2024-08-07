@@ -30,6 +30,11 @@ function ShoppingScreen() {
           <h1>Planeación</h1>
         </Link>
       </div>
+      <div>
+        <Link to="/vista/finanzas">
+          <h1>Vista finanzas</h1>
+        </Link>
+      </div>
     </div>
   );
 }
