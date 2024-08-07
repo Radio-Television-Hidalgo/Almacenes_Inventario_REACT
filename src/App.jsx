@@ -44,6 +44,7 @@ import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import ShoppingScreen from "./views/shopping/shoppingScreen";
 import Shopping from "./views/shopping/shopping";
 import FinanceView from "./views/shopping/financeView";
+import ShoppingForm from "./views/shopping/shoppingForm";
 
 
 const showHeaderRoutes = [
@@ -215,8 +216,8 @@ const App = () => {
             <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
             <Route path="/controlCompras" element={<ShoppingScreen />} />
             <Route path="/controlCompras/compras" element={<Shopping />} />
-            <Route path="/controlCompras/compras/" element={<Shopping />} />
-            <Route path="vista/finanzas" element={<FinanceView/>}/>
+            <Route path="/controlCompras/compras/" element={<ShoppingForm />} />
+            <Route path="/vista/finanzas" element={<FinanceView/>}/>
           </Routes>
         </UserProvider>
       </main>
