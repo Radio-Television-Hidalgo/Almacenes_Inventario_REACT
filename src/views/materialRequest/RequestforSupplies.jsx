@@ -144,6 +144,7 @@ function RequestforSupplies() {
             <th className="request-for-supplies-header">Artículo</th>
             <th className="request-for-supplies-header">Cantidad</th>
             <th className="request-for-supplies-header">Descripción de solicitud</th>
+            <th className="request-for-supplies-header">Proyecto Afectado</th>
             <th className="request-for-supplies-header">Estatus de solicitud</th>
             <th className="request-for-supplies-header">Solicitud Completa</th>
             <th className="request-for-supplies-header">Opciones de continuación</th>
@@ -156,6 +157,7 @@ function RequestforSupplies() {
               <td className="request-for-supplies-cell"> {dato.requestArticle.name} </td>
               <td className="request-for-supplies-cell"> {dato.quantity} </td>
               <td className="request-for-supplies-cell"> {dato.description} </td>
+              <td className="request-for-supplies-cell"> {dato.project_type} </td>
               <td className="request-for-supplies-cell"> {dato.status} </td>
               <td className="request-for-supplies-cell"> <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
               <td className="request-for-supplies-cell">
@@ -178,6 +180,7 @@ function RequestforSupplies() {
             <th className="request-for-supplies-header">Artículo</th>
             <th className="request-for-supplies-header">Cantidad</th>
             <th className="request-for-supplies-header">Descripción de solicitud</th>
+            <th className="request-for-supplies-header">Proyecto Afectado</th>
             <th className="request-for-supplies-header">Estatus de solicitud</th>
             <th className="request-for-supplies-header">Solicitud Completa</th>
             <th className="request-for-supplies-header">Opciones de continuación</th>
@@ -190,6 +193,7 @@ function RequestforSupplies() {
               <td className="request-for-supplies-cell"> {dato.requestArticle.name} </td>
               <td className="request-for-supplies-cell"> {dato.quantity} </td>
               <td className="request-for-supplies-cell"> {dato.description} </td>
+              <td className="request-for-supplies-cell"> {dato.project_type} </td>
               <td className="request-for-supplies-cell"> {dato.status} </td>
               <td className="request-for-supplies-cell"> <button onClick={() => handleViewMore(dato)} className="request-for-supplies-button request-for-supplies-view-button">Ver solicitud</button> </td>
               <td className="request-for-supplies-cell">
