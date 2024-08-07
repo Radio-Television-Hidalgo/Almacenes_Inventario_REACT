@@ -1,0 +1,65 @@
+/* Estilo para el contenedor del formulario */
+.shopping-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Ajusta según la altura de tu header */
+    
+    box-sizing: border-box;
+    margin-top: 10px;/* Ajusta según la altura de tu header */
+  }
+  
+  /* Estilo para el formulario */
+  .shopping-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 90%;
+  }
+  
+  /* Estilo para la cuadrícula del formulario */
+  .shopping-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Estilo para los grupos de formulario */
+  .shopping-form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilo para las etiquetas del formulario */
+  .shopping-label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilo para los inputs del formulario */
+  .shopping-input,
+  .shopping-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Estilo para el botón de envío */
+  .shopping-button {
+    background-color: #691b31;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .shopping-button:hover {
+    background-color: #500f23;
+  }
+  
