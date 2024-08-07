@@ -137,7 +137,7 @@ const Header = () => {
         return 'Control de dictamenes';
       case '/almacen/insumos':
         return 'Insumos';
-      case '/compras':
+      case '/controlCompras':
         return 'Compras';
       case '/almacen/hitorialSolicitudes':
         return 'Historial de solicitudes';

@@ -71,7 +71,7 @@ const showHeaderRoutes = [
   "/recepcionSolicitudes",
   "/SalidadeExistencia",
   "/articulos/almacen",
-  "/solicitudInsumos",
+  "/planeacion",
   "/documentacion",
   "/articulos/insertararticulo",
   "/entregasPendientes",
@@ -127,7 +127,8 @@ const routeTitles = {
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
   "/controlCompras": "Control de Compras",
   "/controlCompras/compras": "Compras",
-  "vista/finanzas":"Ver finanzas"
+  "vista/finanzas":"Ver finanzas",
+  "/planeacion": "Planeacion"
 };
 
 const App = () => {
@@ -185,7 +186,7 @@ const App = () => {
               element={<ReceptionRequests />}
             />
             <Route path="/SalidadeExistencia" element={<StockOut />} />
-            <Route path="/solicitudInsumos" element={<RequestforSupplies />} />
+            <Route path="/planeacion" element={<RequestforSupplies />} />
             <Route path="/entregasPendientes" element={<PendingDeliveries />} />
             <Route
               path="/articulos/insertarArticulo"
