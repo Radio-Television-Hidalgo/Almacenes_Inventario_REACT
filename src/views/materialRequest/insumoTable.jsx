@@ -33,19 +33,19 @@ function InsumoTable() {
   );
 
   return (
-    <div>
+    <div className="custom-table-container">
       <input
         type="text"
         placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
-        className="search-input"
+        className="custom-search-input"
       />
-      <table className="style-table">
+      <table className="custom-style-table">
         <thead>
           <tr>
             <th>Nombre</th>
-            <th className="th-descripcion">Descripción</th>
+            <th className="custom-th-descripcion">Descripción</th>
             <th>Cantidad</th>
             <th>Número de Almacén</th>
             <th>Foto</th>
@@ -73,11 +73,7 @@ function InsumoTable() {
                       key={index}
                       src={`/api/uploads/${photo}`}
                       alt="Foto del insumo"
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        marginRight: "5px",
-                      }}
+                      className="custom-photo"
                     />
                   ))}
               </td>
