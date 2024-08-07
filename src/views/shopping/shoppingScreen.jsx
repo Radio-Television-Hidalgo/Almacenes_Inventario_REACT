@@ -13,7 +13,7 @@ function ShoppingScreen() {
 </svg>
           <h1>Compras</h1>
         </Link>
-      </div>
+      
       <div>
         <Link to="/vista/finanzas" className="shopping-card shopping-card-right">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
@@ -21,6 +21,7 @@ function ShoppingScreen() {
 </svg>
           <h1>Finanzas</h1>
         </Link>
+      </div>
       </div>
       <div className="shopping-row">
         <Link to="/solicitudMaterial" className="shopping-card">
