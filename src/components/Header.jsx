@@ -149,9 +149,7 @@ const Header = () => {
       if (matchPath('/articulos/articulo/:inventoryNumber', path)) {
         return 'Detalles del articulo';
       }
-      
       return '';
-      
     }
   };
 
@@ -331,6 +329,7 @@ const Header = () => {
                 <Link to="/documentacion">Documentación</Link>
                 {/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
+                <Link onClick={handleAvatarClick}>Ver perfil</Link>
               </>
             )}
             <a href="#" onClick={openLogoutModal} disabled={isLoggingOut}>
