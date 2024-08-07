@@ -86,93 +86,6 @@
   transition: transform 0.3s ease;
 }
 
-
-
-.modal {
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
-  position: relative;
-  z-index: 1050;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.close-button {
-  border: none;
-  background: none;
-  font-size: 28px;
-  font-weight: bold;
-  color: #aaa;
-  cursor: pointer;
-  float: right;
-}
-
-.close-button:hover {
-  color: black;
-}
-
-.modal-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.modal-body {
-  text-align: center;
-}
-
-.carousel-container {
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.carousel {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.carousel-slide {
-  min-width: 100%;
-}
-
-.carousel-photo {
-  width: 100%;
-  height: auto;
-}
-
-.carousel-prev, .carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 2;
-}
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
 .search-input{
   display: inline-block; /* Para que se comporte como un botón */
 
@@ -187,4 +100,175 @@
   cursor: pointer; /* Cursor de puntero */
   transition: background-color 0.3s, transform 0.3s; /* Transiciones para hover */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+
+/*Estilos para el modal*/
+.modal-gr {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border: none;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1050;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.5s ease-in-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay-gr {
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: overlayFadeIn 0.5s ease-in-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.close-button-gr {
+  border: none;
+  background: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.close-button-gr:hover {
+  color: black;
+}
+
+.modal-header-gr {
+  background-color: #691B31;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 20px 20px 0 0;
+}
+
+.qr-code {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+  transform: scale(1.2);
+}
+
+.modal-content-gr {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.modal-body-gr {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-container-gr {
+  position: relative;
+  width: 100%;
+  right: -5px;
+  overflow: hidden;
+}
+
+.carousel-gr {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  transition: transform  0.5s ease;
+}
+
+.carousel-slide-gr {
+  min-width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.carousel-photo-gr {
+  width: 50%;
+  height: 300px;
+  margin-top: -10px;
+  
+  transition: transform 0.3s ease;
+  
+}
+
+.carousel-photo-gr:hover {
+  transform: scale(1.1);
+}
+
+.carousel-prev-gr, .carousel-next-gr {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.carousel-prev-gr {
+  left: 10px;
+}
+
+.carousel-next-gr {
+  right: 10px;
+}
+
+/* Fullscreen overlay for images */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  z-index: 1100;
+}
+
+.fullscreen-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
 }
