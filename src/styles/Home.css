@@ -169,7 +169,7 @@ h2{
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 65px;
-  width: 117%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
+  width: 211%; /* Asegura que la tarjeta ocupe todo el ancho disponible */
   height: 90%; /* Asegura que la tarjeta ocupe toda la altura disponible */
   transition: transform 0.3s, box-shadow 0.3s;
   font-family: 'Poppins', sans-serif;

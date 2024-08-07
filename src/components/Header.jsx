@@ -11,7 +11,7 @@ const Header = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [userInfo, setUserInfo] = useState(null); // Estado para almacenar la información del usuario
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal de perfil
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768); // Estado para controlar el tamaño de pantalla
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1000); // Estado para controlar el tamaño de pantalla
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // Estado para controlar el modal de confirmación de logout
   const navigate = useNavigate();
   const location = useLocation(); // Hook para obtener la ubicación actual
@@ -137,6 +137,8 @@ const Header = () => {
         return 'Control de dictamenes';
       case '/almacen/insumos':
         return 'Insumos';
+      case '/compras':
+        return 'Compras';
       case '/almacen/hitorialSolicitudes':
         return 'Historial de solicitudes';
       default: 
@@ -253,7 +255,7 @@ const Header = () => {
             {isLargeScreen ? (
               <>
                 <Link to="/inicio" className="dropdown-toggle">
-                  Inicio
+                  Inicioss
                 </Link>
 
                 {/*                <Link to="/stateOfThegoods">Estado de los productos</Link>           */}
@@ -302,7 +304,7 @@ const Header = () => {
                   </div>
                 </div>
               )}
-             
+             <Link to="/compras">Compras</Link>
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
                 {userType !== 'comun' && userType !== 'rh' &&(
@@ -328,7 +330,9 @@ const Header = () => {
                 <Link to="/documentacion">Documentación</Link>
                 {/*                <Link to="/assignations">Asignaciones</Link>         */}
                 <Link to="/inventario">Inventario</Link>
+                <Link to="/compras">Compras</Link>
                 <Link onClick={handleAvatarClick}>Ver perfil</Link>
+
               </>
             )}
             <a href="#" onClick={openLogoutModal} disabled={isLoggingOut}>
