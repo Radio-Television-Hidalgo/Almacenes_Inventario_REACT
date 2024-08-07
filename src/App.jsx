@@ -18,9 +18,9 @@ import DeregistrationofMaterial from "./views/deregistrationofMaterial";
 import BillDetails from "./views/documentacion/BillDetails";
 import Bills from "./views/documentacion/Bills";
 import Documentacion from "./views/documentacion/documentacion";
-import Policy from "./views/documentacion/policy";
+import Policy from "./views/shopping/policy";
 import PolicyDetail from "./views/documentacion/PolicyDetail";
-import PolicyScreen from "./views/documentacion/policyScreen";
+import PolicyScreen from "./views/shopping/policyScreen";
 import Home from "./views/home/home";
 import GeneralReceipt from "./views/inventory/generalReceipt";
 import InventoryControl from "./views/inventory/InventoryControl";
@@ -43,6 +43,7 @@ import WarehouseArticle from "./views/werehouse/warehouseArticle";
 import WerehouseScreen from "./views/werehouse/werehouseScreen";
 import ShoppingScreen from "./views/shopping/shoppingScreen";
 import Shopping from "./views/shopping/shopping";
+import FinanceView from "./views/shopping/financeView";
 
 
 const showHeaderRoutes = [
@@ -85,6 +86,7 @@ const showHeaderRoutes = [
   "/dictamenes/dajabien",
   "/controlCompras",
   "/controlCompras/compras",
+  "vista/finanzas"
 ];
 
 const routeTitles = {
@@ -124,6 +126,7 @@ const routeTitles = {
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
   "/controlCompras": "Control de Compras",
   "/controlCompras/compras": "Compras",
+  "vista/finanzas":"Ver finanzas"
 };
 
 const App = () => {
@@ -212,6 +215,7 @@ const App = () => {
             <Route path="/controlCompras" element={<ShoppingScreen />} />
             <Route path="/controlCompras/compras" element={<Shopping />} />
             <Route path="/controlCompras/compras/" element={<Shopping />} />
+            <Route path="vista/finanzas" element={<FinanceView/>}/>
           </Routes>
         </UserProvider>
       </main>
