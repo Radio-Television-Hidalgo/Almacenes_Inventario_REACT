@@ -10,7 +10,7 @@ function ShoppingScreen() {
         </Link>
       </div>
       <div>
-        <Link to="/solicitudMaterial">
+        <Link to="/vista/finanzas">
           <h1>Finanzas</h1>
         </Link>
       </div>
@@ -19,11 +19,7 @@ function ShoppingScreen() {
           <h1>Planeacion</h1>
         </Link>
       </div>
-      <div>
-        <Link to="/vista/finanzas">
-          <h1>Vista finanzas</h1>
-        </Link>
-      </div>
+     
     </div>
   );
 }
