@@ -227,6 +227,17 @@ function RequestforSupplies() {
              
             </div>
           </div>
+          <div className="glass-modal">
+            <span className="glass-close-button" onClick={closeModal}>&times;</span>
+            <div className="glass-modal-content">
+              <iframe
+                src={`/api/request/${modalData.file}`}
+                title="PDF de Solicitud"
+              >
+                PDF
+              </iframe>
+            </div>
+          </div>
         </div>
       )}
 
