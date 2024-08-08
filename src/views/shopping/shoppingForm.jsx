@@ -44,7 +44,7 @@ function ShoppingForm() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/shopping", data);
+      const response = await axios.post("/api/shopping", data);
       console.log("Success:", response.data);
       setModalVisible(true);
     } catch (error) {
