@@ -141,6 +141,8 @@ const Header = () => {
         return 'Compras';
       case '/almacen/hitorialSolicitudes':
         return 'Historial de solicitudes';
+      case '/planeacion':
+        return 'Planeacion'
       default: 
         if (matchPath('/facturas/:billNumber', path)) {
         return 'Información de factura';

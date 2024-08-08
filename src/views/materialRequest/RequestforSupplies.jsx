@@ -127,9 +127,9 @@ function RequestforSupplies() {
 
   return (
     <div className="request-for-supplies-container">
-      <h1>Planeación</h1>
-      <button onClick={showInsumos}>Solicitudes de Insumos</button>
-      <button onClick={showBienes}>Solicitudes de Bienes</button>
+     
+      <button className="soli" onClick={showInsumos}>Solicitudes de Insumos</button>
+      <button className="soli" onClick={showBienes}>Solicitudes de Bienes</button>
       {insumosData && (
       <h2>Solicitudes de Insumos</h2>
       )}
