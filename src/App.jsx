@@ -46,7 +46,6 @@ import Shopping from "./views/shopping/shopping";
 import FinanceView from "./views/shopping/financeView";
 import ShoppingForm from "./views/shopping/shoppingForm";
 
-
 const showHeaderRoutes = [
   "/inicio",
   "/almacen",
@@ -87,7 +86,8 @@ const showHeaderRoutes = [
   "/dictamenes/dajabien",
   "/controlCompras",
   "/controlCompras/compras",
-  "vista/finanzas"
+  "/controlCompras/solicitudes",
+  "vista/finanzas",
 ];
 
 const routeTitles = {
@@ -126,9 +126,10 @@ const routeTitles = {
   "/dictamenes": "Dictamenes",
   "/dictamenes/dajabien": "Dictamen de Baja de Bien",
   "/controlCompras": "Control de Compras",
+  "/controlCompras/solicitudes": "Solicitudes de Compra",
   "/controlCompras/compras": "Compras",
-  "vista/finanzas":"Ver finanzas",
-  "/planeacion": "Planeacion"
+  "vista/finanzas": "Ver finanzas",
+  "/planeacion": "Planeacion",
 };
 
 const App = () => {
@@ -215,9 +216,9 @@ const App = () => {
             <Route path="/dictamenes" element={<Dictum />} />
             <Route path="/dictamenes/dajabien" element={<Lowgoods />} />
             <Route path="/controlCompras" element={<ShoppingScreen />} />
-            <Route path="/controlCompras/compras" element={<Shopping />} />
+            <Route path="/controlCompras/solicitudes" element={<Shopping />} />
             <Route path="/controlCompras/compras/" element={<ShoppingForm />} />
-            <Route path="/vista/finanzas" element={<FinanceView/>}/>
+            <Route path="/vista/finanzas" element={<FinanceView />} />
           </Routes>
         </UserProvider>
       </main>
