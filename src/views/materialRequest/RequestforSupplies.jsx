@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import React from 'react';
+import axios from "axios";
 import "../../styles/RequestforSupplies.css";
 
 function RequestforSupplies() {
@@ -9,7 +10,8 @@ function RequestforSupplies() {
   const [insumosData, setInsumosData] = useState(true);
   const [modalData, setModalData] = useState(null);
   const [successModal, setSuccessModal] = useState(false);
-  const [rejectModal, setRejectModal] = useState({ show: false, id: null });
+  const [rejectModal, setRejectModal] = useState(false);
+  const [rejectData, setRejectData] = useState([]);
 
   const fetchDatosI = () => {
     fetch("/api/solicitud/solicitudesInsumos")
@@ -61,7 +63,8 @@ function RequestforSupplies() {
       });
       if (response.ok) {
         setSuccessModal(true);
-        fetchDatos();
+        fetchDatosI();
+        fetchDatosB();
       } else {
         console.error("Error al aceptar la solicitud");
       }
@@ -70,44 +73,36 @@ function RequestforSupplies() {
     } 
   };
 
-  const handleReject = async (event, id) => {
-    event.preventDefault(); 
-    try {
-      const response = await fetch(`/api/solicitud/rechazarSolicitud/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.ok) {
-        setRejectModal({ show: true, id: id });
-        fetchDatos();
-      } else {
-        console.error("Error al rechazar la solicitud");
-      }
-    } catch (error) {
-      console.error("Error al rechazar la solicitud", error);
-    } 
-  };
+  const handleSub = async (e, id) => {
+    e.preventDefault();
+    const data = {
+        rejected_type: rejectData.rejected_type,
+        comment: rejectData.comment
+    };
 
-  const handleConfirmReject = async () => {
     try {
-      const response = await fetch(`/api/solicitud/rechazarSolicitud/${rejectModal.id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.ok) {
-        setRejectModal({ show: false, id: null });
-        fetchDatos();
-      } else {
-        console.error("Error al rechazar la solicitud");
-      }
+        const response = await axios.post(`/api/solicitud/rechazarSolicitud/${id}`, data, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        setRejectModal(false);
+        fetchDatosI();
+        fetchDatosB();
+        console.log('Solicitud actualizada:', response.data);
     } catch (error) {
-      console.error("Error al rechazar la solicitud", error);
-    } 
-  };
+        console.error('Error al actualizar usuario:', error);
+    }
+};
+
+  const modalReject = (id) => {
+    setRejectModal(true);
+    setModalData({ id }); // Guardar el ID de la solicitud en el estado del modal
+  }
+
+  const closeModalReject = () => {
+    setRejectModal(false);
+  }
 
   const handleViewMore = (dato) => {
     setModalData(dato);
@@ -127,9 +122,9 @@ function RequestforSupplies() {
 
   return (
     <div className="request-for-supplies-container">
-      <h1>Planeación</h1>
-      <button onClick={showInsumos}>Solicitudes de Insumos</button>
-      <button onClick={showBienes}>Solicitudes de Bienes</button>
+     
+      <button className="soli" onClick={showInsumos}>Solicitudes de Insumos</button>
+      <button className="soli" onClick={showBienes}>Solicitudes de Bienes</button>
       {insumosData && (
       <h2>Solicitudes de Insumos</h2>
       )}
@@ -163,7 +158,7 @@ function RequestforSupplies() {
               <td className="request-for-supplies-cell">
                 <div className="request-for-supplies-button-container">
                   <button onClick={(event) => handleAcept(event, dato.id)} className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
-                  <button onClick={(event) => handleReject(event, dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
+                  <button onClick={() => modalReject(dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
                 </div>
               </td>
             </tr>
@@ -199,7 +194,7 @@ function RequestforSupplies() {
               <td className="request-for-supplies-cell">
                 <div className="request-for-supplies-button-container">
                   <button onClick={(event) => handleAcept(event, dato.id)} className="request-for-supplies-button request-for-supplies-accept-button">Aceptar Solicitud</button>
-                  <button onClick={(event) => handleReject(event, dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
+                  <button onClick={() => modalReject(dato.id)} className="request-for-supplies-button request-for-supplies-reject-button">Rechazar Solicitud</button> 
                 </div>
               </td>
             </tr>
@@ -208,7 +203,7 @@ function RequestforSupplies() {
       </table>
       )}
 
-      {modalData && (
+      {modalData && modalData.requestingUser && (
         <div className="glass-modal-overlay">
           <div className="glass-modal">
             <span className="glass-close-button" onClick={closeModal}>&times;</span>
@@ -250,17 +245,26 @@ function RequestforSupplies() {
         </div>
       )}
 
-{rejectModal.show && (
+      {rejectModal && (
         <div className="glass-modal-overlay">
           <div className="glass-modal">
-            <span className="glass-close-button" onClick={() => setRejectModal({ show: false, id: null })}>&times;</span>
+            <span className="glass-close-button" onClick={() => closeModalReject()}>&times;</span>
             <div className="glass-modal-content">
               <h2><strong>Confirmación</strong></h2>
-              <p>¿Deseas rechazar esta solicitud?</p>
-              <div className="request-for-supplies-button-container">
-                <button onClick={handleConfirmReject} className="request-for-supplies-button request-for-supplies-accept-button">Sí</button>
-                <button onClick={() => setRejectModal({ show: false, id: null })} className="request-for-supplies-button request-for-supplies-reject-button">No</button>
-              </div>
+              {/* <p>¿Porque rechaza esta solicitud?</p> */}
+              <form onSubmit={(event) => handleSub(event, modalData.id)}>
+              <label htmlFor="">¿Porque rechaza esta solicitud?</label><br />
+              <select name="rejected_type" id="" onChange={e => setRejectData({ ...rejectData, rejected_type: e.target.value })}>
+                <option value="#" selected disabled>- Motivo -</option>
+                <option value="Falta de presupuesto">Falta de Presupuesto</option>
+                <option value="No planeado">No Planeado</option>
+              </select><br /><br />
+              <label htmlFor="">Comentario adicional:</label><br />
+              <input type="text" name="comment" onChange={e => setRejectData({ ...rejectData, comment: e.target.value })}/>
+              <br /><br />
+              <button type="submit" className="request-for-supplies-button request-for-supplies-accept-button">Continuar</button>
+              <button onClick={() => closeModalReject()} className="request-for-supplies-button request-for-supplies-reject-button">Cancelar</button>
+              </form>
             </div>
           </div>
         </div>

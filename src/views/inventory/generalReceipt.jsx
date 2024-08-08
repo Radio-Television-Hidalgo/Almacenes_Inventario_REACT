@@ -170,6 +170,7 @@ function GeneralReceipt() {
           </div>
           <div className="text-item model">
             <strong>Modelo:</strong> {selectedArticle.model}
+
           </div>
           <div className="text-item">
             <strong>Fecha de Adquisición:</strong>{" "}
