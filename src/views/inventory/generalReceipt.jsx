@@ -92,10 +92,8 @@ function GeneralReceipt() {
               <td>
                 <QRCode
                   className="qr-codes"
-
                   value={article.QR}
                   size={64}
-
                 />
               </td>
               <td className="button-container">
@@ -142,7 +140,6 @@ function GeneralReceipt() {
                   />
                 </div>
               </div>
-
             ))}
           </div>
           <button
