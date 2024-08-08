@@ -102,19 +102,21 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
 }
 
-
-/*Estilos para el modal*/
+/* Modal que cubre toda la pantalla */
 .modal-gr {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white;
   padding: 20px;
   border: none;
-  width: 80%;
-  max-width: 800px;
-  border-radius: 20px;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1050;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: modalFadeIn 0.5s ease-in-out;
+  overflow-y: auto; /* Permitir desplazamiento vertical */
 }
 
 @keyframes modalFadeIn {
@@ -169,17 +171,29 @@
 
 .modal-header-gr {
   background-color: #691B31;
-  height: 120px;
+  height: 200px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border-radius: 20px 20px 0 0;
+  width: 200px;
+  margin-left: 450px;
+  border-radius: 20px 20px 20px 20px;
+}
+
+
+.qr-container {
+  display: flex;
+  justify-content: center; /* Centrar el contenedor del QR horizontalmente */
+  align-items: center; /* Centrar el contenedor del QR verticalmente */
+  padding: 20px;
+  width: 98%;
+  background-color: #fff;
+  border: 2px solid #691B31;
+  background-color: #fee6c0;
+  border: 2px solid #BC955B;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .qr-code {
-  width: 100px;
-  height: 100px;
   transition: transform 0.3s ease;
 }
 
@@ -188,19 +202,19 @@
 }
 
 .modal-content-gr {
-  text-align: center;
-  padding-top: 10px;
+  padding: 20px;
 }
 
 .modal-body-gr {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinear elementos a la izquierda */
   padding: 20px;
 }
 
 .carousel-container-gr {
   position: relative;
   width: 100%;
-  right: -5px;
   overflow: hidden;
 }
 
@@ -209,22 +223,27 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  transition: transform  0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .carousel-slide-gr {
   min-width: 100%;
-  height: 200px;
+  height: 300px;
   flex-shrink: 0;
 }
 
+.carousel-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .carousel-photo-gr {
-  width: 50%;
-  height: 300px;
-  margin-top: -10px;
-  
+  width: auto;
+  height: 100%;
+  max-height: 100%;
   transition: transform 0.3s ease;
-  
 }
 
 .carousel-photo-gr:hover {
@@ -250,6 +269,50 @@
 
 .carousel-next-gr {
   right: 10px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fee6c0;
+  border: #BC955B;
+  border-radius: 20px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar texto horizontalmente */
+  justify-content: center; /* Centrar texto verticalmente */
+  text-align: center; /* Asegurar que el texto esté centrado */
+  width: 100%;
+  background-color: #fee6c0;
+  border: 2px solid #BC955B;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.text-item {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+.text-item:hover {
+  background-color: #f1f1f1;
+}
+
+.text-item.name {
+  color: #691B31;
+}
+
+.text-item.brand {
+  color: #BC955B;
+  background-color: #230536;
+}
+
+.text-item.series {
+  color: #6A1B9A;
 }
 
 /* Fullscreen overlay for images */

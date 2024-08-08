@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "../articles/ModalPolicy"; // Asegúrate de tener un modal similar para mostrar el éxito
+import "../../styles/subArch.css"
 
 function ShoppingForm() {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ function ShoppingForm() {
   };
 
   return (
-    <div>
+    <div className="shopping-form-container">
       <form onSubmit={handleSubmit} className="shopping-form">
         <div className="shopping-form-grid">
           <div className="shopping-form-group">
