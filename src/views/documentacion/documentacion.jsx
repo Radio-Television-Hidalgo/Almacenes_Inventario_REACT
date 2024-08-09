@@ -34,15 +34,22 @@ const Documentation = () => {
               </span>
             </Link>
           
-            <Link to="/polizas" className="documentacion-card button card-right">
+            
+          </div>
+        </div>
+        <div className="documentacion-columns">  
+          
+              <div className="documentacion-column documentacion-column-center ">
+            <Link to="/polizas" className="documentacion-card button card-left">
               <span className="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-file-earmark-ruled-fill" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-file-earmark-ruled-fill" viewBox="0 0 16 16">
                   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M3 9h10v1H6v2h7v1H6v2H5v-2H3v-1h2v-2H3z"/>
                 </svg>
                 <h1 className="h1-mini">Ver pólizas</h1>
               </span>
-            </Link>
+            </Link>      
           </div>
+
         </div>
       </main>
     </div>
