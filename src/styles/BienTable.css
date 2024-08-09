@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
-
 .table-container {
     width: 100%;
     overflow-x: auto;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-style: normal;
+}
+
+/* Contenedor para centrar el buscador */
+.search-container {
+    display: flex;
+    justify-content: center;  /* Centra el contenido horizontalmente */
+    margin-bottom: 20px;
 }
 
 .style-table {
@@ -85,4 +90,19 @@
     .style-table td {
         font-size: 12px;
     }
+}
+
+.search-inputs {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }

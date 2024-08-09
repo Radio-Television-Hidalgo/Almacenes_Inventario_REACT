@@ -35,6 +35,7 @@ function BienTable() {
 
   return (
     <div>
+      <div className="search-container">
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -42,6 +43,8 @@ function BienTable() {
         onChange={handleSearch}
         className="search-inputs"
       />
+      </div>
+      
       <table className="style-table">
         <thead>
           <tr>
