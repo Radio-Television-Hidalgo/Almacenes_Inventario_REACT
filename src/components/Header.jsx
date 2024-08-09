@@ -270,28 +270,26 @@ const Header = () => {
                     <Link to="/documentacion" className="dropdown-item">
                       Documentación{" "}
                     </Link>
+                    <Link to="/almacen/insumos" className="dropdown-item">
+                      Ver insumos{" "}
+                    </Link>
                     <Link to="/entrada/existencias" className="dropdown-item">
                       {" "}
                       Entrada de existencias
                     </Link>
-                    <Link to="" className="dropdown-item">
-                      Ver insumos{" "}
+                    <Link to="/solicitudInsumos" className="dropdown-item">
+                      Solicitudes de insumos{" "}
                     </Link>
                     <Link
                       to="/articulos/insertarArticulo"
                       className="dropdown-item"
                     >
                       Agregar nuevo artículo{" "}
-                    </Link>
-                    <Link to="" className="dropdown-item">
+                    </Link>          
+                    <Link to="/almacen/hitorialSolicitudes" className="dropdown-item">
                       Historial de salida de bienes{" "}
                     </Link>
-                    <Link to="" className="dropdown-item">
-                      Salida de existencias{" "}
-                    </Link>
-                    <Link to="" className="dropdown-item">
-                      Solicitudes de insumos{" "}
-                    </Link>
+          
                   </div>
                 </div>
                 )}
@@ -306,7 +304,7 @@ const Header = () => {
                   </div>
                 </div>
               )}
-             <Link to="/compras">Compras</Link>
+             <Link to="/controlCompras">Compras</Link>
             
 {/*                <Link to="/assignations">Asignaciones</Link>        */}
                 {userType !== 'comun' && userType !== 'rh' &&(

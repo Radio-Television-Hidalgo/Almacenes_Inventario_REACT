@@ -58,6 +58,15 @@
   border-bottom-left-radius: 0;
 }
 
+.documentacion-column-center .documentacion-card {
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+
+
+
 /* Estilo para las tarjetas (cards) */
 .documentacion-card {
   text-decoration: none; /* Quita la decoración de enlace */
