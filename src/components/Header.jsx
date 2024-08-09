@@ -312,12 +312,15 @@ const Header = () => {
                   <Link to="/inventario" className="dropdown-toggle">Inventario</Link>
                   <div className="dropdown-menu">
 {/*                    <Link to="/facturas" className="dropdown-item">Facturas</Link>              */}
-                    <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
-                    <Link to="/articulos/bajaBien" className="dropdown-item">Baja de bienes</Link>
-                    <Link to="/resguardoGeneral" className="dropdown-item">Resguardo general</Link>
-                    <Link to="/articulos/insertarArticulo" className="dropdown-item">Alta de bienes</Link>
-                    <Link to="/inventarios/usuario" className="dropdown-item">Inventarios de usuario</Link>
-                    <Link to="#" className="dropdown-item">Historial de bajas</Link>
+
+                  <Link to="/articulos/bajaBien" className="dropdown-item">Baja de bienes</Link>
+                  <Link to="/resguardoGeneral" className="dropdown-item">Resguardo general</Link>
+                  <Link to="/entregaArticulo" className="dropdown-item">Entrega de bien a usuario</Link>
+                  <Link to="/inventarios/usuario" className="dropdown-item">Inventarios de usuario</Link>
+                  <Link to="/verSolicitud/bien" className="dropdown-item">Solicitudes de Bienes</Link>
+                  <Link to="/historial/bajas" className="dropdown-item">Historial de baja de bienes</Link>
+                  <Link to="" className="dropdown-item">Salida de existencias</Link>
+                  <Link to="/dictamenes/dajabien" className="dropdown-item">Control de dictamenes</Link>
                   </div>
                 </div>
                     )}
