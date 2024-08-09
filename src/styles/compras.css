@@ -1,12 +1,20 @@
 /* Estilo para el contenedor principal */
 .shopping-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px;
+  background-image: radial-gradient(at 21.439689257597784% 57.578968897220875%, hsla(174.3661971830986, 87.65432098765432%, 52.352941176470594%, 1) 0%, hsla(174.3661971830986, 87.65432098765432%, 52.352941176470594%, 0) 100%), radial-gradient(at 87.03032058357134% 57.77345312746165%, hsla(325.4237288135593, 100%, 46.27450980392157%, 1) 0%, hsla(325.4237288135593, 100%, 46.27450980392157%, 0) 100%), radial-gradient(at 82.81999650063128% 27.674369369728712%, hsla(84.22535211267606, 87.65432098765432%, 52.352941176470594%, 1) 0%, hsla(84.22535211267606, 87.65432098765432%, 52.352941176470594%, 0) 100%);
+  background-size: cover;
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  background-attachment: fixed; /* Hace que la imagen de fondo permanezca fija en su lugar */
+  background-position: center;
+  text-align: center;
+  padding: 20px; /* Espaciado interno */
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 /* Estilo para las filas */
