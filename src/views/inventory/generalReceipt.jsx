@@ -95,7 +95,6 @@ function GeneralReceipt() {
 
                   value={article.name}
                   size={64}
-
                 />
               </td>
               <td className="button-container">
@@ -142,7 +141,6 @@ function GeneralReceipt() {
                   />
                 </div>
               </div>
-
             ))}
           </div>
           <button
