@@ -1,17 +1,45 @@
-/* RequestforSupplies.css */
-
+/* Contenedor principal centrado */
 .request-for-supplies-container {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Título centrado */
 .request-for-supplies-title {
-  margin-bottom: 20px;
   font-size: 24px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
+/* Botones en fila y centrados */
+.request-for-supplies-button-container {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 20px; /* Espacio superior */
+}
+
+.soli {
+  margin: 10px;
+  display: inline-block;
+  background-color: #691B31;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabla de solicitudes de insumos */
 .request-for-supplies-table {
   width: 100%;
+  max-width: 1000px; /* Para limitar el tamaño de la tabla */
   border-collapse: collapse;
 }
 
@@ -31,9 +59,10 @@
   background-color: #f8f8f8;
 }
 
+/* Botones de acciones centrados */
 .request-for-supplies-button {
   padding: 10px 20px;
-  margin: 4px 0;
+  margin: 4px;
   font-size: 14px;
   color: white;
   border: none;
@@ -41,11 +70,6 @@
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.request-for-supplies-button:hover {
-  background-color: #ddd;
-  color: #691b31;
 }
 
 .request-for-supplies-accept-button {
@@ -71,150 +95,4 @@
 
 .request-for-supplies-view-button:hover {
   background-color: #bc955b; /* Lighter Dark Red */
-}
-
-.request-for-supplies-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Glass Modal Styles */
-.glass-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.glass-modal {
-  background: rgba(255, 255, 255, 0.839);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease-in-out;
-  position: relative;
-}
-
-.glass-close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: rgb(0, 0, 0);
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.glass-modal-content {
-  color:black; 
-  text-align: center;
-}
-
-.glass-modal-image {
-width: 100px;
-border: 4px solid #691B31;
-height: 100px;
-border-radius: 50%;
-margin-bottom: 20px;
-object-fit: cover;
-transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-.glass-modal-image:hover {
-border: 5px solid #BC955B;
-box-shadow: 0 0 20px #f0be73;
-}
-
-.glass-modal-content h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.glass-modal-content p {
-  margin: 10px 0;
-  font-size: 18px;
-}
-
-/* Detalles alineados al final */
-.glass-modal-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-.glass-modal-detail {
-  flex: 1;
-  margin: 0 10px;
-  padding: 10px;
-  color: white; /* Color del texto en los contenedores */
-}
-
-.brand {
-  background-color: #1AD598; /* Green */
-  border-radius: 100px;
-  object-fit: cover;
-  transition: 0.3s ease, box-shadow 0.3s ease;
-}
-.brand:hover {
-  border: 1px solid #1AD598;
-  box-shadow: 0 0 20px #1AD598;
-  }
-
-.model {
-  background-color: #217EFD; /* Blue */
-  border-radius: 100px;
-  object-fit: cover;
-  transition: 0.3s ease, box-shadow 0.3s ease;
-
-}
-.model:hover {
-  border: 1px solid #217EFD;
-  box-shadow: 0 0 20px #217EFD;
-  }
-
-.series {
-  background-color: #EA3A3D; /* Red */
-  border-radius: 100px;
-  object-fit: cover;
-  transition: 0.3s ease, box-shadow 0.3s ease;
-
-}
-.series:hover {
-  border: 0px solid #EA3A3D;
-  box-shadow: 0 0 20px #EA3A3D;
-  }
-
-  .request-for-supplies-button-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .request-for-supplies-accept-button,
-  .request-for-supplies-reject-button {
-    margin: 0 5px;
-  }
-   
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
 }

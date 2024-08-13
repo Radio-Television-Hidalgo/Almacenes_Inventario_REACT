@@ -93,9 +93,8 @@ function GeneralReceipt() {
                 <QRCode
                   className="qr-codes"
 
-                  value={article.QR}
+                  value={article.name}
                   size={64}
-
                 />
               </td>
               <td className="button-container">
@@ -135,14 +134,13 @@ function GeneralReceipt() {
               <div key={index} className="carousel-slide-gr">
                 <div className="carousel-image-container">
                   <img
-                    src={`/api/uploads/${photo}`}
+                    src={`/api/${photo}`}
                     alt={`Slide ${index}`}
                     className="carousel-photo-gr"
-                    onClick={() => openFullscreen(`/api/uploads/${photo}`)}
+                    onClick={() => openFullscreen(`/api/${photo}`)}
                   />
                 </div>
               </div>
-
             ))}
           </div>
           <button
@@ -197,7 +195,7 @@ function GeneralReceipt() {
       <div className="qr-container">
         <QRCode
           className="qr-code"
-          value={selectedArticle.QR}
+          value={selectedArticle.name}
           size={100}
         />
       </div>
