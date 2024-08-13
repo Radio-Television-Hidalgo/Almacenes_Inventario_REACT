@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "/src/styles/TablaInsumos.css";
 
-function InsumoTable() {
+function InsumoTable({ onAddArticle }) {
   const [insumos, setInsumos] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -28,32 +28,34 @@ function InsumoTable() {
 
   const filteredInsumos = insumos.filter(
     (insumo) =>
-      insumo.name && 
-      insumo.name.toLowerCase().includes(search.toLowerCase())
+      insumo.name && insumo.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="custom-table-container">
+    <div>
       <input
         type="text"
         placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
-        className="custom-search-input"
+        className="search-input"
       />
-      <table className="custom-style-table">
+      <table className="style-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
-            <th className="custom-th-descripcion">Descripción</th>
+            <th className="th-descripcion">Descripción</th>
             <th>Cantidad</th>
             <th>Número de Almacén</th>
             <th>Foto</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {filteredInsumos.map((insumo) => (
             <tr key={insumo.id}>
+              <td>{insumo.id}</td>
               <td>{insumo.name}</td>
               <td>{insumo.description}</td>
               <td>
@@ -73,9 +75,18 @@ function InsumoTable() {
                       key={index}
                       src={`/api/uploads/${photo}`}
                       alt="Foto del insumo"
-                      className="custom-photo"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        marginRight: "5px",
+                      }}
                     />
                   ))}
+              </td>
+              <td>
+                <button onClick={() => onAddArticle(insumo)}>
+                  Agregar artículo
+                </button>
               </td>
             </tr>
           ))}

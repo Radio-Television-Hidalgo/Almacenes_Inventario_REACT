@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "/src/styles/BienTable.css";
 
-function BienTable() {
+function BienTable({ onAddArticle }) {
   const [bienes, setBienes] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -29,54 +29,63 @@ function BienTable() {
   const filteredBienes = bienes.filter(
     (bien) =>
       !search ||
-      (bien.name &&
-        bien.name.toLowerCase().includes(search.toLowerCase()))
+      (bien.name && bien.name.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div>
+      <h2>Bienes</h2>
       <input
         type="text"
         placeholder="Buscar por nombre"
         value={search}
         onChange={handleSearch}
-        className="search-inputs"
       />
-      <table className="style-table">
+      <table className="styled-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Cantidad</th>
             <th>Número de Inventario</th>
             <th>Fotos</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {filteredBienes.map((bien) => (
             <tr key={bien.id}>
+              <td>{bien.id}</td>
               <td>{bien.name}</td>
-              <td className="descripcion">{bien.description}</td>
+              <td>{bien.description}</td>
               <td>
                 {bien.articleWarehouses && bien.articleWarehouses.length > 0
                   ? bien.articleWarehouses[0].quantity
                   : "N/A"}
               </td>
               <td>
-                {bien.articleWarehouses && bien.articleWarehouses.length > 0
-                  ? bien.articleWarehouses[0].inventory_number
-                  : "N/A"}
+                {bien.articleWarehouses &&
+                  bien.articleWarehouses.length > 0 &&
+                  bien.articleWarehouses[0].inventory_number}
               </td>
               <td>
                 {bien.photos_entry &&
-                  bien.photos_entry.split(",").map((photo, index) => (
-                    <img
-                      key={index}
-                      src={`/api/uploads/${photo}`}
-                      alt="Foto del bien"
-                      className="photo"
-                    />
-                  ))}
+                  bien.photos_entry
+                    .split(",")
+                    .map((photo, index) => (
+                      <img
+                        key={index}
+                        src={`/api/uploads/${photo}`}
+                        alt="Foto del bien"
+                        className="photo"
+                      />
+                    ))}
+              </td>
+              <td>
+                <button onClick={() => onAddArticle(bien)}>
+                  Agregar artículo
+                </button>
               </td>
             </tr>
           ))}
